@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('chats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_department_id')->references('id')->on('company_departments')->cascadeOnUpdate();
             $table->foreignId('company_id')->references('id')->on('companies')->cascadeOnUpdate();
-            $table->string('type')->default('FULL_TIME');
+            $table->foreignId('company_account_administrator_id')->references('id')->on('company_account_administrators')->cascadeOnUpdate();
+            $table->foreignId('talent_profile_id')->references('id')->on('talent_profiles')->cascadeOnUpdate();
+            $table->string("hash")->index();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('chats');
     }
 };

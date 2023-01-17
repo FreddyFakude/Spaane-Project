@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('education', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_department_id')->references('id')->on('company_departments')->cascadeOnUpdate();
-            $table->foreignId('company_id')->references('id')->on('companies')->cascadeOnUpdate();
-            $table->string('type')->default('FULL_TIME');
+            $table->unsignedBigInteger("educationable_id");
+            $table->string("educationable_type");
+            $table->string("institution_name")->nullable();
+            $table->string("qualification");
+            $table->date("qualification_start_date")->nullable();
+            $table->date("qualification_end_date")->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('education');
     }
 };

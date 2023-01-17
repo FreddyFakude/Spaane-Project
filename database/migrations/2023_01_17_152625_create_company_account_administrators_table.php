@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('business_account_administrators', function (Blueprint $table) {
+        Schema::create('company_account_administrators', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('business_id')->references('id')->on('businesses')->cascadeOnUpdate();
-            $table->foreignId('role_id')->references('id')->on('business_account_administrator_roles')->cascadeOnUpdate();
+            $table->foreignId('company_id')->references('id')->on('companies')->cascadeOnUpdate();
+            $table->foreignId('role_id')->references('id')->on('company_account_administrator_roles')->cascadeOnUpdate();
             $table->string('password');
             $table->string('first_name');
             $table->string('last_name');
@@ -40,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('business_account_administrators');
+        Schema::dropIfExists('company_account_administrators');
     }
 };

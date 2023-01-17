@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('independent_contractors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_department_id')->references('id')->on('company_departments')->cascadeOnUpdate();
-            $table->foreignId('company_id')->references('id')->on('companies')->cascadeOnUpdate();
-            $table->string('type')->default('FULL_TIME');
+            $table->string('info')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('independent_contractors');
     }
 };

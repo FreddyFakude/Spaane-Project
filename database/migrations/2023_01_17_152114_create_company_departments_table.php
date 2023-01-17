@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('business_account_administrator_roles', function (Blueprint $table) {
+        Schema::create('company_departments', function (Blueprint $table) {
             $table->id();
+            $table->string("name");
+            $table->string("description")->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('business_account_administrator_roles');
+        Schema::dropIfExists('company_departments');
     }
 };
