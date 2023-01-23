@@ -43,20 +43,12 @@
                     <ul class="nav-main">
                         <li>
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-grid fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>
-                            <ul>
-                                <li class="open">
-                                    <a  href="{{ route('dashboard.company.index') }}"><span class="sidebar-mini-hide">Dashboard</span></a>
-                                </li>
-                                <li class="open">
-                                    <a href="{{ route('dashboard.company.index.calendar') }}"><span class="sidebar-mini-hide">Calendar</span></a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Talent</span></a>
+                            <a href="{{ route('dashboard.company.talent.list') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Employees</span></a>
                         </li>
                         <li>
-{{--                            <a href="{{ route('dashboard.business.chats') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Chat</span></a>--}}
+                            <a href="{{ route('dashboard.company.chats') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Chat</span></a>
                         </li>
 {{--                        <li>--}}
 {{--                            <a href="{{ route('dashboard.business.profile') }}"><i class="si si-home fa-2x"></i><span class="sidebar-mini-hide">Profile</span></a>--}}

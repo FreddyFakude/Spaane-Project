@@ -9,4 +9,19 @@ use Illuminate\Database\Eloquent\Model;
 class CompanyAccountAdministrator extends Authenticatable
 {
     use HasFactory;
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function employees()
+    {
+        return $this->hasManyThrough(Employee::class, Company::class, 'id');
+    }
+
+    public function chats()
+    {
+        return $this->hasManyThrough(CompanyEmployeeChat::class, Company::class, 'id');
+    }
 }

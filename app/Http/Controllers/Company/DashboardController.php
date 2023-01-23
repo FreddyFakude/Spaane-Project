@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class DashboardController
 {
     public function index(){
-        $talents = Employee::where('is_profile_complete', '=', true)->get();
+        $talents = Employee::where('is_profile_complete', '=', false)->get();
         return view('dashboard.company.index', [
             "talents"=>$talents,
             "businessId" =>  Auth::id()
