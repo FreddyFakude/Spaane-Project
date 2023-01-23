@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Chat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::middleware('api')->post('/chat/{id}/send-message', function (Request $request, Chat $chat) {
+    return $chat;
+});
+
+
+Route::middleware('api')->post('/whatsapp-message-user-message', [\App\Http\Controllers\WhatsAppController::class, 'receiveMessage']);

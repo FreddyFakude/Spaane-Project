@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('chats', function (Blueprint $table) {
+        Schema::create('company_employee_chats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')->references('id')->on('companies')->cascadeOnUpdate();
             $table->foreignId('company_account_administrator_id')->references('id')->on('company_account_administrators')->cascadeOnUpdate();
-            $table->foreignId('talent_profile_id')->references('id')->on('talent_profiles')->cascadeOnUpdate();
+            $table->foreignId('employee_id')->references('id')->on('employees')->cascadeOnUpdate();
             $table->string("hash")->index();
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chats');
+        Schema::dropIfExists('company_employee_chats');
     }
 };
