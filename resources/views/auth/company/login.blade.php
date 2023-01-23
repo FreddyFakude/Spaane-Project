@@ -9,12 +9,12 @@
                                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                                     <h4 class="mb-4">Don't Have An Account?</h4>
                                     <p class="small mb-0">Please click sign up to create a new account</p>
-                                    <a class="btn btn-primary" href="{{ route('talent.login.form') }}">SIGNUP</a>
+                                    <a class="btn btn-primary" href="{{ route('company.login.form') }}">SIGNUP</a>
                                 </div>
                             </div>
                             <div class="col-lg-7">
                                 <div class="card-body p-md-5 mx-md-4">
-                                    <form action="{{ route('talent.login') }}" method="post">
+                                    <form action="{{ route('company.login') }}" method="post">
                                         <div class="text-center">
                                             <h4 class="mt-1 mb-5 pb-1">Login To Account</h4>
                                         </div>
@@ -45,11 +45,11 @@
 
                                         <div class="text-center pb-4">
                                             <p class="mb-0 me-2">Don't have an account?</p>
-                                            <a href="{{ route('talent.signup.form') }}" class="btn btn-outline-danger">Create new</a>
+{{--                                            <a href="{{ route('talent.signup.form') }}" class="btn btn-outline-danger">Create new</a>--}}
                                         </div>
 
                                         <div class="pb-4 text-center">
-                                            <a href="{{ route('business.login') }}"><small>Business login here</small></a>
+                                            <a href="{{ route('company.login') }}"><small>Business login here</small></a>
                                         </div>
 
                                     </form>

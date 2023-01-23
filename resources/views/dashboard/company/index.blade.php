@@ -7,53 +7,6 @@
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
     <div class="content bg-light">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group row  tb-form-control">
-                    <div class="col-lg-12">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fa fa-user fa-lg"></i>
-                                </span>
-                            </div>
-                            <input type="text" class="form-control form-control-lg" id="example-input1-group1" name="example-input1-group1" placeholder="Role">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group row  tb-form-control">
-                    <div class="col-lg-12">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fa fa-map-pin fa-lg"></i>
-                                </span>
-                            </div>
-                            <input type="text" class="form-control form-control-lg" id="example-input1-group1" name="example-input1-group1" placeholder="Location">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group row tb-form-control">
-                    <div class="col-lg-12">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fa fa-calendar fa-lg"></i>
-                                </span>
-                            </div>
-                            <input type="text" class="form-control form-control-lg" id="example-input1-group1" name="example-input1-group1" placeholder="Dates">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <button class="btn-lg w-100 h-75 btn-secondary">Search</button>
-            </div>
-        </div>
         <div class="row mb-50">
             <div class="col-md-8">
                 <div class="row">
@@ -213,7 +166,7 @@
     <div class="modal fade" id="modal-slideright" tabindex="-1" role="dialog" aria-labelledby="modal-slideright" aria-hidden="true">
         <div class="modal-dialog modal-dialog-slideright" role="document">
             <div class="modal-content">
-                <form action="{{ route('dashboard.business.interview.request') }}" method="post">
+                <form action="#" method="post">
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-white">
                             <h2 class="block-title text-black">Select Interview Dates</h2>

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers\Business;
+namespace App\Http\Controllers\Company;
 
 
 use App\Models\Employee;
@@ -11,9 +11,9 @@ class DashboardController
 {
     public function index(){
         $talents = Employee::where('is_profile_complete', '=', true)->get();
-        return view('dashboard.business.index', [
+        return view('dashboard.company.index', [
             "talents"=>$talents,
-            "businessId" =>  Auth::user()->business->id
+            "businessId" =>  Auth::id()
         ]);
     }
 }

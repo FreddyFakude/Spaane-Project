@@ -51,7 +51,7 @@
                 <!-- END Side Overlay -->
 
                     <div class="dropdown-divider"></div>
-                    <form action="{{ route('business.logout') }}" method="post">
+                    <form action="{{ route('company.logout') }}" method="post">
                         @csrf
                         <button class="dropdown-item">
                             <i class="si si-logout mr-5"></i> Sign Out

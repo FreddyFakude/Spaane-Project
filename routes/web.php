@@ -16,3 +16,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::view('/company/login', 'auth.company.login')->name('company.login.form');
+Route::post('/company/login', [\App\Http\Controllers\Auth\Company\LoginController::class, 'login'])->name('company.login');
+Route::post('/company/logout', [\App\Http\Controllers\Auth\Company\LoginController::class, 'logout'])->name('company.logout');
+
+Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
+    Route::get('/dashboard/index', [\App\Http\Controllers\Company\DashboardController::class, 'index'])->name('dashboard.company.index');
+    Route::get('/dashboard/stats', [\App\Http\Controllers\Company\DashboardController::class, 'stats'])->name('dashboard.company.stats');
+    Route::get('/dashboard/calendar', [\App\Http\Controllers\Company\DashboardController::class, 'calendar'])->name('dashboard.company.index.calendar');
+//    Route::get('/dashboard/employees/list', [\App\Http\Controllers\Business\TalentController::class, 'list'])->name('dashboard.company.talent.list');
+//    Route::get('/dashboard/employees/view/{talent}', [\App\Http\Controllers\Business\TalentController::class, 'viewTalent'])->name('dashboard.company.employee.view');
+//    Route::get('/dashboard/employees/view/{talent}/delete', [\App\Http\Controllers\Business\TalentController::class, 'delete'])->name('dashboard.business.employee.delete');
+//    Route::post('/dashboard/employees/invite', [\App\Http\Controllers\Business\TalentController::class, 'inviteTalent'])->name('dashboard.business.employee.invite');
+//    Route::post('/dashboard/talents/interview-request', [\App\Http\Controllers\Business\InterviewController::class, 'submitRequestInterview'])->name('dashboard.business.interview.request');
+//    Route::get('/dashboard/talents/{talent}', [\App\Http\Controllers\Business\ExternalTalentController::class, 'viewTalent'])->name('dashboard.business.view-talent');
+//    Route::post('/dashboard/hire', [\App\Http\Controllers\Business\ProjectController::class, 'submitProjectRequest'])->name('dashboard.business.project.request');
+//    Route::get('/dashboard/chats', [\App\Http\Controllers\Business\BusinessChatController::class, 'chats'])->name('dashboard.business.chats');
+//    Route::get('/dashboard/chat/{chat}', [\App\Http\Controllers\Business\BusinessChatController::class, 'chat'])->name('dashboard.business.chat.talent');
+//    Route::get('/dashboard/chat/start/{id}', [\App\Http\Controllers\Business\BusinessChatController::class, 'startChat'])->name('dashboard.business.chat.new');
+//    Route::get('/dashboard/chat/{chat}/messages', [\App\Http\Controllers\Business\BusinessChatController::class, 'loadMessages'])->name('dashboard.business.chat.talent.messages');
+//    Route::post('/dashboard/chat/{chat}/send-message', [\App\Http\Controllers\Business\BusinessChatController::class, 'SendMessages'])->name('dashboard.business.chat.send.messages');
+//    Route::get('/dashboard/profile', [\App\Http\Controllers\Business\ProfileController::class, 'profile'])->name('dashboard.business.profile');
+//    Route::post('/dashboard/profile/save', [\App\Http\Controllers\Business\ProfileController::class, 'updateProfile'])->name('dashboard.business.profile.save');
+});
