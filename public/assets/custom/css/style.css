@@ -1,0 +1,600 @@
+.bg-blue{
+  background-color: #05b4b4!important;
+}
+.btn-custom{
+  background-color: #05b4b4!important;
+  color: #ffffff!important;
+}
+.btn-custom:hover{
+  background-color: #40d2d2!important;
+  color: #ffffff;
+}
+.videoBox {
+  height: 250px;
+  max-height: 250px;
+  text-align: center;
+  background: #fff;
+  position: relative;
+}
+.myblue{
+  background-color: #05b4b4!important;
+  color: #ffffff;
+}
+.myblue2{
+  color: #05b4b4!important;
+}
+.nav-tabs-block .nav-link:focus, .nav-tabs-block .nav-link:hover{
+  color:#05b4b4!important;
+}
+.item.item-2x {
+  width: 40px;
+  height: 40px;
+  line-height: 100px;
+}
+
+.text-warning {
+  font-size: 11px;
+}
+
+.tw-2 {
+  font-size: 12px !important;
+}
+
+body{
+  background-color: #fff!important;
+}
+
+.is-revealing {
+  position: relative;
+  /*display: flex;*/
+  flex-wrap: wrap;
+  background: #fff;
+  height: 100%
+}
+
+.is-revealing>* {
+  position: relative;
+  width: 100%
+}
+
+.is-revealing::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 16px 48px #E3E7EB;
+  mix-blend-mode: multiply
+}
+
+.is-tagging {
+  margin-top: 3px;
+}
+
+.tag {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 3px;
+    padding-left: 3px;
+    margin-bottom: 4px;
+    line-height: 14px;
+    color: #05b4b4;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-weight: 300;
+    background-color: #fff;
+    border: 1px solid #05b4b4;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.is-adding,
+.tag-2 {
+  background-color: #05b4b4 !important;
+  color: #fff !important;
+}
+
+.is-adding:hover {
+  background: #058181;
+}
+.mb-mb {
+  padding-bottom: 20px;
+}
+
+.video-content {
+  margin-left: 10px;
+}
+
+.is-reviewing {
+  color: grey;
+  font-size: 12px;
+}
+
+.is-reviewing:hover {
+  color: #05b4b4;
+}
+
+#example-input1-group2 {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-right-color: transparent;
+}
+
+.append-me {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: transparent !important;
+  border-left: 1px solid transparent !important;
+}
+
+.append-me .fa-search:hover {
+  color:#05b4b4
+}
+
+/*Modal edits*/
+.modal {
+  background-color: #000000d4;
+}
+
+.choose,
+.terms {
+  padding-left: 15px;
+}
+
+.terms {
+  padding-right: 15px;
+}
+
+.progress{
+    width: 100%;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.my-facts-text {
+  font-size: 11px;
+}
+
+.progress-bar-label {
+  font-size: 11px;
+}
+
+.progress-bar{
+    background-color: #03b4b4!important;
+}
+
+.skills-tags {
+  font-size: 12px;
+}
+
+.is-moving {
+  margin-top: 20px;
+}
+
+.btn-noborder {
+  background-color: #fff;
+  border: 1px solid #05b4b4 !important;
+  color: #05b4b4;
+  box-shadow: none;
+}
+
+.btn-noborder:hover {
+  background-color: #fff;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.is-uploading-video {
+  border: 1px solid #05b4b4;
+  color: #ffff;
+  background-color: #05b4b4;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.content-side .content-side-full .content-side-user{
+  background-color: #05b4b4 !important;
+}
+
+.content-side {
+  padding: 18px 0px 1px !important;
+}
+
+.submissionContent-button .btn-post {
+  background: #05b4b4;
+  color: #fff;
+  box-shadow: none;
+}
+
+.submissionContent-button .btn-post:hover {
+  background: #058181;
+}
+
+/*Profile Pic Start
+.picture-container{
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}*/
+
+.picture{
+  width: 110px;
+  height: 110px;
+  /* background-color: #999999; */
+  color: #FFFFFF;
+  border-radius: 50%;
+  margin: 0px auto;
+  overflow: hidden;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+
+/*.picture:hover{
+  border-color: #2ca8ff;
+}*/
+
+.content.ct-wizard-green .picture:hover{
+  border-color: #05ae0e;
+}
+
+.content.ct-wizard-blue .picture:hover{
+  border-color: #3472f7;
+}
+
+.content.ct-wizard-orange .picture:hover{
+  border-color: #ff9500;
+}
+
+.content.ct-wizard-red .picture:hover{
+  border-color: #ff3b30;
+}
+
+.picture input[type="file"] {
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0 !important;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.picture-src{
+  width: 100%;
+}
+
+/*Add Team Members Modal*/
+#modal-team-member .block-content .form-control {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.make-circle{
+  height:150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+/*Bids*/
+.bid {
+  background-color: #05b4b4 !important;
+  color: #fff !important;
+  border-color: #05b4b4 !important;
+  cursor: pointer;
+}
+
+.no {
+cursor: pointer;
+}
+
+/*decline*/
+.decline {
+  background-color: #d30101 !important;
+  color: #fff !important;
+  border-color: #d30101 !important;
+  cursor: pointer;
+}
+
+.chat-with {
+  background-color: #ffff !important;
+  color: #05b4b4 !important;
+  border-color: #05b4b4 !important;
+  cursor: pointer;
+}
+
+/*Share modal*/
+.share-header {
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+.custom-radio-radio {
+  margin-top: 10px;
+}
+
+.custom-radio-radio label {
+  font-weight: lighter;
+}
+
+.mt-2 {
+  margin-top: 45px !important;
+}
+
+.delete-account,
+.is-subnitting {
+  padding: 0px 16px 0px;
+}
+
+.btn-submit {
+  background: #05b4b4 !important ;
+  color: #fff !important;
+}
+
+.btn-view-bids {
+  background: #fff !important ;
+  color: #05b4b4 !important ;
+  border: 1px solid #05b4b4 !important ;
+  box-shadow: none;
+}
+
+.confirm-buttons {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.inline-inline {
+  display: flex;
+  justify-content: center;
+}
+
+.company-company-name {
+  margin-left: 15px;
+}
+
+.img-avatar3 {
+  width: 42px !important;
+  height: 42px !important;
+}
+
+.company-company {
+  font-size: 12px;
+  color: #05b4b4;
+}
+
+.content-holder {
+  margin: 10px auto;
+}
+
+.reduce-space{
+  margin-bottom: 0px !important;
+}
+
+.si-pointer {
+  color: #ff9900fd !important;
+}
+
+.fa-building-o {
+  color: #ff9900fd !important;
+}
+
+.si-calendar {
+  color: #ff9900fd !important;
+}
+
+.si-lock {
+  color: #ff9900fd !important;
+}
+
+.si-eye {
+  transform: scale(60);
+}
+
+.ml5p {
+  margin-left: 5px;
+}
+
+.rate-me {
+  font-size: 15px;
+  padding: 10px;
+}
+
+.logo-logo-push {
+  margin-top: -15px !important;
+}
+
+.owner-hook {
+  margin-top: 90px;
+}
+
+.maximised-logo,
+.minified-logo {
+  display: none;
+}
+
+.member-box {
+  margin-bottom: 25px !important;
+}
+
+.required-docs {
+  font-size: medium;
+}
+
+.ribbon {
+  position: absolute;
+  right: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#05B4B4 0%, #05B4B4 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; right: -21px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #05B4B4;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #05B4B4;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #05B4B4;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #05B4B4;
+}
+
+.is-squeezing {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+.brand-text {
+  color: #03b4b4 !important;
+}
+
+.btn-gradient {
+  background: #c21500!important;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ffc500, #c21500)!important;  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ffc500, #c21500)!important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #ffffff!important;
+}
+.btn-noborder-orange {
+  background-color: #fff;
+  border: 1px solid #ff9900fd!important;
+  color: #ff9900fd!important;  /* fallback for old browsers */
+}
+
+.btn-orange {
+  background: #ff9900fd!important;
+  color: #ffffff!important;
+}
+
+.btn-noborder-orange:hover {
+  background-color: #fff;
+}
+
+.modal {
+  overflow-y:auto;
+}
+
+div.relative {
+  position: relative;
+}
+
+div.absolute {
+  position: absolute;
+  left: 0;
+}
+
+.responsive {
+  width: 50%;
+  height: 40%;
+}
+
+.is-centering {
+  display: inline-block;
+}
+
+/* Full Screen Overlayer */
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(255,255,255, 1);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  /* margin-top: 30px; */
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #ffff;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+.team-logo {
+  border-radius: 50% !important;
+}
+
+.btn {
+  height: 34px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 600;
+}
+
+
+
