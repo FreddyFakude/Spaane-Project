@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 
 
-use App\Models\CompanyEmployeeChat;
+use App\Models\Chat;
 use App\Models\Employee;
 use App\Repository\ChatRepository;
 use App\WhatsApp\WhatsApp;
+use App\WhatsApp\WhatsAppChatManager;
 use Illuminate\Http\Request;
 
 class WhatsAppController extends Controller
@@ -18,22 +19,29 @@ class WhatsAppController extends Controller
     /**
      * WhatsAppController constructor.
      */
-    public function __construct(WhatsApp $whatsApp, ChatRepository $repository)
+    public function __construct(WhatsApp $whatsApp, ChatRepository $repository, WhatsAppChatManager $chatManager)
     {
         $this->whatsApp = $whatsApp;
         $this->repository = $repository;
+        $this->chatManager = $chatManager;
     }
     public function receiveMessage(Request $request)
     {
-        $validate = $request->validate([
-            'WaId' => 'required|exists:employees,mobile_number'
+        $validated = $request->validate([
+            'WaId' => 'required',
+            'ProfileName' => 'required',
+            'SmsStatus' => 'required',
+            'NumMedia' => 'required',
+            'MessageSid' => "required",
+            'Body'=>"required"
         ]);
 
+        $this->chatManager->processConversation($validated);
         $talent = Employee::firstWhere([
             'mobile_number' => $request->input('WaId')
         ]);
 
-        $chat = CompanyEmployeeChat::firstOrCreate(
+        $chat = Chat::firstOrCreate(
             ['employee_id'=>$talent->id],
             [
                 'company_id'=>$talent->company->id,
@@ -42,8 +50,6 @@ class WhatsAppController extends Controller
             ]
         );
 
-//        $this->whatsApp->saveMessage($chat, 'Hello World', false);
-
-        $this->whatsApp->sendWhatsappMessage($chat, $talent, 'Hello World', true);
+        $this->whatsApp->sendWhatsappMessage($chat, $talent, 'Thank you for contacting us.', "App\Models\Company", $talent->company->id, true, true);
     }
 }

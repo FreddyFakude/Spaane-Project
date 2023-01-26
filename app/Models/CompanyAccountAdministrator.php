@@ -22,6 +22,6 @@ class CompanyAccountAdministrator extends Authenticatable
 
     public function chats()
     {
-        return $this->hasManyThrough(CompanyEmployeeChat::class, Company::class, 'id');
+        return $this->hasManyThrough(Chat::class, Company::class, 'id');
     }
 }

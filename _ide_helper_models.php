@@ -179,16 +179,16 @@ namespace App\Models{
  * @property string $hash
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyEmployeeChat newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyEmployeeChat newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyEmployeeChat query()
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyEmployeeChat whereCompanyAccountAdministratorId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyEmployeeChat whereCompanyId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyEmployeeChat whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyEmployeeChat whereEmployeeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyEmployeeChat whereHash($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyEmployeeChat whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CompanyEmployeeChat whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereCompanyAccountAdministratorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereEmployeeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereUpdatedAt($value)
  */
 	class CompanyEmployeeChat extends \Eloquent {}
 }

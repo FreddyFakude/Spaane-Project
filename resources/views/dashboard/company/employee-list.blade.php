@@ -20,12 +20,12 @@
 {{--                    </ul>--}}
 {{--                </div>--}}
 {{--            </div>--}}
-{{--            <div class="col-md-8 col-xl-8">--}}
-{{--                <div class="d-flex justify-content-end">--}}
-{{--                    <button type="button" class="btn-lg btn-secondary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>--}}
-{{--                    <button class="btn-lg btn-primary mr-2">Delete User</button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <div class="col-md-12 col-xl-12">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn-lg btn-secondary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
+                    <button class="btn-lg btn-primary mr-2">Delete User</button>
+                </div>
+            </div>
         </div>
         <div class="block">
             <div class="block-header block-header-default">

@@ -3,14 +3,24 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
-use App\Models\CompanyEmployeeChat;
+use App\Models\Chat;
 use App\Models\Employee;
 use App\Models\Message;
+use App\Repository\ChatRepository;
+use App\WhatsApp\WhatsApp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CompanyChatController extends Controller
 {
+
+    private WhatsApp $whatsApp;
+
+    public function __construct(WhatsApp $whatsApp)
+    {
+        $this->whatsApp = $whatsApp;
+    }
+
     public function chats()
     {
 
@@ -20,7 +30,7 @@ class CompanyChatController extends Controller
     }
 
     public function startChat(Employee $employee){
-        $chat  = CompanyEmployeeChat::firstOrCreate([
+        $chat  = Chat::firstOrCreate([
             'company_account_administrator_id' => Auth::id(),
             'employee_id' => $employee->id,
         ], [
@@ -35,7 +45,7 @@ class CompanyChatController extends Controller
         ]);
     }
 
-    public function chat(CompanyEmployeeChat $chat)
+    public function chat(Chat $chat)
     {
         return view('dashboard.company.chat', [
             'chat'=> $chat->load('messages'),
@@ -43,18 +53,19 @@ class CompanyChatController extends Controller
         ]);
     }
 
-    public function loadMessages(CompanyEmployeeChat $chat)
+    public function loadMessages(Chat $chat)
     {
         return $chat->messages;
     }
 
-    public function sendMessages(Request $request, CompanyEmployeeChat $chat)
+    public function sendMessages(Request $request, Chat $chat)
     {
         $request->validate([
             'chat_hash' => 'required',
             'message' => 'required'
         ]);
 
+        $this->whatsApp->saveReceivedWhatsappMessage($chat, "App\Models\Employee", $chat->employee_id, "");
 
         return Message::create([
             'messageable_type' => 'App\Models\Company',

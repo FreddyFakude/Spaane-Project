@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::middleware('api')->post('/chat/{id}/send-message', function (Request $request, Chat $chat) {
+Route::middleware('api')->post('/chat/{id}/send-message', function (Request $request, \App\Models\Chat $chat) {
     return $chat;
 });
 

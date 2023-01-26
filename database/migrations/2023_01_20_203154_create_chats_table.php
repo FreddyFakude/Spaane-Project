@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('company_employee_chats', function (Blueprint $table) {
+        Schema::create('chats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')->references('id')->on('companies')->cascadeOnUpdate();
             $table->foreignId('company_account_administrator_id')->references('id')->on('company_account_administrators')->cascadeOnUpdate();
-            $table->foreignId('employee_id')->references('id')->on('employees')->cascadeOnUpdate();
+            $table->bigInteger('chatable_id');
+            $table->string('chatable_type');
             $table->string("hash")->index();
             $table->timestamps();
         });

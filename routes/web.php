@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view('/employee/register/{phone_number}/{email}', 'auth.company.login')->name('employee.register');
+
 
 Route::view('/company/login', 'auth.company.login')->name('company.login.form');
 Route::post('/company/login', [\App\Http\Controllers\Auth\Company\LoginController::class, 'login'])->name('company.login');
@@ -29,7 +31,7 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
     Route::get('/dashboard/employees/list', [\App\Http\Controllers\Company\EmployeeController::class, 'list'])->name('dashboard.company.talent.list');
     Route::get('/dashboard/employees/view/{talent}', [\App\Http\Controllers\Company\EmployeeController::class, 'viewTalent'])->name('dashboard.company.employee.view');
 //    Route::get('/dashboard/employees/view/{talent}/delete', [\App\Http\Controllers\Business\TalentController::class, 'delete'])->name('dashboard.business.employee.delete');
-//    Route::post('/dashboard/employees/invite', [\App\Http\Controllers\Business\TalentController::class, 'inviteTalent'])->name('dashboard.business.employee.invite');
+    Route::post('/dashboard/employees/invite', [\App\Http\Controllers\Company\EmployeeController::class, 'inviteTalent'])->name('dashboard.business.employee.invite');
 //    Route::post('/dashboard/talents/interview-request', [\App\Http\Controllers\Business\InterviewController::class, 'submitRequestInterview'])->name('dashboard.business.interview.request');
 //    Route::get('/dashboard/talents/{talent}', [\App\Http\Controllers\Business\ExternalTalentController::class, 'viewTalent'])->name('dashboard.business.view-talent');
 //    Route::post('/dashboard/hire', [\App\Http\Controllers\Business\ProjectController::class, 'submitProjectRequest'])->name('dashboard.business.project.request');

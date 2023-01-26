@@ -4,7 +4,7 @@
 namespace App\WhatsApp;
 
 
-use App\Models\CompanyEmployeeChat;
+use App\Models\Chat;
 use App\Models\Employee;
 use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +19,8 @@ class WhatsApp
         $this->twilio = new Client($sid, $token);
     }
 
-    public function sendWhatsappMessage(CompanyEmployeeChat $chat, Employee $user, $messageBody, $outBoundMessage=true, $filePath=null, $automatedMessageId=null){
+    public function sendWhatsappMessage(Chat $chat, Employee $user, $messageBody, $modelPath, $modelId, $outBoundMessage=true, $automated=null, $filePath=null){
         try {
-            //I know it looks ugly my different php installtons got mixed up lol
 
             $content = $filePath ? ["from" => "whatsapp:" . env('PHONE_NUMBER'), "MediaUrl" => [$filePath]] : ["from" => "whatsapp:" . env('PHONE_NUMBER'), "body" => $messageBody];
             $message = $this->twilio->messages
@@ -34,31 +33,25 @@ class WhatsApp
 //            return abort(500);
         }
 
-        return $this->saveMessage($chat, $messageBody, $outBoundMessage, $filePath, $automatedMessageId, $message->sid);
+        return $this->saveMessage($chat, $messageBody,  $modelPath, $modelId, $outBoundMessage, $automated, $message->sid, $filePath, "");
     }
 
-    public function saveMessage(CompanyEmployeeChat $chat, $messageBody, $outBoundMessage,$filePath=null, $automatedMessageId=null, $sid=null){
+    public function saveReceivedWhatsappMessage(Chat $chat, $modelPath, $modelId, $messageBody, $sid, $outBoundMessage=true, $automated=false, $filePath=null)
+    {
+        return $this->saveMessage($chat, $messageBody, $modelPath, $modelId, $outBoundMessage, $automated, $sid, $filePath);
+    }
 
+    private function saveMessage(Chat $chat, $messageBody, $modelNamespace, $modelId, $outBoundMessage, $automated=false, $sid=null, $filePath=null, $fileType=null){
 
-        //if it is an automated message and is going out, it is an automated response
-        if ($automatedMessageId && $outBoundMessage){
-            $messageableType = "App\Models\AutomatedResponder";
-            $messageableId = 1;
-        }
-
-        //if it is not going out and is not an automated response then it is from a user
-        if(!$outBoundMessage && !$automatedMessageId) {
-            $messageableType = "App\Models\User";
-            $messageableId = $chat->user->id;
-        }
         return Message::create([
-            "content"=> $messageBody,
+            "message"=> $messageBody,
             "chat_id"=> $chat->id,
             "is_outbound"=>$outBoundMessage,
             "file_path"=>$filePath,
-            "automated_response_id"=>$automatedMessageId,
-            "messageable_type" => $messageableType,
-            "messageable_id" => $messageableId,
+            "file_type" => $fileType,
+            "is_automated"=>$automated,
+            "messageable_type" => $modelNamespace,
+            "messageable_id" => $modelId,
             "message_unique_id" => $sid
         ]);
     }

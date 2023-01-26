@@ -42,7 +42,7 @@
                 <div class="content-side content-side-full">
                     <ul class="nav-main">
                         <li>
-                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-grid fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                            <a  href="{{ route('dashboard.company.index') }}"><i class="si si-grid fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                         </li>
                         <li>
                             <a href="{{ route('dashboard.company.talent.list') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Employees</span></a>
