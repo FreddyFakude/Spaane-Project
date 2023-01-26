@@ -11,6 +11,8 @@ class Chat extends Model
 
     protected $guarded = [];
 
+    public const STATUS = ['opened'=>"OPENED", 'closed'=>"CLOSED", "awaiting_user_reply"=>"AWAITING  USER REPLY", "awaiting_company_reply"=>"AWAITING COMPANY REPLY"];
+
     public function chatable()
     {
         return $this->morphTo();

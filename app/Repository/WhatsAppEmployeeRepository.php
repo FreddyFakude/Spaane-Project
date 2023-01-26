@@ -21,7 +21,7 @@ class WhatsAppEmployeeRepository
      * @param int $phoneNumber
      * @return Employee
      */
-    public function getEmployeeByPhoneNumber(int $phoneNumber): Employee
+    public function getEmployeeByPhoneNumber(int $phoneNumber)
     {
         return  Employee::firstWhere([
             'mobile_number' => $phoneNumber

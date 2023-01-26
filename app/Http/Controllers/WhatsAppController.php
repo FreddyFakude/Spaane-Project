@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 
+use App\Http\Requests\WhatsAppMessageRequest;
 use App\Models\Chat;
 use App\Models\Employee;
 use App\Repository\ChatRepository;
@@ -25,31 +26,25 @@ class WhatsAppController extends Controller
         $this->repository = $repository;
         $this->chatManager = $chatManager;
     }
-    public function receiveMessage(Request $request)
+    public function receiveMessage(WhatsAppMessageRequest $request)
     {
-        $validated = $request->validate([
-            'WaId' => 'required',
-            'ProfileName' => 'required',
-            'SmsStatus' => 'required',
-            'NumMedia' => 'required',
-            'MessageSid' => "required",
-            'Body'=>"required"
-        ]);
-
+        $validated = $request->validated();
         $this->chatManager->processConversation($validated);
-        $talent = Employee::firstWhere([
-            'mobile_number' => $request->input('WaId')
-        ]);
+//        $talent = Employee::firstWhere([
+//            'mobile_number' => $request->input('WaId')
+//        ]);
 
-        $chat = Chat::firstOrCreate(
-            ['employee_id'=>$talent->id],
-            [
-                'company_id'=>$talent->company->id,
-                'company_account_administrator_id' => $talent->company->administrator->id,
-                'hash'=> sha1(time() . rand(1, 100000))
-            ]
-        );
+//        $chat = Chat::firstOrCreate(
+//            ['employee_id'=>$talent->id],
+//            [
+//                'company_id'=>$talent->company->id,
+//                'company_account_administrator_id' => $talent->company->administrator->id,
+//                'hash'=> sha1(time() . rand(1, 100000))
+//            ]
+//        );
+//
+//        $this->whatsApp->sendWhatsappMessage($chat, $talent, 'Thank you for contacting us.', "App\Models\Company", $talent->company->id, true, true);
 
-        $this->whatsApp->sendWhatsappMessage($chat, $talent, 'Thank you for contacting us.', "App\Models\Company", $talent->company->id, true, true);
+        return response()->json('success', 200);
     }
 }

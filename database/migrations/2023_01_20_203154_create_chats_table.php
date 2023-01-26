@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('company_account_administrator_id')->references('id')->on('company_account_administrators')->cascadeOnUpdate();
             $table->bigInteger('chatable_id');
             $table->string('chatable_type');
+            $table->string('status')->default(\App\Models\Chat::STATUS['opened']);
             $table->string("hash")->index();
             $table->timestamps();
         });

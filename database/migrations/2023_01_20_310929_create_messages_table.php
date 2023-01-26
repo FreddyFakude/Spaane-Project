@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("messageable_type");
             $table->bigInteger("messageable_id");
-            $table->foreignId("chat_id")->references('id')->on('company_employee_chats')->cascadeOnUpdate();
+            $table->foreignId("chat_id")->references('id')->on('chats')->cascadeOnUpdate();
            $table->text("message");
             $table->string("message_unique_id")->unique();
             $table->boolean("is_read")->default(false);

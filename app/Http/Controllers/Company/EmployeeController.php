@@ -38,10 +38,10 @@ class EmployeeController extends Controller
         ]);
 
         $businessAdmin = Auth::guard('company')->user();
-        $employee = Employee::create([
-            "department_id" => 16,
-            "business_id" => $businessAdmin->business_id
-        ]);
+//        $employee = Employee::create([
+//            "department_id" => 16,
+//            "business_id" => $businessAdmin->business_id
+//        ]);
 
         $profile  = Employee::create([
             "name" => $validated['first_name'],
@@ -50,8 +50,8 @@ class EmployeeController extends Controller
             "email" => $validated['email'],
             "marital_status" => '',
             "password" => Hash::make('password'),
-            "talent_profileable_type" => "App\Models\Employee",
-            "talent_profileable_id" => $employee->id,
+//            "talent_profileable_type" => "App\Models\Employee",
+//            "talent_profileable_id" => $employee->id,
             "role" => $validated['position']
         ]);
 
