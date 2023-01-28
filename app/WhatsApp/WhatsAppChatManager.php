@@ -6,7 +6,6 @@ namespace App\WhatsApp;
 
 use App\Models\Chat;
 use App\Models\Employee;
-use App\Models\GuestWhatsAppUser;
 use App\Repository\ChatRepository;
 use App\Repository\WhatsAppEmployeeRepository;
 use App\Repository\WhatsAppTemplateMessageRepository;
@@ -36,7 +35,7 @@ class WhatsAppChatManager
         $this->whatsApp->saveReceivedWhatsappMessage($chat, "App\Models\Employee", $employee->id, $payload['Body'], $payload['MessageSid'], false, false);
 
         if ($employee->status == Employee::STATUS['guest']){
-            return $this->conversationWithGuest($employee, $chat);
+            return $this->conversationWithGuest($employee, $chat, $payload['Body']);
         }
 
         return $this->conversationWithEmployee($employee, $chat);
@@ -48,10 +47,10 @@ class WhatsAppChatManager
             return $this->whatsApp->sendWhatsappMessage($chat, $employee, sprintf($message->content, $employee->first_name), "App\Models\Company", $employee->id, true, true);
     }
 
-    protected function conversationWithGuest(Employee $guest, Chat $chat)
+    protected function conversationWithGuest(Employee $guest, Chat $chat, $receivedMessage)
     {
-        $message =  $this->appTemplateMessageRepository->getMessageBySlug('user.unregistered');
-        return $this->whatsApp->sendWhatsappMessage($chat, $guest, sprintf($message->content, $guest->first_name), "App\Models\Company", $guest->id, true, true);
+        (new GuestWhatsAppChatFlow($guest, $chat, $receivedMessage))->reply();
+       return true;
     }
 
 

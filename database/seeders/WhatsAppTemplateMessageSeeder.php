@@ -18,8 +18,21 @@ class WhatsAppTemplateMessageSeeder extends Seeder
 
         \DB::table("whats_app_template_messages")->insert([
             [
-                'content' => 'Welcome to {$companyName}',
-                "slug" => "welcome.message"
+                'id' =>1,
+                'content' => 'Welcome to %s',
+                "slug" => "welcome.user.message"
+            ],
+            [
+                'id'=>2,
+                'content' => 'Good Day, your number is not registered with any company. Please choose the option below.
+1. Chat with Teambix
+2. Learn more about us',
+                "slug" => "guest.welcome"
+            ],
+            [
+                'id'  => 3,
+                'content' => 'Please type your message and we wil get back to you.',
+                "slug" => "guest.chat"
             ]
         ]);
     }
