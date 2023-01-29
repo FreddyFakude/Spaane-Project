@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/company/login');
 
 Route::view('/employee/register/{phone_number}/{email}', 'auth.company.login')->name('employee.register');
 

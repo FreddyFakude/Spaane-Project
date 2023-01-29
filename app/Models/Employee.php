@@ -16,4 +16,9 @@ class Employee extends Model
     public function company(){
         return $this->belongsTo(Company::class, 'company_id');
     }
+
+    public function payslips()
+    {
+        return $this->hasMany(Payslip::class);
+    }
 }

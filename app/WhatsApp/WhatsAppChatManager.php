@@ -38,19 +38,19 @@ class WhatsAppChatManager
             return $this->conversationWithGuest($employee, $chat, $payload['Body']);
         }
 
-        return $this->conversationWithEmployee($employee, $chat);
+        return $this->conversationWithEmployee($employee, $chat, $payload['Body']);
     }
 
-    protected function conversationWithEmployee(Employee $employee, Chat $chat)
+    protected function conversationWithEmployee(Employee $employee, Chat $chat, $receivedMessage)
     {
-            $message =  $this->appTemplateMessageRepository->getMessageBySlug('welcome.user.message');
-            return $this->whatsApp->sendWhatsappMessage($chat, $employee, sprintf($message->content, $employee->first_name), "App\Models\Company", $employee->id, true, true);
+        (new EmployeeWhatsAppChatFlow($employee, $chat, $receivedMessage))->reply();
+        return true;
     }
 
     protected function conversationWithGuest(Employee $guest, Chat $chat, $receivedMessage)
     {
         (new GuestWhatsAppChatFlow($guest, $chat, $receivedMessage))->reply();
-       return true;
+        return true;
     }
 
 

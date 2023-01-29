@@ -32,6 +32,10 @@ class GuestWhatsAppChatFlow
           return  $this->optionOne();
         }
 
+        else if ($this->receivedMessage == 2){
+          return  $this->optionTwo();
+        }
+
         else{
             $this->welcome();
         }
@@ -44,8 +48,12 @@ class GuestWhatsAppChatFlow
     }
 
     public function optionOne(){
-        session('expected_message', $this->guest->mobile_number);
         $message =  $this->appTemplateMessageRepository->getMessageBySlug('guest.chat');
+        return $this->whatsApp->sendWhatsappMessage($this->chat, $this->guest, sprintf($message->content, $this->guest->first_name), "App\Models\Company", $this->guest->id, true, true);
+    }
+
+    public function optionTwo(){
+        $message =  $this->appTemplateMessageRepository->getMessageBySlug('guest.learn-more');
         return $this->whatsApp->sendWhatsappMessage($this->chat, $this->guest, sprintf($message->content, $this->guest->first_name), "App\Models\Company", $this->guest->id, true, true);
     }
 }
