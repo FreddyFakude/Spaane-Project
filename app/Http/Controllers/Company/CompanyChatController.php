@@ -23,7 +23,7 @@ class CompanyChatController extends Controller
 
     public function chats()
     {
-
+//        dd(Auth::user()->chats);
         return view('dashboard.company.chats', [
             'chats'=> Auth::user()->chats
         ]);

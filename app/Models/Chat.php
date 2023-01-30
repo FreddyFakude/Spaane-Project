@@ -18,11 +18,6 @@ class Chat extends Model
         return $this->morphTo();
     }
 
-    public function chats()
-    {
-        return $this->hasMany(Chat::class);
-    }
-
     public function messages(){
         return $this->hasMany(Message::class, 'chat_id');
     }

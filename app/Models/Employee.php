@@ -40,4 +40,9 @@ class Employee  extends Authenticatable
         return $this->belongsToMany(Skill::class, 'employee_skills');
     }
 
+    public function chats()
+    {
+        return $this->morphMany(Chat::class, 'chatable');
+    }
+
 }

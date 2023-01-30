@@ -45,7 +45,7 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
 });
 
 
-Route::post('/talent/logout', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'logout'])->name('employee.logout');
+    Route::post('/talent/logout', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'logout'])->name('employee.logout');
 Route::group(['middleware'=>['auth:employee'], 'prefix'=>'employee'], function (){
     Route::get('/dashboard/index', [\App\Http\Controllers\Employee\DashboardController::class, 'index'])->name('dashboard.employee.index');
     Route::get('/dashboard/profile/edit', [\App\Http\Controllers\Employee\ProfileController::class, 'editProfile'])->name('dashboard.employee.profile.edit');
