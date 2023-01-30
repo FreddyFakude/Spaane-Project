@@ -24,7 +24,7 @@ class Chat extends Model
 
     public function employee()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->morphTo(Employee::class, "chatable_type", "chatable_id");
     }
 
 }
