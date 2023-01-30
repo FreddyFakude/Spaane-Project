@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/company/login');
 
 Route::view('/employee/register/{phone_number}/{email}', 'auth.company.login')->name('employee.register');
+Route::get('/employee/login', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'loginForm'])->name('employee.login.form');
+Route::post('/employee/login', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'login'])->name('employee.login');
 
 
 Route::view('/company/login', 'auth.company.login')->name('company.login.form');
@@ -40,4 +42,13 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
     Route::post('/dashboard/chat/{chat:hash}/send-message', [\App\Http\Controllers\Company\CompanyChatController::class, 'SendMessages'])->name('dashboard.company.chat.send.messages');
 //    Route::get('/dashboard/profile', [\App\Http\Controllers\Business\ProfileController::class, 'profile'])->name('dashboard.business.profile');
 //    Route::post('/dashboard/profile/save', [\App\Http\Controllers\Business\ProfileController::class, 'updateProfile'])->name('dashboard.business.profile.save');
+});
+
+
+Route::post('/talent/logout', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'logout'])->name('employee.logout');
+Route::group(['middleware'=>['auth:employee'], 'prefix'=>'employee'], function (){
+    Route::get('/dashboard/index', [\App\Http\Controllers\Employee\DashboardController::class, 'index'])->name('dashboard.employee.index');
+    Route::get('/dashboard/profile/edit', [\App\Http\Controllers\Employee\ProfileController::class, 'editProfile'])->name('dashboard.employee.profile.edit');
+    Route::get('/dashboard/profile/view', [\App\Http\Controllers\Employee\ProfileController::class, 'index'])->name('dashboard.employee.profile.view');
+    Route::post('/dashboard/profile/save', [\App\Http\Controllers\Employee\ProfileController::class, 'saveProfile'])->name('dashboard.talent.profile.save');
 });

@@ -42,49 +42,21 @@
                 <div class="content-side content-side-full">
                     <ul class="nav-main">
                         <li>
-                            <a href="{{ route('dashboard.talent.index') }}"><i class="si si-grid fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                            <a href="{{ route('dashboard.employee.index') }}"><i class="si si-grid fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                         </li>
                         <li>
-                            <a href="{{ route('dashboard.talent.profile.view') }}"  class="nav-submenu" data-toggle="nav-submenu"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Profile</span></a>
+                            <a href="{{ route('dashboard.employee.profile.view') }}"  class="nav-submenu" data-toggle="nav-submenu"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Profile</span></a>
                             <ul>
                                 <li>
-                                    <a href="{{ route('dashboard.talent.profile.edit') }}"><span class="sidebar-mini-hide">Edit</span></a>
+                                    <a href="{{ route('dashboard.employee.profile.edit') }}"><span class="sidebar-mini-hide">Edit</span></a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="{{ route('dashboard.talent.availability') }}"><i class="si si-calendar fa-2x"></i><span class="sidebar-mini-hide">Availability</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ route('dashboard.talent.chats') }}" class="nav-submenu"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Chat</span></a>
-                        </li>
 {{--                        <li>--}}
-{{--                            <a href="#"><i class="si si-pie-chart fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>--}}
+{{--                            <a href="{{ route('dashboard.talent.availability') }}"><i class="si si-calendar fa-2x"></i><span class="sidebar-mini-hide">Availability</span></a>--}}
 {{--                        </li>--}}
 {{--                        <li>--}}
-{{--                            <a href="#"><i class="si si-bubble fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="#"><i class="si si-bell fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>--}}
-{{--                        </li>--}}
-{{--                        <li class="open">--}}
-{{--                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">Page Kits</span></a>--}}
-{{--                            <ul>--}}
-{{--                                <li class="open">--}}
-{{--                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Dashboards</span></a>--}}
-{{--                                    <ul>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="be_pages_dashboard2.html"><span class="sidebar-mini-hide">Dashboard 2</span></a>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="be_pages_dashboard3.html"><span class="sidebar-mini-hide">Dashboard 3</span></a>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <a class="active" href="be_pages_dashboard4.html"><span class="sidebar-mini-hide">Dashboard 4</span></a>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
+{{--                            <a href="{{ route('dashboard.talent.chats') }}" class="nav-submenu"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Chat</span></a>--}}
 {{--                        </li>--}}
                     </ul>
                 </div>

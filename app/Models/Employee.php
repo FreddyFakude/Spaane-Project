@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Employee extends Model
+class Employee  extends Authenticatable
 {
     use HasFactory;
 
@@ -21,4 +22,22 @@ class Employee extends Model
     {
         return $this->hasMany(Payslip::class);
     }
+
+    public function address(){
+        return $this->morphOne(Address::class, 'addressable');
+    }
+
+    public function education(){
+        return $this->morphOne(Education::class, 'educationable');
+    }
+
+
+    public function professional_experience(){
+        return $this->morphOne(ProfessionalExperience::class, 'professional_experienceable');
+    }
+
+    public function skills(){
+        return $this->belongsToMany(Skill::class, 'employee_skills');
+    }
+
 }

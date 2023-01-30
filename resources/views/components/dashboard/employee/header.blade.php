@@ -31,7 +31,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right min-width-200" aria-labelledby="page-header-user-dropdown">
                     <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">User</h5>
-                    <a class="dropdown-item" href="{{ route('dashboard.talent.profile.view') }}">
+{{--                    <a class="dropdown-item" href="{{ route('dashboard.talent.profile.view') }}">--}}
                         <i class="si si-user mr-5"></i> Profile
                     </a>
                 {{--                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_inbox.html">--}}
@@ -51,7 +51,7 @@
                 <!-- END Side Overlay -->
 
                     <div class="dropdown-divider"></div>
-                    <form action="{{ route('talent.logout') }}" method="post">
+                    <form action="{{ route('employee.logout') }}" method="post">
                         @csrf
                         <button class="dropdown-item">
                             <i class="si si-logout mr-5"></i> Sign Out

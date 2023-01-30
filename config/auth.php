@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'companies',
         ],
+        'employee' => [
+            'driver' => 'session',
+            'provider' => 'employees',
+        ],
     ],
 
     /*
@@ -73,6 +77,11 @@ return [
             'driver' => 'eloquent',
             'model' =>  App\Models\CompanyAccountAdministrator::class,
         ],
+
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' =>  App\Models\Employee::class,
+        ],
     ],
 
     /*
@@ -99,6 +108,11 @@ return [
         ],
         'companies' => [
             'provider' => 'companies',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'employees' => [
+            'provider' => 'employees',
             'table' => 'password_resets',
             'expire' => 60,
         ],
