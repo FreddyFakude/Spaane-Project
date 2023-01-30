@@ -22,8 +22,9 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\CompanyAccountAdministratorSeeder::class,
             \Database\Seeders\EmployeeSeeder::class,
             \Database\Seeders\IndependentContractorSeeder::class,
-            \Database\Seeders\TalentProfileSeeder::class,
-//            SkillsSeeder::class
+            SkillsSeeder::class,
+            WhatsAppTemplateMessageSeeder::class,
+            CompanyDepartmentSeeder::class
         ]);
     }
 }
