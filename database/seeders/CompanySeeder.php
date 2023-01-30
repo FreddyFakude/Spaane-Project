@@ -17,7 +17,6 @@ class CompanySeeder extends Seeder
     {
         DB::table('companies')->insert([
             [
-                'id' => 1,
                 'name' => "Teambix Support Company",
                 'phone_number' => '27788129192',
                 'date_creation' => '2022-01-01',

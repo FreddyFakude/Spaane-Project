@@ -8,11 +8,17 @@ use App\Models\Address;
 use App\Models\Education;
 use App\Models\ProfessionalExperience;
 use App\Models\Skill;
+use App\WhatsApp\WhatsAppChatManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+
+    public function __construct( WhatsAppChatManager $chatManager)
+    {
+        $this->chatManager = $chatManager;
+    }
     public function editProfile()
     {
         return view('dashboard.employee.edit-profile',[
@@ -80,6 +86,7 @@ class ProfileController extends Controller
         Auth::user()->education ? Auth::user()->education->update($educationPayload) : Education::create($educationPayload);
         Auth::user()->professional_experience ? Auth::user()->professional_experience->update($experiencePayload) : ProfessionalExperience::create($experiencePayload);
 
+        $this->chatManager->sendWhatsAppMessageToEmployee(Auth::user(), "Your profile has been updated");
         session()->flash('talent-profile-updated');
         return back();
     }

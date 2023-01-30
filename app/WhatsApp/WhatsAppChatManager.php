@@ -85,4 +85,11 @@ class WhatsAppChatManager
             "status" => Employee::STATUS['guest'],
         ]);
     }
+
+    public function sendWhatsAppMessageToEmployee(Employee $employee, $message)
+    {
+        $chat =  $this->findOrStartConversationWithEmployee($employee);
+        $this->whatsApp->sendWhatsappMessage($chat, $employee, $message, "App\Models\Employee", $employee->id, true, false);
+        return true;
+    }
 }

@@ -299,11 +299,6 @@
                     <div class="my-30">
                         <hr>
                     </div>
-                    <div class="d-flex justify-content-start mt-20">
-                        <div>
-                            <h4>Extras</h4>
-                        </div>
-                    </div>
                     <div class="row px-10 mt-30">
                         <div class="col-md-8">
                             @csrf
