@@ -22,9 +22,9 @@ class WhatsAppTemplateMessageSeeder extends Seeder
                 "slug" => "welcome.user.message"
             ],
             [
-                'content' => 'Good Day, your number is not registered with any company. Please choose the option below.
+                'content' => env('APP_ENV') == 'local' ?  'Good Day, your number is not registered with any company. Please choose the option below.
 1. Chat with Teambix
-2. Learn more about us',
+2. Learn more about us' : 'Good Day, your number is not registered with any company. Please choose the option below.' ,
                 "slug" => "guest.welcome"
             ],
             [
@@ -32,10 +32,10 @@ class WhatsAppTemplateMessageSeeder extends Seeder
                 "slug" => "guest.chat"
             ],
             [
-                'content' => 'Hi  %s, How can we help you today. What would you like to do:
+                'content' => env('APP_ENV') == 'local' ? 'Hi  %s, How can we help you today. What would you like to do:
 1. Download payslip
 2. Update your information
-3. Chat with %s',
+3. Chat with %s' : 'Hi  %s, How can we help you today. What would you like to do:',
                 "slug" => "employee.welcome"
             ],
             [
