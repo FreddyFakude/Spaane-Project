@@ -28,11 +28,13 @@ class GuestWhatsAppChatFlow
 
     public function checkSteps()
     {
-        if ($this->receivedMessage == 1){
-          return  $this->optionOne();
+
+        if (in_array($this->receivedMessage, [1, "Chat with Teambix"]))
+        {
+            return  $this->optionOne();
         }
 
-        else if ($this->receivedMessage == 2){
+        else if (in_array($this->receivedMessage, [2, "Learn more about us"])){
           return  $this->optionTwo();
         }
 
@@ -44,10 +46,13 @@ class GuestWhatsAppChatFlow
     public function welcome()
     {
         $message =  $this->appTemplateMessageRepository->getMessageBySlug('guest.welcome');
-        return $this->whatsApp->sendWhatsappMessage($this->chat, $this->guest, sprintf($message->content, $this->guest->first_name), "App\Models\Company", $this->guest->id, true, true);
+        if (!session()->has("chat-{$this->guest->mobile_number}-custom-message")){
+            return $this->whatsApp->sendWhatsappMessage($this->chat, $this->guest, sprintf($message->content, $this->guest->first_name), "App\Models\Company", $this->guest->id, true, true);
+        }
     }
 
     public function optionOne(){
+        session()->has("chat-{$this->guest->mobile_number}-custom-message") ? session(["chat-{$this->guest->mobile_number}-custom-message" =>  session("chat-{$this->guest->mobile_number}-custom-message") +  1]) : session(["chat-{$this->guest->mobile_number}-custom-message" => 1]);
         $message =  $this->appTemplateMessageRepository->getMessageBySlug('guest.chat');
         return $this->whatsApp->sendWhatsappMessage($this->chat, $this->guest, sprintf($message->content, $this->guest->first_name), "App\Models\Company", $this->guest->id, true, true);
     }
