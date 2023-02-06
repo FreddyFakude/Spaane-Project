@@ -28,6 +28,7 @@ class WhatsAppController extends Controller
     }
     public function receiveMessage(WhatsAppMessageRequest $request)
     {
+
         $validated = $request->validated();
         $this->chatManager->processConversation($validated);
 //        $talent = Employee::firstWhere([

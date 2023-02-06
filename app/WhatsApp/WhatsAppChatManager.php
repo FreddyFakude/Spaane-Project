@@ -58,7 +58,7 @@ class WhatsAppChatManager
     {
         return
             Chat::firstOrCreate(
-            ['chatable_id'=>$employee->id, 'chatable_type'=> "App\Models\Employee", "status" => Chat::STATUS['opened']],
+            ['chatable_id'=>$employee->id, 'chatable_type'=> "App\Models\Employee"],
             [
                 'company_id'=>$employee->company->id,
                 'company_account_administrator_id' => $employee->company->administrator->id,

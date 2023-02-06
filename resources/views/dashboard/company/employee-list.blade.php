@@ -43,16 +43,9 @@
                 <table class="table table-vcenter active js-table-checkable js-table-checkable-enabled tab-pane" id="btabs-internal">
                     <thead>
                     <tr>
-                        <th class="text-center" style="width: 70px;">
-                            <label class="css-control css-control-primary css-checkbox py-0">
-                                <input type="checkbox" class="css-control-input" id="check-all" name="check-all">
-                                <span class="css-control-indicator"></span>
-                            </label>
-                        </th>
                         <th>Employee</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Role</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Employee Status</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Visibility</th>
                         <th class="d-none d-sm-table-cell" style="width: 40%;">Action</th>
                     </tr>
                     </thead>
@@ -60,34 +53,16 @@
                     @empty(!$employees)
                         @foreach($employees as $employee)
                             <tr>
-                                <td class="text-center">
-                                    <label class="css-control css-control-primary css-checkbox">
-                                        <input type="checkbox" class="css-control-input" id="row_1" name="row_1">
-                                        <span class="css-control-indicator"></span>
-                                    </label>
-                                </td>
                                 <td>
-                                    <p class="font-w600 mb-10">{{ $employee->name }}</p>
+                                    <p class="font-w600 mb-10">
+                                        <a href="{{ route('dashboard.company.employee.view', [$employee]) }}">{{ $employee->name }}</a>
+                                    </p>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <em class="text-muted">{{ $employee->role }}</em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <em class="text-muted">  {{ $employee->status }} </em>
-                                </td>
-                                <td class="d-none d-sm-table-cell">
-                                        <div class="form-group row">
-                                            <div class="col-12">
-                                                <div class="custom-control custom-radio custom-control-inline mb-5">
-                                                    <input class="custom-control-input" type="radio" name="example-inline-radios" {{ $employee->talent_visibility == 1 ? 'checked' : '' }}  value="1">
-                                                    <label class="custom-control-label" for="example-inline-radio1">Eco system</label>
-                                                </div>
-                                                <div class="custom-control custom-radio custom-control-inline mb-5">
-                                                    <input class="custom-control-input" type="radio" name="example-inline-radios"  value="0" {{ $employee->talent_visibility == 0 ? 'checked' : '' }}>
-                                                    <label class="custom-control-label" for="example-inline-radio2">Public</label>
-                                                </div>
-                                            </div>
-                                        </div>
                                 </td>
                                 <td class="d-none d-sm-table-cell" style="width: 40%;">
                                     <a href="{{ route('dashboard.company.chat.new', [$employee->id]) }}" class="btn-primary btn">Chat</a>
@@ -144,7 +119,7 @@
     <div class="modal fade" id="modal-slideright" tabindex="-1" role="dialog" aria-labelledby="modal-slideright" aria-hidden="true">
         <div class="modal-dialog modal-dialog-slideright modal-lg" role="document">
             <div class="modal-content">
-                <form action="#" method="post">
+                <form action="{{ route('dashboard.business.employee.invite')  }}" method="post">
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-content">
                             <div class="d-flex justify-content-center my-20">
@@ -177,6 +152,12 @@
                                         <div class="form-group">
                                             <label class="col-12 pl-0" for="example-text-input">Position</label>
                                             <input type="text" class="form-control" id="example-text-input" name="position" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="col-12 pl-0" for="example-text-input">Phone number</label>
+                                            <input type="text" class="form-control" id="example-text-input" name="phone_number" >
                                         </div>
                                     </div>
                                 </div>

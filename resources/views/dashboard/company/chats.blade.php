@@ -26,7 +26,7 @@
                                 <td class="text-center">
                                     <img class="img-avatar img-avatar48" src="{{ asset('assets/custom/media/avatars/avatar14.jpg') }}" alt="">
                                 </td>
-                                <td class="font-w600"><a href="{{ route('dashboard.company.chat.employee', [$chat->hash]) }}">{{ $chat->employee->name }}</a> </td>
+                                <td class="font-w600"><a href="{{ route('dashboard.company.chat.employee', [$chat->hash]) }}">{{ $chat->employee?->name }}</a> </td>
                                 {{--                                <td class="d-none d-md-table-cell">--}}
                                 {{--                                    <span class="badge badge-warning">Trial</span>--}}
                                 {{--                                </td>--}}

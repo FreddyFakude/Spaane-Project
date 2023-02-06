@@ -32,7 +32,8 @@ class CompanyChatController extends Controller
     public function startChat(Employee $employee){
         $chat  = Chat::firstOrCreate([
             'company_account_administrator_id' => Auth::id(),
-            'employee_id' => $employee->id,
+            'chatable_id' => $employee->id,
+            'chatable_type' => "App\Models\Employee",
         ], [
             'company_id'=> Auth::user()->company->id,
             'company_account_administrator_id' => Auth::id(),
@@ -60,12 +61,12 @@ class CompanyChatController extends Controller
 
     public function sendMessages(Request $request, Chat $chat)
     {
-        $request->validate([
+       $validated =  $request->validate([
             'chat_hash' => 'required',
             'message' => 'required'
         ]);
 
-        $this->whatsApp->saveReceivedWhatsappMessage($chat, "App\Models\Employee", $chat->employee_id, "");
+        $this->whatsApp->sendWhatsappMessage($chat, $chat->employee, $validated['message'],"App\Models\Company", Auth::user()->company_id,true, false);
 
         return Message::create([
             'messageable_type' => 'App\Models\Company',
