@@ -153,8 +153,7 @@
                         @endempty
                         <div class="block-content block-content-full pt-0">
                             <div>
-{{--                                <a class="btn-lg btn-secondary" href="{{ route('dashboard.business.view-talent', [$talent->id]) }}">See More</a>--}}
-                                <button class="btn-lg btn-primary" onclick="showModal({{ $talent->id }})">Select Interview Dates</button>
+                                <a class="btn-lg btn-secondary" href="{{ route('dashboard.company.employee.view', [$talent->id]) }}">See More</a>
                             </div>
                         </div>
                     </div>

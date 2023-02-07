@@ -35,8 +35,15 @@ class WhatsAppTemplateMessageSeeder extends Seeder
                 'content' => env('APP_ENV') == 'local' ? 'Hi  %s, How can we help you today. What would you like to do:
 1. Download payslip
 2. Update your information
-3. Chat with %s' : 'Hi  %s, How can we help you today. What would you like to do:',
+3. Apply/check for leave days' : 'Hi  %s, How can we help you today. What would you like to do:',
                 "slug" => "employee.welcome"
+            ],
+            [
+                'content' => env('APP_ENV') == 'local' ?
+'Please select the below:
+1. Apply for leave
+2. Check Leave Days' : 'Please select the below:',
+                "slug" => "employee.leave.management"
             ],
             [
                 'content' => 'Please type your message and we wil get back to you.',
@@ -45,6 +52,10 @@ class WhatsAppTemplateMessageSeeder extends Seeder
             [
                 'content' => 'Please visit teambix.com for more information',
                 "slug" => "guest.learn-more"
+            ],
+            [
+                'content' => 'How many days would you like to request',
+                "slug" => "employee.leave.management.request"
             ]
         ]);
     }

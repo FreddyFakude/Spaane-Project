@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,6 +13,7 @@ class Employee  extends Authenticatable
 
     protected $guarded = [];
 
+    protected $appends = ['current_leave_days'];
     public const STATUS = ['guest'=>"GUESTUSER", 'invite_sent'=>"INVITE SENT"];
 
     public function company(){
@@ -44,5 +46,24 @@ class Employee  extends Authenticatable
     {
         return $this->morphMany(Chat::class, 'chatable');
     }
+
+    public function leaveDays()
+    {
+        return $this->hasMany(EmployeeLeaveDay::class);
+    }
+
+
+    public function leaves()
+    {
+        return $this->hasMany(EmployeeLeave::class);
+    }
+
+    public function getCurrentLeaveDays(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => intval($this->leaveDays()->last()->days) -  $this->leaveDays()->last()->leaves->where('status','APPROVED')->sum('requested_days')
+        );
+    }
+
 
 }

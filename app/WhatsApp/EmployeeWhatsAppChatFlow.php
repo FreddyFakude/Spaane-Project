@@ -6,6 +6,7 @@ namespace App\WhatsApp;
 
 use App\Models\Chat;
 use App\Models\Employee;
+use App\Models\EmployeeLeave;
 use App\PDF\PayslipPDFGenerator;
 use App\Repository\WhatsAppTemplateMessageRepository;
 
@@ -30,11 +31,27 @@ class EmployeeWhatsAppChatFlow
 
     public function checkSteps()
     {
+
+        if ($this->receivedMessage == 'exit'){
+            $this->welcome();
+        }
+
+        if(session()->has("chat-{$this->employee->mobile_number}-leave-management-expecting-days")){
+            return  $this->stepFive();
+        }
+
+        if(session()->has("chat-{$this->employee->mobile_number}-leave-management") && in_array($this->receivedMessage, [1, "Apply for leave"])){
+            return  $this->stepFour();
+        }
+
         if (in_array($this->receivedMessage, [1, "Download payslip"])){
           return  $this->optionOne();
         }
         if (in_array($this->receivedMessage, [2, "Update your information"])){
           return  $this->stepTwo();
+        }
+        if (in_array($this->receivedMessage, [3, "Apply/check for leave days"])){
+          return  $this->stepThree();
         }
         else{
             $this->welcome();
@@ -43,6 +60,8 @@ class EmployeeWhatsAppChatFlow
 
     public function welcome()
     {
+        session()->remove("chat-{$this->employee->mobile_number}-leave-management");
+        session()->remove("chat-{$this->employee->mobile_number}-leave-management-expecting-days");
         $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.welcome');
         return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, sprintf($message->content, $this->employee->name, $this->employee->company->name), "App\Models\Company", $this->employee->id, true, true);
     }
@@ -58,5 +77,69 @@ class EmployeeWhatsAppChatFlow
     {
         $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.update.profile');
         return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, sprintf($message->content, route('employee.login.form')), "App\Models\Company", $this->employee->id, true, true);
+    }
+
+    public function stepThree()
+    {
+        session(["chat-{$this->employee->mobile_number}-leave-management" =>  session("chat-{$this->employee->mobile_number}-custom-message") +  1]);
+        $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.leave.management');
+        return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, sprintf($message->content, route('employee.login.form')), "App\Models\Company", $this->employee->id, true, true);
+    }
+
+    public function stepFour()
+    {
+        session(["chat-{$this->employee->mobile_number}-leave-management-expecting-days" =>  session("chat-{$this->employee->mobile_number}-leave-management-expecting-days") +  1]);
+        $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.leave.management.request');
+        return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, $message->content, "App\Models\Company", $this->employee->id, true, true);
+    }
+
+    public function stepFive()
+    {
+       $days =  filter_var($this->receivedMessage, FILTER_VALIDATE_INT);
+        if(!$days){
+            return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "Please type a number", "App\Models\Company", $this->employee->id, true, true);
+        }
+
+        $availableLeaveDays = $this->employee->leaveDays->last();
+        if(intval($availableLeaveDays->days) < intval($this->receivedMessage)){
+            $daysLeft = intval($availableLeaveDays->days) -  $availableLeaveDays->leaves->where('status','APPROVED')->sum('requested_days');
+            return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "The number of days requested is more than the number of days available to you. You have {$daysLeft} days left. Please type a number lesser than that or type exit to stop this prompt", "App\Models\Company", $this->employee->id, true, true);
+        }
+
+        $leave = EmployeeLeave::create([
+            "employee_id" => $this->employee->id,
+            "requested_days" => $this->receivedMessage,
+            "employee_leave_day_id" => $availableLeaveDays->id
+        ]);
+
+        session()->remove("chat-{$this->employee->mobile_number}-leave-management");
+        session()->remove("chat-{$this->employee->mobile_number}-leave-management-expecting-days");
+        return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "Your leave request has been sent.", "App\Models\Company", $this->employee->id, true, true);
+
+    }
+
+    public function stepSix()
+    {
+       $days =  filter_var($this->receivedMessage, FILTER_VALIDATE_INT);
+        if(!$days){
+            return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "Please type a number", "App\Models\Company", $this->employee->id, true, true);
+        }
+
+        $availableLeaveDays = $this->employee->leaveDays->last();
+        if(intval($availableLeaveDays->days) < intval($this->receivedMessage)){
+            $daysLeft = intval($availableLeaveDays->days) -  $availableLeaveDays->leaves->where('status','APPROVED')->sum('requested_days');
+            return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "The number of days requested is more than the number of days available to you. You have {$daysLeft} days left. Please type a number lesser than that or type exit to stop this prompt", "App\Models\Company", $this->employee->id, true, true);
+        }
+
+        $leave = EmployeeLeave::create([
+            "employee_id" => $this->employee->id,
+            "requested_days" => $this->receivedMessage,
+            "employee_leave_day_id" => $availableLeaveDays->id
+        ]);
+
+        session()->remove("chat-{$this->employee->mobile_number}-leave-management");
+        session()->remove("chat-{$this->employee->mobile_number}-leave-management-expecting-days");
+        return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "Your leave request has been sent.", "App\Models\Company", $this->employee->id, true, true);
+
     }
 }
