@@ -98,6 +98,8 @@ class CompanyChatController extends Controller
             "message" => $validated['message']
         ]);
 
+
+
         session()->flash('bulk-message-created');
         return back();
     }

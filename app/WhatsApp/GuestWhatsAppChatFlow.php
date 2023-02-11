@@ -29,6 +29,10 @@ class GuestWhatsAppChatFlow
     public function checkSteps()
     {
 
+        if ($this->receivedMessage == in_array(strtolower($this->receivedMessage),  ['exit', 'help'])){
+            return  $this->welcome();
+        }
+
         if (in_array($this->receivedMessage, [1, "Chat with Teambix"]))
         {
             return  $this->optionOne();
