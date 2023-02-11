@@ -80,6 +80,10 @@ class EmployeeController extends Controller
 
         $email = Mail::to($validated['email'])->queue(new EmployeeInvite($validated['first_name'], $businessAdmin));
 
+        $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.new-profile.added');
+        $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, Auth::user()->company->name));
+
+
         session()->flash('talent-added');
         return back();
     }

@@ -63,6 +63,10 @@ class WhatsAppTemplateMessageSeeder extends Seeder
             [
                 'content' => "Good day %s, %s has an update for you.",
                 "slug" => "employee.update.message"
+            ],
+            [
+                'content' => "Welcome to Teambix. You have been added to the %s account. Login details have been sent to your email, please click the link to complete your profile.",
+                "slug" => "employee.new-profile.added"
             ]
         ]);
     }
