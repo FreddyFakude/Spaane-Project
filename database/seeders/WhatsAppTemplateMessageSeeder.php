@@ -35,7 +35,7 @@ class WhatsAppTemplateMessageSeeder extends Seeder
                 'content' => env('APP_ENV') == 'local' ? 'Hi  %s, How can we help you today. What would you like to do:
 1. Download payslip
 2. Update your information
-3. Apply/check for leave days' : 'Hi  %s, How can we help you today. What would you like to do:',
+3. Check for leave days' : 'Hi  %s, How can we help you today. What would you like to do:',
                 "slug" => "employee.welcome"
             ],
             [

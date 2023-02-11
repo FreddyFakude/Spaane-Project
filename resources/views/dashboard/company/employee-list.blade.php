@@ -38,6 +38,15 @@
                         <p class="mb-0">Your invite has been sent</p>
                     </div>
                 @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
             <div class="block-content tab-content">
                 <table class="table table-vcenter active js-table-checkable js-table-checkable-enabled tab-pane" id="btabs-internal">
@@ -157,7 +166,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="col-12 pl-0" for="example-text-input">Phone number</label>
-                                            <input type="text" class="form-control" id="example-text-input" name="phone_number" >
+                                            <input type="tel" class="form-control" id="example-text-input" name="mobile_number" >
                                         </div>
                                     </div>
                                 </div>
