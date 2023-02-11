@@ -50,7 +50,7 @@ class EmployeeController extends Controller
             "last_name"=>"required",
             "email"=>"required|email",
             "position" => "required",
-            "mobile_number" => "required|numeric|starts_with:0|digits:10|unique:employees"
+            "mobile_number" => "required|numeric|starts_with:0|digits:10|unique:employees,mobile_number"
         ]);
 
         $validated["mobile_number"] = "27" . substr($validated["mobile_number"], 1); //remove zero and add prefix
