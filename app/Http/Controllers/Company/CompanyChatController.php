@@ -77,4 +77,9 @@ class CompanyChatController extends Controller
         ]);
 
     }
+
+    public function sendBulkMessages(Request $request)
+    {
+
+    }
 }

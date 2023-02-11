@@ -32,8 +32,10 @@ class ProfileController extends Controller
     public function saveProfile(EmployeeProfileRequest $request)
     {
         $validated = $request->validated();
-//       dd($request->all());
+
+        $validated["mobile_number"] = "27" . substr($validated["mobile_number"], 1); //remove zero and add prefix
         $talent = Auth::user()->update([
+            "name"=>$validated['first_name'],
             "first_name"=>$validated['first_name'],
             "last_name"=>$validated['last_name'],
             "dob"=>$validated['dob'],

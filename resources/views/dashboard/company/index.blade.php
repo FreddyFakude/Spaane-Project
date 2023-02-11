@@ -7,72 +7,6 @@
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
     <div class="content bg-light">
-        <div class="row mb-50">
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-3 pr-0">
-                        <button type="button" class="btn w-100 h-100 btn-primary dropdown-toggle" id="btnGroupVerticalDrop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 34px, 0px); top: 0px; left: 0px; will-change: transform;">
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-bell mr-5"></i>News
-                            </a>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-envelope-o mr-5"></i>Messages
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-pencil mr-5"></i>Edit Profile
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 pr-0">
-                        <button type="button" class="btn w-100 h-100 btn-primary dropdown-toggle" id="btnGroupVerticalDrop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Status</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 34px, 0px); top: 0px; left: 0px; will-change: transform;">
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-bell mr-5"></i>News
-                            </a>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-envelope-o mr-5"></i>Messages
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-pencil mr-5"></i>Edit Profile
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 pr-0">
-                        <button type="button" class="btn w-100 h-100 btn-primary dropdown-toggle" id="btnGroupVerticalDrop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Education</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 34px, 0px); top: 0px; left: 0px; will-change: transform;">
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-bell mr-5"></i>News
-                            </a>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-envelope-o mr-5"></i>Messages
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-pencil mr-5"></i>Edit Profile
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button" class="btn w-100 h-100 btn-primary dropdown-toggle" id="btnGroupVerticalDrop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Skills</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 34px, 0px); top: 0px; left: 0px; will-change: transform;">
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-bell mr-5"></i>News
-                            </a>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-envelope-o mr-5"></i>Messages
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-pencil mr-5"></i>Edit Profile
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row py-20">
             @if(session()->has('interview-request-success'))
                 <div class="alert alert-success alert-dismissable w-100" role="alert">
@@ -86,7 +20,7 @@
             @foreach($talents as $talent)
                 @continue(($talent->talent_profileable_type == 'App\Models\Employee') && $talent->talent_profileable->business_id === $businessId)
                 <div class="col-md-6 col-xl-4">
-                    <div class="block text-center">
+                    <div class="block">
                         <div class="block-content">
                             <div class="d-flex">
                                 <img class="img-avatar img-avatar96 mr-2" src="{{ asset('assets/custom/media/avatars/avatar1.jpg')}}" alt="">
@@ -123,20 +57,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="block-content block-content-full">
-                            <div class="mb-20 text-left">
-                                <span>Fixed Availability</span>
-                            </div>
-                            <div class="row text-white">
-                                @if($talent->fixedAvailability)
-                                    @foreach(explode(',', $talent->fixedAvailability->days_digit) as $day)
-                                        <div class="col-4">
-                                            <span class="bg-success p-5 border-radius">Every {{ App\Models\TalentAvailability::$daysOfWeek[$day] }}</span>
-                                        </div>
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
                         @empty(!$talent->skills)
                             <div class="block-content block-content-full">
                                 <div class="mb-20 text-left">
@@ -152,9 +72,7 @@
                             </div>
                         @endempty
                         <div class="block-content block-content-full pt-0">
-                            <div>
-                                <a class="btn-lg btn-secondary" href="{{ route('dashboard.company.employee.view', [$talent->id]) }}">See More</a>
-                            </div>
+                            <a class="btn-lg btn-secondary text-left" href="{{ route('dashboard.company.employee.view', [$talent->id]) }}">See Employee</a>
                         </div>
                     </div>
                 </div>

@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use App\Mail\EmployeeInvite;
 use App\Models\Employee;
+use App\Models\EmployeeLeave;
 use App\Models\EmployeeLeaveDay;
+use App\Repository\WhatsAppTemplateMessageRepository;
+use App\WhatsApp\WhatsAppChatManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +16,17 @@ use Illuminate\Support\Facades\Mail;
 
 class EmployeeController extends Controller
 {
+
+
+    /**
+     * EmployeeController constructor.
+     */
+    public function __construct( WhatsAppChatManager $chatManager)
+    {
+        $this->chatManager = $chatManager;
+        $this->appTemplateMessageRepository = new WhatsAppTemplateMessageRepository();
+    }
+
     public function list()
     {
 
@@ -68,5 +82,26 @@ class EmployeeController extends Controller
 
         session()->flash('talent-added');
         return back();
+    }
+
+    public function updateEmployeeLeaveDay(Request $request,Employee $employee)
+    {
+        $validated = $request->validate([
+            "leave_days"=>"required|integer|lt:" . $employee->current_leave_days
+        ]);
+
+        $leave = EmployeeLeave::create([
+            "employee_id" => $employee->id,
+            "requested_days" => $validated['leave_days'],
+            "employee_leave_day_id" => $employee->leaveDays->last()->id,
+            "status"=> EmployeeLeave::STATUS['approved']
+        ]);
+
+        $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.update.message');
+        $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, $employee->first_name, Auth::user()->company->name));
+
+        session()->flash('talent-updated');
+        return back();
+
     }
 }

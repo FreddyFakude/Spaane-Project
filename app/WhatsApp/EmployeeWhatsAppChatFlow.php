@@ -32,15 +32,19 @@ class EmployeeWhatsAppChatFlow
     public function checkSteps()
     {
 
-        if ($this->receivedMessage == 'exit'){
-            $this->welcome();
+        if ($this->receivedMessage == in_array(strtolower($this->receivedMessage),  ['exit', 'help'])){
+          return  $this->welcome();
         }
 
         if(session()->has("chat-{$this->employee->mobile_number}-leave-management-expecting-days")){
             return  $this->stepFive();
         }
 
-        if(session()->has("chat-{$this->employee->mobile_number}-leave-management") && in_array($this->receivedMessage, [1, "Apply for leave"])){
+        if(session()->has("chat-{$this->employee->mobile_number}-leave-management") && in_array($this->receivedMessage, [1, "Check Leave Days"])){
+            return  $this->stepFour();
+        }
+
+        if(session()->has("chat-{$this->employee->mobile_number}-leave-management") && in_array($this->receivedMessage, [2, "Apply For Leave Days"])){
             return  $this->stepFour();
         }
 
@@ -50,7 +54,7 @@ class EmployeeWhatsAppChatFlow
         if (in_array($this->receivedMessage, [2, "Update your information"])){
           return  $this->stepTwo();
         }
-        if (in_array($this->receivedMessage, [3, "Apply/check for leave days"])){
+        if (in_array($this->receivedMessage, [3, "More options"])){
           return  $this->stepThree();
         }
         else{
@@ -81,7 +85,7 @@ class EmployeeWhatsAppChatFlow
 
     public function stepThree()
     {
-        session(["chat-{$this->employee->mobile_number}-leave-management" =>  session("chat-{$this->employee->mobile_number}-custom-message") +  1]);
+        session(["chat-{$this->employee->mobile_number}-leave-management" =>  session("chat-{$this->employee->mobile_number}-custom-message") +  rand(0, 1000)]);
         $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.leave.management');
         return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, sprintf($message->content, route('employee.login.form')), "App\Models\Company", $this->employee->id, true, true);
     }
@@ -114,7 +118,7 @@ class EmployeeWhatsAppChatFlow
 
         session()->remove("chat-{$this->employee->mobile_number}-leave-management");
         session()->remove("chat-{$this->employee->mobile_number}-leave-management-expecting-days");
-        return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "Your leave request has been sent.", "App\Models\Company", $this->employee->id, true, true);
+        return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "Your leave request has been sent. Please type help or exit to return to the main menu", "App\Models\Company", $this->employee->id, true, true);
 
     }
 
@@ -141,5 +145,19 @@ class EmployeeWhatsAppChatFlow
         session()->remove("chat-{$this->employee->mobile_number}-leave-management-expecting-days");
         return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "Your leave request has been sent.", "App\Models\Company", $this->employee->id, true, true);
 
+    }
+
+    public function stepSeven()
+    {
+        $days =  filter_var($this->receivedMessage, FILTER_VALIDATE_INT);
+        if(!$days){
+            return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "Please type a number", "App\Models\Company", $this->employee->id, true, true);
+        }
+
+        $availableLeaveDays = $this->employee->leaveDays->last();
+        if(intval($availableLeaveDays->days) < intval($this->receivedMessage)){
+            $daysLeft = intval($availableLeaveDays->days) -  $availableLeaveDays->leaves->where('status','APPROVED')->sum('requested_days');
+            return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "The number of days requested is more than the number of days available to you. You have {$daysLeft} days left. Please type a number lesser than that or type exit to stop this prompt", "App\Models\Company", $this->employee->id, true, true);
+        }
     }
 }

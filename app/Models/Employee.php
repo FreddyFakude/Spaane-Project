@@ -58,10 +58,11 @@ class Employee  extends Authenticatable
         return $this->hasMany(EmployeeLeave::class);
     }
 
-    public function getCurrentLeaveDays(): Attribute
+    public function currentLeaveDays(): Attribute
     {
+        $leaveDays = $this->leaveDays()->get();
         return Attribute::make(
-            get: fn() => intval($this->leaveDays()->last()->days) -  $this->leaveDays()->last()->leaves->where('status','APPROVED')->sum('requested_days')
+            get: fn() => intval($leaveDays->last()->days) -  $leaveDays->last()->leaves->where('status','APPROVED')->sum('requested_days')
         );
     }
 

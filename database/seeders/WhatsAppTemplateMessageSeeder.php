@@ -32,17 +32,16 @@ class WhatsAppTemplateMessageSeeder extends Seeder
                 "slug" => "guest.chat"
             ],
             [
-                'content' => env('APP_ENV') == 'local' ? 'Hi  %s, How can we help you today. What would you like to do:
+                'content' => env('APP_ENV') == 'local' ? 'Hi  %s, How can we assist you today?
 1. Download payslip
 2. Update your information
-3. Check for leave days' : 'Hi  %s, How can we help you today. What would you like to do:',
+3. More Options' : 'Hi  %s, How can we assist you today?',
                 "slug" => "employee.welcome"
             ],
             [
-                'content' => env('APP_ENV') == 'local' ?
-'Please select the below:
-1. Apply for leave
-2. Check Leave Days' : 'Please select the below:',
+                'content' => env('APP_ENV') == 'local' ? 'More options
+1. Check Leave Days
+2. Apply For Leave Days' : 'More options',
                 "slug" => "employee.leave.management"
             ],
             [
@@ -56,6 +55,14 @@ class WhatsAppTemplateMessageSeeder extends Seeder
             [
                 'content' => 'How many days would you like to request',
                 "slug" => "employee.leave.management.request"
+            ],
+            [
+                'content' => "Please login here ". route('employee.login.form') . " to update your profile",
+                "slug" => "employee.update.profile"
+            ],
+            [
+                'content' => "Good day %s, %s has an update for you.",
+                "slug" => "employee.update.message"
             ]
         ]);
     }

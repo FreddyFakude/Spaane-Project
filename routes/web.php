@@ -29,13 +29,13 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
     Route::get('/dashboard/stats', [\App\Http\Controllers\Company\DashboardController::class, 'stats'])->name('dashboard.company.stats');
     Route::get('/dashboard/calendar', [\App\Http\Controllers\Company\DashboardController::class, 'calendar'])->name('dashboard.company.index.calendar');
     Route::get('/dashboard/employees/list', [\App\Http\Controllers\Company\EmployeeController::class, 'list'])->name('dashboard.company.employee.list');
-    Route::get('/dashboard/employees/view/{talent}', [\App\Http\Controllers\Company\EmployeeController::class, 'viewTalent'])->name('dashboard.company.employee.view');
+    Route::get('/dashboard/employees/view/{employee}', [\App\Http\Controllers\Company\EmployeeController::class, 'viewTalent'])->name('dashboard.company.employee.view');
+    Route::post('/dashboard/employees/view/{employee}/leave', [\App\Http\Controllers\Company\EmployeeController::class, 'updateEmployeeLeaveDay'])->name('dashboard.company.employee.update.leave');
 //    Route::get('/dashboard/employees/view/{talent}/delete', [\App\Http\Controllers\Business\TalentController::class, 'delete'])->name('dashboard.business.employee.delete');
     Route::post('/dashboard/employees/invite', [\App\Http\Controllers\Company\EmployeeController::class, 'inviteEmployee'])->name('dashboard.business.employee.invite');
-//    Route::post('/dashboard/talents/interview-request', [\App\Http\Controllers\Business\InterviewController::class, 'submitRequestInterview'])->name('dashboard.business.interview.request');
-//    Route::get('/dashboard/talents/{talent}', [\App\Http\Controllers\Business\ExternalTalentController::class, 'viewTalent'])->name('dashboard.business.view-talent');
-//    Route::post('/dashboard/hire', [\App\Http\Controllers\Business\ProjectController::class, 'submitProjectRequest'])->name('dashboard.business.project.request');
+
     Route::get('/dashboard/chats', [\App\Http\Controllers\Company\CompanyChatController::class, 'chats'])->name('dashboard.company.chats');
+    Route::get('/dashboard/chats/bulk-messages', [\App\Http\Controllers\Company\CompanyChatController::class, 'sendBulkMessages'])->name('dashboard.company.chats.bulk-messages');
     Route::get('/dashboard/chat/{chat:hash}', [\App\Http\Controllers\Company\CompanyChatController::class, 'chat'])->name('dashboard.company.chat.employee');
     Route::get('/dashboard/chat/start/{employee}', [\App\Http\Controllers\Company\CompanyChatController::class, 'startChat'])->name('dashboard.company.chat.new');
     Route::get('/dashboard/chat/{chat:hash}/messages', [\App\Http\Controllers\Company\CompanyChatController::class, 'loadMessages'])->name('dashboard.company.chat.employee.messages');
