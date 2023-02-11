@@ -48,7 +48,7 @@ class EmployeeWhatsAppChatFlow
             return  $this->stepFour();
         }
 
-        if (in_array($this->receivedMessage, [1, "Download the  payslip"])){
+        if (in_array($this->receivedMessage, [1, "Download the payslip"])){
           return  $this->optionOne();
         }
         if (in_array($this->receivedMessage, [2, "Update your info"])){
