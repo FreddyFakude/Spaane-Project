@@ -53,3 +53,8 @@ Route::group(['middleware'=>['auth:employee'], 'prefix'=>'employee'], function (
     Route::get('/dashboard/profile/view', [\App\Http\Controllers\Employee\ProfileController::class, 'index'])->name('dashboard.employee.profile.view');
     Route::post('/dashboard/profile/save', [\App\Http\Controllers\Employee\ProfileController::class, 'saveProfile'])->name('dashboard.talent.profile.save');
 });
+
+
+Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});
