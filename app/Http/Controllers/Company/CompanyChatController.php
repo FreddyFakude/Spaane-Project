@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use App\Models\BulkMessage;
 use App\Models\Chat;
 use App\Models\Employee;
 use App\Models\Message;
@@ -78,8 +79,26 @@ class CompanyChatController extends Controller
 
     }
 
-    public function sendBulkMessages(Request $request)
+    public function bulkMessages()
     {
 
+        return view('dashboard.company.bulk-messages', [
+            'messages'=> Auth::user()->bulkMessages
+        ]);
+    }
+
+    public function sendBulkMessages(Request $request)
+    {
+        $validated =  $request->validate([
+            'message' => 'required'
+        ]);
+
+        $bulkMessages = BulkMessage::create([
+            "company_id" => Auth::user()->company_id,
+            "message" => $validated['message']
+        ]);
+
+        session()->flash('bulk-message-created');
+        return back();
     }
 }

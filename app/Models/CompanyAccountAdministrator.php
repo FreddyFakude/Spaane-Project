@@ -24,4 +24,9 @@ class CompanyAccountAdministrator extends Authenticatable
     {
         return $this->hasManyThrough(Chat::class, Company::class, 'id');
     }
+
+    public function bulkMessages()
+    {
+        return $this->hasManyThrough(BulkMessage::class, Company::class, 'id');
+    }
 }

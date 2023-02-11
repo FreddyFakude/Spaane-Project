@@ -35,7 +35,8 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
     Route::post('/dashboard/employees/invite', [\App\Http\Controllers\Company\EmployeeController::class, 'inviteEmployee'])->name('dashboard.business.employee.invite');
 
     Route::get('/dashboard/chats', [\App\Http\Controllers\Company\CompanyChatController::class, 'chats'])->name('dashboard.company.chats');
-    Route::get('/dashboard/chats/bulk-messages', [\App\Http\Controllers\Company\CompanyChatController::class, 'sendBulkMessages'])->name('dashboard.company.chats.bulk-messages');
+    Route::get('/dashboard/chats/bulk-messages', [\App\Http\Controllers\Company\CompanyChatController::class, 'bulkMessages'])->name('dashboard.company.chats.bulk-messages');
+    Route::post('/dashboard/chats/bulk-messages', [\App\Http\Controllers\Company\CompanyChatController::class, 'sendBulkMessages'])->name('dashboard.company.chats.bulk-messages.send');
     Route::get('/dashboard/chat/{chat:hash}', [\App\Http\Controllers\Company\CompanyChatController::class, 'chat'])->name('dashboard.company.chat.employee');
     Route::get('/dashboard/chat/start/{employee}', [\App\Http\Controllers\Company\CompanyChatController::class, 'startChat'])->name('dashboard.company.chat.new');
     Route::get('/dashboard/chat/{chat:hash}/messages', [\App\Http\Controllers\Company\CompanyChatController::class, 'loadMessages'])->name('dashboard.company.chat.employee.messages');

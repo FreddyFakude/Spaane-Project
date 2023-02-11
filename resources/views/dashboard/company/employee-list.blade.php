@@ -23,7 +23,7 @@
             <div class="col-md-12 col-xl-12">
                 <div class="d-flex justify-content-end">
                     <button type="button" class="btn-lg btn-secondary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
-                    <button class="btn-lg btn-primary mr-2">Delete User</button>
+{{--                    <button class="btn-lg btn-primary mr-2">Delete User</button>--}}
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                 @endif
             </div>
             <div class="block-content tab-content">
-                <table class="table table-vcenter active js-table-checkable js-table-checkable-enabled tab-pane" id="btabs-internal">
+                <table class="table table-striped table-vcenter" id="btabs-internal">
                     <thead>
                     <tr>
                         <th>Employee</th>

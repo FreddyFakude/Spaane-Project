@@ -50,6 +50,9 @@
                         <li>
                             <a href="{{ route('dashboard.company.chats') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Chat</span></a>
                         </li>
+                        <li>
+                            <a href="{{ route('dashboard.company.chats.bulk-messages') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Bulk messages</span></a>
+                        </li>
 {{--                        <li>--}}
 {{--                            <a href="{{ route('dashboard.business.profile') }}"><i class="si si-home fa-2x"></i><span class="sidebar-mini-hide">Profile</span></a>--}}
 {{--                        </li>--}}
