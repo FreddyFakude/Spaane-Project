@@ -49,7 +49,7 @@
                             <tr>
                                 <td>
                                     <p class="font-w600 mb-10">
-                                       hshheheh
+                                        {{ $message->message }}
                                     </p>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
