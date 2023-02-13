@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeSeeder extends Seeder
 {
@@ -14,6 +16,27 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('employees')->insert([
+            [
+                "id" => 1,
+                "name" => "Jerry",
+                "first_name" => "Jay",
+                "last_name" => "Boy",
+                "email" => "djerryboy2@gmail.com",
+                "mobile_number" => "27788129192",
+                "marital_status" => 'SINGLE',
+                "password" => Hash::make('password'),
+                "company_department_id" => 16,
+                "company_id" => 1,
+//            "talent_profileable_id" => $employee->id,
+                "role" => "CEO"
+            ]
+        ]);
+
+        DB::table('employee_leave_days')->insert([
+            [
+                "employee_id"=> 1
+            ]
+        ]);
     }
 }
