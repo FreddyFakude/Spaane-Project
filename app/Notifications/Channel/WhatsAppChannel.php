@@ -1,9 +1,10 @@
 <?php
 
 
-namespace App\Notifications;
+namespace App\Notifications\Channel;
 
 
+use App\Notifications\WhatsAppUpdateToUserNotification;
 use Illuminate\Notifications\Notification;
 
 class WhatsAppChannel

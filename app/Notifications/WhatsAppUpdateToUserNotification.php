@@ -2,12 +2,12 @@
 
 namespace App\Notifications;
 
-use App\Models\Employee;
+
+use App\Notifications\Channel\WhatsAppChannel;
 use App\Repository\WhatsAppTemplateMessageRepository;
 use App\WhatsApp\WhatsApp;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class WhatsAppUpdateToUserNotification extends Notification implements ShouldQueue
@@ -48,6 +48,6 @@ class WhatsAppUpdateToUserNotification extends Notification implements ShouldQue
     public function toWhatsapp($notifiable)
     {
         $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.update.message');
-        return $this->whatsApp->sendWhatsappMessage($notifiable->chats->last(), $notifiable, $message->content, "App\Models\Company", $notifiable->id, true, true);
+        return $this->whatsApp->sendWhatsappMessage($notifiable->chats->last(), $notifiable, sprintf($message->content, $notifiable->first_name, $notifiable->company->name), "App\Models\Company", $notifiable->id, true, true);
     }
 }

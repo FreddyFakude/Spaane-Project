@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\BatchMessageNotification;
+use App\Jobs\WhatsAppMessageBatchNotificationJob;
 use App\Models\BulkMessage;
 use App\Models\Chat;
 use App\Models\Employee;
@@ -99,7 +99,7 @@ class CompanyChatController extends Controller
             "message" => $validated['message']
         ]);
 
-        BatchMessageNotification::dispatch($bulkMessage)->delay(now()->addSeconds(5));
+        WhatsAppMessageBatchNotificationJob::dispatch($bulkMessage)->delay(now()->addSeconds(5));
 
         session()->flash('bulk-message-created');
         return back();
