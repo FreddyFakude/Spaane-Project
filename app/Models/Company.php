@@ -18,4 +18,9 @@ class Company extends Model
     {
         return $this->hasMany(Employee::class, 'company_id');
     }
+
+    public function bulkMessages()
+    {
+        return $this->hasMany(BulkMessage::class, 'company_id');
+    }
 }

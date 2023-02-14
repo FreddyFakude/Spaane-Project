@@ -57,6 +57,9 @@ class EmployeeWhatsAppChatFlow
         if (in_array($this->receivedMessage, [3, "More Options"])){
           return  $this->stepThree();
         }
+        if (in_array($this->receivedMessage, ["See The Update"])){
+          return  $this->stepSeven();
+        }
         else{
             $this->welcome();
         }
@@ -135,15 +138,12 @@ class EmployeeWhatsAppChatFlow
 
     public function stepSeven()
     {
-        $days =  filter_var($this->receivedMessage, FILTER_VALIDATE_INT);
-        if(!$days){
-            return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "Please type a number", "App\Models\Company", $this->employee->id, true, true);
-        }
-
-        $availableLeaveDays = $this->employee->leaveDays->last();
-        if(intval($availableLeaveDays->days) < intval($this->receivedMessage)){
-            $daysLeft = intval($availableLeaveDays->days) -  $availableLeaveDays->leaves->where('status','APPROVED')->sum('requested_days');
-            return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "The number of days requested is more than the number of days available to you. You have {$daysLeft} days left. Please type a number lesser than that or type exit to stop this prompt", "App\Models\Company", $this->employee->id, true, true);
+       $bulkMessages =  $this->employee->bulkMessages()->pending()->get();
+        foreach($bulkMessages as $message){
+            $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, $message->message->message, "App\Models\Company", $this->employee->id, true, true);
+            return    $message->update([
+                    "status" => "SENT"
+                ]);
         }
     }
 }

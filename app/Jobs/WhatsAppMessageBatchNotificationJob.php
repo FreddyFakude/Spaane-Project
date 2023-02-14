@@ -3,8 +3,8 @@
 namespace App\Jobs;
 
 use App\Models\BulkMessage;
+use App\Models\EmployeeBulkMessage;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -15,6 +15,7 @@ class WhatsAppMessageBatchNotificationJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     private $employees;
+    private $bulkMessage;
 
     /**
      * Create a new job instance.
@@ -35,7 +36,12 @@ class WhatsAppMessageBatchNotificationJob implements ShouldQueue
     public function handle()
     {
         foreach ($this->employees as $employee){
-            $employee->notify(new \App\Notifications\WhatsAppUpdateToUserNotification());
+            $messageQueue = EmployeeBulkMessage::create([
+                'employee_id' => $employee->id,
+                'bulk_message_id' => $this->bulkMessage->id,
+                'status' => 'PENDING'
+            ]);
+             $employee->notify(new \App\Notifications\WhatsAppUpdateToUserNotification());
         }
     }
 }
