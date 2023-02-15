@@ -87,25 +87,4 @@ class EmployeeController extends Controller
         session()->flash('talent-added');
         return back();
     }
-
-    public function updateEmployeeLeaveDay(Request $request,Employee $employee)
-    {
-        $validated = $request->validate([
-            "leave_days"=>"required|integer|lt:" . $employee->current_leave_days
-        ]);
-
-        $leave = EmployeeLeave::create([
-            "employee_id" => $employee->id,
-            "requested_days" => $validated['leave_days'],
-            "employee_leave_day_id" => $employee->leaveDays->last()->id,
-            "status"=> EmployeeLeave::STATUS['approved']
-        ]);
-
-        $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.update.message');
-        $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, $employee->first_name, Auth::user()->company->name));
-
-        session()->flash('talent-updated');
-        return back();
-
-    }
 }

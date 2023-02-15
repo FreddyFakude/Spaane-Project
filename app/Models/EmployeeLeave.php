@@ -10,6 +10,6 @@ class EmployeeLeave extends Model
     use HasFactory;
 
     protected $guarded = [];
-    public const STATUS = ['review'=>"REVIEW", 'approved'=>"APPROVED", 'denied'=> "DENIED"];
+    public const STATUS = ['review'=>"REVIEW", 'approved'=>"APPROVED", 'denied'=> "DENIED", 'pending'=>"PENDING"];
 
 }

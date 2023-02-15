@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('employee_id')->references('id')->on('employees')->cascadeOnUpdate();
             $table->foreignId('employee_leave_day_id')->references('id')->on('employee_leave_days')->cascadeOnUpdate();
             $table->integer('requested_days');
+            $table->string('hash');
             $table->string('status')->default(\App\Models\EmployeeLeave::STATUS['review']);
             $table->timestamps();
         });

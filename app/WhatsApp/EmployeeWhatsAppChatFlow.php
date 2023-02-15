@@ -116,7 +116,8 @@ class EmployeeWhatsAppChatFlow
         $leave = EmployeeLeave::create([
             "employee_id" => $this->employee->id,
             "requested_days" => $this->receivedMessage,
-            "employee_leave_day_id" => $availableLeaveDays->id
+            "employee_leave_day_id" => $availableLeaveDays->id,
+            "hash" => sha1(time())
         ]);
 
         session()->remove("chat-{$this->employee->mobile_number}-leave-management");

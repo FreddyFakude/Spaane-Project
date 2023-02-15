@@ -30,8 +30,8 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
     Route::get('/dashboard/calendar', [\App\Http\Controllers\Company\DashboardController::class, 'calendar'])->name('dashboard.company.index.calendar');
     Route::get('/dashboard/employees/list', [\App\Http\Controllers\Company\EmployeeController::class, 'list'])->name('dashboard.company.employee.list');
     Route::get('/dashboard/employees/view/{employee}', [\App\Http\Controllers\Company\EmployeeController::class, 'viewTalent'])->name('dashboard.company.employee.view');
-    Route::post('/dashboard/employees/view/{employee}/leave', [\App\Http\Controllers\Company\EmployeeController::class, 'updateEmployeeLeaveDay'])->name('dashboard.company.employee.update.leave');
-//    Route::get('/dashboard/employees/view/{talent}/delete', [\App\Http\Controllers\Business\TalentController::class, 'delete'])->name('dashboard.business.employee.delete');
+    Route::post('/dashboard/employees/view/{employee}/leave', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'updateEmployeeLeaveDay'])->name('dashboard.company.employee.update.leave');
+    Route::get('/dashboard/employees/view/{employee}/leave/{hash}/approve', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'approveLeave'])->name('dashboard.company.employee.approve.leave');
     Route::post('/dashboard/employees/invite', [\App\Http\Controllers\Company\EmployeeController::class, 'inviteEmployee'])->name('dashboard.business.employee.invite');
 
     Route::get('/dashboard/chats', [\App\Http\Controllers\Company\CompanyChatController::class, 'chats'])->name('dashboard.company.chats');
