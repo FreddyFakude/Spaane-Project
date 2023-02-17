@@ -29,7 +29,7 @@
                             <a  href="{{ route('dashboard.company.index') }}">
                                 {{--                                <i class="si si-fire text-primary"></i>--}}
                                 {{--                                <span class="font-size-xl text-dual-primary-dark">code</span><span class="font-size-xl text-primary">vase</span>--}}
-                                <img src="{{ asset('assets/images/teambix-logo-Icon.png') }}" alt="" width="80">
+                                <img src="{{ asset('assets/images/logo_white.png') }}" alt="" width="150">
                             </a>
                         </div>
                         <!-- END Logo -->
@@ -39,7 +39,7 @@
                 <!-- END Side Header -->
 
                 <!-- Side Navigation -->
-                <div class="content-side content-side-full">
+                <div class="content-side content-side-full mt-20">
                     <ul class="nav-main">
                         <li>
                             <a  href="{{ route('dashboard.company.index') }}"><i class="si si-grid fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>
@@ -51,11 +51,17 @@
                             <a href="{{ route('dashboard.company.chats') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Chat</span></a>
                         </li>
                         <li>
-                            <a href="{{ route('dashboard.company.chats.bulk-messages') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Bulk messages</span></a>
+                            <a href="{{ route('dashboard.company.chats.bulk-messages') }}"><i class="si si-bubble fa-2x"></i><span class="sidebar-mini-hide">Messaginng</span></a>
                         </li>
-{{--                        <li>--}}
-{{--                            <a href="{{ route('dashboard.business.profile') }}"><i class="si si-home fa-2x"></i><span class="sidebar-mini-hide">Profile</span></a>--}}
-{{--                        </li>--}}
+                       <li>
+                           <a href="{{ route('dashboard.company.chats') }}"><i class="si si-calendar fa-2x"></i><span class="sidebar-mini-hide">Leave Management</span></a>
+                       </li>
+                       <li>
+                            <a href="{{ route('dashboard.company.chats') }}"><i class="si si-bar-chart fa-2x"></i><span class="sidebar-mini-hide">Payroll</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('dashboard.company.chats') }}"><i class="si si-clock fa-2x"></i><span class="sidebar-mini-hide">Absentism Management</span></a>
+                        </li>
                     </ul>
                 </div>
                 <!-- END Side Navigation -->

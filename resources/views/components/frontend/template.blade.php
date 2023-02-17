@@ -10,8 +10,8 @@
     <link href="{{ asset('assets/custom/custom.css') }}" rel="stylesheet">
 
 </head>
-<body>
-<header>
+<body class="bg-teal">
+{{-- <header>
     <nav class="navbar navbar-expand-md  fixed-top bg-teal">
         <a class="navbar-brand bg-transparent" href="#">
             <img src="#" alt="" width="150">
@@ -24,38 +24,38 @@
                 <li class="nav-item home-nav-item">
                     <a class="nav-link nav-main-link" href="#features" id="featuresNav">FEATURES</a>
                 </li>
-                {{--                <li class="nav-item home-nav-item">--}}
-                {{--                    <a class="nav-link nav-main-link" href="#verify" id="verifyNav">VERIFY</a>--}}
-                {{--                </li>--}}
-                {{--                <li class="nav-item home-nav-item">--}}
-                {{--                    <a class="btn btn-primary" href="https://wa.me/" id="verifyNav">Get Proof of residence</a>--}}
-                {{--                </li>--}}
+                               <li class="nav-item home-nav-item">
+                                   <a class="nav-link nav-main-link" href="#verify" id="verifyNav">VERIFY</a>
+                               </li>
+                               <li class="nav-item home-nav-item">
+                                   <a class="btn btn-primary" href="https://wa.me/" id="verifyNav">Get Proof of residence</a>
+                               </li>
             </ul>
         </div>
     </nav>
-</header>
+</header> --}}
 <main role="main">
     {{ $slot }}
 </main>
-<footer class="footer bg-teal" id="footer-section">
+{{-- <footer class="footer bg-teal" id="footer-section">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
                 <h6 class="nav-heading">
-                    <img src="jjjj" alt="sss" width="200">
+                    <img src="jjjj" alt="sss" width="200"> --}}
                     {{--                    <img src="{{ asset('storage/councils/logo/tsitsing.png') }}" alt="" width="200">--}}
-                </h6>
+                {{-- </h6>
                 <p>
                     sdsdsd
                 </p>
-            </div>
+            </div> --}}
             {{--            <div class="col-md-3">--}}
             {{--                <div class="pt-2">--}}
             {{--                    --}}
             {{--                    <p>If you are council please login here</p>--}}
             {{--                </div>--}}
             {{--            </div>--}}
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <h6 class="nav-heading">CONTACT US</h6>
                 <ul class="list-unstyled">
                     <li class="footer-list-item">info@</li>
@@ -81,7 +81,7 @@
             &copy; {{ date('Y') }} - Teambix
         </div>
     </div>
-</footer>
+</footer> --}}
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 @stack('extra-script')

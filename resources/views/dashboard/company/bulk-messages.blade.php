@@ -6,7 +6,7 @@
     <x-slot name="header">
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
-    <div class="content bg-light">
+    <div class="content">
         <div class="row py-20">
             <div class="col-md-12 col-xl-12">
                 <div class="d-flex justify-content-end">
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="block">
-            <div class="block-header block-header-default">
+            <div class="block-header">
                 @if(session()->has('bulk-message-created'))
                     <div class="alert alert-success alert-dismissable w-100" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">

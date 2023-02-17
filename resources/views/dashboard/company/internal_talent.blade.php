@@ -6,7 +6,7 @@
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
     <!-- Page Content -->
-    <div class="content bg-light">
+    <div class="content">
         <div class="row py-20">
             <div class="col-md-12 col-xl-12">
                 <div class="block">

@@ -6,7 +6,7 @@
     <x-slot name="header">
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
-    <div class="content bg-light">
+    <div class="content">
         <div class="row py-20">
             @if(session()->has('interview-request-success'))
                 <div class="alert alert-success alert-dismissable w-100" role="alert">

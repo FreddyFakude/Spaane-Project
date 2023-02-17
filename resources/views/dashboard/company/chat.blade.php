@@ -6,7 +6,7 @@
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
     <!-- Page Content -->
-    <div class="content bg-light" id="chat">
+    <div class="content" id="chat">
         <div class="row">
             <div class="col-md-6">
                 <div class="block block-rounded block-themed">
