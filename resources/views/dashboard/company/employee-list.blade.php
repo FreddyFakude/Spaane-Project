@@ -22,8 +22,8 @@
 {{--            </div>--}}
             <div class="col-md-12 col-xl-12">
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn-lg btn-secondary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
-{{--                    <button class="btn-lg btn-primary mr-2">Delete User</button>--}}
+                    <button type="button" class="btn-lg btn-primary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
+                   <button class="btn-lg btn-secondary mr-2">Delete User</button>
                 </div>
             </div>
         </div>
@@ -49,19 +49,34 @@
                 @endif
             </div>
             <div class="block-content tab-content">
-                <table class="table table-striped table-vcenter" id="btabs-internal">
+                <table class="table table-striped table-vcenter active js-table-checkable js-table-checkable-enabled tab-pane" id="btabs-internal">
                     <thead>
                     <tr>
+                        <th class="text-center" style="width: 70px;">
+                            <label class="css-control css-control-primary css-checkbox py-0">
+                                <input type="checkbox" class="css-control-input" id="check-all" name="check-all">
+                                <span class="css-control-indicator"></span>
+                            </label>
+                        </th>
                         <th>Employee</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Role</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Employee Status</th>
-                        <th class="d-none d-sm-table-cell" style="width: 40%;">Action</th>
+                        <th class="d-none d-sm-table-cell" style="width: 20%;">Leave balance</th>
+                        <th class="d-none d-sm-table-cell" style="width: 20%;">Absent Days</th>
+                        <th class="d-none d-sm-table-cell" style="width: 20%;">Chat</th>
+                        <th class="d-none d-sm-table-cell" style="width: 20%;">Profile</th>
                     </tr>
                     </thead>
                     <tbody>
                     @empty(!$employees)
                         @foreach($employees as $employee)
                             <tr>
+                                <td class="text-center">
+                                    <label class="css-control css-control-primary css-checkbox">
+                                        <input type="checkbox" class="css-control-input" id="row_1" name="row_1">
+                                        <span class="css-control-indicator"></span>
+                                    </label>
+                                </td>
                                 <td>
                                     <p class="font-w600 mb-10">
                                         <a href="{{ route('dashboard.company.employee.view', [$employee]) }}">{{ $employee->name }}</a>
@@ -73,8 +88,17 @@
                                 <td class="d-none d-sm-table-cell">
                                     <em class="text-muted">  {{ $employee->status }} </em>
                                 </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <em class="text-muted"> {{ $employee->current_leave_days}} days </em>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <em class="text-muted"> 5 days</em>
+                                </td>
                                 <td class="d-none d-sm-table-cell" style="width: 40%;">
                                     <a href="{{ route('dashboard.company.chat.new', [$employee->id]) }}" class="btn-primary btn">Chat</a>
+                                </td>
+                                <td class="d-none d-sm-table-cell" style="width: 40%;">
+                                    <a href="{{ route('dashboard.company.chat.new', [$employee->id]) }}" class="btn-primary btn">Edit profile</a>
                                 </td>
                             </tr>
                         @endforeach
