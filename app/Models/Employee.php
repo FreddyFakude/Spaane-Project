@@ -63,7 +63,7 @@ class Employee  extends Authenticatable
     {
         $leaveDays = $this->leaveDays()->get();
         return Attribute::make(
-            get: fn() => intval($leaveDays->last()->days) -  $leaveDays->last()->leaves->where('status','APPROVED')->sum('requested_days')
+            get: fn() => intval($leaveDays->last()->days) -  $leaveDays->last()->leaves->where('status','APPROVED')->count(),
         );
     }
 
