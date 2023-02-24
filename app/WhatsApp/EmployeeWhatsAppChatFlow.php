@@ -105,7 +105,7 @@ class EmployeeWhatsAppChatFlow
     {
         session(["chat-{$this->employee->mobile_number}-leave-management-expecting-date" =>  rand(0, 1000)]);
         $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.leave.management.request');
-        return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, $message->content . session("chat-{$this->employee->mobile_number}-leave-management-expecting-date"), "App\Models\Company", $this->employee->id, true, true);
+        return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, $message->content, "App\Models\Company", $this->employee->id, true, true);
     }
 
     public function stepFive()
