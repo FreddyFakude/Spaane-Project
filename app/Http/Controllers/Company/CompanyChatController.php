@@ -65,18 +65,21 @@ class CompanyChatController extends Controller
     {
        $validated =  $request->validate([
             'chat_hash' => 'required',
-            'message' => 'required'
+            'message' => 'required',
+           'file' => 'nullable|file|mimes:jpeg,png,jpg,pdf,doc,docx,xls,xlsx|max:2048'
         ]);
 
-        $this->whatsApp->sendWhatsappMessage($chat, $chat->employee, $validated['message'],"App\Models\Company", Auth::user()->company_id,true, false);
+       if($request->hasFile('file')){
+          $file = $request->file('file');
+          $fileName = str_replace( ' ', '-', Auth::user()->company->name) . "-".  sha1(time()) . "." . $file->getClientOriginalExtension();
+          $path = $file->storePubliclyAs('resources', $fileName,'public');
+       }
+        $this->whatsApp->sendWhatsappMessage($chat, $chat->employee, $validated['message'],"App\Models\Company", Auth::user()->company_id,true, false, $request->hasFile('file') ? asset('storage/' . $path) : null);
 
-        return Message::create([
-            'messageable_type' => 'App\Models\Company',
-            'messageable_id' => Auth::id(),
-            'chat_id' => $chat->id,
-            'message' => $request->input('message'),
-            'is_read' => false
-        ]);
+          return response()->json([
+              'status' => 'success',
+              'message' => 'Message sent successfully'
+          ]);
 
     }
 

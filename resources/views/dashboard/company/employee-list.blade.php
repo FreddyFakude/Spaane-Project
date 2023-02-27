@@ -23,7 +23,7 @@
             <div class="col-md-12 col-xl-12">
                 <div class="d-flex justify-content-end">
                     <button type="button" class="btn-lg btn-primary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
-                   <button class="btn-lg btn-secondary mr-2">Delete User</button>
+                   <button class="btn-lg btn-danger mr-2">Remove  Employee</button>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                             </label>
                         </th>
                         <th>Employee</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Role</th>
+                        <th class="d-none d-sm-table-cell" style="width: 20%;">Job title</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Employee Status</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Leave balance</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Absent Days</th>
@@ -95,10 +95,10 @@
                                     <em class="text-muted"> 5 days</em>
                                 </td>
                                 <td class="d-none d-sm-table-cell" style="width: 40%;">
-                                    <a href="{{ route('dashboard.company.chat.new', [$employee->id]) }}" class="btn-primary btn">Chat</a>
+                                    <a href="{{ route('dashboard.company.chat.new', [$employee->id]) }}"><i class="si si-bubble fa-2x"></i></a>
                                 </td>
                                 <td class="d-none d-sm-table-cell" style="width: 40%;">
-                                    <a href="{{ route('dashboard.company.chat.new', [$employee->id]) }}" class="btn-primary btn">Edit profile</a>
+                                    <a href="{{ route('dashboard.company.chat.new', [$employee->id]) }}"><i class="si si-pencil fa-2x"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -183,7 +183,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="col-12 pl-0" for="example-text-input">Position</label>
+                                            <label class="col-12 pl-0" for="example-text-input">Job title</label>
                                             <input type="text" class="form-control" id="example-text-input" name="position" >
                                         </div>
                                     </div>
@@ -199,7 +199,7 @@
                     <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                         @csrf
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="submit" class="btn btn-success">Add</button>
                 </div>
                 </form>
             </div>
