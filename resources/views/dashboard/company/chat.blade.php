@@ -38,9 +38,19 @@
 
                     <!-- Chat Input -->
                     <div class="js-chat-form block-content block-content-full block-content-sm bg-body-light">
-                        <form action="be_comp_chat_single.html" method="post"  @submit.prevent="">
+                        <form action="#" method="post"  @submit.prevent="">
                             <div class="d-flex">
                                 <input v-model="message" class="js-chat-input form-control" type="text" data-target-chat-id="4" placeholder="Type your message and hit enter..">
+                                <button class="btn btn-success" @click="sendMessage" >Send</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Chat Input -->
+                    <div class="js-chat-form block-content block-content-full block-content-sm bg-body-light">
+                        <form action="#" method="post"  @submit.prevent="sendFile">
+                            <div class="d-flex">
+                                <input  class="js-chat-input form-control" type="file" data-target-chat-id="4" id="file" required>
                                 <button class="btn btn-success" @click="sendMessage" >Send</button>
                             </div>
                         </form>
@@ -92,7 +102,23 @@
                     },
                     momentHumanReadable(date) {
                         return moment(date).fromNow();
-                    }
+                    },
+                    sendFile: function ($event) {
+                        var vm = this;
+                        const formData = new FormData();
+                        const imagefile = document.querySelector('#file');
+                        formData.append("file", imagefile.files[0]);
+                        formData.append("chat_hash", "{{ $chat->hash }}");
+                        formData.append("message", "File attachment");
+                        axios.post("{{ route('dashboard.company.chat.send.messages', [$chat->hash]) }}", formData, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        }).then(response => {
+                            vm.messages = response.data;
+                            document.querySelector('#file').value = '';
+                        })
+                    },
                 }
             })
         </script>

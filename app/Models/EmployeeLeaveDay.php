@@ -11,6 +11,7 @@ class EmployeeLeaveDay extends Model
 
     protected $guarded = [];
 
+    public const MAX_LEAVE_DAYS = 10;
     public function leaves()
     {
         return $this->hasMany(EmployeeLeave::class);

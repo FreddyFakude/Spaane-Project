@@ -27,6 +27,7 @@ class WhatsApp
                 ->create("whatsapp:+" . $user->mobile_number, // to
                     $content
                 );
+            info($message);
         }
         catch (\Exception $exception){
             throw $exception;
@@ -56,5 +57,14 @@ class WhatsApp
         ]);
     }
 
+    public function sendQuickWhatsApp($phoneNumber, $messageBody){
+        return $this->twilio->messages
+            ->create("whatsapp:+" . $phoneNumber, // to
+                [
+                    "from" => "whatsapp:" .  env('PHONE_NUMBER'),
+                    "body" => $messageBody
+                ]
+            );
+    }
 
 }

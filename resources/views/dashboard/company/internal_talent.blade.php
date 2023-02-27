@@ -20,6 +20,9 @@
                                                 <div class="alert alert-success w-75 ">Leave updated</div>
                                             @endisset
                                             <h3>Current Leave days {{ $employee->current_leave_days}}</h3>
+                                            @error('leave_date')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p>Record leave days</p>
@@ -34,10 +37,7 @@
                                                         <div class="form-group col-md-8">
                                                             <div class="row">
                                                                 <div class="col-8">
-                                                                    <input type="number" class="form-control" name="leave_days" value="">
-                                                                    @error("leave_days")
-                                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                                    @enderror
+                                                                    <input type="date" class="form-control" name="leave_date" value="">
                                                                 </div>
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-alt-success" >
@@ -68,8 +68,8 @@
                         <table class="table table-striped table-vcenter" id="btabs-internal">
                             <thead>
                             <tr>
+                                <th class="d-none d-sm-table-cell" style="width: 20%;">Date</th>
                                 <th>Status</th>
-                                <th class="d-none d-sm-table-cell" style="width: 20%;">Nbr Days</th>
                                 <th class="d-none d-sm-table-cell" style="width: 40%;">Action</th>
                             </tr>
                             </thead>
@@ -78,13 +78,13 @@
                                 @foreach($employee->leaves as $leave)
                                     <tr>
                                         <td class="d-none d-sm-table-cell">
-                                            <em class="text-muted">{{ $leave->status }}</em>
+                                            <em class="text-muted">  {{ $leave->requested_date }} </em>
                                         </td>
                                         <td class="d-none d-sm-table-cell">
-                                            <em class="text-muted">  {{ $leave->requested_days }} </em>
+                                            <em class="text-muted">{{ $leave->status }}</em>
                                         </td>
                                         <td class="d-none d-sm-table-cell" style="width: 40%;">
-                                            @if($leave->status == \App\Models\EmployeeLeave::STATUS['pending'])
+                                            @if($leave->status == \App\Models\EmployeeLeave::STATUS['pending'] || $leave->status == \App\Models\EmployeeLeave::STATUS['review'])
                                                 <a href="{{ route('dashboard.company.employee.approve.leave', [$employee->id, $leave->hash]) }}" class="btn btn-success">Approve</a>
                                             @endif
                                         </td>

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('employee_leave_days', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->references('id')->on('employees')->cascadeOnUpdate();
-            $table->double('days', '6', '2')->default(10.00);
+            $table->double('days', '6', '2')->default(\App\Models\EmployeeLeaveDay::MAX_LEAVE_DAYS);
             $table->timestamps();
         });
     }

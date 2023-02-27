@@ -49,6 +49,90 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\AutomatedResponse
+ *
+ * @property int $id
+ * @property int $company_id
+ * @property string $message
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|AutomatedResponse newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|AutomatedResponse newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|AutomatedResponse query()
+ * @method static \Illuminate\Database\Eloquent\Builder|AutomatedResponse whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AutomatedResponse whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AutomatedResponse whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AutomatedResponse whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AutomatedResponse whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AutomatedResponse whereUpdatedAt($value)
+ */
+	class AutomatedResponse extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\BulkMessage
+ *
+ * @property int $id
+ * @property int $company_id
+ * @property string $message
+ * @property string|null $file_path
+ * @property string|null $file_type
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Company $company
+ * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereFilePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereFileType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereUpdatedAt($value)
+ */
+	class BulkMessage extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Chat
+ *
+ * @property int $id
+ * @property int $company_id
+ * @property int $company_account_administrator_id
+ * @property int $chatable_id
+ * @property string $chatable_type
+ * @property string $status
+ * @property string $hash
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $chatable
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $employee
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
+ * @property-read int|null $messages_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereChatableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereChatableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereCompanyAccountAdministratorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereUpdatedAt($value)
+ */
+	class Chat extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Company
  *
  * @property int $id
@@ -64,6 +148,10 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\CompanyAccountAdministrator|null $administrator
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BulkMessage[] $bulkMessages
+ * @property-read int|null $bulk_messages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Employee[] $employees
+ * @property-read int|null $employees_count
  * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company query()
@@ -104,6 +192,13 @@ namespace App\Models{
  * @property string|null $position_start_date
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BulkMessage[] $bulkMessages
+ * @property-read int|null $bulk_messages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Chat[] $chats
+ * @property-read int|null $chats_count
+ * @property-read \App\Models\Company $company
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Employee[] $employees
+ * @property-read int|null $employees_count
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyAccountAdministrator newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyAccountAdministrator newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyAccountAdministrator query()
@@ -166,31 +261,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyDepartment whereUpdatedAt($value)
  */
 	class CompanyDepartment extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * App\Models\CompanyEmployeeChat
- *
- * @property int $id
- * @property int $company_id
- * @property int $company_account_administrator_id
- * @property int $employee_id
- * @property string $hash
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Chat newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Chat newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Chat query()
- * @method static \Illuminate\Database\Eloquent\Builder|Chat whereCompanyAccountAdministratorId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Chat whereCompanyId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Chat whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Chat whereEmployeeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Chat whereHash($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Chat whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Chat whereUpdatedAt($value)
- */
-	class CompanyEmployeeChat extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -260,7 +330,24 @@ namespace App\Models{
  * @property string $type
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Address|null $address
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeBulkMessage[] $bulkMessages
+ * @property-read int|null $bulk_messages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Chat[] $chats
+ * @property-read int|null $chats_count
  * @property-read \App\Models\Company $company
+ * @property-read \App\Models\Education|null $education
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeLeaveDay[] $leaveDays
+ * @property-read int|null $leave_days_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeLeave[] $leaves
+ * @property-read int|null $leaves_count
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payslip[] $payslips
+ * @property-read int|null $payslips_count
+ * @property-read \App\Models\ProfessionalExperience|null $professional_experience
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Skill[] $skills
+ * @property-read int|null $skills_count
  * @method static \Illuminate\Database\Eloquent\Builder|Employee newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Employee newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Employee query()
@@ -304,6 +391,82 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\EmployeeBulkMessage
+ *
+ * @property int $id
+ * @property int $employee_id
+ * @property int $bulk_message_id
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Employee $employee
+ * @property-read \App\Models\BulkMessage $message
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage pending()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage whereBulkMessageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage whereEmployeeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage whereUpdatedAt($value)
+ */
+	class EmployeeBulkMessage extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\EmployeeLeave
+ *
+ * @property int $id
+ * @property int $employee_id
+ * @property int $employee_leave_day_id
+ * @property int $requested_days
+ * @property string $hash
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereEmployeeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereEmployeeLeaveDayId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereRequestedDays($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereUpdatedAt($value)
+ */
+	class EmployeeLeave extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\EmployeeLeaveDay
+ *
+ * @property int $id
+ * @property int $employee_id
+ * @property float $days
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeLeave[] $leaves
+ * @property-read int|null $leaves_count
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay whereDays($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay whereEmployeeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay whereUpdatedAt($value)
+ */
+	class EmployeeLeaveDay extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\IndependentContractor
  *
  * @property int $id
@@ -330,13 +493,16 @@ namespace App\Models{
  * @property int $messageable_id
  * @property int $chat_id
  * @property string $message
+ * @property string $message_unique_id
  * @property int $is_read
  * @property string|null $file_path
  * @property string|null $file_type
  * @property int $is_outbound
+ * @property int $is_automated
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $messageable
  * @method static \Illuminate\Database\Eloquent\Builder|Message newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Message newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Message query()
@@ -345,15 +511,44 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereFilePath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereFileType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereIsAutomated($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereIsOutbound($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereIsRead($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereMessageUniqueId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereMessageableId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereMessageableType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Message whereUpdatedAt($value)
  */
 	class Message extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Payslip
+ *
+ * @property int $id
+ * @property int $employee_id
+ * @property int $company_id
+ * @property string|null $reference_number
+ * @property string $file_name
+ * @property string $file_path
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Payslip newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Payslip newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Payslip query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Payslip whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payslip whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payslip whereEmployeeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payslip whereFileName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payslip whereFilePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payslip whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payslip whereReferenceNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payslip whereUpdatedAt($value)
+ */
+	class Payslip extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -389,6 +584,27 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Skill
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill whereUpdatedAt($value)
+ */
+	class Skill extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
@@ -417,5 +633,26 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\WhatsAppTemplateMessage
+ *
+ * @property int $id
+ * @property string $content
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|WhatsAppTemplateMessage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WhatsAppTemplateMessage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WhatsAppTemplateMessage query()
+ * @method static \Illuminate\Database\Eloquent\Builder|WhatsAppTemplateMessage whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhatsAppTemplateMessage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhatsAppTemplateMessage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhatsAppTemplateMessage whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WhatsAppTemplateMessage whereUpdatedAt($value)
+ */
+	class WhatsAppTemplateMessage extends \Eloquent {}
 }
 
