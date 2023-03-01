@@ -23,4 +23,9 @@ class Company extends Model
     {
         return $this->hasMany(BulkMessage::class, 'company_id');
     }
+
+    public function payslips()
+    {
+        return $this->hasMany(CompanyPayslip::class);
+    }
 }

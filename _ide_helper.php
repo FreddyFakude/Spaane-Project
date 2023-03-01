@@ -9815,6 +9815,83 @@
                         return $instance->setConnectionName($name);
         }
                     /**
+         * Release a reserved job back onto the queue after (n) seconds.
+         *
+         * @param string $queue
+         * @param \Illuminate\Queue\Jobs\DatabaseJobRecord $job
+         * @param int $delay
+         * @return mixed 
+         * @static 
+         */ 
+        public static function release($queue, $job, $delay)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        return $instance->release($queue, $job, $delay);
+        }
+                    /**
+         * Delete a reserved job from the queue.
+         *
+         * @param string $queue
+         * @param string $id
+         * @return void 
+         * @throws \Throwable
+         * @static 
+         */ 
+        public static function deleteReserved($queue, $id)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        $instance->deleteReserved($queue, $id);
+        }
+                    /**
+         * Delete a reserved job from the reserved queue and release it.
+         *
+         * @param string $queue
+         * @param \Illuminate\Queue\Jobs\DatabaseJob $job
+         * @param int $delay
+         * @return void 
+         * @static 
+         */ 
+        public static function deleteAndRelease($queue, $job, $delay)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        $instance->deleteAndRelease($queue, $job, $delay);
+        }
+                    /**
+         * Delete all of the jobs from the queue.
+         *
+         * @param string $queue
+         * @return int 
+         * @static 
+         */ 
+        public static function clear($queue)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        return $instance->clear($queue);
+        }
+                    /**
+         * Get the queue or return the default.
+         *
+         * @param string|null $queue
+         * @return string 
+         * @static 
+         */ 
+        public static function getQueue($queue)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        return $instance->getQueue($queue);
+        }
+                    /**
+         * Get the underlying database instance.
+         *
+         * @return \Illuminate\Database\Connection 
+         * @static 
+         */ 
+        public static function getDatabase()
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        return $instance->getDatabase();
+        }
+                    /**
          * Get the backoff for an object-based queue handler.
          *
          * @param mixed $job
@@ -9823,7 +9900,7 @@
          */ 
         public static function getJobBackoff($job)
         {            //Method inherited from \Illuminate\Queue\Queue         
-                        /** @var \Illuminate\Queue\SyncQueue $instance */
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
                         return $instance->getJobBackoff($job);
         }
                     /**
@@ -9835,7 +9912,7 @@
          */ 
         public static function getJobExpiration($job)
         {            //Method inherited from \Illuminate\Queue\Queue         
-                        /** @var \Illuminate\Queue\SyncQueue $instance */
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
                         return $instance->getJobExpiration($job);
         }
                     /**
@@ -9847,7 +9924,7 @@
          */ 
         public static function createPayloadUsing($callback)
         {            //Method inherited from \Illuminate\Queue\Queue         
-                        \Illuminate\Queue\SyncQueue::createPayloadUsing($callback);
+                        \Illuminate\Queue\DatabaseQueue::createPayloadUsing($callback);
         }
                     /**
          * Get the container instance being used by the connection.
@@ -9857,7 +9934,7 @@
          */ 
         public static function getContainer()
         {            //Method inherited from \Illuminate\Queue\Queue         
-                        /** @var \Illuminate\Queue\SyncQueue $instance */
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
                         return $instance->getContainer();
         }
                     /**
@@ -9869,7 +9946,7 @@
          */ 
         public static function setContainer($container)
         {            //Method inherited from \Illuminate\Queue\Queue         
-                        /** @var \Illuminate\Queue\SyncQueue $instance */
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
                         $instance->setContainer($container);
         }
          
@@ -17650,7 +17727,584 @@
      
 }
 
-        namespace Spatie\LaravelIgnition\Facades { 
+        namespace Barryvdh\DomPDF\Facade { 
+            /**
+     * 
+     *
+     * @method static \Barryvdh\DomPDF\PDF setPaper($paper, $orientation = 'portrait')
+     * @method static \Barryvdh\DomPDF\PDF setBaseHost(string $baseHost)
+     * @method static \Barryvdh\DomPDF\PDF setProtocol(string $protocol)
+     * @method static \Barryvdh\DomPDF\PDF setHttpContext($httpContext)
+     * @method static \Barryvdh\DomPDF\PDF setCallbacks(array $callbacks)
+     */ 
+        class Pdf {
+                    /**
+         * Get the DomPDF instance
+         *
+         * @return \Dompdf\Dompdf 
+         * @static 
+         */ 
+        public static function getDomPDF()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->getDomPDF();
+        }
+                    /**
+         * Show or hide warnings
+         *
+         * @static 
+         */ 
+        public static function setWarnings($warnings)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setWarnings($warnings);
+        }
+                    /**
+         * Load a HTML string
+         *
+         * @param string|null $encoding Not used yet
+         * @static 
+         */ 
+        public static function loadHTML($string, $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadHTML($string, $encoding);
+        }
+                    /**
+         * Load a HTML file
+         *
+         * @static 
+         */ 
+        public static function loadFile($file)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadFile($file);
+        }
+                    /**
+         * Add metadata info
+         *
+         * @param \Barryvdh\DomPDF\array<string,  string> $info
+         * @return static 
+         * @static 
+         */ 
+        public static function addInfo($info)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->addInfo($info);
+        }
+                    /**
+         * Load a View and convert to HTML
+         *
+         * @param \Barryvdh\DomPDF\array<string,  mixed> $data
+         * @param \Barryvdh\DomPDF\array<string,  mixed> $mergeData
+         * @param string|null $encoding Not used yet
+         * @static 
+         */ 
+        public static function loadView($view, $data = [], $mergeData = [], $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadView($view, $data, $mergeData, $encoding);
+        }
+                    /**
+         * Set/Change an option (or array of options) in Dompdf
+         *
+         * @param \Barryvdh\DomPDF\array<string,  mixed>|string $attribute
+         * @param null|mixed $value
+         * @return \Barryvdh\DomPDF\PDF 
+         * @static 
+         */ 
+        public static function setOption($attribute, $value = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOption($attribute, $value);
+        }
+                    /**
+         * Replace all the Options from DomPDF
+         *
+         * @deprecated Use setOption to override individual options.
+         * @param \Barryvdh\DomPDF\array<string,  mixed> $options
+         * @static 
+         */ 
+        public static function setOptions($options)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOptions($options);
+        }
+                    /**
+         * Output the PDF as a string.
+         * 
+         * The options parameter controls the output. Accepted options are:
+         * 
+         * 'compress' = > 1 or 0 - apply content stream compression, this is
+         *    on (1) by default
+         *
+         * @param \Barryvdh\DomPDF\array<string,  int> $options
+         * @return string The rendered PDF as string
+         * @static 
+         */ 
+        public static function output($options = [])
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->output($options);
+        }
+                    /**
+         * Save the PDF to a file
+         *
+         * @static 
+         */ 
+        public static function save($filename)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->save($filename);
+        }
+                    /**
+         * Make the PDF downloadable by the user
+         *
+         * @static 
+         */ 
+        public static function download($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->download($filename);
+        }
+                    /**
+         * Return a response with the PDF to show in the browser
+         *
+         * @static 
+         */ 
+        public static function stream($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->stream($filename);
+        }
+                    /**
+         * Render the PDF
+         *
+         * @static 
+         */ 
+        public static function render()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->render();
+        }
+                    /**
+         * 
+         *
+         * @param array<string> $pc
+         * @static 
+         */ 
+        public static function setEncryption($password, $ownerpassword = '', $pc = [])
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setEncryption($password, $ownerpassword, $pc);
+        }
+         
+    }
+            /**
+     * 
+     *
+     * @method static \Barryvdh\DomPDF\PDF setPaper($paper, $orientation = 'portrait')
+     * @method static \Barryvdh\DomPDF\PDF setBaseHost(string $baseHost)
+     * @method static \Barryvdh\DomPDF\PDF setProtocol(string $protocol)
+     * @method static \Barryvdh\DomPDF\PDF setHttpContext($httpContext)
+     * @method static \Barryvdh\DomPDF\PDF setCallbacks(array $callbacks)
+     */ 
+        class Pdf {
+                    /**
+         * Get the DomPDF instance
+         *
+         * @return \Dompdf\Dompdf 
+         * @static 
+         */ 
+        public static function getDomPDF()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->getDomPDF();
+        }
+                    /**
+         * Show or hide warnings
+         *
+         * @static 
+         */ 
+        public static function setWarnings($warnings)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setWarnings($warnings);
+        }
+                    /**
+         * Load a HTML string
+         *
+         * @param string|null $encoding Not used yet
+         * @static 
+         */ 
+        public static function loadHTML($string, $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadHTML($string, $encoding);
+        }
+                    /**
+         * Load a HTML file
+         *
+         * @static 
+         */ 
+        public static function loadFile($file)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadFile($file);
+        }
+                    /**
+         * Add metadata info
+         *
+         * @param \Barryvdh\DomPDF\array<string,  string> $info
+         * @return static 
+         * @static 
+         */ 
+        public static function addInfo($info)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->addInfo($info);
+        }
+                    /**
+         * Load a View and convert to HTML
+         *
+         * @param \Barryvdh\DomPDF\array<string,  mixed> $data
+         * @param \Barryvdh\DomPDF\array<string,  mixed> $mergeData
+         * @param string|null $encoding Not used yet
+         * @static 
+         */ 
+        public static function loadView($view, $data = [], $mergeData = [], $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadView($view, $data, $mergeData, $encoding);
+        }
+                    /**
+         * Set/Change an option (or array of options) in Dompdf
+         *
+         * @param \Barryvdh\DomPDF\array<string,  mixed>|string $attribute
+         * @param null|mixed $value
+         * @return \Barryvdh\DomPDF\PDF 
+         * @static 
+         */ 
+        public static function setOption($attribute, $value = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOption($attribute, $value);
+        }
+                    /**
+         * Replace all the Options from DomPDF
+         *
+         * @deprecated Use setOption to override individual options.
+         * @param \Barryvdh\DomPDF\array<string,  mixed> $options
+         * @static 
+         */ 
+        public static function setOptions($options)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOptions($options);
+        }
+                    /**
+         * Output the PDF as a string.
+         * 
+         * The options parameter controls the output. Accepted options are:
+         * 
+         * 'compress' = > 1 or 0 - apply content stream compression, this is
+         *    on (1) by default
+         *
+         * @param \Barryvdh\DomPDF\array<string,  int> $options
+         * @return string The rendered PDF as string
+         * @static 
+         */ 
+        public static function output($options = [])
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->output($options);
+        }
+                    /**
+         * Save the PDF to a file
+         *
+         * @static 
+         */ 
+        public static function save($filename)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->save($filename);
+        }
+                    /**
+         * Make the PDF downloadable by the user
+         *
+         * @static 
+         */ 
+        public static function download($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->download($filename);
+        }
+                    /**
+         * Return a response with the PDF to show in the browser
+         *
+         * @static 
+         */ 
+        public static function stream($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->stream($filename);
+        }
+                    /**
+         * Render the PDF
+         *
+         * @static 
+         */ 
+        public static function render()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->render();
+        }
+                    /**
+         * 
+         *
+         * @param array<string> $pc
+         * @static 
+         */ 
+        public static function setEncryption($password, $ownerpassword = '', $pc = [])
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setEncryption($password, $ownerpassword, $pc);
+        }
+         
+    }
+     
+}
+
+    namespace Sentry\Laravel { 
+            /**
+     * 
+     *
+     * @see \Sentry\State\HubInterface
+     */ 
+        class Facade {
+                    /**
+         * Gets the client bound to the top of the stack.
+         *
+         * @static 
+         */ 
+        public static function getClient()
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->getClient();
+        }
+                    /**
+         * Gets the ID of the last captured event.
+         *
+         * @static 
+         */ 
+        public static function getLastEventId()
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->getLastEventId();
+        }
+                    /**
+         * Creates a new scope to store context information that will be layered on
+         * top of the current one. It is isolated, i.e. all breadcrumbs and context
+         * information added to this scope will be removed once the scope ends. Be
+         * sure to always remove this scope with {@see Hub::popScope} when the
+         * operation finishes or throws.
+         *
+         * @static 
+         */ 
+        public static function pushScope()
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->pushScope();
+        }
+                    /**
+         * Removes a previously pushed scope from the stack. This restores the state
+         * before the scope was pushed. All breadcrumbs and context information added
+         * since the last call to {@see Hub::pushScope} are discarded.
+         *
+         * @static 
+         */ 
+        public static function popScope()
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->popScope();
+        }
+                    /**
+         * Creates a new scope with and executes the given operation within. The scope
+         * is automatically removed once the operation finishes or throws.
+         *
+         * @param callable $callback The callback to be executed
+         * @return mixed|void The callback's return value, upon successful execution
+         * @psalm-template T
+         * @psalm-param callable(Scope): T $callback
+         * @psalm-return T
+         * @static 
+         */ 
+        public static function withScope($callback)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->withScope($callback);
+        }
+                    /**
+         * Calls the given callback passing to it the current scope so that any
+         * operation can be run within its context.
+         *
+         * @param callable $callback The callback to be executed
+         * @static 
+         */ 
+        public static function configureScope($callback)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->configureScope($callback);
+        }
+                    /**
+         * Binds the given client to the current scope.
+         *
+         * @param \Sentry\ClientInterface $client The client
+         * @static 
+         */ 
+        public static function bindClient($client)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->bindClient($client);
+        }
+                    /**
+         * Captures a message event and sends it to Sentry.
+         *
+         * @param string $message The message
+         * @param \Sentry\Severity|null $level The severity level of the message
+         * @param \Sentry\EventHint|null $hint Object that can contain additional information about the event
+         * @static 
+         */ 
+        public static function captureMessage($message, $level = null, $hint = null)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->captureMessage($message, $level, $hint);
+        }
+                    /**
+         * Captures an exception event and sends it to Sentry.
+         *
+         * @param \Throwable $exception The exception
+         * @param \Sentry\EventHint|null $hint Object that can contain additional information about the event
+         * @static 
+         */ 
+        public static function captureException($exception, $hint = null)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->captureException($exception, $hint);
+        }
+                    /**
+         * Captures a new event using the provided data.
+         *
+         * @param \Event $event The event being captured
+         * @param \Sentry\EventHint|null $hint May contain additional information about the event
+         * @static 
+         */ 
+        public static function captureEvent($event, $hint = null)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->captureEvent($event, $hint);
+        }
+                    /**
+         * Captures an event that logs the last occurred error.
+         *
+         * @param \Sentry\EventHint|null $hint Object that can contain additional information about the event
+         * @static 
+         */ 
+        public static function captureLastError($hint = null)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->captureLastError($hint);
+        }
+                    /**
+         * Records a new breadcrumb which will be attached to future events. They
+         * will be added to subsequent events to provide more context on user's
+         * actions prior to an error or crash.
+         *
+         * @param \Sentry\Breadcrumb $breadcrumb The breadcrumb to record
+         * @return bool Whether the breadcrumb was actually added to the current scope
+         * @static 
+         */ 
+        public static function addBreadcrumb($breadcrumb)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->addBreadcrumb($breadcrumb);
+        }
+                    /**
+         * Gets the integration whose FQCN matches the given one if it's available on the current client.
+         *
+         * @param string $className The FQCN of the integration
+         * @psalm-template T of IntegrationInterface
+         * @psalm-param class-string<T> $className
+         * @psalm-return T|null
+         * @static 
+         */ 
+        public static function getIntegration($className)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->getIntegration($className);
+        }
+                    /**
+         * Starts a new `Transaction` and returns it. This is the entry point to manual
+         * tracing instrumentation.
+         * 
+         * A tree structure can be built by adding child spans to the transaction, and
+         * child spans to other spans. To start a new child span within the transaction
+         * or any span, call the respective `startChild()` method.
+         * 
+         * Every child span must be finished before the transaction is finished,
+         * otherwise the unfinished spans are discarded.
+         * 
+         * The transaction must be finished with a call to its `finish()` method, at
+         * which point the transaction with all its finished child spans will be sent to
+         * Sentry.
+         *
+         * @param \Sentry\State\array<string,  mixed> $customSamplingContext Additional context that will be passed to the {@see SamplingContext}
+         * @param \Sentry\Tracing\TransactionContext $context Properties of the new transaction
+         * @param \Sentry\State\array<string,  mixed> $customSamplingContext Additional context that will be passed to the {@see SamplingContext}
+         * @static 
+         */ 
+        public static function startTransaction($context, $customSamplingContext = [])
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->startTransaction($context, $customSamplingContext);
+        }
+                    /**
+         * Returns the transaction that is on the Hub.
+         *
+         * @static 
+         */ 
+        public static function getTransaction()
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->getTransaction();
+        }
+                    /**
+         * Sets the span on the Hub.
+         *
+         * @param \Sentry\Tracing\Span|null $span The span
+         * @static 
+         */ 
+        public static function setSpan($span)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->setSpan($span);
+        }
+                    /**
+         * Returns the span that is on the Hub.
+         *
+         * @static 
+         */ 
+        public static function getSpan()
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->getSpan();
+        }
+         
+    }
+     
+}
+
+    namespace Spatie\LaravelIgnition\Facades { 
             /**
      * 
      *
@@ -21903,6 +22557,9 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
+            class Pdf extends \Barryvdh\DomPDF\Facade\Pdf {}
+            class PDF extends \Barryvdh\DomPDF\Facade\Pdf {}
+            class Sentry extends \Sentry\Laravel\Facade {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
      
 }

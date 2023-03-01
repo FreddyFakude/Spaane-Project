@@ -14,11 +14,11 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (str_contains($request->url(), 'employee') ) {
-            return route('employee.login.form');
+        if (str_contains($request->url(), 'company') ) {
+            return route('company.login.form');
         }
         else  {
-            return route('company.login.form');
+            return route('employee.login.form');
         }
     }
 }
