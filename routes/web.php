@@ -41,8 +41,9 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
     Route::get('/dashboard/chat/start/{employee}', [\App\Http\Controllers\Company\CompanyChatController::class, 'startChat'])->name('dashboard.company.chat.new');
     Route::get('/dashboard/chat/{chat:hash}/messages', [\App\Http\Controllers\Company\CompanyChatController::class, 'loadMessages'])->name('dashboard.company.chat.employee.messages');
     Route::post('/dashboard/chat/{chat:hash}/send-message', [\App\Http\Controllers\Company\CompanyChatController::class, 'SendMessages'])->name('dashboard.company.chat.send.messages');
-//    Route::get('/dashboard/profile', [\App\Http\Controllers\Business\ProfileController::class, 'profile'])->name('dashboard.business.profile');
-//    Route::post('/dashboard/profile/save', [\App\Http\Controllers\Business\ProfileController::class, 'updateProfile'])->name('dashboard.business.profile.save');
+    Route::get('/dashboard/payroll', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'index'])->name('dashboard.business.payroll.index');
+    Route::post('/dashboard/payroll/store', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'store'])->name('dashboard.business.payroll.store');
+    Route::get('/dashboard/payroll/{company_payslip:hash}', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'show'])->name('dashboard.business.payroll.show');
 });
 
 

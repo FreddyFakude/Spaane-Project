@@ -22,7 +22,7 @@
             {{--            </div>--}}
             <div class="col-md-12 col-xl-12">
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn-lg btn-primary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
+                    <button type="button" class="btn-lg btn-primary mr-2" data-toggle="modal" data-target="#modal-slideright">Create payslip</button>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
                             <span aria-hidden="true">×</span>
                         </button>
                         <h3 class="alert-heading font-size-h4 font-w400">Success</h3>
-                        <p class="mb-0">Your invite has been sent</p>
+                        <p class="mb-0">Payslip created successfully</p>
                     </div>
                 @endif
                 @if ($errors->any())
@@ -51,12 +51,7 @@
                 <table class="table table-striped table-vcenter active js-table-checkable js-table-checkable-enabled tab-pane" id="btabs-internal">
                     <thead>
                     <tr>
-                        <th class="text-center" style="width: 70px;">
-                            <label class="css-control css-control-primary css-checkbox py-0">
-                                <input type="checkbox" class="css-control-input" id="check-all" name="check-all">
-                                <span class="css-control-indicator"></span>
-                            </label>
-                        </th>
+                        <th>Employee</th>
                         <th>Reference</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Basic Salary</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Commission</th>
@@ -66,22 +61,21 @@
                     @empty(!$payslips)
                         @foreach($payslips as $payslip)
                             <tr>
-                                <td class="text-center">
-                                    <label class="css-control css-control-primary css-checkbox">
-                                        <input type="checkbox" class="css-control-input" id="row_1" name="row_1">
-                                        <span class="css-control-indicator"></span>
-                                    </label>
+                                <td>
+                                    <p class="font-w600 mb-10">
+                                        {{ $payslip->employee->name }}
+                                    </p>
                                 </td>
                                 <td>
                                     <p class="font-w600 mb-10">
-                                        <a href="{{ route('dashboard.company.employee.view', [$employee]) }}">{{ $payslip->reference }}</a>
+                                        <a href="{{ route('dashboard.business.payroll.show', [$payslip->hash]) }}">{{ $payslip->reference_number }}</a>
                                     </p>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted">{{ $employee->role }}</em>
+                                    <em class="text-muted">{{ $payslip->basic_salary }}</em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted">  {{ $employee->status }} </em>
+                                    <em class="text-muted">  {{ $payslip->commission }} </em>
                                 </td>
                             </tr>
                         @endforeach
@@ -135,45 +129,50 @@
     <div class="modal fade" id="modal-slideright" tabindex="-1" role="dialog" aria-labelledby="modal-slideright" aria-hidden="true">
         <div class="modal-dialog modal-dialog-slideright modal-lg" role="document">
             <div class="modal-content">
-                <form action="{{ route('dashboard.business.employee.invite')  }}" method="post">
+                <form action="{{ route('dashboard.business.payroll.store')  }}" method="post">
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-content">
                             <div class="d-flex justify-content-center my-20">
                                 <div class="mb-20">
-                                    <h2>Add new employee</h2>
+                                    <h2>Payslip</h2>
                                 </div>
                             </div>
                             <div class="row px-10 mt-30">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="pl-0" for="example-text-input">First Name</label>
-                                        <input type="text" class="form-control bg-grey"  name="first_name">
+                                        <label class="pl-0" for="example-text-input">Basic Salary</label>
+                                        <input type="number" class="form-control bg-grey"  name="basic_salary">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="pl-0" for="example-text-input">Last Name</label>
-                                        <input type="text" class="form-control" id="example-text-input" name="last_name">
+                                        <label class="pl-0" for="example-text-input">Commission(amount)</label>
+                                        <input type="number" class="form-control" id="example-text-input" name="commission">
                                     </div>
                                 </div>
                             </div>
                             <div class="row px-10">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="pl-0" for="example-text-input">Email</label>
-                                        <input type="email" class="form-control bg-grey" id="example-text-input" name="email">
+                                        <label class="pl-0" for="example-text-input">Reimbursement</label>
+                                        <input type="number" class="form-control bg-grey" id="example-text-input" name="reimbursement">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="col-12 pl-0" for="example-text-input">Job title</label>
-                                        <input type="text" class="form-control" id="example-text-input" name="position" >
+                                        <label class="col-12 pl-0" for="example-text-input">Travel Allowance</label>
+                                        <input type="number" class="form-control" id="example-text-input" name="travel_allowance">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="col-12 pl-0" for="example-text-input">Phone number</label>
-                                        <input type="tel" class="form-control" id="example-text-input" name="mobile_number" >
+                                        <label class="col-12 pl-0" for="example-text-input">Employee</label>
+                                        <select class="form-control" name="employee_id">
+                                            <option value="">Select Employee</option>
+                                            @foreach($employees as $employee)
+                                                <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                                            @endforeach
+                                           </select>
                                     </div>
                                 </div>
                             </div>

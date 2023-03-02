@@ -18,11 +18,14 @@ return new class extends Migration
             $table->foreignId('company_id')->constrained('companies');
             $table->foreignId('employee_id')->constrained('employees');
             $table->string('reference_number')->unique();
+            $table->string('hash')->unique()->index();
+            $table->string('file_name');
+            $table->string('file_path')->nullable();
             $table->double('commission');
             $table->double('basic_salary');
             $table->double('reimbursement');
             $table->double('travel_allowance');
-            $table->double('other');
+            $table->double('other')->default(0);
             $table->timestamps();
         });
     }
