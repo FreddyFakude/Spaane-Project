@@ -192,7 +192,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input"> Accounnt Number</label>
+                                <label class="pl-0" for="example-text-input"> Account Number</label>
                                 <input type="text" class="form-control" id="example-text-input" name="account" value="">
                             </div>
                         </div>
@@ -215,24 +215,39 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Position</label>
-                                <input type="text" class="form-control" id="example-text-input" name="position" value="{{ $talent->professional_experience?->role }}">
+                                <label class="pl-0" for="example-text-input">Department</label>
+                                <input type="text" class="form-control"  name="depart" value="">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Organisation Name</label>
-                                <input type="text" class="form-control" id="example-text-input" name="organisation_name" value="{{ $talent->professional_experience?->organisation_name }}">
+                                <label class="pl-0" for="example-text-input">Contract Type</label>
+                                <select class="js-select2 form-control" id="example-select2" name="example-select2" style="width: 100%;" data-placeholder="Choose leave policy">
+                                    <option value="0">Choose contract type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                    <option value="1">Permenant</option>
+                                    <option value="2">Temporary</option>
+                                    <option value="3">Internship</option>
+                                    <option value="4">Part-time</option>
+                                    <option value="5">Learnership</option>
+                                    <option value="6">Fixed-term</option>
+                                    <option value="6">Independant contractor</option>
+                                </select>
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Job Title</label>
+                                <input type="text" class="form-control" id="example-text-input" name="position" value="{{ $talent->professional_experience?->role }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row px-10 mt-30">
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Work Email</label>
                                 <input type="email" class="form-control" id="example-text-input" name="work_email" value="{{ $talent->email }}">
                             </div>
                         </div>
-                    </div>
-                    <div class="row px-10 mt-30">
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Work Number</label>

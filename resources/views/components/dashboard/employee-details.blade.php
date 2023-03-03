@@ -49,7 +49,7 @@
             <span class="badge badge-secondary mr-10 mb-10">Religious - 4 days</span>
             <div class="col-md-12">
                 <select class="js-select2 form-control" id="example-select2" name="example-select2" style="width: 100%;" data-placeholder="Choose leave policy">
-                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                    <option value="0">Choose Policy Leave</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                     <option value="1">Annual leave</option>
                     <option value="2">Maternity leave</option>
                     <option value="3">Sick leave</option>
