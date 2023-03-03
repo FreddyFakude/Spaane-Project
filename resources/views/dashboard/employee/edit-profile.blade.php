@@ -52,25 +52,25 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">First Name</label>
-                                <input type="text" class="form-control bg-light-grey"  name="first_name" value="{{ $talent->first_name }}">
+                                <input type="text" class="form-control"  name="first_name" value="{{ $talent->first_name }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Last Name</label>
-                                <input type="text" class="form-control bg-light-grey" id="example-text-input" name="last_name" value="{{ $talent->last_name }}">
+                                <input type="text" class="form-control" id="example-text-input" name="last_name" value="{{ $talent->last_name }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Date of birth</label>
-                                <input type="date" class="form-control bg-light-grey" id="example-text-input" name="dob" value="{{ $talent->dob  }}">
+                                <input type="date" class="form-control" id="example-text-input" name="dob" value="{{ $talent->dob  }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Nationality</label>
-                                <input type="text" class="form-control bg-light-grey" id="example-text-input" name="nationality" value="{{ $talent->nationality  }}" required>
+                                <input type="text" class="form-control" id="example-text-input" name="nationality" value="{{ $talent->nationality  }}" required>
                             </div>
                         </div>
                     </div>
@@ -78,13 +78,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">ID/Passport Number</label>
-                                <input type="text" class="form-control bg-light-grey"  name="id_or_passport" value="{{ $talent->id_or_password  }}" required>
+                                <input type="text" class="form-control"  name="id_or_passport" value="{{ $talent->id_or_password  }}" required>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Gender</label>
-                                <select name="gender" id="" class="form-control bg-light-grey">
+                                <select name="gender" id="" class="form-control">
                                     <option value="{{ $talent->gender  }}">{{ $talent->gender  }}</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -94,7 +94,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Marital status</label>
-                                <select name="marital_status" id="" class="form-control bg-light-grey">
+                                <select name="marital_status" id="" class="form-control">
                                     <option value="{{ $talent->marital_status  }}">{{ $talent->marital_status  }}</option>
                                     <option value="Single">Single</option>
                                     <option value="Divorced">Divorced</option>
@@ -105,7 +105,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Emergency Cell Phone Number</label>
-                                <input type="tel" class="form-control bg-light-grey"  name="emergency_phone_number" value="{{ $talent->emergency_phone_number }}">
+                                <input type="tel" class="form-control"  name="emergency_phone_number" value="{{ $talent->emergency_phone_number }}">
                             </div>
                         </div>
                     </div>
@@ -113,25 +113,25 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Children</label>
-                                <input type="text" class="form-control bg-light-grey"  name="number_of_children" value="{{ $talent->number_of_children }}">
+                                <input type="text" class="form-control"  name="number_of_children" value="{{ $talent->number_of_children }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Cell Phone Number</label>
-                                <input type="tel" class="form-control bg-light-grey" id="example-text-input" name="mobile_number" value="{{ $talent->mobile_number }}">
+                                <input type="tel" class="form-control" id="example-text-input" name="mobile_number" value="{{ $talent->mobile_number }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Home Phone number</label>
-                                <input type="tel" class="form-control bg-light-grey" id="example-text-input" name="home_phone_number" value="{{ $talent->home_phone_number }}">
+                                <input type="tel" class="form-control" id="example-text-input" name="home_phone_number" value="{{ $talent->home_phone_number }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Personal Email</label>
-                                <input type="email" class="form-control bg-light-grey" id="example-text-input" name="personal_email" value="{{ $talent->personal_email }}">
+                                <input type="email" class="form-control" id="example-text-input" name="personal_email" value="{{ $talent->personal_email }}">
                             </div>
                         </div>
                     </div>
@@ -139,25 +139,25 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Street Number</label>
-                                <input type="text" class="form-control bg-light-grey" id="example-text-input" name="street_number" value="{{ $talent->address?->street_number }}" required>
+                                <input type="text" class="form-control" id="example-text-input" name="street_number" value="{{ $talent->address?->street_number }}" required>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Street name</label>
-                                <input type="text" class="form-control bg-light-grey" id="example-text-input" name="street_name" value="{{ $talent->address?->street_name }}" required>
+                                <input type="text" class="form-control" id="example-text-input" name="street_name" value="{{ $talent->address?->street_name }}" required>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Suburb</label>
-                                <input type="text" class="form-control bg-light-grey" id="example-text-input" name="suburb" value="{{ $talent->address?->suburb }}">
+                                <input type="text" class="form-control" id="example-text-input" name="suburb" value="{{ $talent->address?->suburb }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">City</label>
-                                <input type="text" class="form-control bg-light-grey" id="example-text-input" value="{{ $talent->address?->city }}" name="city" required>
+                                <input type="text" class="form-control" id="example-text-input" value="{{ $talent->address?->city }}" name="city" required>
                             </div>
                         </div>
                     </div>
@@ -165,16 +165,39 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Zip Code</label>
-                                <input type="text" class="form-control bg-light-grey" id="example-text-input" name="zip_code" value="{{ $talent->address?->zip_code }}">
+                                <input type="text" class="form-control" id="example-text-input" name="zip_code" value="{{ $talent->address?->zip_code }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">State</label>
-                                <input type="text" class="form-control bg-light-grey" id="example-text-input" name="state" value="{{ $talent->address?->state }}">
+                                <input type="text" class="form-control" id="example-text-input" name="state" value="{{ $talent->address?->state }}">
                             </div>
                         </div>
                     </div>
+                    <div class="my-30">
+                        <hr>
+                    </div>
+                    <div class="d-flex justify-content-start mt-20">
+                        <div>
+                            <h4>Banking Details</h4>
+                        </div>
+                    </div>
+                    <div class="row px-10 mt-30">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Bank Name</label>
+                                <input type="text" class="form-control"  name="bank_name" value=""required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input"> Accounnt Number</label>
+                                <input type="text" class="form-control" id="example-text-input" name="account" value="">
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="my-30">
                         <hr>
                     </div>
@@ -187,25 +210,25 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Employment Start Date</label>
-                                <input type="date" class="form-control bg-light-grey"  name="employment_start_date" value="{{ $talent->professional_experience?->start_date }}" required>
+                                <input type="date" class="form-control"  name="employment_start_date" value="{{ $talent->professional_experience?->start_date }}" required>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Position</label>
-                                <input type="text" class="form-control bg-light-grey" id="example-text-input" name="position" value="{{ $talent->professional_experience?->role }}">
+                                <input type="text" class="form-control" id="example-text-input" name="position" value="{{ $talent->professional_experience?->role }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Organisation Name</label>
-                                <input type="text" class="form-control bg-light-grey" id="example-text-input" name="organisation_name" value="{{ $talent->professional_experience?->organisation_name }}">
+                                <input type="text" class="form-control" id="example-text-input" name="organisation_name" value="{{ $talent->professional_experience?->organisation_name }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Work Email</label>
-                                <input type="email" class="form-control bg-light-grey" id="example-text-input" name="work_email" value="{{ $talent->email }}">
+                                <input type="email" class="form-control" id="example-text-input" name="work_email" value="{{ $talent->email }}">
                             </div>
                         </div>
                     </div>
@@ -213,44 +236,44 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Work Number</label>
-                                <input type="text" class="form-control bg-light-grey"  name="office_phone_number" value="{{ $talent->office_phone_number }}">
+                                <input type="text" class="form-control"  name="office_phone_number" value="{{ $talent->office_phone_number }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Employee Tax Number</label>
-                                <input type="text" class="form-control bg-light-grey" id="example-text-input" name="tax_number" value="{{ $talent->tax_number }}">
+                                <input type="text" class="form-control" id="example-text-input" name="tax_number" value="{{ $talent->tax_number }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Driving License Number</label>
-                                <input type="text" class="form-control bg-light-grey" id="example-text-input" name="driving_license_number" value="{{ $talent->driving_license_number }}">
+                                <input type="text" class="form-control" id="example-text-input" name="driving_license_number" value="{{ $talent->driving_license_number }}">
                             </div>
                         </div>
                     </div>
-                    {{--                    <div class="my-30">--}}
-                    {{--                        <hr>--}}
-                    {{--                    </div>--}}
-                    {{--                    <div class="d-flex justify-content-start mt-20">--}}
-                    {{--                        <div>--}}
-                    {{--                            <h4>Management</h4>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
-                    {{--                    <div class="row px-10 mt-30">--}}
-                    {{--                        <div class="col-md-3">--}}
-                    {{--                            <div class="form-group">--}}
-                    {{--                                <label class="pl-0" for="example-text-input">Direct Manager</label>--}}
-                    {{--                                <input type="text" class="form-control bg-light-grey"  name="direct_manager">--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
-                    {{--                        <div class="col-md-3">--}}
-                    {{--                            <div class="form-group">--}}
-                    {{--                                <label class="pl-0" for="example-text-input">Onboarding Mentor</label>--}}
-                    {{--                                <input type="text" class="form-control bg-light-grey" id="example-text-input" name="onboarding_mentor">--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
+                    <div class="my-30">
+                        <hr>
+                    </div>
+                    <div class="d-flex justify-content-start mt-20">
+                        <div>
+                            <h4>Management</h4>
+                        </div>
+                    </div>
+                    <div class="row px-10 mt-30">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Direct Manager</label>
+                                <input type="text" class="form-control"  name="direct_manager">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Onboarding Mentor</label>
+                                <input type="text" class="form-control" id="example-text-input" name="onboarding_mentor">
+                            </div>
+                        </div>
+                    </div>
                     <div class="my-30">
                         <hr>
                     </div>
@@ -263,13 +286,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Qualification/Certification</label>
-                                <input type="text" class="form-control bg-light-grey"  name="qualification" value="{{ $talent->education?->qualification }}">
+                                <input type="text" class="form-control"  name="qualification" value="{{ $talent->education?->qualification }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Completion Date</label>
-                                <input type="date" class="form-control bg-light-grey" id="example-text-input" name="qualification_end_date" value="{{ $talent->education?->qualification_end_date }}">
+                                <input type="date" class="form-control" id="example-text-input" name="qualification_end_date" value="{{ $talent->education?->qualification_end_date }}">
                             </div>
                         </div>
                     </div>
@@ -303,7 +326,7 @@
                         <div class="col-md-8">
                             @csrf
                             <div class="form-group">
-                                <button class="btn btn-primary">Submit</button>
+                                <button class="btn btn-primary">Update</button>
                             </div>
                         </div>
                     </div>

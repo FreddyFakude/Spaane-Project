@@ -54,3 +54,6 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
     Route::post('/dashboard/profile/save', [\App\Http\Controllers\Employee\ProfileController::class, 'saveProfile'])->name('dashboard.talent.profile.save');
 });
 
+//routes by Remmone
+Route::view('/company/leave/', 'dashboard.company.leave')->name('dashboard.company.leave');
+

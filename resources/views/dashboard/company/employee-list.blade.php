@@ -58,13 +58,14 @@
                                 <span class="css-control-indicator"></span>
                             </label>
                         </th>
-                        <th>Employee</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Job title</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Employee Status</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Leave balance</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Absent Days</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Chat</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Profile</th>
+                        <th class="d-none d-sm-table-cell" style="width: 20%;">Employee</th>
+                        <th class="d-none d-sm-table-cell" style="width: 10%;">Job title</th>
+                        <th class="d-none d-sm-table-cell" style="width: 10%;">Department</th>
+                        <th class="d-none d-sm-table-cell" style="width: 10%;">Direct Manger</th>
+                        <th class="d-none d-sm-table-cell" style="width: 10%;">Contract type</th>
+                        <th class="d-none d-sm-table-cell" style="width: 10%;">Total Leave</th>
+                        <th class="d-none d-sm-table-cell" style="width: 10%;">Absent Days</th>
+                        <th class="d-none d-sm-table-cell" style="width: 10%;">WhatsApp</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -79,14 +80,20 @@
                                 </td>
                                 <td>
                                     <p class="font-w600 mb-10">
-                                        <a href="{{ route('dashboard.company.employee.view', [$employee]) }}">{{ $employee->name }}</a>
+                                        <a href="{{ route('dashboard.company.chat.new', [$employee]) }}">{{ $employee->name }} {{ $employee->last_name }}</a>
                                     </p>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <em class="text-muted">{{ $employee->role }}</em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted">  {{ $employee->status }} </em>
+                                    <em class="text-muted">  Engineering </em>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <em class="text-muted"> James Nako</em>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <em class="text-muted">  Permenant </em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <em class="text-muted"> {{ $employee->current_leave_days}} days </em>
@@ -94,11 +101,8 @@
                                 <td class="d-none d-sm-table-cell">
                                     <em class="text-muted"> 5 days</em>
                                 </td>
-                                <td class="d-none d-sm-table-cell" style="width: 40%;">
-                                    <a href="{{ route('dashboard.company.chat.new', [$employee->id]) }}"><i class="si si-bubble fa-2x"></i></a>
-                                </td>
-                                <td class="d-none d-sm-table-cell" style="width: 40%;">
-                                    <a href="{{ route('dashboard.company.chat.new', [$employee->id]) }}"><i class="si si-pencil fa-2x"></i></a>
+                                <td class="d-none d-sm-table-cell">
+                                    <em class="text-muted"> Active</em>
                                 </td>
                             </tr>
                         @endforeach
