@@ -48,76 +48,54 @@
                 @endif
             </div>
             <div class="block-content tab-content">
-                <table class="table table-striped table-vcenter active js-table-checkable js-table-checkable-enabled tab-pane" id="btabs-internal">
+                <table class="js-table-sections table table-hover js-table-sections-enabled" id="btabs-internal">
                     <thead>
-                    <tr>
-                        <th>Employee</th>
-                        <th>Reference</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Basic Salary</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Commission</th>
-                    </tr>
+                        <tr>
+                            <th style="width: 30px;"></th>
+                            <th style="width: 20%;">Employee</th>
+                            <th class="d-none d-sm-table-cell" style="width: 20%;">Basic Salary</th>
+                            <th class="d-none d-sm-table-cell" style="width: 20%;">Commission</th>
+                            <th class="d-none d-sm-table-cell" style="width: 30%;">Travel Allowance</th>
+                            <th class="d-none d-sm-table-cell" style="width: 20%;">Reimbursement</th>
+                            <th style="width: 10%;">Reference</th>
+                            <th>Action</th>
+                        </tr>
                     </thead>
-                    <tbody>
-                    @empty(!$payslips)
-                        @foreach($payslips as $payslip)
+                    <tbody class="js-table-sections-header">
+                    @empty(!$employees)
+                        @foreach($employees as $employee)
                             <tr>
+                                <td class="text-center">
+                                    <i class="fa fa-angle-right"></i>
+                                </td>
                                 <td>
                                     <p class="font-w600 mb-10">
-                                        {{ $payslip->employee->name }}
+                                        {{ $employee->name }}
                                     </p>
                                 </td>
                                 <td>
                                     <p class="font-w600 mb-10">
-                                        <a href="{{ route('dashboard.business.payroll.show', [$payslip->hash]) }}">{{ $payslip->reference_number }}</a>
+                                        {{ $employee->payslips->where('date', $date)->first()?->basic_salary }}
                                     </p>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted">{{ $payslip->basic_salary }}</em>
+                                    <em class="text-muted"> {{ $employee->payslips->where('date', $date)->first()?->commission }}</em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted">  {{ $payslip->commission }} </em>
+                                    <em class="text-muted"> {{ $employee->payslips->where('date', $date)->first()?->travel_allowance }}</em>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <em class="text-muted"> {{ $employee->payslips->where('date', $date)->first()?->reimbursement }}</em>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()?->reference_number }} </em>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <button type="button" class="btn-lg btn-primary mr-2" data-toggle="modal" data-target="#modal-slideright">Payslip</button>
                                 </td>
                             </tr>
                         @endforeach
                     @endempty
-                    </tbody>
-                </table>
-                <table class="js-table-checkable table table-hover js-table-checkable-enabled tab-pane" id="btabs-external">
-                    <thead>
-                    <tr>
-                        <th class="text-center" style="width: 70px;">
-                            <label class="css-control css-control-primary css-checkbox py-0">
-                                <input type="checkbox" class="css-control-input" id="check-all" name="check-all">
-                                <span class="css-control-indicator"></span>
-                            </label>
-                        </th>
-                        <th>Employee</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Role</th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{--                    @foreach($employees as $project)--}}
-                    {{--                        @if($project->status > 0)--}}
-                    {{--                            <tr>--}}
-                    {{--                                <td class="text-center">--}}
-                    {{--                                    <label class="css-control css-control-primary css-checkbox">--}}
-                    {{--                                        <input type="checkbox" class="css-control-input" id="row_1" name="row_1">--}}
-                    {{--                                        <span class="css-control-indicator"></span>--}}
-                    {{--                                    </label>--}}
-                    {{--                                </td>--}}
-                    {{--                                <td>--}}
-                    {{--                                    <p class="font-w600 mb-10">{{ $project->talent->name }}</p>--}}
-                    {{--                                </td>--}}
-                    {{--                                <td class="d-none d-sm-table-cell">--}}
-                    {{--                                    <em class="text-muted">{{ $project->talent->role }}</em>--}}
-                    {{--                                </td>--}}
-                    {{--                                <td class="d-none d-sm-table-cell" style="width: 20%;">--}}
-                    {{--                                    <a href="{{ route('dashboard.business.view-talent', [$project->talent->id]) }}" class="btn-primary btn">View employee</a>--}}
-                    {{--                                </td>--}}
-                    {{--                            </tr>--}}
-                    {{--                        @endif--}}
-                    {{--                    @endforeach--}}
                     </tbody>
                 </table>
             </div>
@@ -188,5 +166,13 @@
         </div>
     </div>
     <!-- END Slide Right Modal -->
-
+    @push('extra-js')
+        <script>
+            jQuery(function () {
+                // Init page helpers (Table Tools helper)
+                Codebase.helpers('table-tools');
+            });
+        </script>
+    @endpush
 </x-dashboard.template>
+

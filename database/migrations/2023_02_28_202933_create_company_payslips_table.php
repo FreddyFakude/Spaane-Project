@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('file_name');
             $table->string('file_path')->nullable();
             $table->double('commission');
+            $table->date('date');
             $table->double('basic_salary');
             $table->double('reimbursement');
             $table->double('travel_allowance');

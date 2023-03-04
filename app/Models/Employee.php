@@ -23,7 +23,7 @@ class Employee  extends Authenticatable
 
     public function payslips()
     {
-        return $this->hasMany(Payslip::class);
+        return $this->hasMany(CompanyPayslip::class);
     }
 
     public function address(){
