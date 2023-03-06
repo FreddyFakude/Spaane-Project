@@ -9,8 +9,8 @@
                     <div class="content-header-section sidebar-mini-visible-b">
                         <!-- Logo -->
                         <span class="content-header-item font-w700 font-size-xl float-left animated fadeIn">
-                                <img src="{{ asset('assets/images/teambix-logo-Icon.png') }}" alt="" width="25">
-                                </span>
+                            <img src="{{ asset('assets/images/teambix-logo-Icon.png') }}" alt="" width="25">
+                        </span>
                         <!-- END Logo -->
                     </div>
                     <!-- END Mini Mode -->
@@ -42,25 +42,25 @@
                 <div class="content-side content-side-full mt-20">
                     <ul class="nav-main">
                         <li>
-                            <a  href="{{ route('dashboard.company.index') }}"><i class="si si-grid fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                            <a href="{{ route('dashboard.company.leave') }}"><i class="si si-grid fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                         </li>
                         <li>
                             <a href="{{ route('dashboard.company.employee.list') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Employees</span></a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('dashboard.company.chats') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Chat</span></a>
+                        </li> --}}
+                        <li>
+                            <a href="{{ route('dashboard.company.chats.bulk-messages') }}"><i class="si si-bubble fa-2x"></i><span class="sidebar-mini-hide">Messaging</span></a>
                         </li>
                         <li>
-                            <a href="{{ route('dashboard.company.chats.bulk-messages') }}"><i class="si si-bubble fa-2x"></i><span class="sidebar-mini-hide">Messaginng</span></a>
+                            <a  href="{{ route('dashboard.company.index') }}"><i class="si si-calendar fa-2x"></i><span class="sidebar-mini-hide">Leave</span></a>
                         </li>
                        <li>
-                           <a href="{{ route('dashboard.company.chats') }}"><i class="si si-calendar fa-2x"></i><span class="sidebar-mini-hide">Leave Management</span></a>
-                       </li>
-                       <li>
-                            <a href="{{ route('dashboard.business.payroll.index') }}"><i class="si si-bar-chart fa-2x"></i><span class="sidebar-mini-hide">Payroll</span></a>
+                            <a href="{{ route('dashboard.company.chats') }}"><i class="si si-bar-chart fa-2x"></i><span class="sidebar-mini-hide">Payroll</span></a>
                         </li>
                         <li>
-                            <a href="{{ route('dashboard.company.chats') }}"><i class="si si-clock fa-2x"></i><span class="sidebar-mini-hide">Absentism Management</span></a>
+                            <a href="{{ route('dashboard.company.chats') }}"><i class="si si-clock fa-2x"></i><span class="sidebar-mini-hide">Absentism</span></a>
                         </li>
                     </ul>
                 </div>

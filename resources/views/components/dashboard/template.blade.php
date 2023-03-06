@@ -146,6 +146,10 @@
 <script src="{{ asset('assets/custom/js/core/jquery.slimscroll.min.js')}}"></script>
 <script src="{{ asset('assets/custom/js/core/jquery.scrollLock.min.js')}}"></script>
 <script src="{{ asset('assets/custom/js/core/jquery.appear.min.js')}}"></script>
+ <!-- Page JS Plugins -->
+ <script src="{{ asset('assets/js/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js')}}"></script>
+ <!-- Page JS Code -->
+ <script src="{{ asset('assets/js/pages/be_forms_wizard.js')}}"></script>
 {{--<script src="{{ asset('assets/custom/js/core/jquery.countTo.min.js')}}"></script>--}}
 {{--<script src="{{ asset('assets/custom/js/core/js.cookie.min.js')}}"></script>--}}
 <script src="{{ asset('assets/custom/js/codebase.js')}}"></script>
