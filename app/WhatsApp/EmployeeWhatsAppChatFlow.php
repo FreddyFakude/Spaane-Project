@@ -82,7 +82,11 @@ class EmployeeWhatsAppChatFlow
     }
 
     public function optionOne(){
-        $payslip  = $this->payslipPDFGenerator->generatePDf($this->employee);
+        if (!$payslip = $this->employee->payslips()->latest()->first()){
+            $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.payslip.not.found');
+            return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, sprintf($message->content, Carbon::now()->format('MM')), "App\Models\Company", $this->employee->id, true, true);
+        }
+        $payslip  = $this->payslipPDFGenerator->generatePDf($this->employee, $payslip);
         $payslipPath = $this->payslipPDFGenerator->filePublicUrl($payslip);
         $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.chat');
         return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, sprintf($message->content, $this->employee->first_name), "App\Models\Company", $this->employee->id, true, true, $payslipPath);

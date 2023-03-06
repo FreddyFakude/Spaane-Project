@@ -4,6 +4,7 @@
 namespace App\PDF;
 
 
+use App\Models\CompanyPayslip;
 use App\Models\Employee;
 use App\Models\Payslip;
 use App\Models\ProofOfResidenceRequestCase;
@@ -23,8 +24,8 @@ class PayslipPDFGenerator
         $this->dompdf = App::make('dompdf.wrapper');
     }
 
-    public function downloadPDF(Employee $employee){
-        $filePathWithFileExtension = $this->getPDF($employee);
+    public function downloadPDF(Employee $employee, CompanyPayslip $payslip){
+        $filePathWithFileExtension = $this->getPDF($employee, $payslip);
         $pdf =  Storage::disk('local')->get($filePathWithFileExtension);
         return (new Response($pdf, 200))
             ->header('Content-Type', 'application/pdf');
@@ -34,25 +35,28 @@ class PayslipPDFGenerator
         return asset(str_replace("public", "storage", $filepath));
     }
 
-    public function generatePDf(Employee $employee){
-        return $this->getPDF($employee);
+    public function generatePDf(Employee $employee, CompanyPayslip $payslip){
+        return $this->getPDF($employee, $payslip);
     }
 
-    private function getPDF(Employee $employee)
+    private function getPDF(Employee $employee, $payslip)
     {
-        $filenameWithoutFileExtension = $employee->name;
+        $filenameWithoutFileExtension = strtolower($employee->name) . "_" .$payslip->date;
         $filePathWithFileExtension = $this->filePathWithFileExtension($filenameWithoutFileExtension);
-        if (!$this->fileIsExpiredOrDoesNotExist($employee, $filePathWithFileExtension)){
+        if (!$this->fileIsExpiredOrDoesNotExist($employee, $filePathWithFileExtension, $payslip)){
             return $filePathWithFileExtension;
         }
-        return  $this->createPDFSaveToDBAndDisk($filePathWithFileExtension, $filenameWithoutFileExtension, $employee);
+        return  $this->createPDFSaveToDBAndDisk($filePathWithFileExtension, $filenameWithoutFileExtension, $employee, $payslip);
     }
 
-    private function createPDFSaveToDBAndDisk($filePathWithFileExtension, $filenameWithoutFileExtension, $employee)
+    private function createPDFSaveToDBAndDisk($filePathWithFileExtension, $filenameWithoutFileExtension, $employee, $payslip)
     {
-        $pdf = $this->dompdf->loadView('pdfs.payslip');
-        Storage::put($filePathWithFileExtension, $pdf->output());
-        $this->saveFileToDB($employee, $filenameWithoutFileExtension, $filePathWithFileExtension);
+        $pdf = $this->dompdf->loadView('pdfs.payslip', [
+            'employee' => $employee,
+            'payslip' => $payslip,
+        ]);
+        Storage::disk('local')->put($filePathWithFileExtension, $pdf->output());
+        $this->saveFileToDB($employee, $filenameWithoutFileExtension, $filePathWithFileExtension, $payslip);
         $pdf->download($filenameWithoutFileExtension .'.pdf');
         return $filePathWithFileExtension;
     }
@@ -61,11 +65,9 @@ class PayslipPDFGenerator
 
     }
 
-    private function fileIsExpiredOrDoesNotExist(Employee $employee, $filePathWithFileExtension):bool
+    private function fileIsExpiredOrDoesNotExist(Employee $employee, $filePathWithFileExtension, $payslip):bool
     {
-        $pdf =  $employee->load('payslips');
-        $payslip = $pdf->payslips->last();
-        if (!Storage::disk('local')->exists($filePathWithFileExtension) || (!$payslip)){
+        if (!Storage::disk('local')->exists($filePathWithFileExtension)){
             return true;
         }
         return  $payslip->created_at->diffInMonths() >= 1;
@@ -81,11 +83,12 @@ class PayslipPDFGenerator
         return $this->pdfPath . $filenameWithoutFileExtension . '.pdf';
     }
 
-    private function saveFileToDB($employee, $filenameWithoutFileExtension, $filePathWithFileExtension){
-        return  $save = Payslip::updateOrCreate(
+    private function saveFileToDB($employee, $filenameWithoutFileExtension, $filePathWithFileExtension, $payslip){
+        return  $save = CompanyPayslip::updateOrCreate(
             [
                 'employee_id' => $employee->id,
                 'company_id' => $employee->company_id,
+                'hash' => $payslip->hash
             ],
             [
                 'file_name'=> $filenameWithoutFileExtension . '.pdf',

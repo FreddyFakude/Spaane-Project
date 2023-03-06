@@ -21,6 +21,7 @@ class CompanyPayslipController extends Controller
 
     public function store(Request $request)
     {
+
        $validated =  $request->validate([
             'basic_salary' => 'required|integer',
             'commission' => 'required|integer',

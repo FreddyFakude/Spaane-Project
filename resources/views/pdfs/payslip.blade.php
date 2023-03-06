@@ -7,20 +7,21 @@
             border: 1px solid black;
         }
         table td{line-height:25px;padding-left:15px;}
-        table th{background-color:#fbc403; color:#363636;}
+        table th{background-color: #05b4b4;
+            color:#363636;}
     </style>
 
 </head>
 <body>
 <table border="1">
     <tr height="100px" style="background-color:#363636;color:#ffffff;text-align:center;font-size:24px; font-weight:600;">
-        <td colspan='4'>Daliyaspirants.com Design Limited</td>
+        <td colspan='4'> {{ $employee->company->name }}</td>
     </tr>
     <tr>
-        <th>Personel NO:</th>
-        <td>0123456</td>
+{{--        <th>Personel NO:</th>--}}
+{{--        <td>0123456</td>--}}
         <th>Name</th>
-        <td>Chandra</td>
+        <td>{{ $employee->first_name }}</td>
     </tr>
     <!-----2 row--->
     <tr>

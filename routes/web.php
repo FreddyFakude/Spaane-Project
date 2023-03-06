@@ -18,6 +18,7 @@ Route::redirect('/', '/company/login');
 Route::view('/employee/register/', 'auth.company.login')->name('employee.register');
 Route::get('/employee/login', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'loginForm'])->name('employee.login.form');
 Route::post('/employee/login', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'login'])->name('employee.login');
+Route::post('/talent/logout', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'logout'])->name('employee.logout');
 
 
 Route::view('/company/login', 'auth.company.login')->name('company.login.form');
@@ -47,9 +48,7 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
 //    Route::get('/dashboard/payroll/{company_payslip:hash}', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'show'])->name('dashboard.business.payroll.show');
 });
 
-
-    Route::post('/talent/logout', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'logout'])->name('employee.logout');
-    Route::group(['middleware'=>['auth:employee'], 'prefix'=>'employee'], function (){
+Route::group(['middleware'=>['auth:employee'], 'prefix'=>'employee'], function (){
     Route::get('/dashboard/index', [\App\Http\Controllers\Employee\DashboardController::class, 'index'])->name('dashboard.employee.index');
     Route::get('/dashboard/profile/edit', [\App\Http\Controllers\Employee\ProfileController::class, 'editProfile'])->name('dashboard.employee.profile.edit');
     Route::get('/dashboard/profile/view', [\App\Http\Controllers\Employee\ProfileController::class, 'index'])->name('dashboard.employee.profile.view');
