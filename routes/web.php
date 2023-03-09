@@ -34,6 +34,7 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
     Route::post('/dashboard/employees/view/{employee}/leave', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'updateEmployeeLeaveDay'])->name('dashboard.company.employee.update.leave');
     Route::get('/dashboard/employees/view/{employee}/leave/{hash}/approve', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'approveLeave'])->name('dashboard.company.employee.approve.leave');
     Route::post('/dashboard/employees/invite', [\App\Http\Controllers\Company\EmployeeController::class, 'inviteEmployee'])->name('dashboard.business.employee.invite');
+    Route::post('/dashboard/employee/update/{employee:hash}', [\App\Http\Controllers\Company\EmployeeController::class, 'updateEmployeeProfile'])->name('dashboard.business.employee.update');
 
     Route::get('/dashboard/chats', [\App\Http\Controllers\Company\CompanyChatController::class, 'chats'])->name('dashboard.company.chats');
     Route::get('/dashboard/chats/bulk-messages', [\App\Http\Controllers\Company\CompanyChatController::class, 'bulkMessages'])->name('dashboard.company.chats.bulk-messages');

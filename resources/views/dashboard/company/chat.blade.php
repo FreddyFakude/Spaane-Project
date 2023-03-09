@@ -88,7 +88,7 @@
                         <!-- Step 2 -->
                         <div class="tab-pane" id="wizard-simple2-step2" role="tabpanel">
                             <div class="block-content">
-                                <form action="{{ route('dashboard.talent.profile.save') }}" method="POST">
+                                <form action="{{ route('dashboard.business.employee.update', [$employee->hash]) }}" method="POST">
                                     <div class="d-flex justify-content-start mt-20">
                                         <div>
                                             <h4>Personal information</h4>
@@ -233,25 +233,25 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="pl-0" for="example-text-input">Bank Name</label>
-                                                <input type="text" class="form-control"  name="bank_name" value="{{ $employee->bankAccount->bank_name }}" required>
+                                                <input type="text" class="form-control"  name="bank_name" value="{{ $employee->bankAccount?->bank_name }}" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="pl-0" for="example-text-input">Account Type Name</label>
-                                                <input type="text" class="form-control"  name="account_type" value="{{ $employee->bankAccount->account_type }}" required>
+                                                <input type="text" class="form-control"  name="account_type" value="{{ $employee->bankAccount?->account_type }}" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="pl-0" for="example-text-input">Branch code</label>
-                                                <input type="text" class="form-control"  name="branch_code" value="{{ $employee->bankAccount->branch_code }}" required>
+                                                <input type="text" class="form-control"  name="branch_code" value="{{ $employee->bankAccount?->branch_code }}" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="pl-0" for="example-text-input"> Account Number</label>
-                                                <input type="text" class="form-control"  name="account_number" value="{{ $employee->bankAccount->account_number }}">
+                                                <input type="text" class="form-control"  name="account_number" value="{{ $employee->bankAccount?->account_number }}">
                                             </div>
                                         </div>
                                     </div>
@@ -356,6 +356,25 @@
                                     </div>
                                     <div class="my-30">
                                         <hr>
+                                    </div>
+                                    <div class="d-flex justify-content-start mt-20">
+                                        <div>
+                                            <h4>Remuneration</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row px-10 mt-30">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="pl-0" for="example-text-input">Basic salary</label>
+                                                <input type="number" class="form-control"  name="basic_salary" value="{{ $employee->remuneration?->basic_salary }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="pl-0" for="example-text-input">Travel allowance</label>
+                                                <input type="number" class="form-control" id="example-text-input" name="travel_allowance" value="{{ $employee->remuneration?->travel_allowance }}">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="d-flex justify-content-start mt-20">
                                         <div>

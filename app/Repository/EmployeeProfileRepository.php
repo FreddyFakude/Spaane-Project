@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\BankAccount;
 use App\Models\Education;
 use App\Models\Employee;
+use App\Models\EmployeeRemuneration;
 use App\Models\ProfessionalExperience;
 
 class EmployeeProfileRepository
@@ -20,10 +21,12 @@ class EmployeeProfileRepository
         $this->updateOrInsertEmployeeSkills($employee, $data);
         $this->updateOrInsertEmployeeExperience($employee, $data);
         $this->updateOrInsertEmployeeBankAccount($employee, $data);
+        $this->updateOrInsertEmployeeSalary($employee, $data);
     }
 
     private function updateOrInsertEmployeeProfile(Employee $employee, array $data)
     {
+
       return  $employee->update([
             "name"=>$data['first_name'],
             "first_name"=>$data['first_name'],
@@ -42,7 +45,7 @@ class EmployeeProfileRepository
             "tax_number"=>$data['tax_number'],
             "driving_license_number"=>$data['driving_license_number'],
             "emergency_phone_number" => $data['emergency_phone_number'],
-            "status"=>"COMPLETE"
+            "status"=>"COMPLETE",
         ]);
     }
 
@@ -106,5 +109,20 @@ class EmployeeProfileRepository
         ];
 
         $employee->bankAccount ? $employee->bankAccount->update($bankAccountPayload) : BankAccount::create($bankAccountPayload);
+    }
+
+    private function updateOrInsertEmployeeSalary(Employee $employee, array $data)
+    {
+        if (!isset($data['basic_salary']) || !isset($data["travel_allowance"])){
+            return;
+        }
+
+        $salaryPayload = [
+            "basic_salary" => $data['basic_salary'],
+            "travel_allowance" => $data['travel_allowance'],
+            "employee_id" => $employee->id
+        ];
+
+        $employee->salary ? $employee->salary->update($salaryPayload) : EmployeeRemuneration::create($salaryPayload);
     }
 }

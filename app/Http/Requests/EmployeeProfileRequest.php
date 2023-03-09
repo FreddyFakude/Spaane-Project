@@ -59,6 +59,8 @@ class EmployeeProfileRequest extends FormRequest
             "account_number" => "required",
             "branch_code" => "required",
             "account_type" => "required",
+            "basic_salary" => "nullable|numeric",
+            "travel_allowance" => "nullable|numeric",
         ];
 
     }

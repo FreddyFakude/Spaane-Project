@@ -91,13 +91,12 @@ class EmployeeController extends Controller
         return back();
     }
 
-    public function updateEmployeeProfile(EmployeeProfileRequest $request)
+    public function updateEmployeeProfile(EmployeeProfileRequest $request, Employee $employee)
     {
         $validated = $request->validated();
         $validated["mobile_number"] = "27" . substr($validated["mobile_number"], 1); //remove zero and add prefix
-        $employee = Auth::user();
         $profile = new EmployeeProfileRepository($employee, $validated);
-        $this->chatManager->sendWhatsAppMessageToEmployee(Auth::user(), "Your profile has been updated");
+        $this->chatManager->sendWhatsAppMessageToEmployee($employee, "Your profile has been updated");
         session()->flash('talent-profile-updated');
         return back();
     }
