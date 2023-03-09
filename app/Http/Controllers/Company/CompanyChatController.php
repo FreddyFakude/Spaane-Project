@@ -94,12 +94,14 @@ class CompanyChatController extends Controller
     public function sendBulkMessages(Request $request)
     {
         $validated =  $request->validate([
-            'message' => 'required'
+            'message' => 'required',
+            'title' => 'required',
         ]);
 
         $bulkMessage = BulkMessage::create([
             "company_id" => Auth::user()->company_id,
-            "message" => $validated['message']
+            "message" => $validated['message'],
+            "title" => $validated['title']
         ]);
 
         WhatsAppMessageBatchNotificationJob::dispatch($bulkMessage)->delay(now()->addSeconds(5));

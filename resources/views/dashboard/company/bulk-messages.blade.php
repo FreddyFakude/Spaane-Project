@@ -60,7 +60,8 @@
                     <thead>
                         <tr>
                             <th style="width: 30px;"></th>
-                            <th>Messages</th>
+                            <th>Title</th>
+                            <th>Message</th>
                             <th style="width: 15%;">Sent to</th>
                             <th class="d-none d-sm-table-cell" style="width: 20%;">Date</th>
                         </tr>
@@ -68,26 +69,24 @@
                     @empty(!$messages)
                         @foreach($messages as $message)
                             <tbody class="js-table-sections-header show table-active">
-                                
+
                                 <tr>
                                     <td class="text-center">
                                         <i class="fa fa-angle-right"></i>
                                     </td>
-                                    <td class="font-w600">Title</td>
+                                    <td class="font-w600">
+                                        {{ $message->title }}
+                                    </td>
+                                    <td class="font-w600">
+                                        {{ $message->message }}
+                                    </td>
                                     <td>
                                         <span class="badge badge-warning">To all</span>
                                     </td>
                                     <td class="d-none d-sm-table-cell">
-                                        <em class="text-muted">October 16, 2017 12:16</em>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody>
-                                <tr>
-                                    <td colspan="3">
-                                        <p class="font-w600 mb-10">
-                                        {{ $message->message }}
-                                        </p> 
+                                        <em class="text-muted">
+                                            {{ $message->created_at->format('d M Y H:i:s')}}
+                                        </em>
                                     </td>
                                 </tr>
                             </tbody>
@@ -101,5 +100,5 @@
     @push('extra-js')
         <script src="{{ asset('assets/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
     @endpush
-    
+
 </x-dashboard.template>

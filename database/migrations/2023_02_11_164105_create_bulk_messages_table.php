@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('bulk_messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId("company_id")->references('id')->on('companies')->cascadeOnUpdate();
+            $table->text("title");
             $table->text("message");
             $table->string("file_path")->nullable();
             $table->string("file_type")->nullable();
