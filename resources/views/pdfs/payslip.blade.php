@@ -33,7 +33,7 @@
     <!------3 row---->
     <tr>
         <th>DOB</th>
-        <td>23/02/xxxx</td>
+        <td>{{ $employee->dob }}</td>
         <th>Lop Days</th>
         <td>0</td>
     </tr>
@@ -69,9 +69,9 @@
     </tr>
     <tr>
         <td>Basic</td>
-        <td>29000</td>
+        <td>{{ $payslip->basic_salary }}</td>
         <td>provident fund</td>
-        <td>1900</td>
+        <td>{{ $payslip->other }}</td>
     </tr>
     <tr>
         <td>House Rent Allowance</td>

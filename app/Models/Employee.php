@@ -78,5 +78,9 @@ class Employee  extends Authenticatable
         return $this->hasMany(EmployeeBulkMessage::class, 'employee_id');
     }
 
+    public function bankAccount()
+    {
+        return $this->morphOne(BankAccount::class, 'bank_accountable');
+    }
 
 }

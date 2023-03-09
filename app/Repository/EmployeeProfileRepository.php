@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Address;
+use App\Models\BankAccount;
 use App\Models\Education;
 use App\Models\Employee;
 use App\Models\ProfessionalExperience;
@@ -18,6 +19,7 @@ class EmployeeProfileRepository
         $this->updateOrInsertEmployeeEducation($employee, $data);
         $this->updateOrInsertEmployeeSkills($employee, $data);
         $this->updateOrInsertEmployeeExperience($employee, $data);
+        $this->updateOrInsertEmployeeBankAccount($employee, $data);
     }
 
     private function updateOrInsertEmployeeProfile(Employee $employee, array $data)
@@ -90,5 +92,19 @@ class EmployeeProfileRepository
     private function updateOrInsertEmployeeSkills(Employee $employee, array $data): void
     {
         $skill = $employee->skills()->sync($data['skills']);
+    }
+
+    private function updateOrInsertEmployeeBankAccount(Employee $employee, array $data)
+    {
+        $bankAccountPayload = [
+            "bank_name" => $data['bank_name'],
+            "account_number" => $data['account_number'],
+            "branch_code" => $data['branch_code'],
+            "account_type" => $data['account_type'],
+            "bank_accountable_type" => Employee::class,
+            "bank_accountable_id" => $employee->id
+        ];
+
+        $employee->bankAccount ? $employee->bankAccount->update($bankAccountPayload) : BankAccount::create($bankAccountPayload);
     }
 }

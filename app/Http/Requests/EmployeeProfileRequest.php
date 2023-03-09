@@ -55,6 +55,10 @@ class EmployeeProfileRequest extends FormRequest
             "zip_code"=>"required",
             "department_id"=>"required|integer",
             "type"=> ["required",  Rule::in(\App\Models\Employee::ContractType)],
+            "bank_name" => "required",
+            "account_number" => "required",
+            "branch_code" => "required",
+            "account_type" => "required",
         ];
 
     }

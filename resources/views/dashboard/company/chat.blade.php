@@ -89,6 +89,11 @@
                         <div class="tab-pane" id="wizard-simple2-step2" role="tabpanel">
                             <div class="block-content">
                                 <form action="{{ route('dashboard.talent.profile.save') }}" method="POST">
+                                    <div class="d-flex justify-content-start mt-20">
+                                        <div>
+                                            <h4>Personal information</h4>
+                                        </div>
+                                    </div>
                                     <div class="row px-10 mt-30">
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -119,7 +124,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="pl-0" for="example-text-input">ID/Passport Number</label>
-                                                <input type="text" class="form-control"  name="id_or_passport" value="{{ $employee->id_or_password  }}" required>
+                                                <input type="text" class="form-control"  name="id_or_passport" value="{{ $employee->id_or_passport  }}" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -160,7 +165,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="pl-0" for="example-text-input">Cell Phone Number</label>
-                                                <input type="tel" class="form-control" id="example-text-input" name="mobile_number" value="{{ $employee->mobile_number }}">
+                                                <input type="tel" class="form-control" id="example-text-input" name="mobile_number" value="{{ "0" . substr($employee->mobile_number, 2) }}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -228,13 +233,25 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="pl-0" for="example-text-input">Bank Name</label>
-                                                <input type="text" class="form-control"  name="bank_name" value=""required>
+                                                <input type="text" class="form-control"  name="bank_name" value="{{ $employee->bankAccount->bank_name }}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="pl-0" for="example-text-input">Account Type Name</label>
+                                                <input type="text" class="form-control"  name="account_type" value="{{ $employee->bankAccount->account_type }}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="pl-0" for="example-text-input">Branch code</label>
+                                                <input type="text" class="form-control"  name="branch_code" value="{{ $employee->bankAccount->branch_code }}" required>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="pl-0" for="example-text-input"> Account Number</label>
-                                                <input type="text" class="form-control" id="example-text-input" name="account" value="">
+                                                <input type="text" class="form-control"  name="account_number" value="{{ $employee->bankAccount->account_number }}">
                                             </div>
                                         </div>
                                     </div>
@@ -248,16 +265,16 @@
                                         </div>
                                     </div>
                                     <div class="row px-10 mt-30">
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <div class="form-group">
-                                                <label class="pl-0" for="example-text-input">Employment Start Date</label>
+                                                <label class="pl-0" for="example-text-input">Start Date</label>
                                                 <input type="date" class="form-control"  name="employment_start_date" value="{{ $employee->professional_experience?->start_date }}" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <div class="form-group">
-                                                <label class="pl-0" for="example-text-input">Department</label>
-                                                <select class="form-control"   name="department_id">
+                                                <label class="pl-0">Department</label>
+                                                <select class="form-control"   name="department_id" required>
                                                     <option value="0">Choose Department</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                     @foreach($departments as $department)
                                                         <option value="{{ $department->id }}" @selected($employee->department->id == $department->id)>{{ $department->name }}</option>
@@ -265,10 +282,10 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <div class="form-group">
                                                 <label class="pl-0" for="example-text-input">Contract Type</label>
-                                                <select class="form-control" id="example-select2" name="type">
+                                                <select class="form-control"  name="type" required>
                                                     <option value="">Choose contract type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                     @foreach(\App\Models\Employee::ContractType as $contract)
                                                         <option value="{{ $contract }}" @selected($employee->type == $contract)>{{ $contract }}</option>
@@ -280,6 +297,12 @@
                                             <div class="form-group">
                                                 <label class="pl-0" for="example-text-input">Job Title</label>
                                                 <input type="text" class="form-control" id="example-text-input" name="position" value="{{ $employee->professional_experience?->role }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="pl-0" for="example-text-input">Organisation</label>
+                                                <input type="date" class="form-control"  name="organisation_name" value="{{ $employee->professional_experience?->organisation_name }}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -388,6 +411,7 @@
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                         <!-- END Step 2 -->
@@ -468,6 +492,7 @@
         </script>
     @endpush
     @push('extra-css')
-
+        <link rel="stylesheet" href="{{ asset('assets/custom/js/plugins/select2/select2.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/custom/js/plugins/select2/select2-bootstrap.min.css')}}">
     @endpush
 </x-dashboard.template>

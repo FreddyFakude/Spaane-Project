@@ -187,13 +187,25 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Bank Name</label>
-                                <input type="text" class="form-control"  name="bank_name" value=""required>
+                                <input type="text" class="form-control"  name="bank_name" value="{{ $talent->bankAccount->bank_name }}" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Account Type Name</label>
+                                <input type="text" class="form-control"  name="account_type" value="{{ $talent->bankAccount->account_type }}" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Branch code</label>
+                                <input type="text" class="form-control"  name="branch_code" value="{{ $talent->bankAccount->branch_code }}" required>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input"> Account Number</label>
-                                <input type="text" class="form-control" id="example-text-input" name="account" value="">
+                                <input type="text" class="form-control"  name="account_number" value="{{ $talent->bankAccount->account_number }}">
                             </div>
                         </div>
                     </div>
