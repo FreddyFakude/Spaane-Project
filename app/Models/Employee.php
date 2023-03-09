@@ -16,6 +16,7 @@ class Employee  extends Authenticatable
 
     protected $appends = ['current_leave_days'];
     public const STATUS = ['guest'=>"GUESTUSER", 'invite_sent'=>"INVITE SENT"];
+    public const ContractType = ["Permanent", "Temporary", "Internship", "Part-time", "Learnership", "Fixed-term", "Independent contractor"];
 
     public function company(){
         return $this->belongsTo(Company::class, 'company_id');
@@ -28,6 +29,11 @@ class Employee  extends Authenticatable
 
     public function address(){
         return $this->morphOne(Address::class, 'addressable');
+    }
+
+
+    public function department(){
+        return $this->belongsTo(CompanyDepartment::class, 'company_department_id');
     }
 
     public function education(){

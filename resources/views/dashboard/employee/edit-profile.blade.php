@@ -78,7 +78,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">ID/Passport Number</label>
-                                <input type="text" class="form-control"  name="id_or_passport" value="{{ $talent->id_or_password  }}" required>
+                                <input type="text" class="form-control"  name="id_or_passport" value="{{ $talent->id_or_passport  }}" required>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -119,7 +119,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Cell Phone Number</label>
-                                <input type="tel" class="form-control" id="example-text-input" name="mobile_number" value="{{ $talent->mobile_number }}">
+                                <input type="tel" class="form-control" id="example-text-input" name="mobile_number" value="{{ "0" . substr($talent->mobile_number, 2) }}">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -197,7 +197,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="my-30">
                         <hr>
                     </div>
@@ -207,30 +207,31 @@
                         </div>
                     </div>
                     <div class="row px-10 mt-30">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Employment Start Date</label>
+                                <label class="pl-0" for="example-text-input">Start Date</label>
                                 <input type="date" class="form-control"  name="employment_start_date" value="{{ $talent->professional_experience?->start_date }}" required>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Department</label>
-                                <input type="text" class="form-control"  name="depart" value="">
+                                <label class="pl-0">Department</label>
+                                <select class="form-control"   name="department_id" required>
+                                    <option value="0">Choose Department</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                    @foreach($departments as $department)
+                                        <option value="{{ $department->id }}" @selected($talent->department->id == $department->id)>{{ $department->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Contract Type</label>
-                                <select class="js-select2 form-control" id="example-select2" name="example-select2" style="width: 100%;" data-placeholder="Choose leave policy">
-                                    <option value="0">Choose contract type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                    <option value="1">Permenant</option>
-                                    <option value="2">Temporary</option>
-                                    <option value="3">Internship</option>
-                                    <option value="4">Part-time</option>
-                                    <option value="5">Learnership</option>
-                                    <option value="6">Fixed-term</option>
-                                    <option value="6">Independant contractor</option>
+                                <select class="form-control"  name="type" required>
+                                    <option value="">Choose contract type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                    @foreach(\App\Models\Employee::ContractType as $contract)
+                                        <option value="{{ $contract }}" @selected($talent->type == $contract)>{{ $contract }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -238,6 +239,12 @@
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Job Title</label>
                                 <input type="text" class="form-control" id="example-text-input" name="position" value="{{ $talent->professional_experience?->role }}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Organisation</label>
+                                <input type="date" class="form-control"  name="organisation_name" value="{{ $talent->professional_experience?->organisation_name }}" required>
                             </div>
                         </div>
                     </div>

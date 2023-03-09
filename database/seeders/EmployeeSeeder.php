@@ -24,11 +24,11 @@ class EmployeeSeeder extends Seeder
                 "last_name" => "Boy",
                 "email" => "djerryboy2@gmail.com",
                 "mobile_number" => "27788129192",
-                "marital_status" => 'SINGLE',
+                "marital_status" => 'Single',
                 "password" => Hash::make('password'),
                 "company_department_id" => 16,
                 "company_id" => 1,
-//            "talent_profileable_id" => $employee->id,
+                "hash" => sha1('djerryboy2@gmail.com'),
                 "role" => "CEO"
             ]
         ]);

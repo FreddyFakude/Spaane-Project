@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
+            $table->string('hash')->unique();
             $table->foreignId('company_department_id')->references('id')->on('company_departments')->cascadeOnUpdate();
             $table->foreignId('company_id')->references('id')->on('companies')->cascadeOnUpdate();
             $table->string('personal_email')->unique()->nullable();
@@ -45,7 +46,7 @@ return new class extends Migration
             $table->string('status')->default('INVITE SENT');
             $table->boolean('is_profile_complete')->default(false);
             $table->boolean('is_available')->default(TRUE);
-            $table->string('type')->default('FULL_TIME');
+            $table->string('type')->default('PERMANENT');
             $table->timestamps();
         });
     }

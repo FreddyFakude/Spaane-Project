@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EmployeeProfileRequest;
 use App\Mail\EmployeeInvite;
 use App\Models\Employee;
 use App\Models\EmployeeLeave;
 use App\Models\EmployeeLeaveDay;
+use App\Repository\EmployeeProfileRepository;
 use App\Repository\WhatsAppTemplateMessageRepository;
 use App\WhatsApp\WhatsAppChatManager;
 use Illuminate\Http\Request;
@@ -70,6 +72,7 @@ class EmployeeController extends Controller
             "password" => Hash::make('password'),
             "company_department_id" => 16,
             "company_id" => $businessAdmin->company_id,
+            "hash" => sha1($validated['email']),
 //            "talent_profileable_id" => $employee->id,
             "role" => $validated['position']
         ]);
@@ -85,6 +88,17 @@ class EmployeeController extends Controller
 
 
         session()->flash('talent-added');
+        return back();
+    }
+
+    public function updateEmployeeProfile(EmployeeProfileRequest $request)
+    {
+        $validated = $request->validated();
+        $validated["mobile_number"] = "27" . substr($validated["mobile_number"], 1); //remove zero and add prefix
+        $employee = Auth::user();
+        $profile = new EmployeeProfileRepository($employee, $validated);
+        $this->chatManager->sendWhatsAppMessageToEmployee(Auth::user(), "Your profile has been updated");
+        session()->flash('talent-profile-updated');
         return back();
     }
 }

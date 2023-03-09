@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Jobs\WhatsAppMessageBatchNotificationJob;
 use App\Models\BulkMessage;
 use App\Models\Chat;
+use App\Models\CompanyDepartment;
 use App\Models\Employee;
 use App\Models\Message;
+use App\Models\Skill;
 use App\Repository\ChatRepository;
 use App\WhatsApp\WhatsApp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class CompanyChatController extends Controller
 {
@@ -44,7 +47,12 @@ class CompanyChatController extends Controller
 
         return view('dashboard.company.chat', [
             'chat'=> $chat->load('messages'),
-            'employee' => $employee
+            'employee' => $employee,
+            "skills" => Skill::all(),
+            "selectedSkills" => $employee->skills?->pluck('id')->toArray(),
+            "departments" => Cache::get('departments', function () {
+                return CompanyDepartment::all();
+            })
         ]);
     }
 
