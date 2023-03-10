@@ -72,14 +72,14 @@
                                     </td>
                                     <td>
                                         <p class="font-w600 mb-10">
-                                            {{ $employee->payslips->where('date', $date)->first()?->basic_salary }}
+                                            {{ $employee->remuneration->basic_salary }}
                                         </p>
                                     </td>
                                     <td class="d-none d-sm-table-cell">
                                         <em class="text-muted"> {{ $employee->payslips->where('date', $date)->first()?->commission }}</em>
                                     </td>
                                     <td class="d-none d-sm-table-cell">
-                                        <em class="text-muted"> {{ $employee->payslips->where('date', $date)->first()?->travel_allowance }}</em>
+                                        <em class="text-muted"> {{ $employee->remuneration->travel_allowance }}</em>
                                     </td>
                                     <td class="d-none d-sm-table-cell">
                                         <em class="text-muted"> {{ $employee->payslips->where('date', $date)->first()?->reimbursement }}</em>

@@ -72,10 +72,45 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\BankAccount
+ *
+ * @property int $id
+ * @property string|null $name
+ * @property string $bank_name
+ * @property string|null $branch_code
+ * @property string $account_number
+ * @property string $account_type
+ * @property string $bank_accountable_type
+ * @property int $bank_accountable_id
+ * @property string|null $extra_info
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $bank_accountable
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount whereAccountNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount whereAccountType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount whereBankAccountableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount whereBankAccountableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount whereBankName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount whereBranchCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount whereExtraInfo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BankAccount whereUpdatedAt($value)
+ */
+	class BankAccount extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\BulkMessage
  *
  * @property int $id
  * @property int $company_id
+ * @property string $title
  * @property string $message
  * @property string|null $file_path
  * @property string|null $file_type
@@ -93,6 +128,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereMessage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereUpdatedAt($value)
  */
 	class BulkMessage extends \Eloquent {}
@@ -152,6 +188,8 @@ namespace App\Models{
  * @property-read int|null $bulk_messages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Employee[] $employees
  * @property-read int|null $employees_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CompanyPayslip[] $payslips
+ * @property-read int|null $payslips_count
  * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company query()
@@ -265,6 +303,48 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\CompanyPayslip
+ *
+ * @property int $id
+ * @property int $company_id
+ * @property int $employee_id
+ * @property string $reference_number
+ * @property string $hash
+ * @property string $file_name
+ * @property string|null $file_path
+ * @property float $commission
+ * @property string $date
+ * @property float $basic_salary
+ * @property float $reimbursement
+ * @property float $travel_allowance
+ * @property float $other
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Employee $employee
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereBasicSalary($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereCommission($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereEmployeeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereFileName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereFilePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereOther($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereReferenceNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereReimbursement($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereTravelAllowance($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPayslip whereUpdatedAt($value)
+ */
+	class CompanyPayslip extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Education
  *
  * @property int $id
@@ -302,6 +382,7 @@ namespace App\Models{
  * @property string|null $middle_name
  * @property string|null $last_name
  * @property string $email
+ * @property string $hash
  * @property int $company_department_id
  * @property int $company_id
  * @property string|null $personal_email
@@ -328,14 +409,18 @@ namespace App\Models{
  * @property int $is_profile_complete
  * @property int $is_available
  * @property string $type
+ * @property float|null $basic_salary
+ * @property float|null $travel_allowance
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Address|null $address
+ * @property-read \App\Models\BankAccount|null $bankAccount
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeBulkMessage[] $bulkMessages
  * @property-read int|null $bulk_messages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Chat[] $chats
  * @property-read int|null $chats_count
  * @property-read \App\Models\Company $company
+ * @property-read \App\Models\CompanyDepartment $department
  * @property-read \App\Models\Education|null $education
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeLeaveDay[] $leaveDays
  * @property-read int|null $leave_days_count
@@ -343,14 +428,16 @@ namespace App\Models{
  * @property-read int|null $leaves_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payslip[] $payslips
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CompanyPayslip[] $payslips
  * @property-read int|null $payslips_count
  * @property-read \App\Models\ProfessionalExperience|null $professional_experience
+ * @property-read \App\Models\EmployeeRemuneration|null $remuneration
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Skill[] $skills
  * @property-read int|null $skills_count
  * @method static \Illuminate\Database\Eloquent\Builder|Employee newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Employee newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Employee query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Employee whereBasicSalary($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereCompanyDepartmentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereCompanyId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereCreatedAt($value)
@@ -361,6 +448,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereEmergencyPhoneNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereFirstName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Employee whereHash($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereHomePhoneNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereIdOrPassport($value)
@@ -382,6 +470,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereTalentVisibility($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereTaxNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Employee whereTravelAllowance($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereWebsite($value)
@@ -422,7 +511,7 @@ namespace App\Models{
  * @property int $id
  * @property int $employee_id
  * @property int $employee_leave_day_id
- * @property int $requested_days
+ * @property string $requested_date
  * @property string $hash
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -435,7 +524,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereEmployeeLeaveDayId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereHash($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereRequestedDays($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereRequestedDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereUpdatedAt($value)
  */
@@ -463,6 +552,29 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay whereUpdatedAt($value)
  */
 	class EmployeeLeaveDay extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\EmployeeRemuneration
+ *
+ * @property int $id
+ * @property int $employee_id
+ * @property float|null $basic_salary
+ * @property float|null $travel_allowance
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeRemuneration newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeRemuneration newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeRemuneration query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeRemuneration whereBasicSalary($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeRemuneration whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeRemuneration whereEmployeeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeRemuneration whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeRemuneration whereTravelAllowance($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeRemuneration whereUpdatedAt($value)
+ */
+	class EmployeeRemuneration extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -528,6 +640,8 @@ namespace App\Models{
 /**
  * App\Models\Payslip
  *
+ * @deprecated 
+ * @return $this
  * @property int $id
  * @property int $employee_id
  * @property int $company_id
