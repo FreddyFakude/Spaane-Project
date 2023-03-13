@@ -80,6 +80,7 @@ class WhatsAppChatManager
             'mobile_number' => $userData['WaId'],
             "marital_status" => '',
             "company_id" => 1,
+            "hash" => sha1(time() . rand(1, 100000)),
            "company_department_id" => 17,
             "password" => Hash::make('password'),
             "status" => Employee::STATUS['guest'],
