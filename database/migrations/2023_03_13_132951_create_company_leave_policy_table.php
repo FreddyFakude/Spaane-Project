@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('company_leave_settings', function (Blueprint $table) {
+        Schema::create('company_leave_policies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')->references('id')->on('companies')->cascadeOnUpdate();
-            $table->foreignId("company_leave_type_id")->references('id')->on('company_leave_types')->cascadeOnUpdate();
+            $table->foreignId("leave_type_id")->references('id')->on('leave_types')->cascadeOnUpdate();
             $table->integer('leave_duration_days');
             $table->integer('leave_validity_days');
             $table->string('text')->nullable();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_leave_settings');
+        Schema::dropIfExists('company_leave_policies');
     }
 };

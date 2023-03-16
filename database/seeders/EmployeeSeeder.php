@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\CompanyLeaveSetting;
-use App\Models\CompanyLeaveType;
+use App\Models\CompanyLeavePolicy;
+use App\Models\LeaveType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
@@ -36,18 +36,18 @@ class EmployeeSeeder extends Seeder
             ]
         ]);
 
-        $array = [];
-        foreach (CompanyLeaveSetting::all() as $leaveSetting)
-        {
-            $array[] = [
-                "employee_id"=> 1,
-                "company_id" => $leaveSetting->company_id,
-                "days" => $leaveSetting->leave_duration_days,
-                "expiry_date" => Carbon::now()->addDays($leaveSetting->leave_validity_days)->format('Y-m-d'),
-                "leave_type" => $leaveSetting->leaveType->name
-            ];
-        }
-
-        DB::table('employee_leave_type_initial_days')->insert($array);
+//        $array = [];
+//        foreach (CompanyLeaveSetting::all() as $leaveSetting)
+//        {
+//            $array[] = [
+//                "employee_id"=> 1,
+//                "company_id" => $leaveSetting->company_id,
+//                "days" => $leaveSetting->leave_duration_days,
+//                "expiry_date" => Carbon::now()->addDays($leaveSetting->leave_validity_days)->format('Y-m-d'),
+//                "leave_type" => $leaveSetting->leaveType->name
+//            ];
+//        }
+//
+//        DB::table('employee_leave_type_initial_days')->insert($array);
     }
 }

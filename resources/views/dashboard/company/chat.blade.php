@@ -398,23 +398,23 @@
                                     <div class="my-30">
                                         <hr>
                                     </div>
-                                    <div class="d-flex justify-content-start mt-20">
-                                        <div>
-                                            <h4>Leave Days</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row px-10 mt-30">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                @foreach($employee->initialLeaveTypeDays as $leave)
-                                                    <div class="col-lg-8">
-                                                        <label class="pl-0" for="example-text-input">{{ $leave->leave_type }}</label>
-                                                        <input type="text" class="form-control" id="example-text-input" disabled value="{{ $leave->days }}">
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                    <div class="d-flex justify-content-start mt-20">--}}
+{{--                                        <div>--}}
+{{--                                            <h4>Leave Days</h4>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="row px-10 mt-30">--}}
+{{--                                        <div class="col-md-8">--}}
+{{--                                            <div class="form-group">--}}
+{{--                                                @foreach($employee->initialLeaveTypeDays as $leave)--}}
+{{--                                                    <div class="col-lg-8">--}}
+{{--                                                        <label class="pl-0" for="example-text-input">{{ $leave->leave_type }}</label>--}}
+{{--                                                        <input type="text" class="form-control" id="example-text-input" disabled value="{{ $leave->days }}">--}}
+{{--                                                    </div>--}}
+{{--                                                @endforeach--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <div class="d-flex justify-content-start mt-20">
                                         <div>
                                             <h4>Skills/Tools</h4>

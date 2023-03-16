@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone_number');
             $table->date('date_creation')->nullable();
+            $table->date('fiscal_year_start');
             $table->string('technical_gear')->nullable();
             $table->string('target_market')->nullable();
             $table->string('suppliers')->nullable();

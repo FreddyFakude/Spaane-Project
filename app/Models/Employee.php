@@ -56,15 +56,24 @@ class Employee  extends Authenticatable
 
     public function initialLeaveTypeDays()
     {
-        return $this->hasMany(EmployeeLeaveTypeInitialDay::class);
+        return $this->hasMany(EmployeeLeaveInitialCurrentDay::class);
     }
 
 
-    public function leaveRequest()
+    public function leaveRequests()
     {
         return $this->hasMany(EmployeeLeaveRequest::class);
     }
 
+    public function leaveRequestApproved()
+    {
+        return $this->hasMany(EmployeeLeaveRequest::class)->where('status', 'APPROVED');
+    }
+
+    public function leavePolicies()
+    {
+        return $this->hasMany(EmployeeLeavePolicy::class, 'employee_id');
+    }
     public function currentLeaveDays(): Attribute
     {
         $leaveDays = $this->initialLeaveTypeDays()->get();
@@ -87,4 +96,6 @@ class Employee  extends Authenticatable
     {
         return $this->hasOne(EmployeeRemuneration::class, 'employee_id');
     }
+
+
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CompanyLeaveTypeSeeder extends Seeder
+class LeaveTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class CompanyLeaveTypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('company_leave_types')->insert([
+        DB::table('leave_types')->insert([
             [
                 "name"=> "Annual Leave",
             ],

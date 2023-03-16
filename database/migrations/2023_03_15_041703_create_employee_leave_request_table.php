@@ -16,9 +16,12 @@ return new class extends Migration
         Schema::create('employee_leave_requests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->references('id')->on('employees')->cascadeOnUpdate();
-                $table->foreignId('leave_type_initial_day_id')->references('id')->on('employee_leave_type_initial_days')->cascadeOnUpdate();
-            $table->foreignId('company_leave_setting_id')->references('id')->on('company_leave_settings')->cascadeOnUpdate();
+            $table->foreignId('leave_initial_day_id')->references('id')->on('employee_leave_initial_current_days')->cascadeOnUpdate();
+//            $table->foreignId('company_leave_policy_id')->references('id')->on('company_leave_policies')->cascadeOnUpdate();
+            $table->foreignId('employee_leave_policy_id')->references('id')->on('employee_leave_policies')->cascadeOnUpdate();
             $table->string('leave_type');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->integer('total_days');
             $table->string('hash');
             $table->string('status')->default(\App\Models\EmployeeLeaveRequest::STATUS['review']);

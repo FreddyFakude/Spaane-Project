@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('employee_leave_request_days', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->references('id')->on('employees')->cascadeOnUpdate(); // employee_id
-            $table->foreignId('company_leave_setting_id')->references('id')->on('company_leave_settings')->cascadeOnUpdate(); // company_leave_setting_id
+            $table->foreignId('company_leave_policy_id')->references('id')->on('company_leave_policies')->cascadeOnUpdate(); // company_leave_setting_id
             $table->foreignId('employee_leave_request_id')->references('id')->on('employee_leave_requests')->cascadeOnUpdate(); // employee_leave_request_id
-            $table->foreignId('company_leave_type_id')->references('id')->on('company_leave_types')->cascadeOnUpdate(); // company_leave_type_id
+            $table->foreignId('leave_type_id')->references('id')->on('leave_types')->cascadeOnUpdate(); // company_leave_type_id
             $table->date('date_requested');
             $table->timestamps();
         });

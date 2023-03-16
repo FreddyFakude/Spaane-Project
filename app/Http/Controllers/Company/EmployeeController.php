@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployeeProfileRequest;
 use App\Mail\EmployeeInvite;
 use App\Models\Employee;
-use App\Models\EmployeeLeaveTypeInitialDay;
+use App\Models\EmployeeLeaveInitialCurrentDay;
 use App\Repository\EmployeeProfileRepository;
 use App\Repository\WhatsAppTemplateMessageRepository;
 use App\Services\WhatsApp\WhatsAppChatManager;
@@ -76,7 +76,7 @@ class EmployeeController extends Controller
             "role" => $validated['position']
         ]);
 
-        $leaveDays =  EmployeeLeaveTypeInitialDay::create([
+        $leaveDays =  EmployeeLeaveInitialCurrentDay::create([
             "employee_id"=> $employee->id
         ]);
 
