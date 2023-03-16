@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\WhatsApp;
+namespace App\Services\WhatsApp;
 
 
 use App\Models\Chat;

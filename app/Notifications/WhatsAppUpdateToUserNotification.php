@@ -5,7 +5,7 @@ namespace App\Notifications;
 
 use App\Notifications\Channel\WhatsAppChannel;
 use App\Repository\WhatsAppTemplateMessageRepository;
-use App\WhatsApp\WhatsApp;
+use App\Services\WhatsApp\WhatsApp;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;

@@ -1,17 +1,15 @@
 <?php
 
 
-namespace App\PDF;
+namespace App\Services\PDF;
 
 
 use App\Models\CompanyPayslip;
 use App\Models\Employee;
-use App\Models\Payslip;
-use App\Models\ProofOfResidenceRequestCase;
-use App\Models\ProofOfResPdf;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
+use function App\PDF\str_ends_with;
 
 class PayslipPDFGenerator
 {

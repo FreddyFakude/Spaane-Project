@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employee_leave_days', function (Blueprint $table) {
+        Schema::create('company_leave_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employee_id')->references('id')->on('employees')->cascadeOnUpdate();
-            $table->double('days', '6', '2')->default(\App\Models\EmployeeLeaveDay::MAX_LEAVE_DAYS);
+            $table->string('name');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_leave_days');
+        Schema::dropIfExists('company_leave_types');
     }
 };

@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
-use App\Models\EmployeeLeave;
-use App\Models\EmployeeLeaveDay;
+use App\Models\EmployeeLeaveRequest;
 use App\Repository\WhatsAppTemplateMessageRepository;
-use App\WhatsApp\WhatsAppChatManager;
+use App\Services\WhatsApp\WhatsAppChatManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,11 +37,11 @@ class EmployeeLeaveController extends Controller
             return back()->withErrors(['leave_date' => 'You have reached the maximum leave days']);
         }
 
-        $leave = EmployeeLeave::create([
+        $leave = EmployeeLeaveRequest::create([
             "employee_id" => $employee->id,
             "requested_date" => $validated['leave_date'],
-            "employee_leave_day_id" => $employee->leaveDays->last()->id,
-            "status"=> EmployeeLeave::STATUS['approved'],
+            "employee_leave_day_id" => $employee->initialLeaveTypeDays->last()->id,
+            "status"=> EmployeeLeaveRequest::STATUS['approved'],
             "hash" => sha1(time())
         ]);
 
@@ -56,8 +55,8 @@ class EmployeeLeaveController extends Controller
 
     public function approveLeave(Employee $employee, $hash)
     {
-        $leave = EmployeeLeave::where('hash', $hash)->firstOrFail();
-        $leave->status = EmployeeLeave::STATUS['approved'];
+        $leave = EmployeeLeaveRequest::where('hash', $hash)->firstOrFail();
+        $leave->status = EmployeeLeaveRequest::STATUS['approved'];
         $leave->save();
 
         $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.update.message');

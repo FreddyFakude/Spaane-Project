@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EmployeeLeaveDay extends Model
+class EmployeeLeaveRequest extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
+    public const STATUS = ['review'=>"REVIEW", 'approved'=>"APPROVED", 'denied'=> "DENIED", 'pending'=>"PENDING"];
 
-    public const MAX_LEAVE_DAYS = 10;
-    public function leaves()
-    {
-        return $this->hasMany(EmployeeLeave::class);
-    }
 }

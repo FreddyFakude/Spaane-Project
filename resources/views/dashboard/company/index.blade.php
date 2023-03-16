@@ -20,7 +20,7 @@
         </div>
         <!-- Block Tabs Alternative Style -->
         <div class="block">
-            
+
         </div>
         <!-- END Block Tabs Alternative Style -->
 
@@ -55,7 +55,7 @@
                                     </button>
                                     <div><h3 class="badge badge-warning">Annual Leave Request</h3></div>
                                     <p class="mb-10">Remmone (Developer) requested 3 work days from 12 Apr to 15 Apr <button class="btn btn-alt-success ml-10">Accept</button><button class="btn btn-alt-danger ml-10">Decline</button></p>
-                                    <small class="mb-0">Leave Balance:</small> 
+                                    <small class="mb-0">Leave Balance:</small>
                                     <span class="badge badge-warning">Annnual - 10 days</span>
                                     <span class="badge badge-primary">Maternity - 4 months</span>
                                     <span class="badge badge-info">Sick - 8 days</span>
@@ -84,16 +84,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @empty(!$talents)
-                                        @foreach($talents as $talent)
+                                    @empty(!$employees)
+                                        @foreach($employees as $employee)
                                             <tr>
                                                 <td>
                                                     <p class="font-w600 mb-10">
-                                                        <a href="{{ route('dashboard.company.employee.view', [$talent]) }}">{{ $talent->name }}</a>
+                                                        <a href="{{ route('dashboard.company.employee.view', [$employee]) }}">{{ $employee->name }}</a>
                                                     </p>
                                                 </td>
                                                 <td class="d-none d-sm-table-cell">
-                                                    <em class="text-muted">{{ $talent->role }}</em>
+                                                    <em class="text-muted">{{ $employee->role }}</em>
                                                 </td>
                                                 <td class="d-none d-sm-table-cell">
                                                     <em class="text-muted"> Enngineering </em>
@@ -102,14 +102,19 @@
                                                     <em class="text-muted"> Permenant</em>
                                                 </td>
                                                 <td class="d-none d-sm-table-cell">
-                                                    <em class=""> 
-                                                        <span class="badge badge-warning">Annnual - 10 days</span>
-                                                        <span class="badge badge-primary">Maternity - 4 months</span>
-                                                        <span class="badge badge-info">Sick - 8 days</span>
-                                                        <span class="badge badge-danger">Study - 8 days</span>
-                                                        <span class="badge badge-success">Family responsibility - 4 days</span>
-                                                        <span class="badge badge-secondary">Religious - 4 days</span> 
+                                                    <em class="">
+                                                        @foreach($employee->initialLeaveTypeDays as $initialLeaveDay)
+                                                            <span class="badge badge-warning">{{ $initialLeaveDay->leave_type }} {{ (new App\Services\LeaveCalculation())->calculateRemainingDaysOnLeaveType($employee, $initialLeaveDay)  }}</span>
+                                                        @endforeach
                                                     </em>
+{{--                                                    <em class="">--}}
+{{--                                                        <span class="badge badge-warning">Annnual - 10 days</span>--}}
+{{--                                                        <span class="badge badge-primary">Maternity - 4 months</span>--}}
+{{--                                                        <span class="badge badge-info">Sick - 8 days</span>--}}
+{{--                                                        <span class="badge badge-danger">Study - 8 days</span>--}}
+{{--                                                        <span class="badge badge-success">Family responsibility - 4 days</span>--}}
+{{--                                                        <span class="badge badge-secondary">Religious - 4 days</span>--}}
+{{--                                                    </em>--}}
                                                 </td>
                                                 <td class="d-none d-sm-table-cell" style="width: 60%;">
                                                     <div class="form-group row">
@@ -138,14 +143,14 @@
                                                                     <button type="submit" class="btn btn-alt-success ml-0" ><i class="fa fa-check"></i> Submit</button>
                                                                 </div>
                                                             </div>
-                                                            
+
                                                         </div>
-                                                        
+
                                                         {{-- <input type="date" class="form-control" name="leave_date" value=""> --}}
                                                     {{-- </form> --}}
                                                 </td>
                                                 <td class="d-none d-sm-table-cell" style="width: 5%;">
-                                                    <a href="{{ route('dashboard.company.chat.new', [$talent->id]) }}"><i class="si si-bubble fa-2x"></i></a>
+                                                    <a href="{{ route('dashboard.company.chat.new', [$employee->id]) }}"><i class="si si-bubble fa-2x"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -195,7 +200,7 @@
                                             <tr class="block block-rounded block-bordered">
                                                 <div>
                                                 <td class="js-task-content font-w600">
-                                                    Annual Leave <br><small>18 days per year</small> 
+                                                    Annual Leave <br><small>18 days per year</small>
                                                 </td>
                                                 <td class="text-right" style="width: 100px;">
                                                     <button class="js-task-remove btn btn-sm btn-alt-danger" type="button">
@@ -226,7 +231,7 @@
                                             </tr>
                                             <tr class="block block-rounded block-bordered">
                                                 <td class="js-task-content font-w600">
-                                                    Family Responsibility Leave <br><small>3 days per year</small> 
+                                                    Family Responsibility Leave <br><small>3 days per year</small>
                                                 </td>
                                                 <td class="text-right" style="width: 100px;">
                                                     <button class="js-task-remove btn btn-sm btn-alt-danger" type="button">

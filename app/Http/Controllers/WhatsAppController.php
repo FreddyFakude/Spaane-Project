@@ -6,8 +6,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\WhatsAppMessageRequest;
 use App\Repository\ChatRepository;
-use App\WhatsApp\WhatsApp;
-use App\WhatsApp\WhatsAppChatManager;
+use App\Services\WhatsApp\WhatsApp;
+use App\Services\WhatsApp\WhatsAppChatManager;
 use Validator;
 
 class WhatsAppController extends Controller

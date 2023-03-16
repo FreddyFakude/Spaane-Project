@@ -21,14 +21,16 @@
                                             @endisset
                                             <h3>Current Leave days {{ $employee->current_leave_days}}</h3>
                                             @error('leave_date')
-                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p>Record leave days</p>
                                                 </div>
                                             </div>
-                                            <form class="task_setup" method="POST" action="{{ route('dashboard.company.employee.update.leave', [$employee->id]) }}" enctype="multipart/form-data">
+                                            <form class="task_setup" method="POST"
+                                                  action="{{ route('dashboard.company.employee.update.leave', [$employee->id]) }}"
+                                                  enctype="multipart/form-data">
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-md-3">
@@ -37,10 +39,11 @@
                                                         <div class="form-group col-md-8">
                                                             <div class="row">
                                                                 <div class="col-8">
-                                                                    <input type="date" class="form-control" name="leave_date" value="">
+                                                                    <input type="date" class="form-control"
+                                                                           name="leave_date" value="">
                                                                 </div>
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-alt-success" >
+                                                                <button type="submit" class="btn btn-alt-success">
                                                                     <i class="fa fa-check"></i> Submit
                                                                 </button>
                                                             </div>
@@ -84,8 +87,9 @@
                                             <em class="text-muted">{{ $leave->status }}</em>
                                         </td>
                                         <td class="d-none d-sm-table-cell" style="width: 40%;">
-                                            @if($leave->status == \App\Models\EmployeeLeave::STATUS['pending'] || $leave->status == \App\Models\EmployeeLeave::STATUS['review'])
-                                                <a href="{{ route('dashboard.company.employee.approve.leave', [$employee->id, $leave->hash]) }}" class="btn btn-success">Approve</a>
+                                            @if($leave->status == \App\Models\EmployeeLeaveRequest::STATUS['pending'] || $leave->status == \App\Models\EmployeeLeaveRequest::STATUS['review'])
+                                                <a href="{{ route('dashboard.company.employee.approve.leave', [$employee->id, $leave->hash]) }}"
+                                                   class="btn btn-success">Approve</a>
                                             @endif
                                         </td>
                                     </tr>
@@ -93,12 +97,14 @@
                             @endempty
                             </tbody>
                         </table>
-                        <table class="js-table-checkable table table-hover js-table-checkable-enabled tab-pane" id="btabs-external">
+                        <table class="js-table-checkable table table-hover js-table-checkable-enabled tab-pane"
+                               id="btabs-external">
                             <thead>
                             <tr>
                                 <th class="text-center" style="width: 70px;">
                                     <label class="css-control css-control-primary css-checkbox py-0">
-                                        <input type="checkbox" class="css-control-input" id="check-all" name="check-all">
+                                        <input type="checkbox" class="css-control-input" id="check-all"
+                                               name="check-all">
                                         <span class="css-control-indicator"></span>
                                     </label>
                                 </th>

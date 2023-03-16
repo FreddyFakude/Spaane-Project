@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('employee_leaves', function (Blueprint $table) {
+        Schema::create('employee_leave_requests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->references('id')->on('employees')->cascadeOnUpdate();
-            $table->foreignId('employee_leave_day_id')->references('id')->on('employee_leave_days')->cascadeOnUpdate();
-            $table->date('requested_date');
+                $table->foreignId('leave_type_initial_day_id')->references('id')->on('employee_leave_type_initial_days')->cascadeOnUpdate();
+            $table->foreignId('company_leave_setting_id')->references('id')->on('company_leave_settings')->cascadeOnUpdate();
+            $table->string('leave_type');
+            $table->integer('total_days');
             $table->string('hash');
-            $table->string('status')->default(\App\Models\EmployeeLeave::STATUS['review']);
+            $table->string('status')->default(\App\Models\EmployeeLeaveRequest::STATUS['review']);
             $table->timestamps();
         });
     }

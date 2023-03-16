@@ -1,14 +1,14 @@
 <?php
 
 
-namespace App\WhatsApp;
+namespace App\Services\WhatsApp;
 
 
 use App\Models\Chat;
 use App\Models\Employee;
-use App\Models\EmployeeLeave;
-use App\PDF\PayslipPDFGenerator;
+use App\Models\EmployeeLeaveRequest;
 use App\Repository\WhatsAppTemplateMessageRepository;
+use App\Services\PDF\PayslipPDFGenerator;
 use Carbon\Carbon;
 
 class EmployeeWhatsAppChatFlow
@@ -158,9 +158,9 @@ class EmployeeWhatsAppChatFlow
 
     public function submitLeaveDates()
     {
-        $currentLeave = $this->employee->leaveDays->last();
+        $currentLeave = $this->employee->initialLeaveTypeDays->last();
         foreach (session("chat-{$this->employee->mobile_number}-inputted-leave-days_array") as $date){
-            $leave = EmployeeLeave::create([
+            $leave = EmployeeLeaveRequest::create([
                 "employee_id" => $this->employee->id,
                 "requested_date" => $date->format("Y-m-d"),
                 "employee_leave_day_id" => $currentLeave->id,

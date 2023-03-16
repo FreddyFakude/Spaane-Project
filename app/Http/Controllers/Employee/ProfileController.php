@@ -4,14 +4,10 @@ namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployeeProfileRequest;
-use App\Models\Address;
 use App\Models\CompanyDepartment;
-use App\Models\Education;
-use App\Models\ProfessionalExperience;
 use App\Models\Skill;
 use App\Repository\EmployeeProfileRepository;
-use App\WhatsApp\WhatsAppChatManager;
-use Illuminate\Http\Request;
+use App\Services\WhatsApp\WhatsAppChatManager;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 

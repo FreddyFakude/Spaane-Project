@@ -1,13 +1,12 @@
 <?php
 
 
-namespace App\WhatsApp;
+namespace App\Services\WhatsApp;
 
 
 use App\Models\Chat;
 use App\Models\Employee;
 use App\Models\Message;
-use Illuminate\Support\Facades\Auth;
 use Twilio\Rest\Client;
 
 class WhatsApp

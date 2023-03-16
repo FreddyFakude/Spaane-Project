@@ -422,9 +422,9 @@ namespace App\Models{
  * @property-read \App\Models\Company $company
  * @property-read \App\Models\CompanyDepartment $department
  * @property-read \App\Models\Education|null $education
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeLeaveDay[] $leaveDays
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeLeaveTypeInitialDay[] $leaveDays
  * @property-read int|null $leave_days_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeLeave[] $leaves
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeLeaveRequest[] $leaves
  * @property-read int|null $leaves_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
@@ -506,7 +506,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\EmployeeLeave
+ * App\Models\EmployeeLeaveRequest
  *
  * @property int $id
  * @property int $employee_id
@@ -516,40 +516,40 @@ namespace App\Models{
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave query()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereEmployeeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereEmployeeLeaveDayId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereHash($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereRequestedDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeave whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveRequest newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveRequest newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveRequest query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveRequest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveRequest whereEmployeeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveRequest whereEmployeeLeaveDayId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveRequest whereHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveRequest whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveRequest whereRequestedDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveRequest whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveRequest whereUpdatedAt($value)
  */
 	class EmployeeLeave extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
- * App\Models\EmployeeLeaveDay
+ * App\Models\EmployeeInitialLeaveDay
  *
  * @property int $id
  * @property int $employee_id
  * @property float $days
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeLeave[] $leaves
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeLeaveRequest[] $leaves
  * @property-read int|null $leaves_count
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay query()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay whereDays($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay whereEmployeeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveDay whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveTypeInitialDay newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveTypeInitialDay newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveTypeInitialDay query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveTypeInitialDay whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveTypeInitialDay whereDays($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveTypeInitialDay whereEmployeeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveTypeInitialDay whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLeaveTypeInitialDay whereUpdatedAt($value)
  */
 	class EmployeeLeaveDay extends \Eloquent {}
 }
@@ -640,7 +640,7 @@ namespace App\Models{
 /**
  * App\Models\Payslip
  *
- * @deprecated 
+ * @deprecated
  * @return $this
  * @property int $id
  * @property int $employee_id

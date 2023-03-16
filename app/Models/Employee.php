@@ -54,22 +54,22 @@ class Employee  extends Authenticatable
         return $this->morphMany(Chat::class, 'chatable');
     }
 
-    public function leaveDays()
+    public function initialLeaveTypeDays()
     {
-        return $this->hasMany(EmployeeLeaveDay::class);
+        return $this->hasMany(EmployeeLeaveTypeInitialDay::class);
     }
 
 
-    public function leaves()
+    public function leaveRequest()
     {
-        return $this->hasMany(EmployeeLeave::class);
+        return $this->hasMany(EmployeeLeaveRequest::class);
     }
 
     public function currentLeaveDays(): Attribute
     {
-        $leaveDays = $this->leaveDays()->get();
+        $leaveDays = $this->initialLeaveTypeDays()->get();
         return Attribute::make(
-            get: fn() => intval($leaveDays->last()?->days) -  $leaveDays->last()->leaves->where('status','APPROVED')->count(),
+            get: fn() => intval($leaveDays->last()?->days) -  $leaveDays->last()->leaveRequest->where('status','APPROVED')->count(),
         );
     }
 
