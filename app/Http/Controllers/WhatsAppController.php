@@ -32,7 +32,7 @@ class WhatsAppController extends Controller
         if (session()->has("chat-{$validated['WaId']}-leave-management-expecting-date") && !in_array(strtolower($validated['Body']),  ['exit', 'help']) ){
            if ($validated['Body'] != "Confirm submission"){
                $validator =  Validator::make($request->all(), [
-                   "Body"=>"required|date_format:d/m/Y"
+                   "Body"=>"required|date_format:d-m-Y",
                ]);
 
                if ($validator->fails()){
@@ -45,8 +45,25 @@ class WhatsAppController extends Controller
                    (new  WhatsApp)->sendQuickWhatsApp($validated['WaId'], "Please submit dates first");
                    return response()->json('success');
                }
-
            }
+        }
+        //make sure the user entred the right leave type Id
+        if(session()->has("chat-{$validated['WaId']}-leave-management-expecting-policy") && !in_array(strtolower($validated['Body']),  ['exit', 'help'])){
+
+            $validator =  Validator::make($request->all(), [
+                "Body"=>"required|integer",
+            ]);
+
+            if ($validator->fails()){
+                (new  WhatsApp)->sendQuickWhatsApp($validated['WaId'], "Please enter a valid option from the list");
+                return response()->json('success');
+            }
+
+            if (!in_array($validated['Body'], \App\Models\LeaveType::all()->pluck('id')->toArray())){
+                (new  WhatsApp)->sendQuickWhatsApp($validated['WaId'], "Please enter a valid number for the leave type chosen");
+                return response()->json('success');
+            }
+
         }
 
         $this->chatManager->processConversation($validated);

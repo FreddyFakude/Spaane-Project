@@ -16,4 +16,13 @@ class LeaveCalculation
               ->where('status', EmployeeLeaveRequest::STATUS['approved'])
               ->sum('total_days');
     }
+
+    public function calculateRemainingDaysOnAllLeaveType(Employee $employee)
+    {
+        $leavesArr = [];
+        foreach ($employee->leavePolicies as $leavePolicy){
+         $leavesArr[$leavePolicy->initialDay->leave_type_name]  =   $this->calculateRemainingDaysOnLeaveType($employee, $leavePolicy->initialDay);
+        }
+        return $leavesArr;
+    }
 }

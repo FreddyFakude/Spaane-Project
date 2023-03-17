@@ -53,7 +53,7 @@ class WhatsAppTemplateMessageSeeder extends Seeder
                 "slug" => "guest.learn-more"
             ],
             [
-                'content' => 'Please input the date you would like to request a leave for in the format dd-mm-yyyy(e.g: 30/12/2023)',
+                'content' => 'Please input the date you would like to request a leave for in the format dd-mm-yyyy(e.g: 30-12-2023)',
                 "slug" => "employee.leave.management.request"
             ],
             [

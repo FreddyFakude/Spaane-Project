@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use App\Models\EmployeeLeaveRequest;
+use App\Repository\EmployeeLeaveRequestRepository;
 use App\Repository\WhatsAppTemplateMessageRepository;
 use App\Services\LeaveCalculation;
 use App\Services\WhatsApp\WhatsAppChatManager;
@@ -21,10 +22,11 @@ class EmployeeLeaveController extends Controller
     /**
      * EmployeeLeaveController constructor.
      */
-    public function __construct( WhatsAppChatManager $chatManager)
+    public function __construct( WhatsAppChatManager $chatManager, EmployeeLeaveRequestRepository $employeeLeaveRequestRepository)
     {
         $this->chatManager = $chatManager;
         $this->appTemplateMessageRepository = new WhatsAppTemplateMessageRepository();
+        $this->employeeLeaveRequestRepository = $employeeLeaveRequestRepository;
     }
 
 //    public function updateEmployeeLeaveDay(Request $request, Employee $employee)
@@ -80,18 +82,8 @@ class EmployeeLeaveController extends Controller
             "employee_leave_policy_id"=>"required|exists:employee_leave_policies,id",
         ]);
 
-        $leave = EmployeeLeaveRequest::create([
-            "employee_id" => $employee->id,
-            "start_date" => $validated['start_date'],
-            "end_date" => $validated['end_date'],
-            'leave_initial_day_id' => $employee->initialLeaveTypeDays->last()->id,
-            "employee_leave_policy_id" => $validated['employee_leave_policy_id'],
-            "status"=> EmployeeLeaveRequest::STATUS['review'],
-            "leave_type" => "Test",
-            "total_days" => Carbon::parse($validated['start_date'])->diffInDays(Carbon::parse($validated['end_date'])),
-            "hash" => sha1(time())
-        ]);
-
+        $employeeLeavePolicy = $employee->leavePolicies->find($validated['employee_leave_policy_id']);
+        $this->employeeLeaveRequestRepository->insert($employee, $employeeLeavePolicy->initialDay, $employeeLeavePolicy, $validated['start_date'], $validated['end_date']);
         return back()->with('success', 'Leave request sent successfully');
     }
 }

@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Company;
 use App\Models\CompanyLeavePolicy;
 use App\Models\LeaveType;
 use App\Models\Employee;
+use App\Services\LeaveCalculation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
