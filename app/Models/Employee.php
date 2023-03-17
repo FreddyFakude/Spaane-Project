@@ -74,13 +74,6 @@ class Employee  extends Authenticatable
     {
         return $this->hasMany(EmployeeLeavePolicy::class, 'employee_id');
     }
-    public function currentLeaveDays(): Attribute
-    {
-        $leaveDays = $this->initialLeaveTypeDays()->get();
-        return Attribute::make(
-            get: fn() => intval($leaveDays->last()?->days) -  $leaveDays->last()->leaveRequest->where('status','APPROVED')->count(),
-        );
-    }
 
     public function bulkMessages()
     {

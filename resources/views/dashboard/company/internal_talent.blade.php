@@ -29,7 +29,7 @@
                                                 </div>
                                             </div>
                                             <form class="task_setup" method="POST"
-                                                  action="{{ route('dashboard.company.employee.update.leave', [$employee->id]) }}"
+                                                  action="#"
                                                   enctype="multipart/form-data">
                                                 <div class="form-group">
                                                     <div class="row">
@@ -78,22 +78,22 @@
                             </thead>
                             <tbody>
                             @empty(!$employee)
-                                @foreach($employee->leaves as $leave)
-                                    <tr>
-                                        <td class="d-none d-sm-table-cell">
-                                            <em class="text-muted">  {{ $leave->requested_date }} </em>
-                                        </td>
-                                        <td class="d-none d-sm-table-cell">
-                                            <em class="text-muted">{{ $leave->status }}</em>
-                                        </td>
-                                        <td class="d-none d-sm-table-cell" style="width: 40%;">
-                                            @if($leave->status == \App\Models\EmployeeLeaveRequest::STATUS['pending'] || $leave->status == \App\Models\EmployeeLeaveRequest::STATUS['review'])
-                                                <a href="{{ route('dashboard.company.employee.approve.leave', [$employee->id, $leave->hash]) }}"
-                                                   class="btn btn-success">Approve</a>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
+{{--                                @foreach($employee->leaves as $leave)--}}
+{{--                                    <tr>--}}
+{{--                                        <td class="d-none d-sm-table-cell">--}}
+{{--                                            <em class="text-muted">  {{ $leave->requested_date }} </em>--}}
+{{--                                        </td>--}}
+{{--                                        <td class="d-none d-sm-table-cell">--}}
+{{--                                            <em class="text-muted">{{ $leave->status }}</em>--}}
+{{--                                        </td>--}}
+{{--                                        <td class="d-none d-sm-table-cell" style="width: 40%;">--}}
+{{--                                            @if($leave->status == \App\Models\EmployeeLeaveRequest::STATUS['pending'] || $leave->status == \App\Models\EmployeeLeaveRequest::STATUS['review'])--}}
+{{--                                                <a href="{{ route('dashboard.company.employee.approve.leave', [$employee->id, $leave->hash]) }}"--}}
+{{--                                                   class="btn btn-success">Approve</a>--}}
+{{--                                            @endif--}}
+{{--                                        </td>--}}
+{{--                                    </tr>--}}
+{{--                                @endforeach--}}
                             @endempty
                             </tbody>
                         </table>
