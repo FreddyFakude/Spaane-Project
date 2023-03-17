@@ -12,4 +12,9 @@ class EmployeeLeaveRequest extends Model
     protected $guarded = [];
     public const STATUS = ['review'=>"REVIEW", 'approved'=>"APPROVED", 'denied'=> "DENIED", 'pending'=>"PENDING"];
 
+    public function initialDay()
+    {
+        return $this->belongsTo(EmployeeLeaveInitialCurrentDay::class, 'leave_initial_day_id');
+    }
+
 }

@@ -16,8 +16,8 @@ class EmployeeLeavePolicy extends Model
         return $this->belongsTo(LeaveType::class, 'leave_type_id');
     }
 
-    public function initialDays()
+    public function initialDay()
     {
-        return $this->hasMany(EmployeeLeaveInitialCurrentDay::class, 'leave_type_id');
+        return $this->hasOne(EmployeeLeaveInitialCurrentDay::class, 'leave_policy_id');
     }
 }

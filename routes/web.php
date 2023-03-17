@@ -34,7 +34,7 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
 
     Route::post('/dashboard/employees/{employee:hash}/leave/manual-request', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'leaveManualRequest'])->name('dashboard.company.employee.leave.manual-request');
     Route::post('/dashboard/employees/{employee:hash}/leave/add-policy', [\App\Http\Controllers\Company\EmployeeLeavePolicyController::class, 'addLeavePolicy'])->name('dashboard.company.employee.add.leave-policy');
-    Route::get('/dashboard/employees/view/{employee}/leave/{hash}/approve', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'approveLeave'])->name('dashboard.company.employee.approve.leave');
+    Route::get('/dashboard/employees/{employee:hash}/leave/{leave_request:hash}/approve', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'approveLeave'])->name('dashboard.company.employee.approve.leave');
 
     Route::post('/dashboard/employees/invite', [\App\Http\Controllers\Company\EmployeeController::class, 'inviteEmployee'])->name('dashboard.business.employee.invite');
     Route::post('/dashboard/employee/update/{employee:hash}', [\App\Http\Controllers\Company\EmployeeController::class, 'updateEmployeeProfile'])->name('dashboard.business.employee.update');

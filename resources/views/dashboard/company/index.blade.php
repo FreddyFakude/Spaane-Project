@@ -62,14 +62,23 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                         <div><h3 class="badge badge-warning">Annual Leave Request</h3></div>
-                                        <p class="mb-10">{{ $employee->name }} ({{ $employee->role }}) requested {{ $request->total_days }} work days from {{ $request->start_date }}  to {{ $request->end_date }} <button class="btn btn-alt-success ml-10">Accept</button><button class="btn btn-alt-danger ml-10">Decline</button></p>
+                                        <p class="mb-10">
+                                            {{ $employee->name }} ({{ $employee->role }}) requested {{ $request->total_days }} work days from {{ $request->start_date }}  to {{ $request->end_date }}
+                                            @if($request->status == \App\Models\EmployeeLeaveRequest::STATUS['review'])
+                                                <a class="btn btn-alt-success ml-10" href="{{ route('dashboard.company.employee.approve.leave', [$employee->hash, $request->hash]) }}">Accept</a>
+{{--                                                <button class="btn btn-alt-danger ml-10" href="{{ route() }}">Decline</button>--}}
+                                            @endif
+                                        </p>
                                         <small class="mb-0">Leave Balance:</small>
-                                        <span class="badge badge-warning">Annnual - 10 days</span>
-                                        <span class="badge badge-primary">Maternity - 4 months</span>
-                                        <span class="badge badge-info">Sick - 8 days</span>
-                                        <span class="badge badge-danger">Study - 8 days</span>
-                                        <span class="badge badge-success">Family responsibility - 4 days</span>
-                                        <span class="badge badge-secondary">Religious - 4 days</span>
+                                        @foreach($employee->leavePolicies as $policy)
+                                            <span class="badge badge-warning">{{ $policy->leaveType->name }} {{ (new App\Services\LeaveCalculation())->calculateRemainingDaysOnLeaveType($employee, $policy->initialDay)  }}</span>
+                                        @endforeach
+{{--                                        <span class="badge badge-warning">Annnual - 10 days</span>--}}
+{{--                                        <span class="badge badge-primary">Maternity - 4 months</span>--}}
+{{--                                        <span class="badge badge-info">Sick - 8 days</span>--}}
+{{--                                        <span class="badge badge-danger">Study - 8 days</span>--}}
+{{--                                        <span class="badge badge-success">Family responsibility - 4 days</span>--}}
+{{--                                        <span class="badge badge-secondary">Religious - 4 days</span>--}}
                                     </div>
                                 @endforeach
                             @endforeach
@@ -114,7 +123,7 @@
                                             <td class="d-none d-sm-table-cell">
                                                 <em class="">
                                                     @foreach($employee->leavePolicies as $policy)
-                                                        <span class="badge badge-warning">{{ $policy->leaveType->name }} {{ (new App\Services\LeaveCalculation())->calculateRemainingDaysOnLeaveType($employee, $initialLeaveDay)  }}</span>
+                                                        <span class="badge badge-warning">{{ $policy->leaveType->name }} {{ (new App\Services\LeaveCalculation())->calculateRemainingDaysOnLeaveType($employee, $policy->initialDay)  }}</span>
                                                     @endforeach
                                                 </em>
                                                 {{--                                                    <em class="">--}}

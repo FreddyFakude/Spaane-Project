@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use App\Models\EmployeeLeaveRequest;
 use App\Repository\WhatsAppTemplateMessageRepository;
+use App\Services\LeaveCalculation;
 use App\Services\WhatsApp\WhatsAppChatManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -26,45 +27,48 @@ class EmployeeLeaveController extends Controller
         $this->appTemplateMessageRepository = new WhatsAppTemplateMessageRepository();
     }
 
-    public function updateEmployeeLeaveDay(Request $request, Employee $employee)
-    {
-        $validated = $request->validate([
-            "leave_date"=>"required|date"
-//            "leave_days"=>"required|integer|lt:" . $employee->current_leave_days
-        ]);
+//    public function updateEmployeeLeaveDay(Request $request, Employee $employee)
+//    {
+//        $validated = $request->validate([
+//            "leave_date"=>"required|date"
+////            "leave_days"=>"required|integer|lt:" . $employee->current_leave_days
+//        ]);
+//
+//        $currentLeaveDays = $employee->currentLeaveDays;
+//        if ($currentLeaveDays == 0){
+//            return back()->withErrors(['leave_date' => 'You have reached the maximum leave days']);
+//        }
+//
+//        $leave = EmployeeLeaveRequest::create([
+//            "employee_id" => $employee->id,
+//            "requested_date" => $validated['leave_date'],
+//            "employee_leave_day_id" => $employee->initialLeaveTypeDays->last()->id,
+//            "status"=> EmployeeLeaveRequest::STATUS['approved'],
+//            "hash" => sha1(time())
+//        ]);
+//
+//        $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.update.message');
+//        $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, $employee->first_name, Auth::user()->company->name));
+//
+//        session()->flash('talent-updated');
+//        return back();
+//
+//    }
 
-        $currentLeaveDays = $employee->currentLeaveDays;
-        if ($currentLeaveDays == 0){
-            return back()->withErrors(['leave_date' => 'You have reached the maximum leave days']);
+    public function approveLeave(Employee $employee, EmployeeLeaveRequest $leaveRequest)
+    {
+
+        if ($leaveRequest->total_days < (new LeaveCalculation())->calculateRemainingDaysOnLeaveType($employee, $leaveRequest->initialDay)){
+            $leaveRequest->status = EmployeeLeaveRequest::STATUS['approved'];
+            $leaveRequest->save();
+            $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.update.message');
+            $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, $employee->first_name, Auth::user()->company->name));
+
+            session()->flash('leave-approved');
+            return back();
         }
 
-        $leave = EmployeeLeaveRequest::create([
-            "employee_id" => $employee->id,
-            "requested_date" => $validated['leave_date'],
-            "employee_leave_day_id" => $employee->initialLeaveTypeDays->last()->id,
-            "status"=> EmployeeLeaveRequest::STATUS['approved'],
-            "hash" => sha1(time())
-        ]);
-
-        $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.update.message');
-        $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, $employee->first_name, Auth::user()->company->name));
-
-        session()->flash('talent-updated');
-        return back();
-
-    }
-
-    public function approveLeave(Employee $employee, $hash)
-    {
-        $leave = EmployeeLeaveRequest::where('hash', $hash)->firstOrFail();
-        $leave->status = EmployeeLeaveRequest::STATUS['approved'];
-        $leave->save();
-
-        $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.update.message');
-        $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, $employee->first_name, Auth::user()->company->name));
-
-        session()->flash('leave-approved');
-        return back();
+        return back()->withErrors(['leave_date' => 'You have reached the maximum leave days']);
 
     }
 

@@ -29,7 +29,7 @@
         </div>
         <div class="block">
             <div class="block-header">
-                @if(session()->has('talent-added'))
+{{--                @if(session()->has('talent-added'))--}}
                     <div class="alert alert-success alert-dismissable w-100" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
@@ -37,7 +37,7 @@
                         <h3 class="alert-heading font-size-h4 font-w400">Success</h3>
                         <p class="mb-0">Your invite has been sent</p>
                     </div>
-                @endif
+{{--                @endif--}}
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -87,16 +87,16 @@
                                     <em class="text-muted">{{ $employee->role }}</em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted">  Engineering </em>
+                                    <em class="text-muted">  {{ $employee->department->name }} </em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <em class="text-muted"> James Nako</em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted">  Permenant </em>
+                                    <em class="text-muted"> {{ $employee->type }} </em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted"> {{ $employee->current_leave_days}} days </em>
+{{--                                    <em class="text-muted"> {{ $employee->current_leave_days}} days </em>--}}
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <em class="text-muted"> 5 days</em>
