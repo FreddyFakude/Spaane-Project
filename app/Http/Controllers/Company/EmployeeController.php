@@ -72,12 +72,7 @@ class EmployeeController extends Controller
             "company_department_id" => 16,
             "company_id" => $businessAdmin->company_id,
             "hash" => sha1($validated['email']),
-//            "talent_profileable_id" => $employee->id,
             "role" => $validated['position']
-        ]);
-
-        $leaveDays =  EmployeeLeaveInitialCurrentDay::create([
-            "employee_id"=> $employee->id
         ]);
 
         $email = Mail::to($validated['email'])->queue(new EmployeeInvite($validated['first_name'], $businessAdmin));

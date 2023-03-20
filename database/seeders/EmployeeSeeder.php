@@ -35,19 +35,5 @@ class EmployeeSeeder extends Seeder
                 "role" => "CEO"
             ]
         ]);
-
-//        $array = [];
-//        foreach (CompanyLeaveSetting::all() as $leaveSetting)
-//        {
-//            $array[] = [
-//                "employee_id"=> 1,
-//                "company_id" => $leaveSetting->company_id,
-//                "days" => $leaveSetting->leave_duration_days,
-//                "expiry_date" => Carbon::now()->addDays($leaveSetting->leave_validity_days)->format('Y-m-d'),
-//                "leave_type" => $leaveSetting->leaveType->name
-//            ];
-//        }
-//
-//        DB::table('employee_leave_type_initial_days')->insert($array);
     }
 }

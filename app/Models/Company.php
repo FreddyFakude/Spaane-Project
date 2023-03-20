@@ -30,4 +30,9 @@ class Company extends Model
     {
         return $this->hasMany(CompanyPayslip::class);
     }
+
+    public function companyLeavePolicy()
+    {
+        return $this->hasMany(LeaveType::class);
+    }
 }
