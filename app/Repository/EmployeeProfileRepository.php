@@ -15,7 +15,7 @@ class EmployeeProfileRepository
 
     public function __construct(Employee $employee, array $data)
     {
-        $this->updateOrInsertEmployeeProfile($employee, $data);
+        $this->updateOrInsertEmployee($employee, $data);
         $this->updateOrInsertEmployeeAddress($employee, $data);
         $this->updateOrInsertEmployeeEducation($employee, $data);
         $this->updateOrInsertEmployeeSkills($employee, $data);
@@ -24,29 +24,9 @@ class EmployeeProfileRepository
         $this->updateOrInsertEmployeeSalary($employee, $data);
     }
 
-    private function updateOrInsertEmployeeProfile(Employee $employee, array $data)
+    private function updateOrInsertEmployee(Employee $employee, array $data)
     {
-
-      return  $employee->update([
-            "name"=>$data['first_name'],
-            "first_name"=>$data['first_name'],
-            "last_name"=>$data['last_name'],
-            "dob"=>$data['dob'],
-            "is_profile_complete" => 1,
-            "nationality" =>$data['nationality'],
-            "email"=> $data['personal_email'],
-            "personal_email"=> $data['personal_email'],
-            "id_or_passport"=> $data['id_or_passport'],
-            "gender" => $data['gender'],
-            "marital_status"=>$data['marital_status'],
-            "mobile_number"=>$data['mobile_number'],
-            "home_phone_number"=>$data['home_phone_number'],
-            "number_of_children"=>$data['number_of_children'],
-            "tax_number"=>$data['tax_number'],
-            "driving_license_number"=>$data['driving_license_number'],
-            "emergency_phone_number" => $data['emergency_phone_number'],
-            "status"=>"COMPLETE",
-        ]);
+        return (new EmployeeRepository())->updateOrcreate($employee, $data);
     }
 
     private function updateOrInsertEmployeeAddress(Employee $employee, array $data): void

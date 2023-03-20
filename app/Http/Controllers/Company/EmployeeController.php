@@ -8,6 +8,7 @@ use App\Mail\EmployeeInvite;
 use App\Models\Employee;
 use App\Models\EmployeeLeaveInitialCurrentDay;
 use App\Repository\EmployeeProfileRepository;
+use App\Repository\EmployeeRepository;
 use App\Repository\WhatsAppTemplateMessageRepository;
 use App\Services\WhatsApp\WhatsAppChatManager;
 use Illuminate\Http\Request;
@@ -55,28 +56,9 @@ class EmployeeController extends Controller
         ]);
 
         $validated["mobile_number"] = "27" . substr($validated["mobile_number"], 1); //remove zero and add prefix
-        $businessAdmin = Auth::guard('company')->user();
-//        $employee = Employee::create([
-//            "department_id" => 16,
-//            "business_id" => $businessAdmin->business_id
-//        ]);
-
-        $employee = Employee::create([
-            "name" => $validated['first_name'],
-            "first_name" => $validated['first_name'],
-            "last_name" => $validated['last_name'],
-            "email" => $validated['email'],
-            "mobile_number" => $validated['mobile_number'],
-            "marital_status" => '',
-            "password" => Hash::make('password'),
-            "company_department_id" => 16,
-            "company_id" => $businessAdmin->company_id,
-            "hash" => sha1($validated['email']),
-            "role" => $validated['position']
-        ]);
-
+        $company = Auth::guard('company')->user()->company;
+        $employee = (new EmployeeRepository())->quickCreate($company, $validated);
         $email = Mail::to($validated['email'])->queue(new EmployeeInvite($validated['first_name'], $businessAdmin));
-
         $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.new-profile.added');
         $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, Auth::user()->company->name));
 

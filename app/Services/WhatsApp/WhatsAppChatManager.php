@@ -5,8 +5,10 @@ namespace App\Services\WhatsApp;
 
 
 use App\Models\Chat;
+use App\Models\Company;
 use App\Models\Employee;
 use App\Repository\ChatRepository;
+use App\Repository\EmployeeRepository;
 use App\Repository\WhatsAppEmployeeRepository;
 use App\Repository\WhatsAppTemplateMessageRepository;
 use Illuminate\Support\Facades\Hash;
@@ -74,17 +76,9 @@ class WhatsAppChatManager
 
     public function AddGuestUser(array $userData): Employee
     {
-       return  Employee::create([
-            "name" => "Unregistered",
-            "email" => "email-{$userData['WaId']}@unregistered.com",
-            'mobile_number' => $userData['WaId'],
-            "marital_status" => '',
-            "company_id" => 1,
-            "hash" => sha1(time() . rand(1, 100000)),
-           "company_department_id" => 17,
-            "password" => Hash::make('password'),
-            "status" => Employee::STATUS['guest'],
-        ]);
+        $company = Company::findOrFail(1);
+        $userData['mobile_number'] = $userData['WaId'];
+        return(new EmployeeRepository())->quickCreate($company, $userData);
     }
 
     public function sendWhatsAppMessageToEmployee(Employee $employee, $message)

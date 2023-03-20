@@ -41,6 +41,7 @@ class WhatsAppMessageBatchNotificationJob implements ShouldQueue
                 'bulk_message_id' => $this->bulkMessage->id,
                 'status' => 'PENDING'
             ]);
+
              $employee->notify(new \App\Notifications\WhatsAppUpdateToUserNotification());
         }
     }
