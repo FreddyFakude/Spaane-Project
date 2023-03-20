@@ -39,40 +39,40 @@
             <div class="col-6 mb-2">{{ $employee->address?->country }}</div>
             <div class="col-6 mb-2">Education</div>
             <div class="col-6 mb-2">{{ $employee->education?->qualification }}</div>
-            <h5 class="col-6 mb-2 mt-20">Manual Leave Request</h5>
-            <small class="col-6 ml-2">Leave Balance:</small> 
-            <span class="badge badge-warning mr-10 mb-10">Annnual - 10 days</span>
-            <span class="badge badge-primary mr-10 mb-10">Maternity - 4 months</span>
-            <span class="badge badge-info mr-10 mb-10">Sick - 8 days</span>
-            <span class="badge badge-danger mr-10  mb-10">Study - 8 days</span>
-            <span class="badge badge-success mr-10 mb-10">Family responsibility - 4 days</span>
-            <span class="badge badge-secondary mr-10 mb-10">Religious - 4 days</span>
-            <div class="col-md-12">
-                <select class="js-select2 form-control" id="example-select2" name="example-select2" style="width: 100%;" data-placeholder="Choose leave policy">
-                    <option value="0">Choose Policy Leave</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                    <option value="1">Annual leave</option>
-                    <option value="2">Maternity leave</option>
-                    <option value="3">Sick leave</option>
-                    <option value="4">Study leave</option>
-                    <option value="5">Religious leave</option>
-                    <option value="6">Family Responsibility leave</option>
-                </select>
-            </div>
+{{--            <h5 class="col-6 mb-2 mt-20">Manual Leave Request</h5>--}}
+{{--            <small class="col-6 ml-2">Leave Balance:</small> --}}
+{{--            <span class="badge badge-warning mr-10 mb-10">Annnual - 10 days</span>--}}
+{{--            <span class="badge badge-primary mr-10 mb-10">Maternity - 4 months</span>--}}
+{{--            <span class="badge badge-info mr-10 mb-10">Sick - 8 days</span>--}}
+{{--            <span class="badge badge-danger mr-10  mb-10">Study - 8 days</span>--}}
+{{--            <span class="badge badge-success mr-10 mb-10">Family responsibility - 4 days</span>--}}
+{{--            <span class="badge badge-secondary mr-10 mb-10">Religious - 4 days</span>--}}
+{{--            <div class="col-md-12">--}}
+{{--                <select class="js-select2 form-control" id="example-select2" name="example-select2" style="width: 100%;" data-placeholder="Choose leave policy">--}}
+{{--                    <option value="0">Choose Policy Leave</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->--}}
+{{--                    <option value="1">Annual leave</option>--}}
+{{--                    <option value="2">Maternity leave</option>--}}
+{{--                    <option value="3">Sick leave</option>--}}
+{{--                    <option value="4">Study leave</option>--}}
+{{--                    <option value="5">Religious leave</option>--}}
+{{--                    <option value="6">Family Responsibility leave</option>--}}
+{{--                </select>--}}
+{{--            </div>--}}
             {{-- <form class="task_setup" method="POST" action="{{ route('dashboard.company.employee.update.leave', [$employee->id]) }}" enctype="multipart/form-data"> --}}
-                <div class="form-group row ml-2 mt-10">
-                    <div class="col-md-12">
-                        <div class="input-daterange input-group" data-date-format="mm/dd/yyyy" data-week-start="1" data-autoclose="true" data-today-highlight="true">
-                            <input type="date" class="form-control" id="example-daterange1" name="example-daterange1" placeholder="From" data-week-start="1" data-autoclose="true" data-today-highlight="true">
-                            <div class="input-group-prepend input-group-append">
-                                <span class="input-group-text font-w600">to</span>
-                            </div>
-                            <input type="date" class="form-control mr-10" id="example-daterange2" name="example-daterange2" placeholder="To" data-week-start="1" data-autoclose="true" data-today-highlight="true">
-                            @csrf
-                            <button type="submit" class="btn btn-alt-success ml-0" ><i class="fa fa-check"></i> Submit</button>
-                        </div>
-                    </div>
-                    
-                </div>
+{{--                <div class="form-group row ml-2 mt-10">--}}
+{{--                    <div class="col-md-12">--}}
+{{--                        <div class="input-daterange input-group" data-date-format="mm/dd/yyyy" data-week-start="1" data-autoclose="true" data-today-highlight="true">--}}
+{{--                            <input type="date" class="form-control" id="example-daterange1" name="example-daterange1" placeholder="From" data-week-start="1" data-autoclose="true" data-today-highlight="true">--}}
+{{--                            <div class="input-group-prepend input-group-append">--}}
+{{--                                <span class="input-group-text font-w600">to</span>--}}
+{{--                            </div>--}}
+{{--                            <input type="date" class="form-control mr-10" id="example-daterange2" name="example-daterange2" placeholder="To" data-week-start="1" data-autoclose="true" data-today-highlight="true">--}}
+{{--                            @csrf--}}
+{{--                            <button type="submit" class="btn btn-alt-success ml-0" ><i class="fa fa-check"></i> Submit</button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+{{--                </div>--}}
                 {{-- <input type="date" class="form-control" name="leave_date" value=""> --}}
             {{-- </form> --}}
         </div>
