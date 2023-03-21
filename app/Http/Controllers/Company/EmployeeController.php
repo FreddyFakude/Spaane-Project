@@ -58,7 +58,7 @@ class EmployeeController extends Controller
         $validated["mobile_number"] = "27" . substr($validated["mobile_number"], 1); //remove zero and add prefix
         $company = Auth::guard('company')->user()->company;
         $employee = (new EmployeeRepository())->quickCreate($company, $validated);
-        $email = Mail::to($validated['email'])->queue(new EmployeeInvite($validated['first_name'], $businessAdmin));
+        $email = Mail::to($validated['email'])->queue(new EmployeeInvite($validated['first_name'], Auth::guard('company')->user()));
         $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.new-profile.added');
         $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, Auth::user()->company->name));
 
