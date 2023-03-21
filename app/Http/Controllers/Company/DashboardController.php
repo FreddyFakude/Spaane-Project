@@ -20,7 +20,7 @@ class DashboardController
             "employees"=>$employees,
             "businessId" =>  Auth::id(),
             "companyLeavePolicy" => Cache::get('companyLeaveTypes', function () {
-                return CompanyLeavePolicy::all()->load('leaveType');
+                return CompanyLeavePolicy::with('leaveType')->get();
             })
         ]);
     }
