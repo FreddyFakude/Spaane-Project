@@ -69,44 +69,44 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @empty(!$employees)
-                        @foreach($employees as $employee)
-                            <tr>
-                                <td class="text-center">
-                                    <label class="css-control css-control-primary css-checkbox">
-                                        <input type="checkbox" class="css-control-input" id="row_1" name="row_1">
-                                        <span class="css-control-indicator"></span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <p class="font-w600 mb-10">
-                                        <a href="{{ route('dashboard.company.chat.new', [$employee]) }}">{{ $employee->name }} {{ $employee->last_name }}</a>
-                                    </p>
-                                </td>
-                                <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted">{{ $employee->role }}</em>
-                                </td>
-                                <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted">  {{ $employee->department->name }} </em>
-                                </td>
-                                <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted"> James Nako</em>
-                                </td>
-                                <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted"> {{ $employee->type }} </em>
-                                </td>
-                                <td class="d-none d-sm-table-cell">
-{{--                                    <em class="text-muted"> {{ $employee->current_leave_days}} days </em>--}}
-                                </td>
-                                <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted"> 5 days</em>
-                                </td>
-                                <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted"> Active</em>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endempty
+                        @empty(!$employees)
+                            @foreach($employees as $employee)
+                                <tr>
+                                    <td class="text-center">
+                                        <label class="css-control css-control-primary css-checkbox">
+                                            <input type="checkbox" class="css-control-input" id="row_1" name="row_1">
+                                            <span class="css-control-indicator"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <p class="font-w600 mb-10">
+                                            <a href="{{ route('dashboard.company.chat.new', [$employee]) }}">{{ $employee->name }} {{ $employee->last_name }}</a>
+                                        </p>
+                                    </td>
+                                    <td class="d-none d-sm-table-cell">
+                                        <em class="text-muted">{{ $employee->role }}</em>
+                                    </td>
+                                    <td class="d-none d-sm-table-cell">
+                                        <em class="text-muted">  {{ $employee->department->name }} </em>
+                                    </td>
+                                    <td class="d-none d-sm-table-cell">
+                                        <em class="text-muted"> {{ $employee->direct_manager }}</em>
+                                    </td>
+                                    <td class="d-none d-sm-table-cell">
+                                        <em class="text-muted"> {{ $employee->type }} </em>
+                                    </td>
+                                    <td class="d-none d-sm-table-cell">
+    {{--                                    <em class="text-muted"> {{ $employee->current_leave_days}} days </em>--}}
+                                    </td>
+                                    <td class="d-none d-sm-table-cell">
+                                        <em class="text-muted"> 5 days</em>
+                                    </td>
+                                    <td class="d-none d-sm-table-cell">
+                                        <em class="text-muted"> Active</em>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endempty
                     </tbody>
                 </table>
                 <table class="js-table-checkable table table-hover js-table-checkable-enabled tab-pane" id="btabs-external">

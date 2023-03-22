@@ -298,7 +298,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Direct Manager</label>
-                                <input type="text" class="form-control"  name="direct_manager">
+                                <input type="text" class="form-control"  name="direct_manager" value="{{ $employee->direct_manager }}">
                             </div>
                         </div>
                         <div class="col-md-3">

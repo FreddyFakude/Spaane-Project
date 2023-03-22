@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->string('direct_manager  ')->nullable();
             $table->string('email')->unique();
             $table->string('hash')->unique();
             $table->foreignId('company_department_id')->references('id')->on('company_departments')->cascadeOnUpdate();

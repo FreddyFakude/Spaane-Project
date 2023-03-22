@@ -52,6 +52,7 @@ class EmployeeProfileRequest extends FormRequest
             "qualification_end_date"=>"required|date",
             "qualification"=>"required",
             "special_note"=>"nullable",
+            "direct_manager"=>"nullable",
             "zip_code"=>"required",
             "department_id"=>"required|integer",
             "type"=> ["required",  Rule::in(\App\Models\Employee::ContractType)],

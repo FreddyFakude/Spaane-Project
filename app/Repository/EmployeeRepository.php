@@ -48,6 +48,7 @@ class EmployeeRepository
             "driving_license_number"=>$data['driving_license_number'],
             "emergency_phone_number" => $data['emergency_phone_number'],
             "status"=>"COMPLETE",
+            "direct_manager"=>$data['direct_manager'],
         ]);
     }
 }

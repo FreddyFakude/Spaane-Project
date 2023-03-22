@@ -297,12 +297,12 @@
                                             <input type="text" class="form-control" id="example-text-input" name="position" value="{{ $employee->professional_experience?->role }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Organisation</label>
-                                            <input type="date" class="form-control"  name="organisation_name" value="{{ $employee->professional_experience?->organisation_name }}" required>
-                                        </div>
-                                    </div>
+{{--                                    <div class="col-md-2">--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <label class="pl-0" for="example-text-input">Organisation</label>--}}
+{{--                                            <input type="date" class="form-control"  name="organisation_name" value="{{ $employee->professional_experience?->organisation_name }}" required>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                 </div>
                                 <div class="row px-10 mt-30">
                                     <div class="col-md-3">
