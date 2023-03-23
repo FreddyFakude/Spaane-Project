@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Cache;
 class DashboardController
 {
     public function index(){
-        $employees = Employee::where('is_profile_complete', '=', false)->get();
+        $employees = Auth::user()->employees;
         $employees->load(['leavePolicies', 'leaveRequests']);
         return view('dashboard.company.index', [
             "employees"=>$employees,

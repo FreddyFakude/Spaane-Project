@@ -64,35 +64,41 @@
                         <tbody class="js-table-sections-header">
                         @empty(!$employees)
                             @foreach($employees as $employee)
-                                <tr>
-                                    <td>
-                                        <p class="font-w600 mb-10">
-                                            {{ $employee->name }}
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p class="font-w600 mb-10">
-                                            {{ $employee->remuneration?->basic_salary }}
-                                        </p>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell">
-                                        <em class="text-muted"> {{ $employee->payslips->where('date', $date)->first()?->commission }}</em>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell">
-                                        <em class="text-muted"> {{ $employee->remuneration?->travel_allowance }}</em>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell">
-                                        <em class="text-muted"> {{ $employee->payslips->where('date', $date)->first()?->reimbursement }}</em>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell">
-                                        <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()?->reference_number }} </em>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell">
-                                        @if(!$employee->payslips->where('date', $date)->first())
-                                            <button type="button" x-on:click="employeeId = {{ $employee->id }}" class="btn-lg btn-primary mr-2" data-toggle="modal" data-target="#modal-slideright">Payslip</button>
-                                        @endif
-                                    </td>
-                                </tr>
+                                <form action="{{ route('dashboard.business.payroll.store', [$employee->hash])  }}" method="post">
+                                    <tr>
+                                        <td>
+                                            <p class="font-w600 mb-10">
+                                                {{ $employee->name }}
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p class="font-w600 mb-10">
+                                                <input type="hidden" name="basic_salary" value="{{ $employee->remuneration?->basic_salary }}">
+                                                {{ $employee->remuneration?->basic_salary }}
+                                            </p>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">
+                                            <input type="number" name="commission" value="{{ $employee->payslips->where('date', $date)->first()?->commission ?? 0 }}">
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">
+                                            <input type="hidden" name="travel_allowance" value="{{ $employee->remuneration?->travel_allowance }}">
+                                            <em class="text-muted"> {{ $employee->remuneration?->travel_allowance }}</em>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">
+                                            <input type="text" name="reimbursement" value="{{ $employee->payslips->where('date', $date)->first()?->reimbursement ?? 0 }}">
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">
+                                            <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()?->reference_number }} </em>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">
+                                            @if(!$employee->payslips->where('date', $date)->first())
+                                                @csrf
+                                                <input type="hidden" name="date" value="{{ $date }}">
+                                                <button type="submit" x-on:click="employeeId = {{ $employee->id }}" class="btn-lg btn-primary mr-2" >Payslip</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                </form>
                             @endforeach
                         @endempty
                         </tbody>
@@ -106,7 +112,7 @@
         <div class="modal fade" id="modal-slideright" tabindex="-1" role="dialog" aria-labelledby="modal-slideright" aria-hidden="true">
             <div class="modal-dialog modal-dialog-slideright modal-lg" role="document">
                 <div class="modal-content">
-                    <form action="{{ route('dashboard.business.payroll.store')  }}" method="post">
+                    <form action="#" method="post">
                         <div class="block block-themed block-transparent mb-0">
                             <div class="block-content">
                                 <div class="d-flex justify-content-center my-20">

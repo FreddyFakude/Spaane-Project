@@ -20,7 +20,7 @@ class EmployeeRepository
             "mobile_number" => $data['mobile_number'],
             "marital_status" => '',
             "password" => Hash::make('password'),
-            "company_department_id" => 16,
+//            "company_department_id" => 16,
             "company_id" => $company->id,
             "hash" => sha1($email . time() . rand(1, 100000)),
             "role" => !isset($data['position']) ? "employee" : $data['position'],
@@ -49,6 +49,8 @@ class EmployeeRepository
             "emergency_phone_number" => $data['emergency_phone_number'],
             "status"=>"COMPLETE",
             "direct_manager"=>$data['direct_manager'],
+            "company_department_id" => $data['department_id'],
+            "type" => $data['type'],
         ]);
     }
 }

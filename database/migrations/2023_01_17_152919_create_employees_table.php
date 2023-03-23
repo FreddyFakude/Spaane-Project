@@ -33,7 +33,7 @@ return new class extends Migration
             $table->integer('talent_visibility')->default(0);
             $table->string('marital_status')->nullable();
             $table->integer('number_of_children')->default(0);
-            $table->string('role')->default('Unkown');
+            $table->string('role')->default('Unknown');
             $table->string('mobile_number');
             $table->string('driving_license_number')->nullable();
             $table->string('tax_number')->nullable();
@@ -47,7 +47,7 @@ return new class extends Migration
             $table->string('status')->default('INVITE SENT');
             $table->boolean('is_profile_complete')->default(false);
             $table->boolean('is_available')->default(TRUE);
-            $table->string('type')->default('PERMANENT');
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

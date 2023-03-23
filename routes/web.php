@@ -47,7 +47,7 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
     Route::post('/dashboard/chat/{chat:hash}/send-message', [\App\Http\Controllers\Company\CompanyChatController::class, 'SendMessages'])->name('dashboard.company.chat.send.messages');
     Route::get('/dashboard/payroll', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'index'])->name('dashboard.business.payroll.index');
     Route::get('/dashboard/payroll/{date}', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'show'])->name('dashboard.business.payroll.show');
-    Route::post('/dashboard/payroll/store', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'store'])->name('dashboard.business.payroll.store');
+    Route::post('/dashboard/payroll/{employee:hash}/store', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'store'])->name('dashboard.business.payroll.store');
 //    Route::get('/dashboard/payroll/{company_payslip:hash}', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'show'])->name('dashboard.business.payroll.show');
 });
 
