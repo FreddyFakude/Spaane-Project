@@ -75,7 +75,7 @@ class EmployeeWhatsAppChatFlow
         if (in_array($this->receivedMessage, [3, "More Options"])){
           return  $this->stepThree();
         }
-        if (in_array($this->receivedMessage, ["See The Update"])){
+        if (in_array(strtolower($this->receivedMessage), ["see the update"])){
           return  $this->stepSeven();
         }
         else{

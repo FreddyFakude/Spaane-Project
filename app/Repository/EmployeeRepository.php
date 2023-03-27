@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class EmployeeRepository
 {
-    public function quickCreate(Company $company,  array $data)
+    public function quickCreate(Company $company,  array $data, $status = Employee::STATUS['guest'])
     {
         $email  = !isset($data['email']) ? "email-{$data['mobile_number']}@unregistered.com" : $data['email'];
        return Employee::create([
@@ -24,7 +24,7 @@ class EmployeeRepository
             "company_id" => $company->id,
             "hash" => sha1($email . time() . rand(1, 100000)),
             "role" => !isset($data['position']) ? "employee" : $data['position'],
-            "status" => Employee::STATUS['guest'],
+            "status" => $status,
        ]);
     }
     public function updateOrcreate(Employee $employee, array $data)
