@@ -24,7 +24,7 @@ class EmployeeLeaveRequestRepository
             "employee_leave_policy_id" => $employeeLeavePolicy->id,
             "status"=> EmployeeLeaveRequest::STATUS['review'],
             "leave_type" => $employeeLeavePolicy->leaveType->name,
-            "total_days" => Carbon::parse($startDate)->diffInDays(Carbon::parse($endDate)),
+            "total_days" => Carbon::parse($startDate)->diffInDays(Carbon::parse($endDate)) + 1, // +1 because diffInDays does not include the first day,
             "hash" => sha1(time())
         ]);
     }
