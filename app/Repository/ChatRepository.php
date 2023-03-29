@@ -12,13 +12,17 @@ use Illuminate\Support\Facades\Hash;
 
 class ChatRepository
 {
-    public function startChat(Employee $talent)
+    public function findOrCreateChatWithEmployee(Employee $employee): Chat
     {
-        return Chat::updateOrCreate([
-            "company_id" => $talent->company->id,
-            "company_account_administrator_id" => $case->user_id,
-            "employee_id" => $talent->id
-        ]);
+        return
+            Chat::firstOrCreate(
+                ['chatable_id'=>$employee->id, 'chatable_type'=> "App\Models\Employee"],
+                [
+                    'company_id'=>$employee->company->id,
+                    'company_account_administrator_id' => $employee->company->administrator->id,
+                    'hash'=> sha1(time() . rand(1, 100000))
+                ]
+            );
     }
 
     public function findChatByTalent($case,User $user)

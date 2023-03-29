@@ -61,7 +61,7 @@
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <div><h3 class="badge badge-warning">Annual Leave Request</h3></div>
+                                        <div><span>Annual Leave Request</span></div>
                                         <p class="mb-10">
                                             {{ $employee->name }} ({{ $employee->role }}) requested {{ $request->total_days }} work days from {{ $request->start_date }}  to {{ $request->end_date }}
                                             @if($request->status == \App\Models\EmployeeLeaveRequest::STATUS['review'])
@@ -71,7 +71,7 @@
                                         </p>
                                         <small class="mb-0">Leave Balance:</small>
                                         @foreach($employee->leavePolicies as $policy)
-                                            <span class="badge badge-warning">{{ $policy->leaveType->name }} {{ (new App\Services\LeaveCalculation())->calculateRemainingDaysOnLeaveType($employee, $policy->initialDay)  }}</span>
+                                            <span>{{ $policy->leaveType->name }} {{ (new App\Services\LeaveCalculation())->calculateRemainingDaysOnLeaveType($employee, $policy->initialDay)  }}</span>
                                         @endforeach
 {{--                                        <span class="badge badge-warning">Annnual - 10 days</span>--}}
 {{--                                        <span class="badge badge-primary">Maternity - 4 months</span>--}}

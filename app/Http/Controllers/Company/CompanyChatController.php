@@ -9,6 +9,7 @@ use App\Models\Chat;
 use App\Models\CompanyDepartment;
 use App\Models\Employee;
 use App\Models\Skill;
+use App\Repository\ChatRepository;
 use App\Services\WhatsApp\WhatsApp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +20,10 @@ class CompanyChatController extends Controller
 
     private WhatsApp $whatsApp;
 
-    public function __construct(WhatsApp $whatsApp)
+    public function __construct(WhatsApp $whatsApp, ChatRepository $chatRepository)
     {
         $this->whatsApp = $whatsApp;
+        $this->chatRepository = $chatRepository;
     }
 
     public function chats()
@@ -33,16 +35,7 @@ class CompanyChatController extends Controller
     }
 
     public function startChat(Employee $employee){
-        $chat  = Chat::firstOrCreate([
-            'company_account_administrator_id' => Auth::id(),
-            'chatable_id' => $employee->id,
-            'chatable_type' => "App\Models\Employee",
-        ], [
-            'company_id'=> Auth::user()->company->id,
-            'company_account_administrator_id' => Auth::id(),
-            'hash' => sha1(time())
-        ]);
-
+        $chat = $this->chatRepository->findOrCreateChatWithEmployee($employee);
         return view('dashboard.company.chat', [
             'chat'=> $chat->load('messages'),
             'employee' => $employee,
