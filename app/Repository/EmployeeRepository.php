@@ -13,7 +13,7 @@ class EmployeeRepository
     {
         $email  = !isset($data['email']) ? "email-{$data['mobile_number']}@unregistered.com" : $data['email'];
        return Employee::create([
-            "name" =>  !isset($data['name']) ? $data['name'] : $data['first_name'],
+            "name" =>  isset($data['name']) ? $data['name'] : $data['first_name'],
             "first_name" => !isset($data['first_name']) ? "Unregistered" : $data['first_name'],
             "last_name" => !isset($data['last_name']) ? "Unregistered" : $data['last_name'],
             "email" => $email,
