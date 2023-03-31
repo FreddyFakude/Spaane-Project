@@ -1,6 +1,9 @@
 <x-frontend.template>
     <section class="mt-5">
         <div class="container py-5 h-100">
+            <div class="row justify-content-center align-items-center py-3 px-3">
+                <img height="30%" width="30%" src="{{asset('assets/images/spaane_white_transparent.png')}}">
+            </div>
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-12">
                     <div class="card rounded-3 text-black">
@@ -11,7 +14,7 @@
                                     <p class="small mb-0">Please click sign up to create a new account</p>
                                     <a class="btn btn-primary" href="{{ route('business.signup.form') }}">SIGNUP</a>
                                 </div> --}}
-                                    <img height="100%" width="100%" src="{{asset('assets/images/browser-window-displaying-workspace-.svg')}}">   
+                                <img height="100%" width="100%" src="{{asset('assets/images/browser-window-displaying-workspace-.svg')}}">   
                             </div>
                             <div class="col-lg-6">
                                 <div class="card-body p-md-5 mx-md-4">
