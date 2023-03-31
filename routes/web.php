@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/company/login');
+Route::view('/', 'frontend.index')->name('index');
+Route::view('/about', 'frontend.about')->name('index');
+Route::view('/about', 'frontend.about')->name('index');
 
 Route::view('/employee/register/', 'auth.company.login')->name('employee.register');
 Route::get('/employee/login', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'loginForm'])->name('employee.login.form');

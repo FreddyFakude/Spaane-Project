@@ -1,99 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ env('APP_NAME') }}</title>
-    <base href="/" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('assets/custom/custom.css') }}" rel="stylesheet">
+<html lang="en-US" dir="ltr">
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Boldo | Boldo Agency Template</title>
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/frontend/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/frontend/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/frontend/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/frontend/img/favicons/favicon.ico">
+    <link rel="manifest" href="assets/frontend/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="vendors/prism/prism.css" rel="stylesheet">
+    <link href="vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/frontend/css/theme.min.css" rel="stylesheet" />
+    <link href="assets/frontend/css/user.min.css" rel="stylesheet" />
 </head>
-<body class="bg-teal">
-{{-- <header>
-    <nav class="navbar navbar-expand-md  fixed-top bg-teal">
-        <a class="navbar-brand bg-transparent" href="#">
-            <img src="#" alt="" width="150">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item home-nav-item">
-                    <a class="nav-link nav-main-link" href="#features" id="featuresNav">FEATURES</a>
-                </li>
-                               <li class="nav-item home-nav-item">
-                                   <a class="nav-link nav-main-link" href="#verify" id="verifyNav">VERIFY</a>
-                               </li>
-                               <li class="nav-item home-nav-item">
-                                   <a class="btn btn-primary" href="https://wa.me/" id="verifyNav">Get Proof of residence</a>
-                               </li>
-            </ul>
+
+<body>
+<!-- ===============================================-->
+<!--    Main Content-->
+<!-- ===============================================-->
+<main class="main" id="top">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand" href="index.html"><img src="assets/img/Logo.png" alt="" /></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars text-white fs-3"></i></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="blogs.html">Blogs</a></li>
+                    <li class="nav-item mt-2 mt-lg-0"><a class="nav-link btn btn-light text-black w-md-25 w-50 w-lg-100" aria-current="page" href="#">Log In</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
-</header> --}}
-<main role="main">
-    {{ $slot }}
-</main>
-{{-- <footer class="footer bg-teal" id="footer-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <h6 class="nav-heading">
-                    <img src="jjjj" alt="sss" width="200"> --}}
-                    {{--                    <img src="{{ asset('storage/councils/logo/tsitsing.png') }}" alt="" width="200">--}}
-                {{-- </h6>
-                <p>
-                    sdsdsd
-                </p>
-            </div> --}}
-            {{--            <div class="col-md-3">--}}
-            {{--                <div class="pt-2">--}}
-            {{--                    --}}
-            {{--                    <p>If you are council please login here</p>--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
-            {{-- <div class="col-md-4">
-                <h6 class="nav-heading">CONTACT US</h6>
-                <ul class="list-unstyled">
-                    <li class="footer-list-item">info@</li>
-                    <li class="footer-list-item">+27 11 083 6868/+27 82 784 9395</li>
-                </ul>
-            </div>
-            <div class="col-md-2">
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item list-group-item-transparent social-media-div social-icons">
-                        <a href="https://twitter.com/addressdox_sa" class="text-white" target="_blank"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li class="list-group-item social-media-div social-icons">
-                        <a href="https://www.facebook.com/addressdox" class="text-white" target="_blank"><i class="fab fa-facebook"></i></a>
-                    </li>
-                    <li class="list-group-item social-media-div social-icons">
-                        <a href="https://www.linkedin.com/company/addressdox/" class="text-white" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <hr class="bg-secondary">
-        <div class="container">
-            &copy; {{ date('Y') }} - Teambix
-        </div>
+    <div class="bg-dark"><img class="img-fluid position-absolute end-0" src="assets/img/hero/hero-bg.png" alt="" />
+
+        <!-- ============================================-->
+        <!-- <section> begin ============================-->
+        <section>
+            <div class="container">
+                <div class="row align-items-center py-lg-8 py-6">
+                    <div class="col-lg-6 text-center text-lg-start">
+                        <h1 class="text-white fs-5 fs-xl-6">Save time by building fast with Boldo Template</h1>
+                        <p class="text-white py-lg-3 py-2">Funding handshake buyer business-to-business metrics iPad partnership. First mover advantage innovator success deployment non-disclosure.</p>
+                        <div class="d-sm-flex align-items-center gap-3"><button class="btn btn-success text-black mb-3 w-75">Buy Template</button><button class="btn btn-outline-light mb-3 w-75">Explore</button></div>
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-end mt-3 mt-lg-0"><img class="img-fluid" src="assets/img/hero/hero-graphics.png" alt="" /></div>
+                </div>
+                <div class="swiper">
+                    <div class="swiper-container swiper-shadow swiper-theme" data-swiper='{"slidesPerView":2,"breakpoints":{"640":{"slidesPerView":2,"spaceBetween":20},"768":{"slidesPerView":4,"spaceBetween":40},"992":{"slidesPerView":5,"spaceBetween":40},"1024":{"slidesPerView":4,"spaceBetween":50},"1025":{"slidesPerView":6,"spaceBetween":50}},"spaceBetween":10,"grabCursor":true,"pagination":{"el":".swiper-pagination","clickable":true},"loop":true,"freeMode":true,"autoplay":{"delay":2500,"disableOnInteraction":false}}'>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide text-center"><img src="assets/img/logos/boldo.png" alt="" /></div>
+                            <div class="swiper-slide text-center"><img src="assets/img/logos/presto.png" alt="" /></div>
+                            <div class="swiper-slide text-center"><img src="assets/img/logos/boldo.png" alt="" /></div>
+                            <div class="swiper-slide text-center"><img src="assets/img/logos/presto.png" alt="" /></div>
+                            <div class="swiper-slide text-center"><img src="assets/img/logos/boldo.png" alt="" /></div>
+                            <div class="swiper-slide text-center"><img src="assets/img/logos/presto.png" alt="" /></div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end of .container-->
+        </section><!-- <section> close ============================-->
+        <!-- ============================================-->
+
     </div>
-</footer> --}}
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-@stack('extra-script')
 
-<style>
-    .footer {
-        padding-top: 64px;
-        padding-bottom: 40px;
-        color: white;
-    }
+    {{ $slot }}
+
+</main><!-- ===============================================-->
+<!--    End of Main Content-->
+<!-- ===============================================-->
 
 
-</style>
+
+<!-- ============================================-->
+<!-- <section> begin ============================-->
+<section>
+    <div class="container bg-dark overflow-hidden rounded-1">
+        <div class="bg-holder" style="background-image:url(assets/img/promo/promo-bg.png);"></div>
+        <!--/.bg-holder-->
+        <div class="px-5 py-7 position-relative">
+            <h1 class="text-center w-lg-75 mx-auto fs-lg-6 fs-md-4 fs-3 text-white">An enterprise template to ramp up your company website</h1>
+            <div class="row justify-content-center mt-5">
+                <div class="col-auto w-100 w-lg-50"><input class="form-control mb-2 border-light fs-1" type="email" placeholder="Your email address" /></div>
+                <div class="col-auto mt-2 mt-lg-0"><button class="btn btn-success text-dark fs-1">Start now</button></div>
+            </div>
+        </div>
+    </div><!-- end of .container-->
+</section><!-- <section> close ============================-->
+<!-- ============================================-->
+
+
+
+<!-- ============================================-->
+<!-- <section> begin ============================-->
+<section class="pt-0">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-6 col-sm-12"><a href="index.html"><img class="img-fluid mt-5 mb-4" src="assets/frontend/img/black-logo.png" alt="" /></a>
+                <p class="w-lg-75 text-gray">Social media validation business model canvas graphical user interface launch party creative facebook iPad twitter.</p>
+            </div>
+            <div class="col-lg-2 col-sm-4">
+                <h3 class="fw-bold fs-1 mt-5 mb-4">Landings</h3>
+                <ul class="list-unstyled">
+                    <li class="my-3 col-md-4"><a href="#">Home</a></li>
+                    <li class="my-3"><a href="#">Products</a></li>
+                    <li class="my-3"><a href="#">Services</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-sm-4">
+                <h3 class="fw-bold fs-1 mt-5 mb-4">Company</h3>
+                <ul class="list-unstyled">
+                    <li class="my-3"><a href="#">Home</a></li>
+                    <li class="my-3"><a href="#">Careers</a><span class="py-1 px-2 rounded-2 bg-success fw-bold text-dark ms-2">Hiring!</span></li>
+                    <li class="my-3"><a href="#">Services</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-sm-4">
+                <h3 class="fw-bold fs-1 mt-5 mb-4">Resources</h3>
+                <ul class="list-unstyled">
+                    <li class="mb-3"><a href="#">Home</a></li>
+                    <li class="mb-3"><a href="#">Products</a></li>
+                    <li class="mb-3"><a href="#">Services</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-gray">All rights reserved.</p>
+    </div><!-- end of .container-->
+</section><!-- <section> close ============================-->
+<!-- ============================================-->
+
+
+
+<!-- ===============================================-->
+<!--    JavaScripts-->
+<!-- ===============================================-->
+<script src="vendors/popper/popper.min.js"></script>
+<script src="vendors/bootstrap/bootstrap.min.js"></script>
+<script src="vendors/anchorjs/anchor.min.js"></script>
+<script src="vendors/is/is.min.js"></script>
+<script src="vendors/fontawesome/all.min.js"></script>
+<script src="vendors/lodash/lodash.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+<script src="vendors/prism/prism.js"></script>
+<script src="vendors/swiper/swiper-bundle.min.js"></script>
+<script src="assets/frontend/js/theme.js"></script>
 </body>
+
 </html>
