@@ -14,12 +14,12 @@
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/frontend/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/frontend/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/frontend/img/favicons/favicon-16x16.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/frontend/img/favicons/favicon.ico">
-    <link rel="manifest" href="assets/frontend/img/favicons/manifest.json">
-    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/frontend/img/favicons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/frontend/img/favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/frontend/img/favicons/favicon-16x16.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/frontend/img/favicons/favicon.ico') }}">
+    <link rel="manifest" href="{{ asset('assets/frontend/img/favicons/manifest.json') }}">
+    <meta name="msapplication-TileImage" content="{{ asset('assets/img/favicons/mstile-150x150.png') }}">
     <meta name="theme-color" content="#ffffff">
 
     <!-- ===============================================-->
@@ -152,16 +152,16 @@
 <!-- ===============================================-->
 <!--    JavaScripts-->
 <!-- ===============================================-->
-<script src="vendors/popper/popper.min.js"></script>
-<script src="vendors/bootstrap/bootstrap.min.js"></script>
-<script src="vendors/anchorjs/anchor.min.js"></script>
-<script src="vendors/is/is.min.js"></script>
-<script src="vendors/fontawesome/all.min.js"></script>
-<script src="vendors/lodash/lodash.min.js"></script>
+<script src="{{ asset('vendors/popper/popper.min.js') }}"></script>
+<script src="{{ asset('vendors/bootstrap/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendors/anchorjs/anchor.min.js')}}"></script>
+<script src="{{ asset('vendors/is/is.min.js') }}"></script>
+<script src="{{ asset('vendors/fontawesome/all.min.js') }}"></script>
+<script src="{{ asset('vendors/lodash/lodash.min.js') }}"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-<script src="vendors/prism/prism.js"></script>
-<script src="vendors/swiper/swiper-bundle.min.js"></script>
-<script src="assets/frontend/js/theme.js"></script>
+<script src="{{ asset('vendors/prism/prism.js') }}"></script>
+<script src="{{ asset('vendors/swiper/swiper-bundle.min.js') }}"></script>
+<script src="{{ asset('assets/frontend/js/theme.js') }}"></script>
 </body>
 
 </html>
