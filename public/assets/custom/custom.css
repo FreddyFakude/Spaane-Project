@@ -1,22 +1,22 @@
 .bg-teal{
-    background-color: #06637F;
+    background-color: #770737;
 }
 /* .bg-light-grey{
     background-color: #e9ecef;
 } */
 .btn-primary {
-    background-color: #06637F;
+    background-color: #770737;
 }
 .btn-secondary-outline {
+    border-color: #770737;
+    color: #770737;
+}
+
+.btn-secondary {
+    background-color: #06637F;
+}
+
+.btn-secondary {
     border-color: #06637F;
     color: #06637F;
-}
-
-.btn-secondary {
-    background-color: #FE4E00;
-}
-
-.btn-secondary {
-    border-color: #FE4E00;
-    color: #FE4E00;
 }
