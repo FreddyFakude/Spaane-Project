@@ -76,7 +76,7 @@ class WhatsAppTemplateMessageSeeder extends Seeder
                 'content' => env('APP_ENV') == 'local' ?  " For which month would you like to download the payslip? \n
                 1. Past month
                 2. 2 months ago
-                3. 3 months ago" : " For which month would you like to download the payslip? ",
+                3. 3 months ago" : "Please select the month you would like to download",
                 "slug" => "employee.payslip.choose.month"
             ]
         ]);
