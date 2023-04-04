@@ -66,8 +66,11 @@ class EmployeeWhatsAppChatFlow
 
         }
 
+        if(session()->has("chat-{$this->employee->mobile_number}-expecting-payslip-month")){
+            return  $this->optionOne();
+        }
         if (in_array($this->receivedMessage, [1, "Download the payslip"])){
-          return  $this->optionOne();
+          return  $this->pickPayslipMonth();
         }
         if (in_array($this->receivedMessage, [2, "Update your info"])){
           return  $this->stepTwo();
@@ -91,18 +94,43 @@ class EmployeeWhatsAppChatFlow
         session()->remove("chat-{$this->employee->mobile_number}-inputted-leave-days_array");
         session()->remove("chat-{$this->employee->mobile_number}-leave-management-expecting-policy");
         session()->remove("chat-{$this->employee->mobile_number}-leave-management-leave_policy");
+        session()->remove("chat-{$this->employee->mobile_number}-expecting-payslip-month");
         $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.welcome');
         return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, sprintf($message->content, $this->employee->name, $this->employee->company->name), "App\Models\Company", $this->employee->id, true, true);
     }
 
+    public function pickPayslipMonth()
+    {
+        $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.payslip.choose.month');
+        session(["chat-{$this->employee->mobile_number}-expecting-payslip-month"=> rand(0, 1000)]);
+        return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, $message->content, "App\Models\Company", $this->employee->id, true, true);
+
+    }
     public function optionOne(){
-        if (!$payslip = $this->employee->payslips()->latest()->first()){
-            $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.payslip.not.found');
-            return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, sprintf($message->content, Carbon::now()->format('MM')), "App\Models\Company", $this->employee->id, true, true);
+        if (in_array($this->receivedMessage, [1, "Past month"])){
+            $month = 1;
         }
-        $payslip  = $this->payslipPDFGenerator->generatePDf($this->employee, $payslip);
-        $payslipPath = $this->payslipPDFGenerator->filePublicUrl($payslip);
+        else if (in_array($this->receivedMessage, [2, "2 months ago"])){
+            $month = 2;
+        }
+       else if (in_array($this->receivedMessage, [3, "3 months ago"])){
+            $month = 3;
+        }
+        else{
+            $month = 1;
+        }
+
+        $date = Carbon::now()->subMonth($month)->format('Y-m-d');
+        $payslip = $this->employee->payslips()->where('date', $date)->first();
+        if (!$payslip){
+            session()->remove("chat-{$this->employee->mobile_number}-expecting-payslip-month");
+            return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "There is no payslip for the month requested. Please try again later or contact your company HR. Press 1 or exit to restart", "App\Models\Company", $this->employee->id, true, true);
+        }
+        $pdf  = $this->payslipPDFGenerator->generatePDf($this->employee, $payslip);
+        $payslipPath = $this->payslipPDFGenerator->filePublicUrl($pdf);
         $message =  $this->appTemplateMessageRepository->getMessageBySlug('employee.chat');
+        session()->remove("chat-{$this->employee->mobile_number}-expecting-payslip-month");
+
         return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, sprintf($message->content, $this->employee->first_name), "App\Models\Company", $this->employee->id, true, true, $payslipPath);
     }
 

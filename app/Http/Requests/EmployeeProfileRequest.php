@@ -27,7 +27,7 @@ class EmployeeProfileRequest extends FormRequest
         return [
             "first_name"=>"required",
             "last_name"=>"required",
-            "dob"=>"required|date",
+            "dob"=>"nullable|date",
             "nationality" => "nullable",
             "id_or_passport" => "nullable",
             "gender"=>["required",  Rule::in(['Male', 'Female'])],

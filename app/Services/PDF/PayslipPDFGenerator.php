@@ -74,7 +74,7 @@ class PayslipPDFGenerator
     private function filePathWithFileExtension($filenameWithoutFileExtension):string
     {
         //ensure we did not add an extension by mistake
-        if (str_ends_with($filenameWithoutFileExtension, '.pdf')){
+        if (\str_ends_with($filenameWithoutFileExtension, '.pdf')){
             $filenameWithoutFileExtension =  substr($filenameWithoutFileExtension, 0, -4);
         }
 

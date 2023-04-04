@@ -36,7 +36,7 @@ class CompanyPayslipController extends Controller
        $validated['file_name'] = 'PAYS-'. auth()->user()->company->payslips()->count() + 1;
        $validated['hash'] = sha1(auth()->user()->company->payslips()->count() + 1);
        $validated['company_id'] = auth()->user()->company->id;
-       $validated['payslip_month'] = Carbon::createFromFormat('Y-m-d', $validated['date'])->format('M');
+       $validated['month_year'] = Carbon::createFromFormat('Y-m-d', $validated['date'])->format('Y-m');
         $payslip = $employee->payslips()->create($validated);
         return redirect()->route('dashboard.business.payroll.index')->with('payslip-added', 'Payslip created successfully');
     }

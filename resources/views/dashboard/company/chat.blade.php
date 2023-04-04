@@ -65,10 +65,10 @@
 
                                     <!-- Chat Input -->
                                     <div class="js-chat-form block-content block-content-full block-content-sm bg-body-light">
-                                        <form action="#" method="post"  @submit.prevent="">
+                                        <form action="#" method="post"  @submit.prevent="sendMessage">
                                             <div class="d-flex">
                                                 <input v-model="message" class="js-chat-input form-control" type="text" data-target-chat-id="4" placeholder="Type your message and hit enter..">
-                                                <button class="btn btn-success" @click="sendMessage" >Send</button>
+                                                <button class="btn btn-success" type="submit">Send</button>
                                             </div>
                                         </form>
                                     </div>
@@ -78,7 +78,7 @@
                                         <form action="#" method="post"  @submit.prevent="sendFile">
                                             <div class="d-flex">
                                                 <input  class="js-chat-input form-control" type="file" data-target-chat-id="4" id="file" required>
-                                                <button class="btn btn-success" @click="sendMessage" >Send</button>
+                                                <button class="btn btn-success" type="submit">Send File</button>
                                             </div>
                                         </form>
                                     </div>
@@ -123,7 +123,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Nationality</label>
-                                            <input type="text" class="form-control" id="example-text-input" name="nationality" value="{{ $employee->nationality  }}" required>
+                                            <input type="text" class="form-control" id="example-text-input" name="nationality" value="{{ $employee->nationality  }}">
                                         </div>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">ID/Passport Number</label>
-                                            <input type="text" class="form-control"  name="id_or_passport" value="{{ $employee->id_or_passport  }}" required>
+                                            <input type="text" class="form-control"  name="id_or_passport" value="{{ $employee->id_or_passport  }}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -192,13 +192,13 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Street Number</label>
-                                            <input type="text" class="form-control" id="example-text-input" name="street_number" value="{{ $employee->address?->street_number }}" required>
+                                            <input type="text" class="form-control" id="example-text-input" name="street_number" value="{{ $employee->address?->street_number }}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Street name</label>
-                                            <input type="text" class="form-control" id="example-text-input" name="street_name" value="{{ $employee->address?->street_name }}" required>
+                                            <input type="text" class="form-control" id="example-text-input" name="street_name" value="{{ $employee->address?->street_name }}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -210,7 +210,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">City</label>
-                                            <input type="text" class="form-control" id="example-text-input" value="{{ $employee->address?->city }}" name="city" required>
+                                            <input type="text" class="form-control" id="example-text-input" value="{{ $employee->address?->city }}" name="city">
                                         </div>
                                     </div>
                                 </div>
@@ -258,7 +258,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input"> Account Number</label>
-                                            <input type="text" class="form-control"  name="account_number" value="{{ $employee->bankAccount?->account_number }}">
+                                            <input type="text" class="form-control"  name="account_number" value="{{ $employee->bankAccount?->account_number }}" required>
                                         </div>
                                     </div>
                                 </div>

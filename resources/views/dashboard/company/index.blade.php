@@ -229,9 +229,9 @@
                                                         {{ $initialDays->leaveType->name }} <br><small>{{ $initialDays->days }} days per year</small>
                                                     </td>
                                                     <td class="text-right" style="width: 100px;">
-                                                        <button class="js-task-remove btn btn-sm btn-alt-danger" type="button">
+                                                        <a class="js-task-remove btn btn-sm btn-alt-danger" href="{{ route('dashboard.company.employee.remove.leave-policy', [$employee->hash, $initialDays->id]) }}">
                                                             Remove
-                                                        </button>
+                                                        </a>
                                                     </td>
                                                 </div>
                                             </tr>

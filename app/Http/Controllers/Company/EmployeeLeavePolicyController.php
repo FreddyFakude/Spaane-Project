@@ -48,4 +48,21 @@ class EmployeeLeavePolicyController extends Controller
 
 
     }
+
+    public function removeLeavePolicy(Employee $employee, EmployeeLeavePolicy $leavePolicy)
+    {
+
+        if ($leavePolicy->employee_id == $employee->id) {
+            $leavePolicy->initialDay->delete();
+            $leavePolicy->delete();
+            return back()->with([
+                'message' => 'Employee leave policy successfully removed',
+                'alert-type' =>'success',
+            ]);
+        }
+        return back()->with([
+            'message' => 'Employee leave policy not found',
+            'alert-type' =>'error',
+        ]);
+    }
 }

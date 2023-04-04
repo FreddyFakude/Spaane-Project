@@ -71,6 +71,13 @@ class WhatsAppTemplateMessageSeeder extends Seeder
             [
                 'content' => "Sorry, we could not find your payslip for the month of  %s",
                 "slug" => "employee.payslip.not.found"
+            ],
+            [
+                'content' => env('APP_ENV') == 'local' ?  " For which month would you like to download the payslip? \n
+                1. Past month
+                2. 2 months ago
+                3. 3 months ago" : " For which month would you like to download the payslip? ",
+                "slug" => "employee.payslip.choose.month"
             ]
         ]);
     }
