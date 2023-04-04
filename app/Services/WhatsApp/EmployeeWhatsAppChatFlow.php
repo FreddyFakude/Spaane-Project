@@ -120,8 +120,8 @@ class EmployeeWhatsAppChatFlow
             $month = 1;
         }
 
-        $date = Carbon::now()->subMonth($month)->format('Y-m-d');
-        $payslip = $this->employee->payslips()->where('date', $date)->first();
+        $date = Carbon::now()->subMonth($month)->format('Y-m');
+        $payslip = $this->employee->payslips()->where('month_year', $date)->first();
         if (!$payslip){
             session()->remove("chat-{$this->employee->mobile_number}-expecting-payslip-month");
             return $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, "There is no payslip for the month requested. Please try again later or contact your company HR. Press 1 or exit to restart", "App\Models\Company", $this->employee->id, true, true);
