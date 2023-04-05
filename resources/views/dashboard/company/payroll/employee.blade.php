@@ -28,8 +28,8 @@
                 </div>
             </div>
             <div class="block">
-                <div class="block-header">
-                    @if(session()->has('payslip-added'))
+                @if(session()->has('payslip-added'))
+                    <div>
                         <div class="alert alert-success alert-dismissable w-100" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
@@ -37,16 +37,25 @@
                             <h3 class="alert-heading font-size-h4 font-w400">Success</h3>
                             <p class="mb-0">Payslip created successfully</p>
                         </div>
-                    @endif
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <div class="block-header">
+                    <div>
+                        <form action="{{ route('dashboard.business.payroll.generate.all') }}" method="post">
+                            <input type="hidden" name="date" value="{{ $date }}">
+                            @csrf
+                            <button type="submit" class="btn-lg btn-primary mr-2">Generate Payslips</button>
+                        </form>
+                    </div>
                 </div>
                 <div class="block-content tab-content">
                     <table class="js-table-sections table table-hover js-table-sections-enabled" id="btabs-internal">

@@ -21,13 +21,13 @@
         <!-- END Left Section -->
 
         <!-- Right Section -->
-        <div class="content-header-section">
+        <div class="content-header-section" style="margin-top: 40px;">
             <!-- User Dropdown -->
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-rounded" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <a class="img-link" href="#">
-                        <img class="img-avatar" src="{{asset('assets/custom/media/avatars/avatar15.jpg')}}" alt="">
-                    </a>
+                    <i class="fa fa-user d-sm-none"></i>
+                    <span class="d-none d-sm-inline-block">User</span>
+                    <i class="fa fa-angle-down ml-5"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right min-width-200" aria-labelledby="page-header-user-dropdown">
                     <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">User</h5>
