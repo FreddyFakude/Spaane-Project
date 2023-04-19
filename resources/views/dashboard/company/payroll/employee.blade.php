@@ -53,64 +53,109 @@
                         <form action="{{ route('dashboard.business.payroll.generate.all') }}" method="post">
                             <input type="hidden" name="date" value="{{ $date }}">
                             @csrf
-                            <button type="submit" class="btn-lg btn-primary mr-2">Generate Payslips</button>
+                            <button type="submit" class="btn-lg btn-success mr-2">Generate payslips for all</button>
                         </form>
                     </div>
                 </div>
                 <div class="block-content tab-content">
-                    <table class="js-table-sections table table-hover js-table-sections-enabled" id="btabs-internal">
+                    <table class="js-table-sections table table-hover">
                         <thead>
-                        <tr>
-                            <th style="width: 20%;">Employee</th>
-                            <th class="d-none d-sm-table-cell" style="width: 20%;">Basic Salary</th>
-                            <th class="d-none d-sm-table-cell" style="width: 20%;">Commission</th>
-                            <th class="d-none d-sm-table-cell" style="width: 30%;">Travel Allowance</th>
-                            <th class="d-none d-sm-table-cell" style="width: 20%;">Reimbursement</th>
-                            <th style="width: 10%;">Reference</th>
-                            <th>Action</th>
-                        </tr>
+                            <tr>
+                                <th style="width: 30px;"></th>
+                                <th>Employee</th>
+                                <th style="width: 15%;">Total Earings</th>
+                                <th style="width: 15%;">Total Deductions</th>
+                                <th style="width: 15%;">Total Tax</th>
+                                <th style="width: 15%;">Net Pay</th>
+                                <th class="d-none d-sm-table-cell" style="width: 20%;">Date</th>
+                            </tr>
                         </thead>
-                        <tbody class="js-table-sections-header">
                         @empty(!$employees)
                             @foreach($employees as $employee)
                                 <form action="{{ route('dashboard.business.payroll.store', [$employee->hash])  }}" method="post">
-                                    <tr>
-                                        <td>
-                                            <p class="font-w600 mb-10">
-                                                {{ $employee->name }}
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <p class="font-w600 mb-10">
-                                                <input type="hidden" name="basic_salary" value="{{ $employee->remuneration?->basic_salary }}">
-                                                {{ $employee->remuneration?->basic_salary }}
-                                            </p>
-                                        </td>
-                                        <td class="d-none d-sm-table-cell">
-                                            <input type="number" name="commission" value="{{ $employee->payslips->where('date', $date)->first()?->commission ?? 0 }}">
-                                        </td>
-                                        <td class="d-none d-sm-table-cell">
-                                            <input type="hidden" name="travel_allowance" value="{{ $employee->remuneration?->travel_allowance }}">
-                                            <em class="text-muted"> {{ $employee->remuneration?->travel_allowance }}</em>
-                                        </td>
-                                        <td class="d-none d-sm-table-cell">
-                                            <input type="text" name="reimbursement" value="{{ $employee->payslips->where('date', $date)->first()?->reimbursement ?? 0 }}">
-                                        </td>
-                                        <td class="d-none d-sm-table-cell">
-                                            <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()?->reference_number }} </em>
-                                        </td>
-                                        <td class="d-none d-sm-table-cell">
-                                            @if(!$employee->payslips->where('date', $date)->first())
-                                                @csrf
-                                                <input type="hidden" name="date" value="{{ $date }}">
-                                                <button type="submit" x-on:click="employeeId = {{ $employee->id }}" class="btn-lg btn-primary mr-2" >Payslip</button>
-                                            @endif
-                                        </td>
-                                    </tr>
+                                    <tbody class="js-table-sections-header">
+                                        <tr>
+                                            <td class="text-center">
+                                                <i class="fa fa-angle-right"></i>
+                                            </td>
+                                            <td class="font-w600">{{ $employee->name }} {{ $employee->last_name }}</td>
+                                            <td class="font-w600">+R25000</td>
+                                            <td class="font-w600">-R5000</td>
+                                            <td class="font-w600">-R1000</td>
+                                            <td class="font-w600">R19000</td>
+                                            <td class="d-none d-sm-table-cell">
+                                                @if(!$employee->payslips->where('date', $date)->first())
+                                                    @csrf
+                                                    <input type="hidden" name="date" value="{{ $date }}">
+                                                    <button type="submit" x-on:click="employeeId = {{ $employee->id }}" class="btn-md btn-success mr-2" >Generate Payslip</button>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <p>Earnings:</p>
+                                            </td>
+                                            <td>
+                                                <p class="font-w600 mb-10">
+                                                    <label for="side-overlay-profile-email">Basic salary</label>
+                                                    <input type="number" name="basic_salary" value="{{ $employee->remuneration?->basic_salary }}">
+                                                </p>
+                                            </td>
+                                            <td class="d-none d-sm-table-cell">
+                                                <label for="side-overlay-profile-email">Commission</label>
+                                                <input type="number" name="commission" value="{{ $employee->payslips->where('date', $date)->first()?->commission ?? 0 }}">
+                                            </td>
+                                            <td class="d-none d-sm-table-cell">
+                                                <label for="side-overlay-profile-email">Travele allowance</label>
+                                                <input type="number" name="travel_allowance" value="{{ $employee->remuneration?->travel_allowance }}">
+                                            </td>
+                                            <td class="d-none d-sm-table-cell">
+                                                <label for="side-overlay-profile-email">Reimbursements</label>
+                                                <input type="text" name="reimbursement" value="{{ $employee->payslips->where('date', $date)->first()?->reimbursement ?? 0 }}">
+                                            </td>
+                                            <td class="d-none d-sm-table-cell">
+                                                <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()?->reference_number }} </em>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Basic Deductions:</p>
+                                            </td>
+                                            <td>
+                                                <p class="font-w600 mb-10">
+                                                    <label for="side-overlay-profile-email">Employee Loan</label>
+                                                    <input type="number" name="basic_salary" value="">
+                                                </p>
+                                            </td>
+                                            <td class="d-none d-sm-table-cell">
+                                                <label for="side-overlay-profile-email">Medical Aid</label>
+                                                <input type="number" name="commission" value="{{ $employee->payslips->where('date', $date)->first()?->commission ?? 0 }}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Tax Deduction:</p>
+                                            </td>
+                                            <td>
+                                                <p class="font-w600 mb-10">
+                                                    <label for="side-overlay-profile-email">PAYE</label>
+                                                    <input type="number" name="basic_salary" value="">
+                                                </p>
+                                            </td>
+                                            <td class="d-none d-sm-table-cell">
+                                                <label for="side-overlay-profile-email">UIF</label>
+                                                <input type="number" name="commission" value="">
+                                            </td>
+                                            <td class="d-none d-sm-table-cell">
+                                                <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()?->reference_number }} </em>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 </form>
                             @endforeach
                         @endempty
-                        </tbody>
                     </table>
                 </div>
             </div>

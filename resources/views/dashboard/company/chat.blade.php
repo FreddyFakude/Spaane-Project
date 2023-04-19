@@ -6,7 +6,7 @@
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
     <!-- Page Content -->
-    <div class="content" id="chat">
+    <div class="content mt-10" id="chat">
         <div class="block">
 
         </div>
@@ -369,19 +369,80 @@
                                         <h4>Remuneration</h4>
                                     </div>
                                 </div>
-                                <div class="row px-10 mt-30">
+                                <div class="row ml-3"><h6>Fixed Earnings:</h6></div>
+                                <div class="row px-10 mt-5">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Basic salary</label>
+                                            <label class="pl-0" for="example-text-input"><small>Annual Basic salary</small></label>
+                                            <input type="number" class="form-control"  name="basic_salary" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input"><small>Monthly Basic salary</small></label>
                                             <input type="number" class="form-control"  name="basic_salary" value="{{ $employee->remuneration?->basic_salary }}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Travel allowance</label>
+                                            <label class="pl-0" for="example-text-input"><small>Monthly Travel allowance</small></label>
                                             <input type="number" class="form-control" id="example-text-input" name="travel_allowance" value="{{ $employee->remuneration?->travel_allowance }}">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row px-10">
+                                    <div class="col-md-3">
+                                        <div class="form-group form-inline">
+                                            <label class="pl-0" for="example-text-input"><small>Add other Earnings</small></label>
+                                            <input type="text" class="form-control" id="example-text-input" placeholder="Enter name of earning/allowance" name="" value="">
+                                            <button class="btn btn-primary">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ml-3 mt-10 mb-0"><h6>Fixed Deductions:</h6></div>
+                                <div class="row px-10">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input"><small>Medical Aid</small></label>
+                                            <input type="number" class="form-control"  name="" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row px-10">
+                                    <div class="col-md-3">
+                                        <div class="form-group form-inline">
+                                            <label class="pl-0" for="example-text-input"><small>Add other Deductions</small></label>
+                                            <input type="text" class="form-control" id="example-text-input" placeholder="Enter name of deduction" name="" value="">
+                                            <button class="btn btn-primary">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ml-3 mt-10 mb-0"><h6>Fixed Tax:</h6></div>
+                                <div class="row px-10">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input"><small>PAYE</small></label>
+                                            <input type="number" class="form-control"  name="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input"><small>UIF</small></label>
+                                            <input type="number" class="form-control"  name="" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row px-10">
+                                    <div class="col-md-3">
+                                        <div class="form-group form-inline">
+                                            <label class="pl-0" for="example-text-input"><small>Add other Tax</small></label>
+                                            <input type="text" class="form-control" id="example-text-input" placeholder="Enter name of Tax" name="" value="">
+                                            <button class="btn btn-primary">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="my-30">
+                                    <hr>
                                 </div>
                                 <div class="d-flex justify-content-start mt-20">
                                     <div>
@@ -405,23 +466,6 @@
                                 <div class="my-30">
                                     <hr>
                                 </div>
-                                {{--                                    <div class="d-flex justify-content-start mt-20">--}}
-                                {{--                                        <div>--}}
-                                {{--                                            <h4>Leave Days</h4>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <div class="row px-10 mt-30">--}}
-                                {{--                                        <div class="col-md-8">--}}
-                                {{--                                            <div class="form-group">--}}
-                                {{--                                                @foreach($employee->initialLeaveTypeDays as $leave)--}}
-                                {{--                                                    <div class="col-lg-8">--}}
-                                {{--                                                        <label class="pl-0" for="example-text-input">{{ $leave->leave_type }}</label>--}}
-                                {{--                                                        <input type="text" class="form-control" id="example-text-input" disabled value="{{ $leave->days }}">--}}
-                                {{--                                                    </div>--}}
-                                {{--                                                @endforeach--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
                                 <div class="d-flex justify-content-start mt-20">
                                     <div>
                                         <h4>Skills/Tools</h4>

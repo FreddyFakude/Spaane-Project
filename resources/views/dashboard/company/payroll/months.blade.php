@@ -20,34 +20,8 @@
             {{--                    </ul>--}}
             {{--                </div>--}}
             {{--            </div>--}}
-            <div class="col-md-12 col-xl-12">
-                <div class="d-flex justify-content-end">
-                    <button type="button" class="btn-lg btn-primary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
-                    <button class="btn-lg btn-danger mr-2">Remove  Employee</button>
-                </div>
-            </div>
         </div>
         <div class="block">
-            <div class="block-header">
-                @if(session()->has('talent-added'))
-                    <div class="alert alert-success alert-dismissable w-100" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <h3 class="alert-heading font-size-h4 font-w400">Success</h3>
-                        <p class="mb-0">Your invite has been sent</p>
-                    </div>
-                @endif
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-            </div>
             <div class="block-content tab-content">
                 <table class="table table-striped table-vcenter active js-table-checkable js-table-checkable-enabled tab-pane" id="btabs-internal">
                     <thead>
@@ -58,7 +32,7 @@
                                 <span class="css-control-indicator"></span>
                             </label>
                         </th>
-                        <th style="width: 20%;">Name</th>
+                        <th style="width: 20%;">Month</th>
                         <th class="d-none d-sm-table-cell" style="width: 70%;">Year</th>
                         <th class="d-none d-sm-table-cell" style="width: 20%;">Count</th>
                     </tr>
