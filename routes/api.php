@@ -26,3 +26,4 @@ Route::middleware('api')->post('/chat/{id}/send-message', function (Request $req
 
 
 Route::middleware('api')->post('/whatsapp-message-user-message', [\App\Http\Controllers\WhatsAppController::class, 'receiveMessage']);
+Route::middleware('api')->post('/whatsapp-message-update-status', [\App\Http\Controllers\WhatsAppController::class, 'updateMessageStatus']);

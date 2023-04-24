@@ -20,12 +20,6 @@
             {{--                    </ul>--}}
             {{--                </div>--}}
             {{--            </div>--}}
-            <div class="col-md-12 col-xl-12">
-                <div class="d-flex justify-content-end">
-                    <button type="button" class="btn-lg btn-primary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
-                    <button class="btn-lg btn-danger mr-2">Remove  Employee</button>
-                </div>
-            </div>
         </div>
         <div class="block">
             <div class="block-header">
