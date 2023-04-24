@@ -8,6 +8,7 @@ use App\Http\Requests\WhatsAppMessageRequest;
 use App\Repository\ChatRepository;
 use App\Services\WhatsApp\WhatsApp;
 use App\Services\WhatsApp\WhatsAppChatManager;
+use GuzzleHttp\Psr7\Request;
 use Validator;
 
 class WhatsAppController extends Controller
@@ -67,6 +68,16 @@ class WhatsAppController extends Controller
         }
 
         $this->chatManager->processConversation($validated);
+        return response()->json('success', 200);
+    }
+
+    public function updateMessageStatus(Request $request)
+    {
+        $request->validate([
+            "WaId" => "required",
+            "MessageId" => "required",
+            "SmsStatus" => "required"
+        ]);
         return response()->json('success', 200);
     }
 }
