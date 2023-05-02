@@ -6,6 +6,8 @@ namespace App\Services\PDF;
 
 use App\Models\CompanyPayslip;
 use App\Models\Employee;
+use App\Services\TaxCalculations\PAYECalculator;
+use App\Services\TaxCalculations\UIFCalculator;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
@@ -52,6 +54,9 @@ class PayslipPDFGenerator
         $pdf = $this->dompdf->loadView('pdfs.payslip', [
             'employee' => $employee,
             'payslip' => $payslip,
+            'paye' => (new PAYECalculator($employee))->calculatePaye(),
+            'uif' => (new UIFCalculator($employee))->calculateUIF(),
+
         ]);
         Storage::disk('local')->put($filePathWithFileExtension, $pdf->output());
         $this->saveFileToDB($employee, $filenameWithoutFileExtension, $filePathWithFileExtension, $payslip);

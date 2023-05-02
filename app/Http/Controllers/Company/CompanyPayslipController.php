@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
-use App\Models\CompanyPayslip;
 use App\Models\Employee;
-use App\Models\Payslip;
+use App\Services\TaxCalculations\PAYECalculator;
+use App\Services\TaxCalculations\UIFCalculator;
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\Request;
 

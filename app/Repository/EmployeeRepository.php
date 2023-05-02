@@ -41,7 +41,7 @@ class EmployeeRepository
             "id_or_passport"=> $data['id_or_passport'],
             "gender" => $data['gender'],
             "marital_status"=>$data['marital_status'],
-            "mobile_number"=>$data['mobile_number'],
+//            "mobile_number"=>$data['mobile_number'],
             "home_phone_number"=>$data['home_phone_number'],
             "number_of_children"=>$data['number_of_children'],
             "tax_number"=>$data['tax_number'],

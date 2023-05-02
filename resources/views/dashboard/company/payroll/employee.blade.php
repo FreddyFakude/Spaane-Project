@@ -141,12 +141,12 @@
                                             <td>
                                                 <p class="font-w600 mb-10">
                                                     <label for="side-overlay-profile-email">PAYE</label>
-                                                    <input type="number" name="basic_salary" value="">
+                                                    <input type="number" name="basic_salary" value="{{ (new \App\Services\TaxCalculations\PAYECalculator($employee))->calculatePaye() }}">
                                                 </p>
                                             </td>
                                             <td class="d-none d-sm-table-cell">
                                                 <label for="side-overlay-profile-email">UIF</label>
-                                                <input type="number" name="commission" value="">
+                                                <input type="number" name="commission" value="{{ (new \App\Services\TaxCalculations\UIFCalculator($employee))->calculateUIF() }}">
                                             </td>
                                             <td class="d-none d-sm-table-cell">
                                                 <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()?->reference_number }} </em>

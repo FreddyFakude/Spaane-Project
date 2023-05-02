@@ -10,72 +10,72 @@
                     border-collapse: collapse;
                     table-layout: fixed;
                 }
-                
+
                 .head {
                     margin: 10px;
                     margin-bottom: 50px;
                     width: 100%;
                 }
-                
+
                 .companyName {
                     text-align: right;
                     font-size: 25px;
                     font-weight: bold;
                 }
-                
+
                 .salaryMonth {
                     text-align: center;
                 }
-                
+
                 .table-border-bottom {
                     border-bottom: 1px solid;
                 }
-                
+
                 .table-border-right {
                     border-right: 1px solid;
                 }
-                
+
                 .myBackground {
                     padding-top: 10px;
                     text-align: left;
                     border: 1px solid black;
                     height: 40px;
                 }
-                
+
                 .myAlign {
                     text-align: center;
                     border-right: 1px solid black;
                 }
-                
+
                 .myTotalBackground {
                     padding-top: 10px;
                     text-align: left;
                     background-color: #EBF1DE;
                     border-spacing: 0px;
                 }
-                
+
                 .align-4 {
                     width: 25%;
                     float: left;
                 }
-                
+
                 .tail {
                     margin-top: 35px;
                 }
-                
+
                 .align-2 {
                     margin-top: 25px;
                     width: 50%;
                     float: left;
                 }
-                
+
                 .border-center {
                     text-align: center;
                 }
                 .border-center th, .border-center td {
                     border: 1px solid black;
                 }
-                
+
                 th, td {
                     padding-left: 6px;
                 }
@@ -100,14 +100,14 @@
                         Job title
                     </th>
                     <td>
-                        xxxxxxxxx
+                        {{ $employee->role }}
                     </td>
                     <td></td>
                     <th>
                         Payslip no.
                     </th>
                     <td>
-                        xxxxxxxxx
+                       {{ $payslip->id }}
                     </td>
                 </tr>
                 <tr>
@@ -122,7 +122,7 @@
                         joining Date
                     </th>
                     <td>
-                        XXXXXXXXXXX
+                        {{ $employee->professional_experience?->start_date }}
                     </td>
                     <td></td>
                     <th>
@@ -182,7 +182,7 @@
                         Direct Manager
                     </th>
                     <td>
-                        xxxxxxx
+                        {{ $employee?->direct_manager }}
                     </td>
                     <td></td>
                 </tr>
@@ -206,15 +206,14 @@
                     </th>
                     <td></td>
                     <td class="myAlign">
-                        <td>R{{ $payslip->basic_salary }}</td>
+                        <td>R{{ $employee->remuneration?->basic_salary }}</td>
                     </td>
                     <th colspan="2" >
                     PAYE
                     </th >
                     <td></td>
-
                     <td class="myAlign">
-                    R00.00
+                        {{ (new \App\Services\TaxCalculations\PAYECalculator($employee))->calculatePaye() }}
                     </td>
                 </tr>
                 <tr>
@@ -224,14 +223,14 @@
                     <td></td>
 
                     <td class="myAlign">
-                    R00.00
+                        {{ $employee->remuneration?->travel_allowance }}
                     </td>
                     <th colspan="2" >
                     UIF
                     </th >
                     <td></td>
                     <td class="myAlign">
-                    R00.00
+                        {{ (new \App\Services\TaxCalculations\UIFCalculator($employee))->calculateUIF()  }}
                     </td>
                 </tr>
                 <tr class="myBackground">
@@ -299,7 +298,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        UIF - 
+                        UIF -
                     </td> <td></td>
                     <td class="myAlign">
                         COIDA -
@@ -307,7 +306,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        SDL - 
+                        SDL -
                     </td> <td></td>
                     <td class="myAlign">
                     </td>

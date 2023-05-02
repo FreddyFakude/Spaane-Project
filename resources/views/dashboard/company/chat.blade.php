@@ -172,7 +172,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Cell Phone Number</label>
-                                            <input type="tel" class="form-control" id="example-text-input" name="mobile_number" value="{{ "0" . substr($employee->mobile_number, 2) }}">
+                                            <input type="tel" class="form-control" id="example-text-input" disabled  name="mobile_number" value="{{ "0" . substr($employee->mobile_number, 2) }}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">

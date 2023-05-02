@@ -17,13 +17,16 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone_number');
+            $table->string('status')->default(\App\Models\Company::STATUS[1]);
             $table->date('date_creation')->nullable();
+            $table->string('company_size')->default('SMALL');
             $table->date('fiscal_year_start');
             $table->string('technical_gear')->nullable();
+            $table->string('industry')->nullable();
             $table->string('target_market')->nullable();
             $table->string('suppliers')->nullable();
             $table->string('website')->nullable();
-            $table->string('funding');
+            $table->string('funding')->nullable();
             $table->mediumText('short_description');
             $table->timestamps();
         });
