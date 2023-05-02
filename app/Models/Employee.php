@@ -91,4 +91,8 @@ class Employee  extends Authenticatable
     }
 
 
+    public function otherEarnings()
+    {
+        return $this->hasMany(EmployeeOtherEarning::class, 'employee_id');
+    }
 }

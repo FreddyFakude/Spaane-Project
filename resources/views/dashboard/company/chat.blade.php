@@ -374,7 +374,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input"><small>Annual Basic salary</small></label>
-                                            <input type="number" class="form-control"  name="basic_salary" value="">
+                                            <input type="number" class="form-control"  name="basic_salary" value="{{( $employee->remuneration?->basic_salary ?? 0) * 12 }}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -511,7 +511,7 @@
     </div>
     @push('extra-js')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js" integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+        <script src="//unpkg.com/alpinejs" defer></script>
         <script>
             new Vue({
                 el: '#chat',

@@ -79,8 +79,8 @@
                                                 <i class="fa fa-angle-right"></i>
                                             </td>
                                             <td class="font-w600">{{ $employee->name }} {{ $employee->last_name }}</td>
-                                            <td class="font-w600">+R25000</td>
-                                            <td class="font-w600">-R5000</td>
+                                            <td class="font-w600">{{ $employee->remuneration?->basic_salary + $employee->otherEarnings->sum('amount') }}</td>
+                                            <td class="font-w600">R{{ $employee->remuneration?->deductions->sum('amount') }}</td>
                                             <td class="font-w600">-R1000</td>
                                             <td class="font-w600">R19000</td>
                                             <td class="d-none d-sm-table-cell">
