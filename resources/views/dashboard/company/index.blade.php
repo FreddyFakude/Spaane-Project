@@ -194,9 +194,9 @@
                         </div>
                     </div>
                     <!-- END Step 2 -->
-
+                    @if(isset($employee))
                     <!-- Step 3 -->
-                    <div class="tab-pane" id="wizard-simple2-step3" role="tabpanel">
+                        <div class="tab-pane" id="wizard-simple2-step3" role="tabpanel">
                         <div class="js-tasks col-md-8">
                             <!-- Add Leave Policy-->
                             <form id="js-task-form" action="{{ route('dashboard.company.employee.add.leave-policy', [$employee->hash]) }}" method="post">
@@ -243,6 +243,7 @@
                         </div>
                     </div>
                     <!-- END Step 3 -->
+                    @endempty
                 </div>
                 <!-- END Form -->
             </div>

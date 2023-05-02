@@ -10,7 +10,13 @@ class Company extends Model
     use HasFactory;
 
     protected $guarded = [];
-
+    public const STATUS = [1=>"TEMPORARY", 2=>"COMPLETE"];
+    public const size = [
+        1 => 'MICRO',
+        2 => 'SMALL',
+        3 => 'MEDIUM',
+        4 => 'LARGE',
+    ];
     public function administrator()
     {
         return $this->hasOne(CompanyAccountAdministrator::class, '');

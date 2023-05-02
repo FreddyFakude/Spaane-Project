@@ -15,19 +15,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'frontend.index')->name('index');
 Route::view('/about', 'frontend.about')->name('index');
-Route::view('/about', 'frontend.about')->name('index');
 
-Route::view('/employee/register/', 'auth.company.login')->name('employee.register');
+//Route::view('/employee/register/', 'auth.company.login')->name('employee.register');
 Route::get('/employee/login', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'loginForm'])->name('employee.login.form');
 Route::post('/employee/login', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'login'])->name('employee.login');
 Route::post('/talent/logout', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'logout'])->name('employee.logout');
 
 
-Route::view('/company/login', 'auth.company.login')->name('company.login.form');
+Route::get('/company/register', [\App\Http\Controllers\Auth\Company\RegisterController::class, 'index'])->name('company.register.form');
+Route::post('/company/profile/register', [\App\Http\Controllers\Auth\Company\RegisterController::class, 'store'])->name('company.register');
+Route::get('/company/login', [\App\Http\Controllers\Auth\Company\LoginController::class, 'loginForm'])->name('company.login.form');
 Route::post('/company/login', [\App\Http\Controllers\Auth\Company\LoginController::class, 'login'])->name('company.login');
 Route::post('/company/logout', [\App\Http\Controllers\Auth\Company\LoginController::class, 'logout'])->name('company.logout');
+Route::get('/company/profile', [\App\Http\Controllers\Company\CompanyProfileController::class, 'index'])->name('dashboard.company.profile');
+Route::post('/company/profile/update', [\App\Http\Controllers\Company\CompanyProfileController::class, 'update'])->name('company.update.profile');
 
-Route::group(['middleware'=>['auth:company'], 'prefix'=>'company'], function (){
+
+Route::group(['middleware'=>['auth:company', 'companyHasProfile'], 'prefix'=>'company'], function (){
     Route::get('/dashboard/index', [\App\Http\Controllers\Company\DashboardController::class, 'index'])->name('dashboard.company.index');
     Route::get('/dashboard/stats', [\App\Http\Controllers\Company\DashboardController::class, 'stats'])->name('dashboard.company.stats');
     Route::get('/dashboard/calendar', [\App\Http\Controllers\Company\DashboardController::class, 'calendar'])->name('dashboard.company.index.calendar');

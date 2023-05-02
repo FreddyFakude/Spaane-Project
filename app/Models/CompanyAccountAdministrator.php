@@ -10,6 +10,7 @@ class CompanyAccountAdministrator extends Authenticatable
 {
     use HasFactory;
 
+    protected $guarded = [];
     public function company()
     {
         return $this->belongsTo(Company::class);

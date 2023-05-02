@@ -18,9 +18,19 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="card-body p-md-5 mx-md-4">
-                                    <form action="{{ route('company.login') }}" method="post">
+                                    <form action="{{ route('company.register') }}" method="post">
                                         <div class="text-center">
-                                            <h4 class="mt-1 mb-5 pb-1">Login To Account</h4>
+                                            <h4 class="mt-1 mb-5 pb-1">Register Company</h4>
+                                        </div>
+
+                                        <div class="input-group mb-4">
+                                            <input type="text" name="first_name" class="form-control"
+                                                   placeholder="First name" />
+                                        </div>
+
+                                        <div class="input-group mb-4">
+                                            <input type="text" name="last_name" class="form-control"
+                                                   placeholder="Last name" />
                                         </div>
 
                                         <div class="input-group mb-4">
@@ -32,18 +42,18 @@
                                             <input type="password" placeholder="Password" name="password" class="form-control" />
                                         </div>
 
+                                        <div class="input-group mb-4">
+                                            <input type="password" placeholder="Password confirm" name="password_confirmation" class="form-control" />
+                                        </div>
+
                                         <div class="text-center pt-1 mb-2">
                                             @csrf
-                                            <button class="btn btn-primary fa-lg gradient-custom-2 mb-3" type="submit">Log
-                                                in</button>
-                                        </div>
-                                        <div class="text-center pt-1 mb-2 pb-1">
-                                            <a class="text-muted" href="#ytr\\\\\''8761z';pwewr=rh;l34rhxccvb?bv">Forgot password?</a>
+                                            <button class="btn btn-primary fa-lg gradient-custom-2 mb-3" type="submit">Register</button>
                                         </div>
 
                                         <div class="text-center pb-4">
-                                            <p class="mb-0 me-2">Don't have an account?</p>
-                                            <a href="{{ route('company.register.form') }}" class="btn btn-outline-danger">Create new</a>
+                                            <p class="mb-0 me-2">already have an account? Login here</p>
+                                           <a href="{{ route('company.login.form') }}" class="btn btn-outline-danger">Login</a>
                                         </div>
                                     </form>
 

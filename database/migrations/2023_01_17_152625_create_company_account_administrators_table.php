@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('company_account_administrators', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->references('id')->on('companies')->cascadeOnUpdate();
+            $table->foreignId('company_id')->references('id')->on('companies')->cascadeOnDelete();
             $table->foreignId('role_id')->references('id')->on('company_account_administrator_roles')->cascadeOnUpdate();
             $table->string('password');
             $table->string('first_name');
