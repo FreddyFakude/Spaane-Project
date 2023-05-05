@@ -82,6 +82,6 @@ class CompanyPayslipController extends Controller
 
     public function downloadPayslip(Employee $employee, CompanyPayslip $payslip)
     {
-        return (new PayslipPDFGenerator())->downloadPDF($employee, $payslip);
+        return (new PayslipPDFGenerator())->downloadPDF($employee, $payslip, true);
     }
 }

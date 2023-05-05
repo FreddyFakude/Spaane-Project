@@ -24,8 +24,8 @@ class PayslipPDFGenerator
         $this->dompdf = App::make('dompdf.wrapper');
     }
 
-    public function downloadPDF(Employee $employee, CompanyPayslip $payslip){
-        $filePathWithFileExtension = $this->getPDF($employee, $payslip);
+    public function downloadPDF(Employee $employee, CompanyPayslip $payslip, $createNewFile = false){
+        $filePathWithFileExtension = $this->getPDF($employee, $payslip, $createNewFile);
         $pdf =  Storage::disk('local')->get($filePathWithFileExtension);
         return (new Response($pdf, 200))
             ->header('Content-Type', 'application/pdf');
@@ -39,11 +39,11 @@ class PayslipPDFGenerator
         return $this->getPDF($employee, $payslip);
     }
 
-    private function getPDF(Employee $employee, $payslip)
+    private function getPDF(Employee $employee, $payslip, $createNewFile = false)
     {
         $filenameWithoutFileExtension = strtolower($employee->name) . "_" .$payslip->date;
         $filePathWithFileExtension = $this->filePathWithFileExtension($filenameWithoutFileExtension);
-        if (!$this->fileIsExpiredOrDoesNotExist($employee, $filePathWithFileExtension, $payslip)){
+        if ((!$createNewFile) && !$this->fileIsExpiredOrDoesNotExist($employee, $filePathWithFileExtension, $payslip)){
             return $filePathWithFileExtension;
         }
         return  $this->createPDFSaveToDBAndDisk($filePathWithFileExtension, $filenameWithoutFileExtension, $employee, $payslip);

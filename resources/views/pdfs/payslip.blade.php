@@ -49,7 +49,7 @@
         .salary-slip .myTotalBackground {
             padding-top: 10px;
             text-align: left;
-            background-color: #EBF1DE;
+            background-color: #770737;
             border-spacing: 0px;
         }
         .salary-slip .align-4 {
@@ -70,7 +70,7 @@
         .salary-slip .border-center th, .salary-slip .border-center td {
             border: 1px solid black;
         }
-        .salary-slip th, .salary-slip td {
+        .salary-slip td, .salary-slip td {
             padding-left: 6px;
         }
     </style>
@@ -78,142 +78,142 @@
 <body>
 <div class="salary-slip" >
     <table class="empDetail">
-        <tr height="100px" style='background-color: #c2d69b'>
+        <tr height="100px" style='background-color: #770737'>
             <td colspan='4'>
-                <img height="90px" src='https://organisationmedia.toggleflow.com/demo/logo.png' /></td>
-            <td colspan='4' class="companyName"> Co-Operative Bank Ltd.</td>
+                <img height="90px" src="{{ asset('assets/images/logo_white.png') }}" /></td>
+            <td colspan='4' class="companyName" style="color: white; padding-right:20px">Spaane</td>
         </tr>
         <tr>
-            <th>
-                Employee Name
-            </th>
             <td>
-                Example
+                <b>Employee Name</b>
+            </td>
+            <td>
+                {{ $employee->first_name }} {{ $employee->last_name }}
             </td>
             <td></td>
-            <th>
-                Job Title
-            </th>
             <td>
-                ABC123
+                <b>Job Title</b>
+            </td>
+            <td>
+               {{ $employee->role }}
             </td>
             <td></td>
-            <th>
-                Payslip no
-            </th>
             <td>
-                ABC123
+                <b>Payslip no</b>
+            </td>
+            <td>
+               {{ $payslip->id }}
             </td>
         </tr>
         <tr>
-            <th>
-                Date of Birth
-            </th>
             <td>
-                21-01-2023
+                <b>Date of Birth</b>
+            </td>
+            <td>
+                {{ $employee->dob }}
             </td>
             <td></td>
-            <th>
-                Joining date
-            </th>
             <td>
-                XXXXXXXXXXX
+                <b>Joining date</b>
+            </td>
+            <td>
+                XXXXXXX
             </td>
             <td></td>
-            <th>
-                Bank name
-            </th>
             <td>
-                XXXXXXXXXX
+                <b>Bank name</b>
+            </td>
+            <td>
+                XXXXXXX
             </td>
         </tr>
         <tr>
-            <th>
-                Employee ID
-            </th>
             <td>
-                XXXXXXXXXXX
+                <b>Employee ID</b>
+            </td>
+            <td>
+                {{ $employee->id }}
             </td><td></td>
-            <th>
-                Worked Days
-            </th>
             <td>
-                XXXXXXXXXX
+                <b>Worked Days</b>
+            </td>
+            <td>
+                XXXXXXX
             </td><td></td>
-            <th>
-                Acc. no.
-            </th>
             <td>
-                XXXXXXXXXXX
+                <b>Acc. no.</b>
+            </td>
+            <td>
+                XXXXXXXX
             </td>
         </tr>
         <tr>
-            <th>
-                Employee Tax:
-            </th>
             <td>
-                XXXXXXXXXXX
+                <b>Employee Tax</b>
+            </td>
+            <td>
+                {{ $employee->tax_number }}
             </td><td></td>
-            <th>
-                Pay Period
-            </th>
             <td>
-                XXXXXXXXXX
+                <b>Pay Period</b>
+            </td>
+            <td>
+                XXXXXXXX
             </td><td></td>
-            <th>
-                Personel Area
-            </th>
             <td>
-                XXXXXXXXXX
+                <b>Personel Area</b>
+            </td>
+            <td>
+                XXXXXXX
             </td>
         </tr>
         <tr>
-            <th>
-                Employee Code
-            </th>
+            <td>
+                <b>Employee Code</b>
+            </td>
             <td>
                 Sales Manager
             </td><td></td>
         </tr>
         <tr>
-            <th>
-                Direct manager
-            </th>
             <td>
-                Jerry boy
+                <b>Direct manager</b>
+            </td>
+            <td>
+                {{ $employee->direct_manager }}
             </td><td></td>
         </tr>
         <tr class="myBackground">
-            <th colspan="2">
+            <td colspan="2">
                 Payments
-            </th>
-            <th >
+            </td>
+            <td >
                 Particular
-            </th>
-            <th class="table-border-right">
+            </td>
+            <td class="table-border-right">
                 Amount (Rs.)
-            </th>
-            <th colspan="2">
+            </td>
+            <td colspan="2">
                 Deductions
-            </th>
-            <th >
+            </td>
+            <td >
                 Particular
-            </th>
-            <th >
+            </td>
+            <td >
                 Amount (Rs.)
-            </th>
+            </td>
         </tr>
         <tr>
-            <th colspan="2">
+            <td colspan="2">
                 Basic Salary
-            </th>
+            </td>
             <td></td>
             <td class="myAlign">
                 4935.00
             </td>
-            <th colspan="2" >
+            <td colspan="2" >
                 Provident Fund
-            </th >
+            </td >
             <td></td>
 
             <td class="myAlign">
@@ -221,17 +221,17 @@
             </td>
         </tr >
         <tr>
-            <th colspan="2">
+            <td colspan="2">
                 Fixed Dearness Allowance
-            </th>
+            </td>
             <td></td>
 
             <td class="myAlign">
                 00.00
             </td>
-            <th colspan="2" >
+            <td colspan="2" >
                 LIC
-            </th >
+            </td >
             <td></td>
 
             <td class="myAlign">
@@ -239,17 +239,17 @@
             </td>
         </tr >
         <tr>
-            <th colspan="2">
+            <td colspan="2">
                 Variable Dearness Allowance
-            </th>
+            </td>
             <td></td>
 
             <td class="myAlign">
                 00.00
             </td>
-            <th colspan="2" >
+            <td colspan="2" >
                 Loan
-            </th >
+            </td >
             <td></td>
 
             <td class="myAlign">
@@ -257,33 +257,33 @@
             </td>
         </tr >
         <tr>
-            <th colspan="2">
+            <td colspan="2">
                 House Rent Allowance
-            </th>
+            </td>
             <td></td>
             <td class="myAlign">
                 00.00
             </td>
-            <th colspan="2" >
+            <td colspan="2" >
                 Professional Tax
-            </th >
+            </td >
             <td></td>
             <td class="myAlign">
                 00.00
             </td>
         </tr >
         <tr>
-            <th colspan="2">
+            <td colspan="2">
                 Graduation Allowance
-            </th>
+            </td>
             <td></td>
 
             <td class="myAlign">
                 00.00
             </td>
-            <th colspan="2" >
+            <td colspan="2" >
                 Security Deposite(SD)
-            </th >
+            </td >
             <td></td>
 
             <td class="myAlign">
@@ -291,47 +291,47 @@
             </td>
         </tr >
         <tr>
-            <th colspan="2">
+            <td colspan="2">
                 Conveyance Allowance
-            </th> <td></td>
+            </td> <td></td>
             <td class="myAlign">
                 00.00
             </td>
-            <th colspan="2" >
+            <td colspan="2" >
                 Staff Benefit(SB)
-            </th >
+            </td >
             <td></td>
             <td class="myAlign">
                 00.00
             </td>
         </tr >
         <tr>
-            <th colspan="2">
+            <td colspan="2">
                 Post Allowance
-            </th>
+            </td>
             <td></td>
             <td class="myAlign">
                 00.00
             </td>
-            <th colspan="2" >
+            <td colspan="2" >
                 Labour Welfare Fund
-            </th >
+            </td >
             <td></td>
             <td class="myAlign">
                 00.00
             </td>
         </tr >
         <tr>
-            <th colspan="2">
+            <td colspan="2">
                 Special Allowance
-            </th>
+            </td>
             <td></td>
             <td class="myAlign">
                 00.00
             </td>
-            <th colspan="2" >
+            <td colspan="2" >
                 NSC
-            </th >
+            </td >
             <td></td>
             <td class="myAlign">
                 00.00
@@ -339,9 +339,9 @@
         </tr >
         <tr>
             <td colspan="4" class="table-border-right"></td>
-            <th colspan="2" >
-                Union Thanco Officer(UTO)
-            </th >
+            <td colspan="2" >
+                Union tdanco Officer(UTO)
+            </td >
             <td></td>
             <td class="myAlign">
                 00.00
@@ -349,9 +349,9 @@
         </tr >
         <tr>
             <td colspan="4" class="table-border-right"></td>
-            <th colspan="2" >
+            <td colspan="2" >
                 Advance
-            </th >
+            </td >
             <td></td>
             <td class="myAlign">
                 00.00
@@ -359,38 +359,38 @@
         </tr >
         <tr>
             <td colspan="4" class="table-border-right"></td>
-            <th colspan="2" >
+            <td colspan="2" >
                 Income Tax
-            </th > <td></td>
+            </td > <td></td>
             <td class="myAlign">
                 00.00
             </td>
         </tr >
         <tr class="myBackground">
-            <th colspan="3">
+            <td colspan="3">
                 Total Payments
-            </th>
+            </td>
             <td class="myAlign">
                 10000
             </td>
-            <th colspan="3" >
+            <td colspan="3" >
                 Total Deductions
-            </th >
+            </td >
             <td class="myAlign">
                 1000
             </td>
         </tr >
         <tr height="40px">
-            <th colspan="2">
+            <td colspan="2">
                 Projection for Financial Year:
-            </th>
-            <th>
-            </th>
+            </td>
+            <td>
+            </td>
             <td class="table-border-right">
             </td>
-            <th colspan="2" class="table-border-bottom" >
+            <td colspan="2" class="table-border-bottom" >
                 Net Salary
-            </th >
+            </td >
             <td >
             </td>
             <td >
@@ -412,9 +412,9 @@
             <td class="myAlign">
                 00.00
             </td>
-            <th colspan="2" >
+            <td colspan="2" >
                 Cumulative
-            </th >
+            </td >
             <td colspan="2"></td>
         </tr >
         <tr>

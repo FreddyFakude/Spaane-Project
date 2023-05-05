@@ -154,7 +154,7 @@
                                                 </td>
                                                 <td class="d-none d-sm-table-cell">
                                                     <label for="side-overlay-profile-email">Download Payslip</label>
-                                                    <a href="{{ route('dashboard.business.payroll.download', [$employee->hash, $employee->payslips->where('date', $date)->first()->hash]) }}" class="btn btn-primary">View</a>
+                                                    <a href="{{ route('dashboard.business.payroll.download', [$employee->hash, $employee->payslips->where('date', $date)->first()->hash]) }}" class="btn btn-primary" target="_blank">View</a>
                                                 </td>
                                             @endif
                                         </tr>
