@@ -55,6 +55,7 @@ Route::group(['middleware'=>['auth:company', 'companyHasProfile'], 'prefix'=>'co
     Route::get('/dashboard/payroll', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'index'])->name('dashboard.business.payroll.index');
     Route::get('/dashboard/payroll/{date}', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'show'])->name('dashboard.business.payroll.show');
     Route::post('/dashboard/payroll/{employee:hash}/store', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'store'])->name('dashboard.business.payroll.store');
+    Route::get('/dashboard/payroll/{employee:hash}/{payslip:hash}', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'downloadPayslip'])->name('dashboard.business.payroll.download');
     Route::post('/dashboard/payroll/generate-all', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'createAll'])->name('dashboard.business.payroll.generate.all');
 });
 

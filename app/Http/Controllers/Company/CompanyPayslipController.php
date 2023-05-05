@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use App\Models\CompanyPayslip;
 use App\Models\Employee;
+use App\Services\PDF\PayslipPDFGenerator;
 use App\Services\TaxCalculations\PAYECalculator;
 use App\Services\TaxCalculations\UIFCalculator;
 use Carbon\Carbon;
@@ -76,5 +78,10 @@ class CompanyPayslipController extends Controller
         }
 
         return back()->with('payslip-added', 'Payslip created successfully');
+    }
+
+    public function downloadPayslip(Employee $employee, CompanyPayslip $payslip)
+    {
+        return (new PayslipPDFGenerator())->downloadPDF($employee, $payslip);
     }
 }

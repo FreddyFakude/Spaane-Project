@@ -105,10 +105,10 @@
                                             </td>
                                             <td class="d-none d-sm-table-cell">
                                                 <label for="side-overlay-profile-email">Commission</label>
-                                                <input type="number" name="commission" value="{{ $employee->payslips->where('date', $date)->first()?->commission ?? 0 }}">
+                                                <input type="text" name="commission" value="{{ $employee->payslips->where('date', $date)->first()?->commission ?? 0 }}">
                                             </td>
                                             <td class="d-none d-sm-table-cell">
-                                                <label for="side-overlay-profile-email">Travele allowance</label>
+                                                <label for="side-overlay-profile-email">Travel allowance</label>
                                                 <input type="number" name="travel_allowance" value="{{ $employee->remuneration?->travel_allowance }}">
                                             </td>
                                             <td class="d-none d-sm-table-cell">
@@ -131,7 +131,7 @@
                                             </td>
                                             <td class="d-none d-sm-table-cell">
                                                 <label for="side-overlay-profile-email">Medical Aid</label>
-                                                <input type="number" name="commission" value="{{ $employee->payslips->where('date', $date)->first()?->commission ?? 0 }}">
+                                                <input type="number" name="mediacl_aid" value="{{ $employee->payslips->where('date', $date)->first()?->commission ?? 0 }}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -146,11 +146,17 @@
                                             </td>
                                             <td class="d-none d-sm-table-cell">
                                                 <label for="side-overlay-profile-email">UIF</label>
-                                                <input type="number" name="commission" value="{{ (new \App\Services\TaxCalculations\UIFCalculator($employee))->calculateUIF() }}">
+                                                <input type="number" name="uif" value="{{ (new \App\Services\TaxCalculations\UIFCalculator($employee))->calculateUIF() }}">
                                             </td>
-                                            <td class="d-none d-sm-table-cell">
-                                                <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()?->reference_number }} </em>
-                                            </td>
+                                            @if($employee->payslips->where('date', $date)->first()?->reference_number)
+                                                <td class="d-none d-sm-table-cell">
+                                                    <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()->reference_number }} </em>
+                                                </td>
+                                                <td class="d-none d-sm-table-cell">
+                                                    <label for="side-overlay-profile-email">Download Payslip</label>
+                                                    <a href="{{ route('dashboard.business.payroll.download', [$employee->hash, $employee->payslips->where('date', $date)->first()->hash]) }}" class="btn btn-primary">View</a>
+                                                </td>
+                                            @endif
                                         </tr>
                                     </tbody>
                                 </form>
