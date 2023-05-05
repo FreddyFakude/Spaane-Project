@@ -78,7 +78,7 @@
 <body>
 <div class="salary-slip" >
     <table class="empDetail">
-        <tr height="100px" style='background-color: #770737'>
+        <tr height="100px">
             <td colspan='4'>
                 <img height="90px" src="{{ asset('assets/images/logo_white.png') }}" /></td>
             <td colspan='4' class="companyName" style="color: white; padding-right:20px">Spaane</td>
@@ -167,7 +167,7 @@
                 <b>Employee Code</b>
             </td>
             <td>
-                Sales Manager
+                xxxxxxxxxxx
             </td><td></td>
         </tr>
         <tr>
@@ -180,7 +180,7 @@
         </tr>
         <tr class="myBackground">
             <td colspan="2">
-                Payments
+                Earnings
             </td>
             <td >
                 Particular
@@ -363,7 +363,7 @@
         </tr >
         <tr class="myBackground">
             <td colspan="3">
-                Total Payments
+                Total Earnings
             </td>
             <td class="myAlign">
                 10000
@@ -377,7 +377,7 @@
         </tr >
         <tr height="40px">
             <td colspan="2">
-                Projection for Financial Year:
+                Company Contributions:
             </td>
             <td>
             </td>
@@ -394,7 +394,7 @@
         </tr >
         <tr>
             <td colspan="2">
-                Gross Salary
+                UIF
             </td> <td></td>
             <td class="myAlign">
                 00.00
@@ -402,46 +402,27 @@
         </tr >
         <tr>
             <td colspan="2">
-                Aggr. Dedu - P.Tax & Std Ded
+                SDL
             </td> <td></td>
             <td class="myAlign">
                 00.00
             </td>
             <td colspan="2" >
-                Cumulative
+            
             </td >
             <td colspan="2"></td>
         </tr >
         <tr>
             <td colspan="2">
-                Gross Total Income
+                COIDA
             </td> <td></td>
-            <td class="myAlign">
-                00.00
-            </td>
-            <td colspan="2" >
-                Empl PF Contribution
-            </td > <td></td>
             <td class="myAlign">
                 00.00
             </td>
         </tr >
         <tr>
-            <td colspan="2">
-                Aggr of Chapter "PF"
-            </td> <td></td>
-            <td class="myAlign">
-                00.00
-            </td><td colspan="4"></td>
         </tr >
         <tr>
-            <td colspan="2">
-                Total Income
-            </td> <td></td>
-            <td class="myAlign">
-                00.00
-            </td>
-            <td colspan="4"></td>
         </tr >
         <!--        <tbody class="border-center">-->
         <!--        <tr>-->

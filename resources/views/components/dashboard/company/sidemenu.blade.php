@@ -51,7 +51,7 @@
                             <a href="{{ route('dashboard.company.chats') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Chat</span></a>
                         </li> --}}
                         <li>
-                            <a href="{{ route('dashboard.company.chats.bulk-messages') }}"><i class="si si-bubble fa-2x"></i><span class="sidebar-mini-hide">Messaging</span></a>
+                            <a href="{{ route('dashboard.company.chats.bulk-messages') }}"><i class="si si-bubble fa-2x"></i><span class="sidebar-mini-hide">Announcements</span></a>
                         </li>
                         <li>
                             <a  href="{{ route('dashboard.company.index') }}"><i class="si si-calendar fa-2x"></i><span class="sidebar-mini-hide">Leave</span></a>
