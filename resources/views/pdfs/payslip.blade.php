@@ -124,7 +124,7 @@
                 <b>Bank name</b>
             </td>
             <td>
-                XXXXXXX
+                {{ $employee->bankAccount->bank_name }}
             </td>
         </tr>
         <tr>
@@ -144,7 +144,7 @@
                 <b>Acc. no.</b>
             </td>
             <td>
-                XXXXXXXX
+                {{ $employee->bankAccount->account_number }}
             </td>
         </tr>
         <tr>
@@ -159,13 +159,8 @@
             </td>
             <td>
                 XXXXXXXX
-            </td><td></td>
-            <td>
-                <b>Personel Area</b>
             </td>
-            <td>
-                XXXXXXX
-            </td>
+            <td></td>
         </tr>
         <tr>
             <td>
