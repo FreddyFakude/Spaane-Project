@@ -31,10 +31,11 @@
                         </div>
                     </div>
                 @endif
+
             </div>
             <div class="block">
                 <div class="block-header block-header-default">
-                    <h3 class="block-title">Partial Table</h3>
+                    <h3 class="block-title">Company Contribution</h3>
                 </div>
                 <div class="block-content">
                     <div class="row">
@@ -73,7 +74,7 @@
                                 <tr>
                                     <td class="text-center">{{ $loop->index + 1 }}</td>
                                     <td class="font-w600">{{ $companyRemunerationContribution->name }}</td>
-                                    <td class="font-w600">{{ $companyRemunerationContribution->percentage }}</td>
+                                    <td class="font-w600">{{ $companyRemunerationContribution->percentage }}%</td>
                                     <td class="font-w600">
                                         @if($companyRemunerationContribution->is_active)
                                             <span class="badge badge-success">Enabled</span>
@@ -106,81 +107,8 @@
                     </table>
                 </div>
             </div>
-            <div class="block-content">
-                <form action="" method="POST">
-                    <div class="row px-10 mt-30">
-                        <div class="col-md-10">
-                            <div>
-                                <h4>Company Contribution</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row px-10 mt-30">
-{{--                        <div class="col-md-3">--}}
-{{--                            <div class="col-6">--}}
-{{--                                <label class="css-control css-control-secondary css-radio">--}}
-{{--                                    <input type="radio" class="css-control-input" name="radio-group1" checked="">--}}
-{{--                                    <span class="css-control-indicator"></span> Yes--}}
-{{--                                </label>--}}
-{{--                                <label class="css-control css-control-secondary css-radio">--}}
-{{--                                    <input type="radio" class="css-control-input" name="radio-group1">--}}
-{{--                                    <span class="css-control-indicator"></span> No--}}
-{{--                                </label>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                @csrf
-                                <button class="btn btn-outline-danger mt-1">Update</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <form action="" method="POST">
-                    <div class="row px-10 mt-30">
-                        <div class="col-md-10">
-                            <div>
-                                <h4>Company Deductions(for all employees)</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row px-10 mt-30">
-{{--                        <div class="col-md-3">--}}
-{{--                            <div class="col-6">--}}
-{{--                                <label class="css-control css-control-secondary css-radio">--}}
-{{--                                    <input type="radio" class="css-control-input" name="radio-group1" checked="">--}}
-{{--                                    <span class="css-control-indicator"></span> Yes--}}
-{{--                                </label>--}}
-{{--                                <label class="css-control css-control-secondary css-radio">--}}
-{{--                                    <input type="radio" class="css-control-input" name="radio-group1">--}}
-{{--                                    <span class="css-control-indicator"></span> No--}}
-{{--                                </label>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-                        <div class="col-md-7">
-                            <div class="form-group">
-                                <div class="col-lg-8">
-                                    <select class="js-select2 form-control" id="example-select2-multiple" name="contribution_id[]" style="width: 100%;" data-placeholder="Choose many.." multiple>
-                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                        @foreach($remunerations as $remuneration)
-                                            @continue($remuneration->id == 1)
-                                            <option value="{{ $remuneration->id }}" @if(in_array($remuneration->id, $companyRemunerations->pluck('remuneration_list_id')->toArray())) selected @endif >{{ $remuneration->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                @csrf
-                                <button class="btn btn-outline-danger mt-1">Update</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        </div>
+    </div>
             <style>
                 .bg-light-grey{
                     background-color: #e9ecef;

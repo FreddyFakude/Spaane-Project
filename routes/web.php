@@ -44,6 +44,8 @@ Route::group(['middleware'=>['auth:company', 'companyHasProfile'], 'prefix'=>'co
     Route::get('/dashboard/employees/view/{employee}', [\App\Http\Controllers\Company\EmployeeController::class, 'viewTalent'])->name('dashboard.company.employee.view');
 
     Route::resource('/dashboard/contributions', \App\Http\Controllers\Company\CompanyRemunerationContributionController::class,  ['as' => 'dashboard.company']);
+    Route::resource('/dashboard/deductions', \App\Http\Controllers\Company\CompanyRemunerationDeductionController::class,  ['as' => 'dashboard.company']);
+    Route::get('/dashboard/deductions/{deduction:hash}/{state}', [\App\Http\Controllers\Company\CompanyRemunerationDeductionController::class, 'updateStatus'])->name('dashboard.company.deductions.update.status');
     Route::get('/dashboard/contributions/{companyRemunerationContribution:hash}/{state}', [\App\Http\Controllers\Company\CompanyRemunerationContributionController::class, 'updateStatus'])->name('dashboard.company.contributions.update.status');
 //    Route::post('/dashboard/contributions/{}/update', [\App\Http\Controllers\Company\CompanyRemunerationContributionController::class, 'update'])->name('dashboard.company.contributions.update');
 

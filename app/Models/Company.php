@@ -52,4 +52,9 @@ class Company extends Model
     {
         return $this->hasMany(CompanyRemunerationList::class);
     }
+
+    public function deductions()
+    {
+        return $this->hasMany(CompanyRemunerationDeduction::class);
+    }
 }

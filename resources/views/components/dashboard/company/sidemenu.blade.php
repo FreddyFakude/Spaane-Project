@@ -69,7 +69,15 @@
                                     <a href="{{ route('dashboard.company.profile') }}">Company Profile</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('dashboard.company.contributions.index') }}">Remunerations</a>
+                                    <a class="nav-submenu" data-toggle="nav-submenu" >Remunerations</a>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ route('dashboard.company.contributions.index') }}">Company Contribution</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('dashboard.company.deductions.index') }}">Company Deductions</a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </li>
