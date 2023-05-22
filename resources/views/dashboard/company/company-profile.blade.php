@@ -33,44 +33,7 @@
                 @endif
             </div>
             <div class="block-content">
-                <form action="{{ route('company.update.profile') }}" method="POST">
-                    <div class="d-flex justify-content-start mt-20">
-                        <div>
-                            <h4>Profile information</h4>
-                        </div>
-                    </div>
-                    <div class="row px-10 mt-30">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label class="pl-0" for="example-text-input">First Name*</label>
-                                <input type="text" class="form-control"  name="first_name" value="{{ $admin->first_name }}">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Last Name*</label>
-                                <input type="text" class="form-control" id="example-text-input" name="last_name" value="{{ $admin->last_name }}">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Date of birth*</label>
-                                <input type="date" class="form-control" id="example-text-input" name="dob" value="{{ $admin->dob }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row px-10 mt-10">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Gender*</label>
-                                <select name="gender" id="" class="form-control">
-                                    <option value=""></option>
-                                    <option value="male" {{ $admin->gender == 'male' ? 'selected' : '' }}>Male</option>
-                                    <option value="female" {{ $admin?->gender == 'female' ? 'selected' : '' }}>Female</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                <form action="{{ route('dashboard.company.update.profile') }}" method="POST">
                     <div class="d-flex justify-content-start mt-20">
                         <div>
                             <h4>Company information</h4>
@@ -120,12 +83,12 @@
                                 <input type="tel" class="form-control"  name="company_phone_number" value="{{ $company?->phone_number }}" placeholder="0788129192">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
+                                <label class="pl-0" for="example-text-input"></label>
+                                <br>
                                 @csrf
-                                <button class="btn btn-outline-danger">Update</button>
+                                <button class="btn btn-outline-danger mt-1">Update</button>
                             </div>
                         </div>
                     </div>

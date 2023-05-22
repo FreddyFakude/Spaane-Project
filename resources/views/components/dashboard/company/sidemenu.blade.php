@@ -59,9 +59,20 @@
                        <li>
                             <a href="{{ route('dashboard.business.payroll.index') }}"><i class="si si-bar-chart fa-2x"></i><span class="sidebar-mini-hide">Payslips</span></a>
                         </li>
-                        {{-- <li>
-                            <a href="{{ route('dashboard.company.chats') }}"><i class="si si-clock fa-2x"></i><span class="sidebar-mini-hide">Absentism</span></a>
-                        </li> --}}
+                        <li>
+                            <a class="nav-submenu" data-toggle="nav-submenu" href="{{ route('dashboard.company.profile') }}"><i class="si si-settings fa-2x"></i><span class="sidebar-mini-hide">Company Settings</span></a>
+                            <ul>
+                                <li>
+                                    <a href="{{ route('dashboard.company.admin.profile') }}">Admin</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('dashboard.company.profile') }}">Company Profile</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('dashboard.company.contributions.index') }}">Remunerations</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <!-- END Side Navigation -->

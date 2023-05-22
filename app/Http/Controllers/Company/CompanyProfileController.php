@@ -8,27 +8,24 @@ use Illuminate\Http\Request;
 
 class CompanyProfileController extends Controller
 {
+
+
     public function index()
     {
-        return view('dashboard.company.profile',[
-            'company' => auth()->guard('company')->user()->company,
-            'admin' => auth()->guard('company')->user()
+        return view('dashboard.company.company-profile',[
+            'company' => auth()->guard('company')->user()->company
         ]);
     }
 
     public function update(Request $request)
     {
         $validated = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
             'company_name' => 'required|string|max:255',
             'company_size' => 'required|string|max:255',
             'date_creation' => 'required|date',
-            'dob' => 'required|date',
             'fiscal_year_start' => 'required|date',
             'short_description' => 'required|string|max:255',
-            'company_phone_number' => 'required|numeric|starts_with:0|digits:10',
-            'gender' => 'nullable|string|max:255',
+            'company_phone_number' => 'required|numeric|starts_with:0|digits:10'
         ]);
 
         $company = auth()->guard('company')->user()->company->update(
@@ -43,13 +40,6 @@ class CompanyProfileController extends Controller
             ]
         );
 
-        $user = auth()->guard('company')->user()->update([
-            'first_name' => $validated['first_name'],
-            'last_name' => $validated['last_name'],
-            'gender'=> $validated['gender'],
-            'dob' => $validated['dob'],
-        ]);
-
-        return redirect()->route('dashboard.company.index')->with('success', 'Profile updated successfully');
+        return redirect()->back()->with('success', 'Profile updated successfully');
     }
 }

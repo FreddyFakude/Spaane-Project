@@ -26,7 +26,9 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\IndependentContractorSeeder::class,
             SkillsSeeder::class,
             WhatsAppTemplateMessageSeeder::class,
-            CompanyDepartmentSeeder::class
+            CompanyDepartmentSeeder::class,
+            RemunerationListSeeder::class,
+            CompanyRemunerationListSeeder::class,
         ]);
     }
 }

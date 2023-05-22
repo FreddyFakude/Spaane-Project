@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Seeders\CompanyRemunerationListSeeder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -40,5 +41,15 @@ class Company extends Model
     public function companyLeavePolicy()
     {
         return $this->hasMany(LeaveType::class);
+    }
+
+    public function remunerationContributions()
+    {
+        return $this->hasMany(CompanyRemunerationContribution::class);
+    }
+
+    public function remunerations()
+    {
+        return $this->hasMany(CompanyRemunerationList::class);
     }
 }

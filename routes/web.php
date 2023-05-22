@@ -27,8 +27,13 @@ Route::post('/company/profile/register', [\App\Http\Controllers\Auth\Company\Reg
 Route::get('/company/login', [\App\Http\Controllers\Auth\Company\LoginController::class, 'loginForm'])->name('company.login.form');
 Route::post('/company/login', [\App\Http\Controllers\Auth\Company\LoginController::class, 'login'])->name('company.login');
 Route::post('/company/logout', [\App\Http\Controllers\Auth\Company\LoginController::class, 'logout'])->name('company.logout');
-Route::get('/company/profile', [\App\Http\Controllers\Company\CompanyProfileController::class, 'index'])->name('dashboard.company.profile');
-Route::post('/company/profile/update', [\App\Http\Controllers\Company\CompanyProfileController::class, 'update'])->name('company.update.profile');
+
+Route::group(['middleware'=>['auth:company']], function (){
+    Route::get('/company/profile', [\App\Http\Controllers\Company\CompanyProfileController::class, 'index'])->name('dashboard.company.profile');
+    Route::post('/company/profile/update', [\App\Http\Controllers\Company\CompanyProfileController::class, 'update'])->name('dashboard.company.update.profile');
+    Route::get('/company/admin/profile', [\App\Http\Controllers\Company\AdminProfileController::class, 'index'])->name('dashboard.company.admin.profile');
+    Route::post('/company/admin/profile/update', [\App\Http\Controllers\Company\AdminProfileController::class, 'update'])->name('company.update.admin.profile');
+});
 
 
 Route::group(['middleware'=>['auth:company', 'companyHasProfile'], 'prefix'=>'company'], function (){
@@ -37,6 +42,11 @@ Route::group(['middleware'=>['auth:company', 'companyHasProfile'], 'prefix'=>'co
     Route::get('/dashboard/calendar', [\App\Http\Controllers\Company\DashboardController::class, 'calendar'])->name('dashboard.company.index.calendar');
     Route::get('/dashboard/employees/list', [\App\Http\Controllers\Company\EmployeeController::class, 'list'])->name('dashboard.company.employee.list');
     Route::get('/dashboard/employees/view/{employee}', [\App\Http\Controllers\Company\EmployeeController::class, 'viewTalent'])->name('dashboard.company.employee.view');
+
+    Route::resource('/dashboard/contributions', \App\Http\Controllers\Company\CompanyRemunerationContributionController::class,  ['as' => 'dashboard.company']);
+    Route::get('/dashboard/contributions/{companyRemunerationContribution:hash}/{state}', [\App\Http\Controllers\Company\CompanyRemunerationContributionController::class, 'updateStatus'])->name('dashboard.company.contributions.update.status');
+//    Route::post('/dashboard/contributions/{}/update', [\App\Http\Controllers\Company\CompanyRemunerationContributionController::class, 'update'])->name('dashboard.company.contributions.update');
+
 
     Route::post('/dashboard/employees/{employee:hash}/leave/manual-request', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'leaveManualRequest'])->name('dashboard.company.employee.leave.manual-request');
     Route::post('/dashboard/employees/{employee:hash}/leave/add-policy', [\App\Http\Controllers\Company\EmployeeLeavePolicyController::class, 'addLeavePolicy'])->name('dashboard.company.employee.add.leave-policy');
