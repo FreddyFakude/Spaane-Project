@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('company_remuneration_lists', function (Blueprint $table) {
+        Schema::create('company_remunerations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')->constrained('companies')->onDelete('cascade');
-            $table->foreignId('remuneration_list_id')->constrained('remuneration_lists')->onDelete('cascade');
             $table->string('name');
+            $table->boolean('can_be_edited')->default(true);
+            $table->string('hash');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

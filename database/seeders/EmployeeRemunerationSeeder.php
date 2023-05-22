@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CompanyRemunerationListSeeder extends Seeder
+class EmployeeRemunerationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,21 +15,21 @@ class CompanyRemunerationListSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('company_remunerations')
+        DB::table('employee_remunerations')
             ->insert([
                 [
-                    'company_id' => 1,
+                    'employee_id' => 1,
+                    'company_remuneration_id' => 1,
+                    'amount' => 10000,
                     'name' => 'Basic Salary',
-                    'can_be_edited' => false,
-                    'hash' => sha1(time()),
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
                 [
-                    'company_id' => 1,
+                    'employee_id' => 1,
+                    'company_remuneration_id' => 2,
                     'name' => 'Housing Allowance',
-                    'can_be_edited' => false,
-                    'hash' => sha1(time()),
+                    'amount' => 5000,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]

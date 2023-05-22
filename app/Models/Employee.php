@@ -85,9 +85,9 @@ class Employee  extends Authenticatable
         return $this->morphOne(BankAccount::class, 'bank_accountable');
     }
 
-    public function remuneration()
+    public function remunerations()
     {
-        return $this->hasOne(EmployeeRemuneration::class, 'employee_id');
+        return $this->hasMany(EmployeeRemuneration::class, 'employee_id');
     }
 
 

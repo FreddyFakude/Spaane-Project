@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('employee_remunerations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->references('id')->on('employees')->cascadeOnUpdate();
-            $table->double('basic_salary', 8, 2)->nullable();
-            $table->double('travel_allowance', 8, 2)->nullable();
+            $table->string('name');
+            $table->foreignId('company_remuneration_id')->references('id')->on('company_remunerations')->cascadeOnDelete();
+            $table->double('amount', 8, 2);
             $table->timestamps();
         });
     }

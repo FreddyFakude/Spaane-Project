@@ -39,6 +39,7 @@ class CompanyChatController extends Controller
         return view('dashboard.company.chat', [
             'chat'=> $chat->load('messages'),
             'employee' => $employee,
+            'employeeRemunerations' => $employee->remunerations,
             "skills" => Skill::all(),
             "selectedSkills" => $employee->skills?->pluck('id')->toArray(),
             "departments" => Cache::get('departments', function () {

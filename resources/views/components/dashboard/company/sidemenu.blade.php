@@ -77,6 +77,9 @@
                                         <li>
                                             <a href="{{ route('dashboard.company.deductions.index') }}">Company Deductions</a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('dashboard.company.earning_types.index') }}">Employee Earning</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>

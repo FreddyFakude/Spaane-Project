@@ -45,9 +45,13 @@ Route::group(['middleware'=>['auth:company', 'companyHasProfile'], 'prefix'=>'co
 
     Route::resource('/dashboard/contributions', \App\Http\Controllers\Company\CompanyRemunerationContributionController::class,  ['as' => 'dashboard.company']);
     Route::resource('/dashboard/deductions', \App\Http\Controllers\Company\CompanyRemunerationDeductionController::class,  ['as' => 'dashboard.company']);
+    Route::resource('/dashboard/employee/earning_types', \App\Http\Controllers\Company\CompanyEmployeeEarningTypeController::class,  ['as' => 'dashboard.company']);
     Route::get('/dashboard/deductions/{deduction:hash}/{state}', [\App\Http\Controllers\Company\CompanyRemunerationDeductionController::class, 'updateStatus'])->name('dashboard.company.deductions.update.status');
+    Route::get('/dashboard/employee/earning_types/{remuneration:hash}/{state}', [\App\Http\Controllers\Company\CompanyEmployeeEarningTypeController::class, 'updateStatus'])->name('dashboard.company.earning_types.update.status');
     Route::get('/dashboard/contributions/{companyRemunerationContribution:hash}/{state}', [\App\Http\Controllers\Company\CompanyRemunerationContributionController::class, 'updateStatus'])->name('dashboard.company.contributions.update.status');
-//    Route::post('/dashboard/contributions/{}/update', [\App\Http\Controllers\Company\CompanyRemunerationContributionController::class, 'update'])->name('dashboard.company.contributions.update');
+
+   Route::post('/dashboard/employee/earning/{employee:hash}', [\App\Http\Controllers\Company\EmployeeEarningController::class, 'store'])->name('dashboard.company.employee.earnings.store');
+   Route::get('/dashboard/employee/earning/{employee:hash}', [\App\Http\Controllers\Company\EmployeeEarningController::class, 'index'])->name('dashboard.company.employee.earnings.index');
 
 
     Route::post('/dashboard/employees/{employee:hash}/leave/manual-request', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'leaveManualRequest'])->name('dashboard.company.employee.leave.manual-request');

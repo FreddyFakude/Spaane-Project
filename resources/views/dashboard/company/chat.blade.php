@@ -23,6 +23,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#wizard-simple2-step2" data-toggle="tab">2. Edit Profile</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#wizard-simple2-step3" data-toggle="tab">3. Earning</a>
+                    </li>
                 </ul>
                 <!-- END Step Tabs -->
                 @if ($errors->any())
@@ -501,6 +504,142 @@
 
                         </div>
                     </div>
+                    <div class="tab-pane" id="wizard-simple2-step3" role="tabpanel">
+                        <div class="block-content">
+                            <form action="{{ route('dashboard.business.employee.update', [$employee->hash]) }}" method="POST">
+                                <div class="my-30">
+                                    <hr>
+                                </div>
+                                <div class="d-flex justify-content-start mt-20">
+                                    <div>
+                                        <h4>Remuneration</h4>
+                                    </div>
+                                </div>
+                                <div class="row ml-3"><h6>Fixed Earnings:</h6></div>
+
+                                @foreach($employeeRemunerations as $remuneration)
+                                    <div class="row px-10 mt-5">
+                                        <div class="col-md-2">
+                                            <h6>{{ $remuneration->name }}</h6>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                               <input type="number" class="form-control"  name="basic_salary" value="{{ $remuneration->amount   }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group form-inline">
+                                                <button class="btn btn-primary">Add</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <div class="row ml-3"><h6>Other Earnings:</h6></div>
+{{--                                <div class="row px-10 mt-5">--}}
+{{--                                    <div class="col-md-2">--}}
+{{--                                        <h6>{{ $remuneration->name }}</h6>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-3">--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <input type="number" class="form-control"  name="basic_salary" value="{{( $employee->remuneration?->basic_salary ?? 0) * 12 }}">--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-md-3">--}}
+{{--                                        <div class="form-group form-inline">--}}
+{{--                                            <button class="btn btn-primary">Add</button>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+                                <div class="row px-10" v-for="earning in earnings">
+                                    <div class="col-md-2">
+                                        <h6>@{{ earning.name }}</h6>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group form-inline">
+                                            <input type="text" class="form-control" id="example-text-input" placeholder="amount" name="other_earning" v-model="otherEarning">
+                                         </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group form-inline">
+                                            <button class="btn btn-primary">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row px-10">
+                                    <div class="col-md-2">
+                                        <h6>Add other Earning</h6>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group form-inline">
+{{--                                            <label class="pl-0" for="example-text-input"><small>Add other Earning</small></label>--}}
+                                            <input type="text" class="form-control" id="example-text-input" placeholder="Enter name of earning" name="" value="">
+{{--                                            <button class="btn btn-primary">Add</button>--}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group form-inline">
+                                            <button class="btn btn-primary">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ml-3 mt-10 mb-0"><h6>Fixed Deductions:</h6></div>
+                                <div class="row px-10">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input"><small>Medical Aid</small></label>
+                                            <input type="number" class="form-control"  name="" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row px-10">
+                                    <div class="col-md-3">
+                                        <div class="form-group form-inline">
+                                            <label class="pl-0" for="example-text-input"><small>Add other Deductions</small></label>
+                                            <input type="text" class="form-control" id="example-text-input" placeholder="Enter name of deduction" name="" value="">
+                                            <button class="btn btn-primary">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ml-3 mt-10 mb-0"><h6>Fixed Tax:</h6></div>
+                                <div class="row px-10">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input"><small>PAYE</small></label>
+                                            <input type="number" class="form-control"  name="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input"><small>UIF</small></label>
+                                            <input type="number" class="form-control"  name="" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row px-10">
+                                    <div class="col-md-3">
+                                        <div class="form-group form-inline">
+                                            <label class="pl-0" for="example-text-input"><small>Add other Tax</small></label>
+                                            <input type="text" class="form-control" id="example-text-input" placeholder="Enter name of Tax" name="" value="">
+                                            <button class="btn btn-primary">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="my-30">
+                                    <hr>
+                                </div>
+
+                                <div class="row px-10 mt-30">
+                                    <div class="col-md-8">
+                                        @csrf
+                                        <div class="form-group">
+                                            <button class="btn btn-primary">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
                     <!-- END Step 2 -->
                 </div>
 
@@ -518,7 +657,9 @@
                 data: {
                     chat: '',
                     messages: '',
-                    message: ''
+                    message: '',
+                    otherEarning: '',
+                    earnings: [],
                 },
                 created(){
                     // this.messages = this.chat.messages;
@@ -531,6 +672,10 @@
                             vm.initialState = false;
                         })
                     }, 5000)
+
+                    axios.get("{{ route('dashboard.company.employee.earnings.index', [$employee->hash]) }}").then(response => {
+                        vm.earnings = response.data.earnings;
+                    })
                 },
                 methods: {
                     sendMessage: function ($event) {
@@ -563,6 +708,17 @@
                             vm.messages = response.data;
                             document.querySelector('#file').value = '';
                         })
+                    },
+                    addEmployeeEarning: function ($event) {
+                        var vm = this;
+                        if(vm.otherEarning) {
+                            axios.post("{{ route('dashboard.company.employee.earnings.store', [$employee->hash]) }}", {
+                                name: vm.otherEarning,
+                                amount: 0
+                            }).then(response => {
+                                vm.otherEarning = response.data;
+                            })
+                        }
                     },
                 }
             })

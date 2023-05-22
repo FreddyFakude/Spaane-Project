@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('employee_other_earnings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('employee_id')->references('id')->on('employees')->cascadeOnUpdate();
             $table->string('name');
-            $table->string('description')->nullable();
-            $table->double('amount', '8', '2')->default(0.00);
-            $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
+            $table->double('amount', 8, 2);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('other_employee_earnings');
+        Schema::dropIfExists('employee_other_earnings');
     }
 };

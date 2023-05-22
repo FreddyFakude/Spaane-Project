@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             CompanyDepartmentSeeder::class,
             RemunerationListSeeder::class,
             CompanyRemunerationListSeeder::class,
+            EmployeeRemunerationSeeder::class,
         ]);
     }
 }

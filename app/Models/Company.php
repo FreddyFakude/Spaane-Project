@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\Company\CompanyEmployeeEarningTypeController;
 use Database\Seeders\CompanyRemunerationListSeeder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -50,11 +51,16 @@ class Company extends Model
 
     public function remunerations()
     {
-        return $this->hasMany(CompanyRemunerationList::class);
+        return $this->hasMany(CompanyRemuneration::class);
     }
 
     public function deductions()
     {
         return $this->hasMany(CompanyRemunerationDeduction::class);
+    }
+
+    public function employeeEarningTypes()
+    {
+        return $this->hasMany(CompanyRemuneration::class);
     }
 }
