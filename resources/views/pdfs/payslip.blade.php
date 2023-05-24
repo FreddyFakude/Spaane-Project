@@ -154,12 +154,12 @@
             <td>
                 {{ $employee->tax_number }}
             </td><td></td>
-            <td>
-                <b>Pay Period</b>
-            </td>
-            <td>
-                XXXXXXXX
-            </td>
+{{--            <td>--}}
+{{--                <b>Pay Period</b>--}}
+{{--            </td>--}}
+{{--            <td>--}}
+{{--                XXXXXXXX--}}
+{{--            </td>--}}
             <td></td>
         </tr>
         <tr>
@@ -408,7 +408,7 @@
                 00.00
             </td>
             <td colspan="2" >
-            
+
             </td >
             <td colspan="2"></td>
         </tr >

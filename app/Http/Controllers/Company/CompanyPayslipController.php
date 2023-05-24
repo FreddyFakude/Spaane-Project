@@ -48,7 +48,7 @@ class CompanyPayslipController extends Controller
     {
         return view('dashboard.company.payroll.employee', [
             'date' => $date,
-            'employees' => Employee::where('company_id', auth()->user()->company->id)->with('payslips')->get(),
+            'employees' => auth()->user()->company->employees->load('payslips', 'remunerations', 'otherEarnings', 'otherDeductions'),
         ]);
     }
 
