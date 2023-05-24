@@ -398,7 +398,7 @@
                                         <div class="form-group form-inline">
                                             <label class="pl-0" for="example-text-input"><small>Add other Earnings</small></label>
                                             <input type="text" class="form-control" id="example-text-input" placeholder="Enter name of earning/allowance" name="" value="">
-                                            <button class="btn btn-primary">Add</button>
+                                            <button class="btn btn-primary" @click="">Add</button>
                                         </div>
                                     </div>
                                 </div>
@@ -510,6 +510,9 @@
                                 <div class="my-30">
                                     <hr>
                                 </div>
+                                <div class="alert alert-success" v-if="earningUpdated">
+                                   Remuneration updated successfully
+                                </div>
                                 <div class="d-flex justify-content-start mt-20">
                                     <div>
                                         <h4>Remuneration</h4>
@@ -524,44 +527,29 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                               <input type="number" class="form-control"  name="basic_salary" value="{{ $remuneration->amount   }}">
+                                               <input type="number" id="{{ str_replace(' ', '-', strtolower($remuneration->name)) }}" class="form-control"  name="basic_salary" value="{{ $remuneration->amount}}">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group form-inline">
-                                                <button class="btn btn-primary">Add</button>
+                                                <button class="btn btn-primary" type="button" @click="addEmployeeEarningAmount('{{ str_replace(' ', '-', strtolower($remuneration->name)) }}', {{ $remuneration->id }})">Update</button>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
                                 <div class="row ml-3"><h6>Other Earnings:</h6></div>
-{{--                                <div class="row px-10 mt-5">--}}
-{{--                                    <div class="col-md-2">--}}
-{{--                                        <h6>{{ $remuneration->name }}</h6>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-md-3">--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <input type="number" class="form-control"  name="basic_salary" value="{{( $employee->remuneration?->basic_salary ?? 0) * 12 }}">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-md-3">--}}
-{{--                                        <div class="form-group form-inline">--}}
-{{--                                            <button class="btn btn-primary">Add</button>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
                                 <div class="row px-10" v-for="earning in earnings">
                                     <div class="col-md-2">
                                         <h6>@{{ earning.name }}</h6>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group form-inline">
-                                            <input type="text" class="form-control" id="example-text-input" placeholder="amount" name="other_earning" v-model="otherEarning">
+                                            <input type="text" class="form-control" id="example-text-input" placeholder="amount" name="other_earning" :value="earning.amount">
                                          </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group form-inline">
-                                            <button class="btn btn-primary">Add</button>
+                                            <button class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -570,27 +558,45 @@
                                         <h6>Add other Earning</h6>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="form-group form-inline">
-{{--                                            <label class="pl-0" for="example-text-input"><small>Add other Earning</small></label>--}}
-                                            <input type="text" class="form-control" id="example-text-input" placeholder="Enter name of earning" name="" value="">
-{{--                                            <button class="btn btn-primary">Add</button>--}}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group form-inline">
-                                            <button class="btn btn-primary">Add</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row ml-3 mt-10 mb-0"><h6>Fixed Deductions:</h6></div>
-                                <div class="row px-10">
-                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="pl-0" for="example-text-input"><small>Medical Aid</small></label>
-                                            <input type="number" class="form-control"  name="" value="">
+                                            <input type="text" class="form-control" id="example-text-input" placeholder="name of earning" name="" v-model="otherEarning">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="example-text-input" placeholder="Amount" name="" v-model="otherEarningAmount">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="button" @click="addEmployeeOtherEarning">Add</button>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="d-flex justify-content-start mt-20">
+                                    <div>
+                                        <h4>Fixed Deductions:</h4>
+                                    </div>
+                                </div>
+
+                               @foreach($companyDeductions as $deduction)
+                                    <div class="row px-10">
+                                        <div class="col-md-2">
+                                            <h6>{{ $deduction->name }}</h6>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                {{--                                            <label class="pl-0" for="example-text-input"><small>Medical Aid</small></label>--}}
+                                                <input type="number" class="form-control"  name="" value="{{ $deduction->amount }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <button class="btn btn-primary" type="button">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                               @endforeach
                                 <div class="row px-10">
                                     <div class="col-md-3">
                                         <div class="form-group form-inline">
@@ -659,7 +665,9 @@
                     messages: '',
                     message: '',
                     otherEarning: '',
+                    otherEarningAmount: '',
                     earnings: [],
+                    earningUpdated: false,
                 },
                 created(){
                     // this.messages = this.chat.messages;
@@ -709,17 +717,63 @@
                             document.querySelector('#file').value = '';
                         })
                     },
-                    addEmployeeEarning: function ($event) {
+                    {{--addEmployeeEarning: function ($event) {--}}
+                    {{--    var vm = this;--}}
+                    {{--    if(vm.otherEarning) {--}}
+                    {{--        axios.post("{{ route('dashboard.company.employee.earnings.store', [$employee->hash]) }}", {--}}
+                    {{--            name: vm.otherEarning,--}}
+                    {{--            amount: 0--}}
+                    {{--        }).then(response => {--}}
+                    {{--            vm.otherEarning = response.data;--}}
+                    {{--        })--}}
+                    {{--    }--}}
+                    {{--},--}}
+                    addEmployeeOtherEarning: function ($event) {
                         var vm = this;
                         if(vm.otherEarning) {
-                            axios.post("{{ route('dashboard.company.employee.earnings.store', [$employee->hash]) }}", {
+                            axios.post("{{ route('dashboard.company.employee.other_earnings.store', [$employee->hash]) }}", {
                                 name: vm.otherEarning,
-                                amount: 0
+                                amount: vm.otherEarningAmount
                             }).then(response => {
-                                vm.otherEarning = response.data;
+                                vm.earnings = response.data.earnings;
                             })
                         }
                     },
+                    addEmployeeEarningAmount: function (amountEl, earningId) {
+                        var vm = this;
+                        var amount= document.getElementById(amountEl).value ?? 0;
+                        console.log(amount);
+                        if(amount) {
+                            axios.post("{{ route('dashboard.company.employee.earnings.updateAmount', [$employee->hash]) }}", {
+                                amount: amount,
+                                id: earningId
+                            }).then(response => {
+                                vm.earningUpdated = true;
+                            })
+                        }
+                    },
+                    addEmployeeOtherEarningAmount: function (amountEl, earningId) {
+                        var vm = this;
+                        var amount= document.getElementById(amountEl).value ?? 0;
+                        console.log(amount);
+                        if(amount) {
+                            axios.post("{{ route('dashboard.company.employee.other_earnings.updateAmount', [$employee->hash]) }}", {
+                                amount: amount,
+                                id: earningId
+                            }).then(response => {
+                                vm.earningUpdated = true;
+                            })
+                        }
+                    },
+                },
+                watch: {
+                    earningUpdated: function (val) {
+                        if  (val) {
+                            setTimeout(function () {
+                                vm.earningUpdated = false;
+                            }, 3000)
+                        }
+                    }
                 }
             })
         </script>

@@ -119,17 +119,17 @@
                     </table>
                 </div>
             </div>
-            <div class="block-content">
-                <form action="" method="POST">
-                    <div class="row px-10 mt-30">
-                        <div class="col-md-10">
-                            <div>
-                                <h4>Company Contribution</h4>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+{{--            <div class="block-content">--}}
+{{--                <form action="" method="POST">--}}
+{{--                    <div class="row px-10 mt-30">--}}
+{{--                        <div class="col-md-10">--}}
+{{--                            <div>--}}
+{{--                                <h4>Company Contribution</h4>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </form>--}}
+{{--            </div>--}}
         </div>
     </div>
             <style>

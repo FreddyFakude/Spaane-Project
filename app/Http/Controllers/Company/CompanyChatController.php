@@ -40,6 +40,7 @@ class CompanyChatController extends Controller
             'chat'=> $chat->load('messages'),
             'employee' => $employee,
             'employeeRemunerations' => $employee->remunerations,
+            'companyDeductions' => \auth()->user()->company->deductions,
             "skills" => Skill::all(),
             "selectedSkills" => $employee->skills?->pluck('id')->toArray(),
             "departments" => Cache::get('departments', function () {

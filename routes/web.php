@@ -52,6 +52,11 @@ Route::group(['middleware'=>['auth:company', 'companyHasProfile'], 'prefix'=>'co
 
    Route::post('/dashboard/employee/earning/{employee:hash}', [\App\Http\Controllers\Company\EmployeeEarningController::class, 'store'])->name('dashboard.company.employee.earnings.store');
    Route::get('/dashboard/employee/earning/{employee:hash}', [\App\Http\Controllers\Company\EmployeeEarningController::class, 'index'])->name('dashboard.company.employee.earnings.index');
+   Route::post('/dashboard/employee/earning/{employee:hash}/update', [\App\Http\Controllers\Company\EmployeeEarningController::class, 'updateEarningAmount'])->name('dashboard.company.employee.earnings.updateAmount');
+
+//    Route::get('/dashboard/employee/earning/{employee:hash}/delete/{earning:hash}', [\App\Http\Controllers\Company\EmployeeEarningController::class, 'deleteEarning'])->name('dashboard.company.employee.earnings.delete');
+    Route::get('/dashboard/employee/other_earning/{employee:hash}/update', [\App\Http\Controllers\Company\EmployeeOtherEarningController::class, 'updateUpdateEarningAmount'])->name('dashboard.company.employee.other_earnings.updateAmount');
+    Route::post('/dashboard/employee/other_earning/{employee:hash}', [\App\Http\Controllers\Company\EmployeeOtherEarningController::class, 'store'])->name('dashboard.company.employee.other_earnings.store');
 
 
     Route::post('/dashboard/employees/{employee:hash}/leave/manual-request', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'leaveManualRequest'])->name('dashboard.company.employee.leave.manual-request');

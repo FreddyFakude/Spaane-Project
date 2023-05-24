@@ -55,6 +55,14 @@ class CompanyRemunerationDeductionController extends Controller
            "hash" => sha1(time())
        ]);
 
+         foreach (auth()->user()->company->employees as $employee) {
+             $employee->deductions()->create([
+                 "name" => $deduction->name,
+                 "company_id" => auth()->user()->company_id,
+                 "amount" => $deduction->amount,
+                 "type" => $deduction->type,
+             ]);
+         }
          return redirect()->route("dashboard.company.deductions.index")->with("success", "Deduction created successfully");
     }
 

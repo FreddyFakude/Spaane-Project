@@ -15,14 +15,14 @@ class EmployeeEarningController extends Controller
         return response()->json(['earnings' => $employee->otherEarnings]);
     }
 
-    public function store(Request $request, Employee $employee)
+    public function updateEarningAmount(Request $request, Employee $employee)
     {
-       $validated =  $request->validate([
-            'name' => 'required',
-            'amount' => 'required|numeric'
+        $validated =  $request->validate([
+            'amount' => 'required|numeric',
+            'id' => 'required|numeric'
         ]);
 
-        $employee->otherEarnings()->create($validated);
-        return response()->json(['success'=> 'Earning added successfully', 'earnings' => $employee->otherEarnings]);
+        $employee->remunerations()->where('id', $request->id)->update(['amount' => $validated['amount']]);
+        return response()->json(['success'=> 'Earning updated successfully', 'earnings' => $employee->otherEarnings]);
     }
 }
