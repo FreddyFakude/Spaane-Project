@@ -100,4 +100,9 @@ class Employee  extends Authenticatable
     {
         return $this->hasMany(EmployeeRemunerationDeduction::class, 'employee_id');
     }
+
+    public function otherDeductions()
+    {
+        return $this->hasMany(EmployeeRemunerationOtherDeduction::class, 'employee_id');
+    }
 }

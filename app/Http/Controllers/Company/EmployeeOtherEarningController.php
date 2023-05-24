@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class EmployeeOtherEarningController extends Controller
 {
-    public function updateUpdateEarningAmount(Request $request, Employee $employee)
+    public function update(Request $request, Employee $employee)
     {
         $validated =  $request->validate([
             'amount' => 'required|numeric',

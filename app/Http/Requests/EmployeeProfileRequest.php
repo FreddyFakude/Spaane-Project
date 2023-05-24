@@ -36,7 +36,7 @@ class EmployeeProfileRequest extends FormRequest
             "emergency_phone_number"=>"nullable|numeric|starts_with:0|digits:10",
             "home_phone_number"=> "nullable|numeric|starts_with:0|digits:10",
             "number_of_children"=>"nullable|numeric",
-            "personal_email"=>"required|email",
+            "personal_email"=>"nullable|required|email",
             "street_number"=>"nullable",
             "street_name"=>"nullable",
             "suburb"=>"nullable",
