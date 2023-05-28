@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyPayslip;
 use App\Models\Employee;
+use App\Services\Payslip;
 use App\Services\PDF\PayslipPDFGenerator;
 use App\Services\TaxCalculations\PAYECalculator;
 use App\Services\TaxCalculations\UIFCalculator;
@@ -27,19 +28,14 @@ class CompanyPayslipController extends Controller
     {
 
        $validated =  $request->validate([
-            'basic_salary' => 'required|integer',
-            'commission' => 'required|integer',
-            'travel_allowance' => 'required|integer',
-            'reimbursement' => 'required|integer',
-            'other' => 'nullable|integer',
-            'date' => 'required|date',
+            'earnings.*' => 'required|numeric',
+            'other_earnings.*' => 'nullable|numeric',
+            'deductions.*' => 'nullable|numeric',
+            'contributions.*' => 'nullable|numeric',
+            'date' => 'required|date|date_format:Y-m-d',
         ]);
-       $validated['reference_number'] = 'PAYS-'. auth()->user()->company->payslips()->count() + 1;
-       $validated['file_name'] = 'PAYS-'. auth()->user()->company->payslips()->count() + 1;
-       $validated['hash'] = sha1(auth()->user()->company->payslips()->count() + 1);
-       $validated['company_id'] = auth()->user()->company->id;
-       $validated['month_year'] = Carbon::createFromFormat('Y-m-d', $validated['date'])->format('Y-m');
-        $payslip = $employee->payslips()->create($validated);
+
+        $payslip = (new Payslip(auth()->user()->company))->create($employee, $validated);
         return redirect()->route('dashboard.business.payroll.index')->with('payslip-added', 'Payslip created successfully');
     }
 

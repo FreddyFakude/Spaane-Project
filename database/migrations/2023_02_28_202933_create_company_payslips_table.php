@@ -21,12 +21,12 @@ return new class extends Migration
             $table->string('hash')->unique()->index();
             $table->string('file_name');
             $table->string('file_path')->nullable();
-            $table->double('commission');
             $table->date('date');
             $table->string('month_year')->format('Y-m');
-            $table->double('basic_salary');
-            $table->double('reimbursement');
-            $table->double('travel_allowance');
+            $table->json('earnings');
+            $table->json('deductions')->nullable();
+            $table->json('other_earnings')->nullable();
+            $table->json('contributions')->nullable();
             $table->double('other')->default(0);
             $table->timestamps();
         });

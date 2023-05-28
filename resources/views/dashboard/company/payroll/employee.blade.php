@@ -63,9 +63,9 @@
                             <tr>
                                 <th style="width: 30px;"></th>
                                 <th>Employee</th>
-                                <th style="width: 15%;">Total Earings</th>
+                                <th style="width: 15%;">Total Earnings</th>
                                 <th style="width: 15%;">Total Deductions</th>
-                                <th style="width: 15%;">Total Tax</th>
+{{--                                <th style="width: 15%;">Total Tax</th>--}}
                                 <th style="width: 15%;">Net Pay</th>
                                 <th class="d-none d-sm-table-cell" style="width: 20%;">Date</th>
                             </tr>
@@ -79,10 +79,10 @@
                                                 <i class="fa fa-angle-right"></i>
                                             </td>
                                             <td class="font-w600">{{ $employee->name }} {{ $employee->last_name }}</td>
-                                            <td class="font-w600">{{ $employee->remuneration?->basic_salary + $employee->otherEarnings->sum('amount') }}</td>
+                                            <td class="font-w600">R{{ $employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount') }}</td>
                                             <td class="font-w600">R{{ $employee->remuneration?->deductions->sum('amount') }}</td>
-                                            <td class="font-w600">-R1000</td>
-                                            <td class="font-w600">R19000</td>
+{{--                                            <td class="font-w600">-R1000</td>--}}
+                                            <td class="font-w600">R{{ $employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount') - $employee->remuneration?->deductions->sum('amount') }}</td>
                                             <td class="d-none d-sm-table-cell">
                                                 @if(!$employee->payslips->where('date', $date)->first())
                                                     @csrf
@@ -100,37 +100,15 @@
                                             @foreach($employee->remunerations as $remuneration)
                                                 <td class="d-none d-sm-table-cell">
                                                     <label for="side-overlay-profile-email">{{ $remuneration->name }}</label>
-                                                    <input type="text" name="earning_{{ $remuneration->id }}" value="{{ $remuneration->amount }}">
+                                                    <input type="text" name="earnings[{{ $remuneration->id }}]" value="{{ $remuneration->amount }}">
                                                 </td>
                                             @endforeach
                                             @foreach($employee->otherEarnings as $earning)
                                                 <td class="d-none d-sm-table-cell">
                                                     <label for="side-overlay-profile-email">{{ $earning->name }}</label>
-                                                    <input type="text" name="earning_{{ $earning->id }}" value="{{ $earning->amount }}">
+                                                    <input type="text" name="other_earnings[{{ $earning->id }}]" value="{{ $earning->amount }}">
                                                 </td>
                                             @endforeach
-{{--                                                <td>--}}
-{{--                                                    <p class="font-w600 mb-10">--}}
-{{--                                                        <label for="side-overlay-profile-email">Basic salary</label>--}}
-{{--                                                        <input type="number" name="basic_salary" value="{{ $employee->remuneration?->basic_salary }}">--}}
-{{--                                                    </p>--}}
-{{--                                                </td>--}}
-{{--                                                <td class="d-none d-sm-table-cell">--}}
-{{--                                                    <label for="side-overlay-profile-email">Overtime</label>--}}
-{{--                                                    <input type="text" name="overtime" value="{{ $employee->payslips->where('date', $date)->first()?->overtime ?? 0 }}">--}}
-{{--                                                <td class="d-none d-sm-table-cell">--}}
-{{--                                                    <label for="side-overlay-profile-email">Commission</label>--}}
-{{--                                                    <input type="text" name="commission" value="{{ $employee->payslips->where('date', $date)->first()?->commission ?? 0 }}">--}}
-{{--                                                </td>--}}
-{{--                                                <td class="d-none d-sm-table-cell">--}}
-{{--                                                    <label for="side-overlay-profile-email">Travel allowance</label>--}}
-{{--                                                    <input type="number" name="travel_allowance" value="{{ $employee->remuneration?->travel_allowance }}">--}}
-{{--                                                </td>--}}
-{{--                                                <td class="d-none d-sm-table-cell">--}}
-{{--                                                    <label for="side-overlay-profile-email">Reimbursements</label>--}}
-{{--                                                    <input type="text" name="reimbursement" value="{{ $employee->payslips->where('date', $date)->first()?->reimbursement ?? 0 }}">--}}
-{{--                                                </td>--}}
-{{--                                            @endforeach--}}
                                             <td class="d-none d-sm-table-cell">
                                                 <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()?->reference_number }} </em>
                                             </td>
@@ -142,11 +120,22 @@
                                             @foreach($employee->deductions as $deduction)
                                                 <td class="d-none d-sm-table-cell">
                                                     <label for="side-overlay-profile-email">{{ $deduction->name }}</label>
-                                                    <input type="text" name="earning_{{ $deduction->id }}" value="{{ $deduction->amount }}">
+                                                    <input type="text" name="deductions[{{ $deduction->id }}]" value="{{ $deduction->amount }}">
                                                 </td>
                                             @endforeach
                                         </tr>
-{{--                                        <tr>--}}
+                                        <tr>
+                                            <td>
+                                                <p>Company Contribution:</p>
+                                            </td>
+                                            @foreach(\auth()->user()->company->remunerationContributions as $contribution)
+                                                <td class="d-none d-sm-table-cell">
+                                                    <label for="side-overlay-profile-email">{{ $contribution->name }}</label>
+                                                    <input type="text" name="contributions[{{ $contribution->id }}]" value="{{ ($employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount')) * 1/100 }}">
+                                                </td>
+                                            @endforeach
+                                        </tr>
+                                        <tr>
 {{--                                            <td>--}}
 {{--                                                <p>Tax Deduction:</p>--}}
 {{--                                            </td>--}}
@@ -160,16 +149,16 @@
 {{--                                                <label for="side-overlay-profile-email">UIF</label>--}}
 {{--                                                <input type="number" name="uif" value="{{ (new \App\Services\TaxCalculations\UIFCalculator($employee))->calculateUIF() }}">--}}
 {{--                                            </td>--}}
-{{--                                            @if($employee->payslips->where('date', $date)->first()?->reference_number)--}}
+                                            @if($employee->payslips->where('date', $date)->first()?->reference_number)
 {{--                                                <td class="d-none d-sm-table-cell">--}}
 {{--                                                    <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()->reference_number }} </em>--}}
 {{--                                                </td>--}}
-{{--                                                <td class="d-none d-sm-table-cell">--}}
-{{--                                                    <label for="side-overlay-profile-email">Download Payslip</label>--}}
-{{--                                                    <a href="{{ route('dashboard.business.payroll.download', [$employee->hash, $employee->payslips->where('date', $date)->first()->hash]) }}" class="btn btn-primary" target="_blank">View</a>--}}
-{{--                                                </td>--}}
-{{--                                            @endif--}}
-{{--                                        </tr>--}}
+                                                <td class="d-none d-sm-table-cell">
+                                                    <label for="side-overlay-profile-email">Download Payslip</label>
+                                                    <a href="{{ route('dashboard.business.payroll.download', [$employee->hash, $employee->payslips->where('date', $date)->first()->hash]) }}" class="btn btn-primary" target="_blank">View</a>
+                                                </td>
+                                            @endif
+                                        </tr>
                                     </tbody>
                                 </form>
                             @endforeach

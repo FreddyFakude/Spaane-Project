@@ -8,10 +8,16 @@ use App\Models\CompanyPayslip;
 use App\Models\Employee;
 use App\Services\TaxCalculations\PAYECalculator;
 use App\Services\TaxCalculations\UIFCalculator;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use function App\PDF\str_ends_with;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
+//use function App\PDF\str_ends_with;
 
 class PayslipPDFGenerator
 {
@@ -21,7 +27,10 @@ class PayslipPDFGenerator
      */
     public function __construct(protected $pdfPath='public/payslips/')
     {
-        $this->dompdf = App::make('dompdf.wrapper');
+        $options = new Options();
+        $options->setIsRemoteEnabled(true);
+        $this->dompdf = new Dompdf();
+//        $this->dompdf = App::make('dompdf.wrapper');
     }
 
     public function downloadPDF(Employee $employee, CompanyPayslip $payslip, $createNewFile = false){
@@ -52,15 +61,32 @@ class PayslipPDFGenerator
     private function createPDFSaveToDBAndDisk($filePathWithFileExtension, $filenameWithoutFileExtension, $employee, $payslip)
     {
         $this->dompdf->setPaper('A4', 'landscape');
-        $pdf = $this->dompdf->loadView('pdfs.payslip', [
+        $html = view('pdfs.payslip-template', [
             'employee' => $employee,
+            'earnings' => $employee->remunerations,
+            'deductions' => $employee->deductions,
+            'otherEarnings' => $employee->otherEarnings,
             'payslip' => $payslip,
             'paye' => (new PAYECalculator($employee))->calculatePaye(),
             'uif' => (new UIFCalculator($employee))->calculateUIF(),
-        ]);
-        Storage::disk('local')->put($filePathWithFileExtension, $pdf->output());
+        ])->render();
+
+//        print_r($html);
+//        return false;
+       $file =  $this->sendFileToAPI($html, $filenameWithoutFileExtension);
+
+        sleep(2);
+//        dd($response);
+//        $this->dompdf->loadHtml($html);
+//        $this->dompdf->render();
+        Storage::disk('local')->put($filePathWithFileExtension,  $file);
+//        return print_r($html);
         $this->saveFileToDB($employee, $filenameWithoutFileExtension, $filePathWithFileExtension, $payslip);
-        $pdf->download($filenameWithoutFileExtension .'.pdf');
+//        $pdf->download($filenameWithoutFileExtension .'.pdf');
+
+//        dd($filenameWithoutFileExtension .'.pdf');
+        $response =   new BinaryFileResponse("storage/payslips/" . $filenameWithoutFileExtension .'.pdf');
+        $response->headers->set('Content-Type', 'application/pdf');
         return $filePathWithFileExtension;
     }
 
@@ -97,5 +123,16 @@ class PayslipPDFGenerator
                 'file_name'=> $filenameWithoutFileExtension . '.pdf',
                 'file_path' => $filePathWithFileExtension
             ]);
+    }
+
+    public static function sendFileToAPI($html, $filenameWithPath)
+    {
+//        header('Content-Type: application/pdf');
+//        header('Content-Disposition: attachment; filename="' . 'fileName.pdf' . '"');
+
+        return Http::attach(
+            'html', $html, 'payslip.html'
+        )->post('https://pdf.teambix.com/download');
+
     }
 }
