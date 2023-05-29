@@ -20,7 +20,7 @@ class Payslip
     {
         $data['deductions'] = isset($data['deductions']) ?  $this->processDeductions($data['deductions']): '';
         $data['earnings'] = isset($data['earnings']) ?  $this->processEarnings($data['earnings']): '';
-//        $data['other_earnings'] = isset($data['other_earnings']) ?  $this->processOtherEarnings($data['other_earnings']): '';
+        $data['other_earnings'] = isset($data['other_earnings']) ?  $this->processOtherEarnings($data['other_earnings']): '';
         $data['contributions'] = $this->processContributions();
         $data['reference_number'] = 'PAYS-'.$this->company->payslips()->count() + 1;
         $data['file_name'] = 'PAYS-'. $this->company->payslips()->count() + 1;
@@ -39,7 +39,7 @@ class Payslip
                $newArray[$employeeDeduction->name] = ['amount' => $value];
            }
         }
-        return [$newArray];
+        return $newArray;
     }
 
     private function processEarnings(Array $earnings)
@@ -50,7 +50,7 @@ class Payslip
                 $newArray[$employeeEarning->name] = ['amount' => $value];
             }
         }
-        return [$newArray];
+        return $newArray;
     }
 
     private function processOtherEarnings(Array $otherEarnings)
@@ -59,7 +59,7 @@ class Payslip
         foreach ($otherEarnings as $earning=>$value){
             $newArray[$earning] = ['amount' => $value];
         }
-        return [$newArray];
+        return $newArray;
     }
 
     private function processContributions()

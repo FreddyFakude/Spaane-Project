@@ -13,6 +13,7 @@ class CompanyPayslip extends Model
 
     protected $casts = [
         'earnings' => 'array',
+        'other_earnings' => 'array',
         'deductions' => 'array',
         'contributions' => 'array',
     ];
