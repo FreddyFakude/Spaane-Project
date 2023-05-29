@@ -71,20 +71,13 @@ class PayslipPDFGenerator
             'uif' => (new UIFCalculator($employee))->calculateUIF(),
         ])->render();
 
-//        print_r($html);
-//        return false;
        $file =  $this->sendFileToAPI($html, $filenameWithoutFileExtension);
 
         sleep(2);
-//        dd($response);
-//        $this->dompdf->loadHtml($html);
-//        $this->dompdf->render();
-        Storage::disk('local')->put($filePathWithFileExtension,  $file);
-//        return print_r($html);
-        $this->saveFileToDB($employee, $filenameWithoutFileExtension, $filePathWithFileExtension, $payslip);
-//        $pdf->download($filenameWithoutFileExtension .'.pdf');
 
-//        dd($filenameWithoutFileExtension .'.pdf');
+        Storage::disk('local')->put($filePathWithFileExtension,  $file);
+        $this->saveFileToDB($employee, $filenameWithoutFileExtension, $filePathWithFileExtension, $payslip);
+
         $response =   new BinaryFileResponse("storage/payslips/" . $filenameWithoutFileExtension .'.pdf');
         $response->headers->set('Content-Type', 'application/pdf');
         return $filePathWithFileExtension;
@@ -127,12 +120,9 @@ class PayslipPDFGenerator
 
     public static function sendFileToAPI($html, $filenameWithPath)
     {
-//        header('Content-Type: application/pdf');
-//        header('Content-Disposition: attachment; filename="' . 'fileName.pdf' . '"');
-
         return Http::attach(
             'html', $html, 'payslip.html'
-        )->post('https://pdf.teambix.com/download');
+        )->post(env('PDF_GENERATOR_API_URL'));
 
     }
 }

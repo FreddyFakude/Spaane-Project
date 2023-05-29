@@ -14,7 +14,6 @@
             padding: 0;
         }
         .page {
-            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -42,7 +41,7 @@
 
 </head>
 <body>
-<div class="page" style="padding: 20px">
+<div class="page" style="padding: 40px;margin-top: 70px">
     <table>
         <tr class="top-row">
             <td colspan="4">Teambix</td>
