@@ -38,10 +38,9 @@ Route::group(['middleware'=>['auth:company']], function (){
 
 
 Route::group(['middleware'=>['auth:company', 'companyHasProfile'], 'prefix'=>'company'], function (){
-    Route::get('/dashboard/index', [\App\Http\Controllers\Company\DashboardController::class, 'index'])->name('dashboard.company.index');
-    Route::get('/dashboard/stats', [\App\Http\Controllers\Company\DashboardController::class, 'stats'])->name('dashboard.company.stats');
-    Route::get('/dashboard/calendar', [\App\Http\Controllers\Company\DashboardController::class, 'calendar'])->name('dashboard.company.index.calendar');
-    Route::get('/dashboard/employees/list', [\App\Http\Controllers\Company\EmployeeController::class, 'list'])->name('dashboard.company.employee.list');
+//    Route::get('/dashboard/stats', [\App\Http\Controllers\Company\DashboardController::class, 'stats'])->name('dashboard.company.stats');
+//    Route::get('/dashboard/calendar', [\App\Http\Controllers\Company\DashboardController::class, 'calendar'])->name('dashboard.company.index.calendar');
+    Route::get('/dashboard/index', [\App\Http\Controllers\Company\EmployeeController::class, 'list'])->name('dashboard.company.index');
     Route::get('/dashboard/employees/view/{employee}', [\App\Http\Controllers\Company\EmployeeController::class, 'viewTalent'])->name('dashboard.company.employee.view');
 
     Route::resource('/dashboard/contributions', \App\Http\Controllers\Company\CompanyRemunerationContributionController::class,  ['as' => 'dashboard.company']);
@@ -63,6 +62,7 @@ Route::group(['middleware'=>['auth:company', 'companyHasProfile'], 'prefix'=>'co
     Route::post('/dashboard/employee/{employee:hash}/deduction', [\App\Http\Controllers\Company\EmployeeRemunerationDeductionController::class, "store"])->name('dashboard.company.employee.deductions.store');
     Route::post('/dashboard/employee/{employee:hash}/deduction/update', [\App\Http\Controllers\Company\EmployeeRemunerationDeductionController::class, "update"])->name('dashboard.company.employee.deductions.update');
 
+    Route::get('/dashboard/leave', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'index'])->name('dashboard.company.leave.index');
     Route::post('/dashboard/employees/{employee:hash}/leave/manual-request', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'leaveManualRequest'])->name('dashboard.company.employee.leave.manual-request');
     Route::post('/dashboard/employees/{employee:hash}/leave/add-policy', [\App\Http\Controllers\Company\EmployeeLeavePolicyController::class, 'addLeavePolicy'])->name('dashboard.company.employee.add.leave-policy');
     Route::get('/dashboard/employees/{employee:hash}/{leavePolicy}/remove-policy', [\App\Http\Controllers\Company\EmployeeLeavePolicyController::class, 'removeLeavePolicy'])->name('dashboard.company.employee.remove.leave-policy');

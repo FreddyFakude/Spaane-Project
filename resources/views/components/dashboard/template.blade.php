@@ -53,7 +53,7 @@
     {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/vee-validate/3.0.5/vee-validate.min.js" integrity="sha256-JzAmQwckhA6rsfE83AHkXsPGVJ6N3Snbk6QjyeIMBxk=" crossorigin="anonymous"></script>--}}
 </head>
 <body>
-    <div id="page-container" class="sidebar-mini sidebar-o sidebar-inverse side-scroll page-header-fixed page-header-glass page-header-inverse main-content-boxed">
+    <div id="page-container" class="sidebar-o sidebar-inverse side-scroll page-header-fixed page-header-glass page-header-inverse main-content-boxed">
     <!-- Side Overlay-->
     <aside id="side-overlay">
         <!-- Side Overlay Scroll Container -->
@@ -139,6 +139,7 @@
     .border-radius{
         border-radius: 4px;
     }
+
 </style>
 <!-- Codebase Core JS -->
 <script src="{{ asset('assets/custom/js/core/jquery.min.js')}}"></script>

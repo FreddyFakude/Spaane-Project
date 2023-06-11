@@ -33,6 +33,7 @@ class RegisterController extends Controller
 
         $company = Company::create([
                 'name' => "Temporary",
+                'head_office_name' => 'Temporary',
                 'company_size' => Company::size[1],
                 'date_creation' => today()->format('Y-m-d'),
                 'fiscal_year_start' => today()->format('Y-m-d'),

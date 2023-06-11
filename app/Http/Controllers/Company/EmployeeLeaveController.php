@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use App\Models\CompanyLeavePolicy;
 use App\Models\Employee;
 use App\Models\EmployeeLeaveRequest;
 use App\Repository\EmployeeLeaveRequestRepository;
@@ -12,6 +13,7 @@ use App\Services\WhatsApp\WhatsAppChatManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class EmployeeLeaveController extends Controller
 {
@@ -57,6 +59,17 @@ class EmployeeLeaveController extends Controller
 //
 //    }
 
+    public function index(){
+        $employees = Auth::user()->employees;
+        $employees->load(['leavePolicies', 'leaveRequests']);
+        return view('dashboard.company.index', [
+            "employees"=>$employees,
+            "businessId" =>  Auth::id(),
+            "companyLeavePolicy" => Cache::get('companyLeaveTypes', function () {
+                return CompanyLeavePolicy::with('leaveType')->get();
+            })
+        ]);
+    }
     public function approveLeave(Employee $employee, EmployeeLeaveRequest $leaveRequest)
     {
 

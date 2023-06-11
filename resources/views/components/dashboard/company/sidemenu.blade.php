@@ -45,7 +45,7 @@
                             <a href="{{ route('dashboard.company.leave') }}"><i class="si si-grid fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                         </li> --}}
                         <li>
-                            <a href="{{ route('dashboard.company.employee.list') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Employees</span></a>
+                            <a href="{{ route('dashboard.company.index') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Employees</span></a>
                         </li>
                         {{-- <li>
                             <a href="{{ route('dashboard.company.chats') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Chat</span></a>
@@ -54,7 +54,7 @@
                             <a href="{{ route('dashboard.company.chats.bulk-messages') }}"><i class="si si-bubble fa-2x"></i><span class="sidebar-mini-hide">Announcements</span></a>
                         </li>
                         <li>
-                            <a  href="{{ route('dashboard.company.index') }}"><i class="si si-calendar fa-2x"></i><span class="sidebar-mini-hide">Leave</span></a>
+                            <a  href="{{ route('dashboard.company.leave.index') }}"><i class="si si-calendar fa-2x"></i><span class="sidebar-mini-hide">Leave</span></a>
                         </li>
                        <li>
                             <a href="{{ route('dashboard.business.payroll.index') }}"><i class="si si-bar-chart fa-2x"></i><span class="sidebar-mini-hide">Payslips</span></a>

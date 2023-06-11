@@ -21,9 +21,11 @@ class CompanyProfileController extends Controller
     {
         $validated = $request->validate([
             'company_name' => 'required|string|max:255',
+            'head_office_name' => 'required|string|max:255',
             'company_size' => 'required|string|max:255',
             'date_creation' => 'required|date',
             'fiscal_year_start' => 'required|date',
+            'registration_number' => 'nullable|string',
             'short_description' => 'required|string|max:255',
             'company_phone_number' => 'required|numeric|starts_with:0|digits:10'
         ]);
@@ -31,6 +33,8 @@ class CompanyProfileController extends Controller
         $company = auth()->guard('company')->user()->company->update(
             [
                 'name' => $validated['company_name'],
+                'head_office_name' => $validated['head_office_name'],
+                'registration_number' => $validated['registration_number'],
                 'company_size' => $validated['company_size'],
                 'date_creation' => $validated['date_creation'],
                 'fiscal_year_start' => $validated['fiscal_year_start'],

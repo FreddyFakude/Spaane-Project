@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Http\Controllers\Company\CompanyEmployeeEarningTypeController;
 use Database\Seeders\CompanyRemunerationListSeeder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,7 +22,7 @@ class Company extends Model
     ];
     public function administrator()
     {
-        return $this->hasOne(CompanyAccountAdministrator::class, '');
+        return $this->hasOne(CompanyAccountAdministrator::class);
     }
 
     public function employees()
@@ -62,5 +63,12 @@ class Company extends Model
     public function employeeEarningTypes()
     {
         return $this->hasMany(CompanyRemuneration::class);
+    }
+
+    public function phoneNumber(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => str_replace("27", "0", $value),
+        );
     }
 }

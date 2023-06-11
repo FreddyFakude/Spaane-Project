@@ -46,6 +46,12 @@
                                 <input type="text" class="form-control"  name="company_name" value="{{ $company?->name }}">
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Head office Name</label>
+                                <input type="text" class="form-control"  name="head_office_name" value="{{ $company?->head_office_name }}">
+                            </div>
+                        </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Company Size
@@ -61,6 +67,14 @@
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Date of creation</label>
                                 <input type="date" class="form-control" id="example-text-input" name="date_creation" value="{{ $company->date_creation }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row px-10 mt-30">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Registration number</label>
+                                <input type="text" class="form-control"  name="registration_number" value="{{ $company->registration_number }}">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -83,6 +97,8 @@
                                 <input type="tel" class="form-control"  name="company_phone_number" value="{{ $company?->phone_number }}" placeholder="0788129192">
                             </div>
                         </div>
+                    </div>
+                    <div class="row px-10 mt-30">
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input"></label>
