@@ -13,23 +13,23 @@ class EmployeeProfileRepository
 {
 
 
-    public function __construct(Employee $employee, array $data)
-    {
-        $this->updateOrInsertEmployee($employee, $data);
-        $this->updateOrInsertEmployeeAddress($employee, $data);
-        $this->updateOrInsertEmployeeEducation($employee, $data);
-        $this->updateOrInsertEmployeeSkills($employee, $data);
-        $this->updateOrInsertEmployeeExperience($employee, $data);
-        $this->updateOrInsertEmployeeBankAccount($employee, $data);
-        $this->updateOrInsertEmployeeSalary($employee, $data);
-    }
+//    public function __construct(Employee $employee, array $data)
+//    {
+//        $this->updateOrInsertEmployee($employee, $data);
+//        $this->updateOrInsertEmployeeAddress($employee, $data);
+//        $this->updateOrInsertEmployeeEducation($employee, $data);
+//        $this->updateOrInsertEmployeeSkills($employee, $data);
+//        $this->updateOrInsertEmployeeExperience($employee, $data);
+//        $this->updateOrInsertEmployeeBankAccount($employee, $data);
+//        $this->updateOrInsertEmployeeSalary($employee, $data);
+//    }
 
-    private function updateOrInsertEmployee(Employee $employee, array $data)
+    public function updateOrInsertEmployee(Employee $employee, array $data)
     {
         return (new EmployeeRepository())->updateOrcreate($employee, $data);
     }
 
-    private function updateOrInsertEmployeeAddress(Employee $employee, array $data): void
+    public function updateOrInsertEmployeeAddress(Employee $employee, array $data)
     {
         $addressPayload = [
             "street_number" => $data['street_number'],
@@ -43,10 +43,10 @@ class EmployeeProfileRepository
             "addressable_type" => Employee::class
         ];
 
-        $employee->address ? $employee->address->update($addressPayload) : Address::create($addressPayload);
+      return  $employee->address ? $employee->address->update($addressPayload) : Address::create($addressPayload);
     }
 
-    private function updateOrInsertEmployeeEducation(Employee $employee, array $data): void
+    public function updateOrInsertEmployeeEducation(Employee $employee, array $data)
     {
         $educationPayload = [
             "qualification" => $data['qualification'],
@@ -54,11 +54,10 @@ class EmployeeProfileRepository
             "educationable_type"=> Employee::class,
             "educationable_id" => $employee->id
         ];
-        $employee->education ? $employee->education->update($educationPayload) : Education::create($educationPayload);
-
+      return  $employee->education ? $employee->education->update($educationPayload) : Education::create($educationPayload);
     }
 
-    private function updateOrInsertEmployeeExperience(Employee $employee, array $data): void
+    public function updateOrInsertEmployeeExperience(Employee $employee, array $data)
     {
         $experiencePayload = [
             'professional_experienceable_type' => Employee::class,
@@ -69,15 +68,15 @@ class EmployeeProfileRepository
             'is_current'=> true
         ];
 
-        $employee->experience? $employee->experience->update($experiencePayload) : ProfessionalExperience::create($experiencePayload);
+      return  $employee->experience? $employee->experience->update($experiencePayload) : ProfessionalExperience::create($experiencePayload);
     }
 
-    private function updateOrInsertEmployeeSkills(Employee $employee, array $data): void
+    public function updateOrInsertEmployeeSkills(Employee $employee, array $data)
     {
-        $skill = $employee->skills()->sync($data['skills']);
+        return $employee->skills()->sync($data['skills']);
     }
 
-    private function updateOrInsertEmployeeBankAccount(Employee $employee, array $data)
+    public  function updateOrInsertEmployeeBankAccount(Employee $employee, array $data)
     {
         $bankAccountPayload = [
             "bank_name" => $data['bank_name'],
@@ -88,7 +87,7 @@ class EmployeeProfileRepository
             "bank_accountable_id" => $employee->id
         ];
 
-        $employee->bankAccount ? $employee->bankAccount->update($bankAccountPayload) : BankAccount::create($bankAccountPayload);
+       return $employee->bankAccount ? $employee->bankAccount->update($bankAccountPayload) : BankAccount::create($bankAccountPayload);
     }
 
     private function updateOrInsertEmployeeSalary(Employee $employee, array $data)

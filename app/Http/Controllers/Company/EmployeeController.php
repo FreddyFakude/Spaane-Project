@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployeeProfileRequest;
 use App\Mail\EmployeeInvite;
+use App\Models\Education;
 use App\Models\Employee;
 use App\Models\EmployeeLeaveInitialCurrentDay;
 use App\Repository\EmployeeProfileRepository;
@@ -15,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
 
 class EmployeeController extends Controller
 {
@@ -27,6 +29,7 @@ class EmployeeController extends Controller
     {
         $this->chatManager = $chatManager;
         $this->appTemplateMessageRepository = new WhatsAppTemplateMessageRepository();
+        $this->employeeRepository = new EmployeeProfileRepository();
     }
 
     public function list()
@@ -67,13 +70,44 @@ class EmployeeController extends Controller
         return back();
     }
 
-    public function updateEmployeeProfile(EmployeeProfileRequest $request, Employee $employee)
+    public function updateEmployeePersonalDetails(EmployeeProfileRequest $request, Employee $employee)
     {
         $validated = $request->validated();
         $validated["mobile_number"] = "27" . substr($validated["mobile_number"], 1); //remove zero and add prefix
-        $profile = new EmployeeProfileRepository($employee, $validated);
-        $this->chatManager->sendWhatsAppMessageToEmployee($employee, "Your profile has been updated");
-        session()->flash('talent-profile-updated');
-        return back();
+        $profile = $this->employeeRepository->updateOrInsertEmployee($employee, $validated);
+        $address =$this->employeeRepository->updateOrInsertEmployeeAddress($employee, $validated);
+
+        return back()->with('success', 'Profile updated');
+    }
+
+    public function updateEducationAndEmployment(Request $request, Employee $employee)
+    {
+        $validated = $request->validate([
+            "employment_start_date"=>"nullable|date",
+            "position"=>"required",
+            "organisation_name"=> "nullable",
+            "skills.*"=>"nullable|integer",
+            "qualification_end_date"=>"nullable|date",
+            "qualification"=>"nullable",
+            "type"=> ["required",  Rule::in(\App\Models\Employee::ContractType)],
+        ]);
+
+        $education = $this->employeeRepository->updateOrInsertEmployeeEducation($employee, $validated);
+        $experience = $this->employeeRepository->updateOrInsertEmployeeExperience($employee, $validated);
+        $skills = $this->employeeRepository->updateOrInsertEmployeeSkills($employee, $validated);
+        return back()->with("success", "Profile updated");
+    }
+
+    public function updateOtherEmployeeInformation(Request $request, Employee $employee)
+    {
+        $validated = $request->validate([
+            "bank_name" => "required",
+            "account_number" => "required",
+            "branch_code" => "required",
+            "account_type" => "nullable"
+        ]);
+
+        $banking = $this->employeeRepository->updateOrInsertEmployeeBankAccount($employee, $validated);
+        return back()->with('success', 'Profile updated');
     }
 }

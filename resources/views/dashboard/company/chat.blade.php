@@ -21,10 +21,16 @@
                         <a class="nav-link active" href="#wizard-simple2-step1" data-toggle="tab">1. Overview</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-simple2-step2" data-toggle="tab">2. Edit Profile</a>
+                        <a class="nav-link" href="#wizard-simple2-step2" data-toggle="tab">2. Personal details</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#wizard-simple2-step3" data-toggle="tab">3. Earning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#wizard-simple2-step4" data-toggle="tab">4. Education and employment history</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#wizard-simple2-step5" data-toggle="tab">4. Other</a>
                     </li>
                 </ul>
                 <!-- END Step Tabs -->
@@ -35,6 +41,12 @@
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
+                    </div>
+                @endif
+
+                @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
                     </div>
                 @endif
 
@@ -94,11 +106,10 @@
                         </div>
                     </div>
                     <!-- END Step 1 -->
-
                     <!-- Step 2 -->
                     <div class="tab-pane" id="wizard-simple2-step2" role="tabpanel">
                         <div class="block-content">
-                            <form action="{{ route('dashboard.business.employee.update', [$employee->hash]) }}" method="POST">
+                            <form action="{{ route('dashboard.business.employee.update.personal-details', [$employee->hash]) }}" method="POST">
                                 <div class="d-flex justify-content-start mt-20">
                                     <div>
                                         <h4>Personal information</h4>
@@ -162,6 +173,32 @@
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Emergency Cell Phone Number</label>
                                             <input type="tel" class="form-control"  name="emergency_phone_number" value="{{ $employee->emergency_phone_number }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row px-10 mt-30">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Work Email</label>
+                                            <input type="email" class="form-control" id="example-text-input" name="work_email" value="{{ $employee->email }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Work Number</label>
+                                            <input type="text" class="form-control"  name="office_phone_number" value="{{ $employee->office_phone_number }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Employee Tax Number</label>
+                                            <input type="text" class="form-control" id="example-text-input" name="tax_number" value="{{ $employee->tax_number }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Driving License Number</label>
+                                            <input type="text" class="form-control" id="example-text-input" name="driving_license_number" value="{{ $employee->driving_license_number }}">
                                         </div>
                                     </div>
                                 </div>
@@ -230,58 +267,7 @@
                                             <input type="text" class="form-control" id="example-text-input" name="state" value="{{ $employee->address?->state }}">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="my-30">
-                                    <hr>
-                                </div>
-                                <div class="d-flex justify-content-start mt-20">
-                                    <div>
-                                        <h4>Banking Details</h4>
-                                    </div>
-                                </div>
-                                <div class="row px-10 mt-30">
                                     <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Bank Name</label>
-                                            <input type="text" class="form-control"  name="bank_name" value="{{ $employee->bankAccount?->bank_name }}" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Account Type Name</label>
-                                            <input type="text" class="form-control"  name="account_type" value="{{ $employee->bankAccount?->account_type }}" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Branch code</label>
-                                            <input type="text" class="form-control"  name="branch_code" value="{{ $employee->bankAccount?->branch_code }}" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input"> Account Number</label>
-                                            <input type="text" class="form-control"  name="account_number" value="{{ $employee->bankAccount?->account_number }}" required>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="my-30">
-                                    <hr>
-                                </div>
-                                <div class="d-flex justify-content-start mt-20">
-                                    <div>
-                                        <h4>Employment</h4>
-                                    </div>
-                                </div>
-                                <div class="row px-10 mt-30">
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Start Date</label>
-                                            <input type="date" class="form-control"  name="employment_start_date" value="{{ $employee->professional_experience?->start_date }}" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <label class="pl-0">Department</label>
                                             <select class="form-control"   name="department_id" required>
@@ -292,7 +278,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Contract Type</label>
                                             <select class="form-control"  name="type" required>
@@ -303,47 +289,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Job Title</label>
-                                            <input type="text" class="form-control" id="example-text-input" name="position" value="{{ $employee->professional_experience?->role }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Organisation</label>
-                                            <input type="text"  class="form-control"  name="organisation_name" value="{{ Auth::user()->company->name }}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row px-10 mt-30">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Work Email</label>
-                                            <input type="email" class="form-control" id="example-text-input" name="work_email" value="{{ $employee->email }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Work Number</label>
-                                            <input type="text" class="form-control"  name="office_phone_number" value="{{ $employee->office_phone_number }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Employee Tax Number</label>
-                                            <input type="text" class="form-control" id="example-text-input" name="tax_number" value="{{ $employee->tax_number }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Driving License Number</label>
-                                            <input type="text" class="form-control" id="example-text-input" name="driving_license_number" value="{{ $employee->driving_license_number }}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="my-30">
-                                    <hr>
                                 </div>
                                 <div class="d-flex justify-content-start mt-20">
                                     <div>
@@ -354,62 +299,13 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Direct Manager</label>
-                                            <input type="text" class="form-control"  name="direct_manager">
+                                            <input type="text" class="form-control"  name="direct_manager" value="{{ $employee->direct_manager }}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Onboarding Mentor</label>
                                             <input type="text" class="form-control" id="example-text-input" name="onboarding_mentor">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="my-30">
-                                    <hr>
-                                </div>
-
-                                <div class="my-30">
-                                    <hr>
-                                </div>
-                                <div class="d-flex justify-content-start mt-20">
-                                    <div>
-                                        <h4>Education/Training</h4>
-                                    </div>
-                                </div>
-                                <div class="row px-10 mt-30">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Qualification/Certification</label>
-                                            <input type="text" class="form-control"  name="qualification" value="{{ $employee->education?->qualification }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Completion Date</label>
-                                            <input type="date" class="form-control" id="example-text-input" name="qualification_end_date" value="{{ $employee->education?->qualification_end_date }}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="my-30">
-                                    <hr>
-                                </div>
-                                <div class="d-flex justify-content-start mt-20">
-                                    <div>
-                                        <h4>Skills/Tools</h4>
-                                    </div>
-                                </div>
-                                <div class="row px-10 mt-30">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Skills and Tools You can use <small>(separate each skill with a comma ',')</small></label>
-                                            <div class="col-lg-8">
-                                                <select class="js-select2 form-control" id="example-select2-multiple" name="skills[]" style="width: 100%;" data-placeholder="Choose many.." multiple>
-                                                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                    @foreach($skills as $skill)
-                                                        <option value="{{ $skill->id }}" @if(in_array($skill->id, $selectedSkills)) selected @endif>{{ $skill->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -430,7 +326,7 @@
                     </div>
                     <div class="tab-pane" id="wizard-simple2-step3" role="tabpanel">
                         <div class="block-content">
-                            <form action="{{ route('dashboard.business.employee.update', [$employee->hash]) }}" method="POST">
+                            <form action="#" method="POST">
                                 <div class="my-30">
                                     <hr>
                                 </div>
@@ -568,6 +464,155 @@
 {{--                                        </div>--}}
 {{--                                    </div>--}}
 {{--                                </div>--}}
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="wizard-simple2-step4" role="tabpanel">
+                        <div class="block-content">
+                            <form action="{{ route('dashboard.business.employee.update.educ-employment', [$employee->hash]) }}" method="POST">
+                                <div class="my-30">
+                                    <hr>
+                                </div>
+                                <div class="d-flex justify-content-start mt-20">
+                                    <div>
+                                        <h4>Employment</h4>
+                                    </div>
+                                </div>
+                                <div class="row px-10 mt-30">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Start Date</label>
+                                            <input type="date" class="form-control"  name="employment_start_date" value="{{ $employee->professional_experience?->start_date }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Contract Type</label>
+                                            <select class="form-control"  name="type" required>
+                                                <option value="">Choose contract type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                @foreach(\App\Models\Employee::ContractType as $contract)
+                                                    <option value="{{ $contract }}" @selected($employee->type == $contract)>{{ $contract }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Job Title</label>
+                                            <input type="text" class="form-control" id="example-text-input" name="position" value="{{ $employee->professional_experience?->role }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Organisation</label>
+                                            <input type="text"  class="form-control"  name="organisation_name" value="{{ Auth::user()->company->name }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="my-30">
+                                    <hr>
+                                </div>
+
+                                <div class="d-flex justify-content-start mt-20">
+                                    <div>
+                                        <h4>Education/Training</h4>
+                                    </div>
+                                </div>
+                                <div class="row px-10 mt-30">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Qualification/Certification</label>
+                                            <input type="text" class="form-control"  name="qualification" value="{{ $employee->education?->qualification }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Completion Date</label>
+                                            <input type="date" class="form-control" id="example-text-input" name="qualification_end_date" value="{{ $employee->education?->qualification_end_date }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="my-30">
+                                    <hr>
+                                </div>
+                                <div class="d-flex justify-content-start mt-20">
+                                    <div>
+                                        <h4>Skills/Tools</h4>
+                                    </div>
+                                </div>
+                                <div class="row px-10 mt-30">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Skills and Tools You can use <small>(separate each skill with a comma ',')</small></label>
+                                            <div class="col-lg-8">
+                                                <select class="js-select2 form-control" id="example-select2-multiple" name="skills[]" style="width: 100%;" data-placeholder="Choose many.." multiple>
+                                                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    @foreach($skills as $skill)
+                                                        <option value="{{ $skill->id }}" @if(in_array($skill->id, $selectedSkills)) selected @endif>{{ $skill->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="my-30">
+                                    <hr>
+                                </div>
+                                <div class="row px-10 mt-30">
+                                    <div class="col-md-8">
+                                        @csrf
+                                        <div class="form-group">
+                                            <button class="btn btn-primary">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="wizard-simple2-step5" role="tabpanel">
+                        <div class="block-content">
+                            <form action="{{ route('dashboard.business.employee.update.other-info', [$employee->hash]) }}" method="POST">
+                                <div class="d-flex justify-content-start mt-20">
+                                    <div>
+                                        <h4>Banking Details</h4>
+                                    </div>
+                                </div>
+                                <div class="row px-10 mt-30">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Bank Name</label>
+                                            <input type="text" class="form-control"  name="bank_name" value="{{ $employee->bankAccount?->bank_name }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Account Type Name</label>
+                                            <input type="text" class="form-control"  name="account_type" value="{{ $employee->bankAccount?->account_type }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Branch code</label>
+                                            <input type="text" class="form-control"  name="branch_code" value="{{ $employee->bankAccount?->branch_code }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input"> Account Number</label>
+                                            <input type="text" class="form-control"  name="account_number" value="{{ $employee->bankAccount?->account_number }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row px-10 mt-30">
+                                    <div class="col-md-8">
+                                        @csrf
+                                        <div class="form-group">
+                                            <button class="btn btn-primary">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
 
                         </div>
