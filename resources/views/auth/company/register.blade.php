@@ -2,7 +2,7 @@
     <section class="mt-5">
         <div class="container py-5 h-100">
             <div class="row justify-content-center align-items-center py-3 px-3">
-                <img height="30%" width="30%" src="{{asset('assets/images/spaane_white_transparent.png')}}">
+                <img height="20%" width="20%" src="{{asset('assets/images/spaane_white.png')}}">
             </div>
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-12">
@@ -48,12 +48,12 @@
 
                                         <div class="text-center pt-1 mb-2">
                                             @csrf
-                                            <button class="btn btn-primary fa-lg gradient-custom-2 mb-3" type="submit">Register</button>
+                                            <button class="btn btn-rounded btn-outline-primary" type="submit">Register</button>
                                         </div>
 
                                         <div class="text-center pb-4">
                                             <p class="mb-0 me-2">already have an account? Login here</p>
-                                           <a href="{{ route('company.login.form') }}" class="btn btn-outline-danger">Login</a>
+                                           <a href="{{ route('company.login.form') }}" class="btn btn-rounded btn-outline-success">Login</a>
                                         </div>
                                     </form>
 

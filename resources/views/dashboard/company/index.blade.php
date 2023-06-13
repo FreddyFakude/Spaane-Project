@@ -6,7 +6,7 @@
     <x-slot name="header">
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
-    <div class="content">
+    <div class="content mt-30">
         <div class="row">
             <div class="col-md-9 offset-md-2">
                 @if(session()->has('talent-updated'))
@@ -157,7 +157,7 @@
                                                                 </div>
                                                                 <input type="date" class="form-control mr-10" id="example-daterange2" name="end_date" placeholder="To" data-week-start="1" data-autoclose="true" data-today-highlight="true">
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-alt-success ml-0" ><i class="fa fa-check"></i> Submit</button>
+                                                                <button type="submit" class="btn btn-rounded btn-success ml-0" ><i class="fa fa-check"></i> Submit</button>
                                                             </div>
                                                     </div>
 

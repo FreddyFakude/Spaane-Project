@@ -51,7 +51,7 @@
                     </div>
                     <div class="modal-footer">
                         @csrf
-                        <button type="submit" class="btn btn-success">Send to all</button>
+                        <button type="submit" class="btn btn-rounded btn-success">Send to all</button>
                     </div>
                 </form>
             </div>

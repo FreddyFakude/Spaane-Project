@@ -59,7 +59,7 @@
         .salary-slip .myTotalBackground {
             padding-top: 10px;
             text-align: left;
-            background-color: #770737;
+            background-color: #00041E;
             border-spacing: 0px;
         }
 

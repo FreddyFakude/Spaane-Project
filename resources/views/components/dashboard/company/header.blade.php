@@ -1,6 +1,6 @@
 <header id="page-header">
     <!-- Header Content -->
-    <div class="content-header">
+    <div class="content-header mb-30">
         <!-- Left Section -->
         <div class="content-header-section">
             <!-- Toggle Sidebar -->
@@ -24,7 +24,7 @@
         <div class="content-header-section" style="margin-top: 40px;">
             <!-- User Dropdown -->
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-rounded" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-secondary btn-rounded" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user d-sm-none"></i>
                     <span class="d-none d-sm-inline-block">User</span>
                     <i class="fa fa-angle-down ml-5"></i>

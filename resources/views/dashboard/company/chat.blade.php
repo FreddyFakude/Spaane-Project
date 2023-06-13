@@ -6,7 +6,7 @@
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
     <!-- Page Content -->
-    <div class="content mt-10" id="chat">
+    <div class="content mt-30" id="chat">
         <div class="block">
 
         </div>

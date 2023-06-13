@@ -9,15 +9,15 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>Boldo | Boldo Agency Template</title>
+    <title>Spaane | HR assitant</title>
 
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/frontend/img/favicons/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/frontend/img/favicons/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/frontend/img/favicons/favicon-16x16.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/frontend/img/favicons/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/spaane_blue_icon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/spaane_blue_icon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/spaane_blue_icon.png') }}">
     <link rel="manifest" href="{{ asset('assets/frontend/img/favicons/manifest.json') }}">
     <meta name="msapplication-TileImage" content="{{ asset('assets/img/favicons/mstile-150x150.png') }}">
     <meta name="theme-color" content="#ffffff">
@@ -39,7 +39,7 @@
 <!-- ===============================================-->
 <main class="main" id="top">
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark" data-navbar-on-scroll="data-navbar-on-scroll">
-        <div class="container"><a class="navbar-brand" href="index.html"><img src="assets/img/Logo.png" alt="" /></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars text-white fs-3"></i></button>
+        <div class="container"><a class="navbar-brand" href="index.html"><img src="{{ asset('assets/images/spaane_white.png') }}" alt="" width=""></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars text-white fs-3"></i></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
@@ -58,9 +58,9 @@
             <div class="container">
                 <div class="row align-items-center py-lg-8 py-6">
                     <div class="col-lg-6 text-center text-lg-start">
-                        <h1 class="text-white fs-5 fs-xl-6">Save time by building fast with Boldo Template</h1>
-                        <p class="text-white py-lg-3 py-2">Funding handshake buyer business-to-business metrics iPad partnership. First mover advantage innovator success deployment non-disclosure.</p>
-                        <div class="d-sm-flex align-items-center gap-3"><button class="btn btn-success text-black mb-3 w-75">Buy Template</button><button class="btn btn-outline-light mb-3 w-75">Explore</button></div>
+                        <h1 class="text-white fs-5 fs-xl-6">Send payslips. Manage leave all via Whatsapp.</h1>
+                        <p class="text-white py-lg-3 py-2">Instantly send payslips, allocate leave, and share critical information to your employees using WhatsApp.</p>
+                        <div class="d-sm-flex align-items-center gap-3"><button class="btn btn-success text-black mb-3 w-75">Start 30 day Free Trial</button>
                     </div>
                     <div class="col-lg-6 text-center text-lg-end mt-3 mt-lg-0"><img class="img-fluid" src="assets/img/hero/hero-graphics.png" alt="" /></div>
                 </div>

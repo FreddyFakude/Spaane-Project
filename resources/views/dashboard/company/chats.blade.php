@@ -6,7 +6,7 @@
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
     <!-- Page Content -->
-    <div class="content mt-10">
+    <div class="content mt-30">
         <div class="row">
             <div class="block-content">
 {{--                <p>The second way is to use <a href="be_ui_grid.html#cb-grid-rutil">responsive utility CSS classes</a> for hiding columns in various screen resolutions. This way you can hide less important columns and keep the most valuable on smaller screens. At the following example the <strong>Access</strong> column isn't visible on small and extra small screens and <strong>Email</strong> column isn't visible on extra small screens.</p>--}}

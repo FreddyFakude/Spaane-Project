@@ -389,19 +389,19 @@ cursor: pointer;
 }
 
 .si-pointer {
-  color: #ff9900fd !important;
+  color: #2DEBEF !important;
 }
 
 .fa-building-o {
-  color: #ff9900fd !important;
+  color: #2DEBEF !important;
 }
 
 .si-calendar {
-  color: #ff9900fd !important;
+  color: #2DEBEF !important;
 }
 
 .si-lock {
-  color: #ff9900fd !important;
+  color: #2DEBEF !important;
 }
 
 .si-eye {
@@ -499,12 +499,12 @@ cursor: pointer;
 }
 .btn-noborder-orange {
   background-color: #fff;
-  border: 1px solid #ff9900fd!important;
-  color: #ff9900fd!important;  /* fallback for old browsers */
+  border: 1px solid #2DEBEF!important;
+  color: #2DEBEF!important;  /* fallback for old browsers */
 }
 
 .btn-orange {
-  background: #ff9900fd!important;
+  background: #2DEBEF!important;
   color: #ffffff!important;
 }
 

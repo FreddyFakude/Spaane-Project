@@ -3674,7 +3674,7 @@ input[type="button"].btn-block {
 }
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #ff9900fd;
+  background-color: #2DEBEF;
 }
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
@@ -8013,11 +8013,11 @@ a.text-info:hover, a.text-info:focus {
 }
 
 .text-warning {
-  color: #ff9900fd !important;
+  color: #2DEBEF !important;
 }
 
 a.text-warning.link-effect::before {
-  background-color: #ff9900fd;
+  background-color: #2DEBEF;
 }
 
 a.text-warning:hover, a.text-warning:focus {
@@ -13984,11 +13984,11 @@ button.bg-elegance-lighter:focus {
 }
 
 .text-pulse {
-  color: #ff9900fd !important;
+  color: #2DEBEF !important;
 }
 
 a.text-pulse.link-effect::before {
-  background-color: #ff9900fd;
+  background-color: #2DEBEF;
 }
 
 a.text-pulse:hover, a.text-pulse:focus {
@@ -14044,7 +14044,7 @@ a.text-pulse-lighter:hover, a.text-pulse-lighter:focus {
 }
 
 .bg-pulse {
-  background-color: #ff9900fd !important;
+  background-color: #2DEBEF !important;
 }
 
 a.bg-pulse:hover, a.bg-pulse:focus,

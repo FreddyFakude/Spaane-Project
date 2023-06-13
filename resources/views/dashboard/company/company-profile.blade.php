@@ -6,7 +6,7 @@
     <x-slot name="header">
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
-    <div class="content bg-light">
+    <div class="content mt-30">
         <div class="block">
             <div class="block-header block-header-default">
                 @if(session()->has('success'))

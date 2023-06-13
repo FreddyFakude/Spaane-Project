@@ -6,8 +6,8 @@
     <x-slot name="header">
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
-    <div class="content">
-        <div class="row py-20">
+    <div class="content mt-30">
+        <div class="row mt-30">
 {{--            <div class="col-md-4 col-xl-4">--}}
 {{--                <div class="block">--}}
 {{--                    <ul class="nav nav-tabs shadow justify-content-around bg-light nav-tabs-block js-tabs p-10 mb-10" data-toggle="tabs" role="tablist" style="border-radius: 8px">--}}
@@ -21,9 +21,9 @@
 {{--                </div>--}}
 {{--            </div>--}}
             <div class="col-md-12 col-xl-12">
-                <div class="d-flex justify-content-end">
-                    <button type="button" class="btn-lg btn-primary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
-                   <button class="btn-lg btn-danger mr-2">Remove  Employee</button>
+                <div class="justify-content-end">
+                    <button type="button" class="btn btn-success btn-rounded mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
+                   <button class="btn btn-danger btn-rounded mr-2">Remove  Employee</button>
                 </div>
             </div>
         </div>
@@ -52,20 +52,20 @@
                 <table class="table table-striped table-vcenter active js-table-checkable js-table-checkable-enabled tab-pane" id="btabs-internal">
                     <thead>
                     <tr>
-                        <th class="text-center" style="width: 70px;">
+                        <th class="text-center" style="width: 10%;">
                             <label class="css-control css-control-primary css-checkbox py-0">
                                 <input type="checkbox" class="css-control-input" id="check-all" name="check-all">
                                 <span class="css-control-indicator"></span>
                             </label>
                         </th>
-                        <th class="d-none d-sm-table-cell" style="width: 20%;">Employee</th>
+                        <th class="d-none d-sm-table-cell" style="width: 10%;">Employee</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Job title</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Department</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Direct Manger</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Contract type</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Total Leave</th>
-                        <th class="d-none d-sm-table-cell" style="width: 10%;">Absent Days</th>
-                        <th class="d-none d-sm-table-cell" style="width: 10%;">WhatsApp</th>
+                        {{-- <th class="d-none d-sm-table-cell" style="width: 10%;">Absent Days</th>
+                        <th class="d-none d-sm-table-cell" style="width: 10%;">WhatsApp</th> --}}
                     </tr>
                     </thead>
                     <tbody>
@@ -98,12 +98,12 @@
                                     <td class="d-none d-sm-table-cell">
     {{--                                    <em class="text-muted"> {{ $employee->current_leave_days}} days </em>--}}
                                     </td>
-                                    <td class="d-none d-sm-table-cell">
+                                    {{-- <td class="d-none d-sm-table-cell">
                                         <em class="text-muted"> 5 days</em>
                                     </td>
                                     <td class="d-none d-sm-table-cell">
                                         <em class="text-muted"> Active</em>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         @else

@@ -1,22 +1,24 @@
 .bg-teal{
-    background-color: #770737;
+    background-color: #00041E;
 }
 /* .bg-light-grey{
     background-color: #e9ecef;
 } */
 .btn-primary {
-    background-color: #770737;
+    background-color: #2DEBEF;
+    border-radius: 50px !important;
 }
-.btn-secondary-outline {
-    border-color: #770737;
-    color: #770737;
-}
-
-.btn-secondary {
-    background-color: #06637F;
+.btn-secondary-outlne {
+    border-color: #2DEBEF;
+    color: #2DEBEF;
+    border-radius: 50px !important;
 }
 
 .btn-secondary {
-    border-color: #06637F;
-    color: #06637F;
+    background-color: #2DEBEF;
+}
+
+.btn-secondary {
+    border-color: #2DEBEF;
+    color: #2DEBEF;
 }
