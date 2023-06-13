@@ -25,11 +25,11 @@
                         <!-- END Close Sidebar -->
 
                         <!-- Logo -->
-                        <div class="content-header-item mt-30">
+                        <div class="content-header-item mt-30 mb-30">
                             <a  href="{{ route('dashboard.company.index') }}">
                                 {{--                                <i class="si si-fire text-primary"></i>--}}
                                 {{--                                <span class="font-size-xl text-dual-primary-dark">code</span><span class="font-size-xl text-primary">vase</span>--}}
-                                <img src="{{ asset('assets/images/spaane_white.png') }}" alt="" width="150">
+                                <img src="{{ asset('assets/images/spaane_white.png') }}" alt="" width="180">
                             </a>
                         </div>
                         <!-- END Logo -->
@@ -39,7 +39,7 @@
                 <!-- END Side Header -->
 
                 <!-- Side Navigation -->
-                <div class="content-side content-side-full mt-30 ">
+                <div class="content-side content-side-full mt-30">
                     <ul class="nav-main">
                         {{-- <li>
                             <a href="{{ route('dashboard.company.leave') }}"><i class="si si-grid fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>

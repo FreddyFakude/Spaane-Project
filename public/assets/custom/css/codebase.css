@@ -10863,7 +10863,7 @@ a.btn-block-option:focus,
 }
 
 .nav-main {
-  padding: 0;
+  padding: 5;
   list-style: none;
 }
 
@@ -10880,8 +10880,8 @@ a.btn-block-option:focus,
   position: relative;
   display: block;
   padding: 9px 18px 9px 40px;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 300;
   color: rgba(87, 87, 87, 0.9);
   text-transform: uppercase;
   letter-spacing: .5px;
