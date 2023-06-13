@@ -72,13 +72,13 @@
                                     <a class="nav-submenu" data-toggle="nav-submenu" >Remunerations</a>
                                     <ul>
                                         <li>
-                                            <a href="{{ route('dashboard.company.contributions.index') }}">Company Contribution</a>
+                                            <a href="{{ route('dashboard.company.contributions.index') }}">Company Contributions</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('dashboard.company.deductions.index') }}">Company Deductions</a>
+                                            <a href="{{ route('dashboard.company.deductions.index') }}">Employee Deductions</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('dashboard.company.earning_types.index') }}">Employee Earning</a>
+                                            <a href="{{ route('dashboard.company.earning_types.index') }}">Employee Earnings</a>
                                         </li>
                                     </ul>
                                 </li>

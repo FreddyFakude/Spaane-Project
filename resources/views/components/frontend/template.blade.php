@@ -43,8 +43,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="blogs.html">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="about.html">How it works</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="blogs.html">Pricing</a></li>
                     <li class="nav-item mt-2 mt-lg-0"><a class="nav-link btn btn-light text-black w-md-25 w-50 w-lg-100" aria-current="page" href="#">Log In</a></li>
                 </ul>
             </div>
@@ -56,15 +56,15 @@
         <!-- <section> begin ============================-->
         <section>
             <div class="container">
-                <div class="row align-items-center py-lg-8 py-6">
+                <div class="row align-items-center items-push py-lg-8 py-6">
                     <div class="col-lg-6 text-center text-lg-start">
                         <h1 class="text-white fs-5 fs-xl-6">Send payslips. Manage leave all via Whatsapp.</h1>
                         <p class="text-white py-lg-3 py-2">Instantly send payslips, allocate leave, and share critical information to your employees using WhatsApp.</p>
-                        <div class="d-sm-flex align-items-center gap-3"><button class="btn btn-success text-black mb-3 w-75">Start 30 day Free Trial</button>
+                        <div class="d-sm-flex align-items-center gap-3"><button class="btn btn-success text-black mb-3 w-75">Start your 30 day Free Trial</button>
                     </div>
-                    <div class="col-lg-6 text-center text-lg-end mt-3 mt-lg-0"><img class="img-fluid" src="assets/img/hero/hero-graphics.png" alt="" /></div>
+                    <div class="col-lg-6 text-center text-lg-end mt-3 mt-lg-0"><img class="img-fluid" src="{{ asset('assets/images/dashboard_shot.png') }}"  alt="" /></div>
                 </div>
-                <div class="swiper">
+                {{-- <div class="swiper">
                     <div class="swiper-container swiper-shadow swiper-theme" data-swiper='{"slidesPerView":2,"breakpoints":{"640":{"slidesPerView":2,"spaceBetween":20},"768":{"slidesPerView":4,"spaceBetween":40},"992":{"slidesPerView":5,"spaceBetween":40},"1024":{"slidesPerView":4,"spaceBetween":50},"1025":{"slidesPerView":6,"spaceBetween":50}},"spaceBetween":10,"grabCursor":true,"pagination":{"el":".swiper-pagination","clickable":true},"loop":true,"freeMode":true,"autoplay":{"delay":2500,"disableOnInteraction":false}}'>
                         <div class="swiper-wrapper">
                             <div class="swiper-slide text-center"><img src="assets/img/logos/boldo.png" alt="" /></div>
@@ -75,14 +75,14 @@
                             <div class="swiper-slide text-center"><img src="assets/img/logos/presto.png" alt="" /></div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div><!-- end of .container-->
         </section><!-- <section> close ============================-->
         <!-- ============================================-->
 
     </div>
 
-    {{ $slot }}
+    {{-- {{ $slot }} --}}
 
 </main><!-- ===============================================-->
 <!--    End of Main Content-->
@@ -92,10 +92,9 @@
 
 <!-- ============================================-->
 <!-- <section> begin ============================-->
-<section>
+{{-- <section>
     <div class="container bg-dark overflow-hidden rounded-1">
         <div class="bg-holder" style="background-image:url(assets/img/promo/promo-bg.png);"></div>
-        <!--/.bg-holder-->
         <div class="px-5 py-7 position-relative">
             <h1 class="text-center w-lg-75 mx-auto fs-lg-6 fs-md-4 fs-3 text-white">An enterprise template to ramp up your company website</h1>
             <div class="row justify-content-center mt-5">
@@ -103,15 +102,15 @@
                 <div class="col-auto mt-2 mt-lg-0"><button class="btn btn-success text-dark fs-1">Start now</button></div>
             </div>
         </div>
-    </div><!-- end of .container-->
-</section><!-- <section> close ============================-->
+    </div>
+</section> --}}
 <!-- ============================================-->
 
 
 
 <!-- ============================================-->
 <!-- <section> begin ============================-->
-<section class="pt-0">
+{{-- <section class="pt-0">
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-lg-6 col-sm-12"><a href="index.html"><img class="img-fluid mt-5 mb-4" src="assets/frontend/img/black-logo.png" alt="" /></a>
@@ -143,8 +142,8 @@
             </div>
         </div>
         <p class="text-gray">All rights reserved.</p>
-    </div><!-- end of .container-->
-</section><!-- <section> close ============================-->
+    </div>
+</section> --}}
 <!-- ============================================-->
 
 

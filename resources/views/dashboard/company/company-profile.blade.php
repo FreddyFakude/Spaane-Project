@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Head office Name</label>
+                                <label class="pl-0" for="example-text-input">Company Address</label>
                                 <input type="text" class="form-control"  name="head_office_name" value="{{ $company?->head_office_name }}">
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Date of creation</label>
+                                <label class="pl-0" for="example-text-input">Date company started operatinng</label>
                                 <input type="date" class="form-control" id="example-text-input" name="date_creation" value="{{ $company->date_creation }}">
                             </div>
                         </div>
@@ -73,13 +73,13 @@
                     <div class="row px-10 mt-30">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Registration number</label>
+                                <label class="pl-0" for="example-text-input">Company registration number (if available)</label>
                                 <input type="text" class="form-control"  name="registration_number" value="{{ $company->registration_number }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Short Description</label>
+                                <label class="pl-0" for="example-text-input">What does your company do</label>
                                 <textarea  class="form-control"  name="short_description">
                                     {{ $company?->short_description }}
                                 </textarea>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Fiscal Year Start*</label>
+                                <label class="pl-0" for="example-text-input">Company financial year end*</label>
                                 <input type="date" class="form-control" id="example-text-input" name="fiscal_year_start" value="{{ $company->fiscal_year_start }}">
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                                 <label class="pl-0" for="example-text-input"></label>
                                 <br>
                                 @csrf
-                                <button class="btn btn-outline-danger mt-1">Update</button>
+                                <button class="btn btn-hero btn-rounded btn-success">Update</button>
                             </div>
                         </div>
                     </div>

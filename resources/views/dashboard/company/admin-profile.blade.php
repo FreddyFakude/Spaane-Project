@@ -75,7 +75,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 @csrf
-                                <button class="btn btn-outline-danger">Update</button>
+                                <button class="btn btn-hero btn-rounded btn-success">Update</button>
                             </div>
                         </div>
                     </div>

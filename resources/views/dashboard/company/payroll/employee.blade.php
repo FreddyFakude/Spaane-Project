@@ -53,7 +53,7 @@
                         <form action="{{ route('dashboard.business.payroll.generate.all') }}" method="post">
                             <input type="hidden" name="date" value="{{ $date }}">
                             @csrf
-                            <button type="submit" class="btn-lg btn-success mr-2">Generate payslips for all</button>
+                            <button type="submit" class="btn btn-rounded btn-hero btn-lg btn-success mr-2">Generate payslips for all</button>
                         </form>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                                 <th style="width: 15%;">Total Deductions</th>
 {{--                                <th style="width: 15%;">Total Tax</th>--}}
                                 <th style="width: 15%;">Net Pay</th>
-                                <th class="d-none d-sm-table-cell" style="width: 20%;">Date</th>
+                                <th class="d-none d-sm-table-cell" style="width: 20%;"></th>
                             </tr>
                         </thead>
                         @empty(!$employees)
@@ -87,7 +87,7 @@
                                                 @if(!$employee->payslips->where('date', $date)->first())
                                                     @csrf
                                                     <input type="hidden" name="date" value="{{ $date }}">
-                                                    <button type="submit" x-on:click="employeeId = {{ $employee->id }}" class="btn-md btn-success mr-2" >Generate Payslip</button>
+                                                    <button type="submit" x-on:click="employeeId = {{ $employee->id }}" class="btn btn-rounded btn-outline-success mr-2" >Generate Payslip</button>
                                                 @endif
                                             </td>
                                         </tr>
@@ -115,7 +115,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <p>Basic Deductions:</p>
+                                                <p>Deductions:</p>
                                             </td>
                                             @foreach($employee->deductions as $deduction)
                                                 <td class="d-none d-sm-table-cell">
@@ -126,7 +126,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <p>Company Contribution:</p>
+                                                <p>Company Contributions:</p>
                                             </td>
                                             @foreach(\auth()->user()->company->remunerationContributions as $contribution)
                                                 <td class="d-none d-sm-table-cell">

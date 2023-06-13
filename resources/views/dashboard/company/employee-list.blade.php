@@ -22,8 +22,8 @@
 {{--            </div>--}}
             <div class="col-md-12 col-xl-12">
                 <div class="justify-content-end">
-                    <button type="button" class="btn btn-success btn-rounded mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
-                   <button class="btn btn-danger btn-rounded mr-2">Remove  Employee</button>
+                    <button type="button" class="btn btn-success btn-hero btn-lg btn-rounded mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
+                   <button class="btn btn-outline-danger btn-hero btn-lg btn-rounded mr-2">Remove  Employee</button>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Department</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Direct Manger</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Contract type</th>
-                        <th class="d-none d-sm-table-cell" style="width: 10%;">Total Leave</th>
+                        {{-- <th class="d-none d-sm-table-cell" style="width: 10%;">Total Leave</th> --}}
                         {{-- <th class="d-none d-sm-table-cell" style="width: 10%;">Absent Days</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">WhatsApp</th> --}}
                     </tr>
@@ -95,9 +95,9 @@
                                     <td class="d-none d-sm-table-cell">
                                         <em class="text-muted"> {{ $employee->type }} </em>
                                     </td>
-                                    <td class="d-none d-sm-table-cell">
-    {{--                                    <em class="text-muted"> {{ $employee->current_leave_days}} days </em>--}}
-                                    </td>
+                                    {{-- <td class="d-none d-sm-table-cell">
+<em class="text-muted"> {{ $employee->current_leave_days}} days </em>
+                                    </td> --}}
                                     {{-- <td class="d-none d-sm-table-cell">
                                         <em class="text-muted"> 5 days</em>
                                     </td>

@@ -2,7 +2,7 @@
 
     <!-- ============================================-->
     <!-- <section> begin ============================-->
-    <section>
+    {{-- <section>
         <div class="container">
             <p class="text-center fs-1">Our Services</p>
             <h2 class="mx-auto text-center fs-lg-6 fs-md-5 w-lg-75">Handshake infographic mass market crowdfunding iteration.</h2>
@@ -20,15 +20,15 @@
                     <p class="fs-1 mb-0">Learning curve network effects return on investment.</p><a class="text-dark fs-1 pb-2 fw-bold border-black border-bottom text-decoration-none" href="#">Explore page<i class="fa-solid fa-arrow-right ms-2"></i></a>
                 </div>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
+        </div>
+    </section> --}}
     <!-- ============================================-->
 
 
 
     <!-- ============================================-->
     <!-- <section> begin ============================-->
-    <section>
+    {{-- <section>
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 text-center text-lg-start"><img class="img-fluid" src="assets/img/offer/1.png" alt="" /></div>
@@ -41,15 +41,15 @@
                     </ul><button class="btn btn-dark">Start now</button>
                 </div>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
+        </div>
+    </section> --}}
     <!-- ============================================-->
 
 
 
     <!-- ============================================-->
     <!-- <section> begin ============================-->
-    <section class="pt-8 pt-lg-0">
+    {{-- <section class="pt-8 pt-lg-0">
         <div class="container">
             <div class="d-flex flex-column-reverse flex-lg-row">
                 <div class="col-lg-6">
@@ -62,15 +62,15 @@
                 </div>
                 <div class="col-lg-6 text-center text-lg-end"><img class="img-fluid" src="assets/img/offer/2.png" alt="" /></div>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
+        </div>
+    </section> --}}
     <!-- ============================================-->
 
 
 
     <!-- ============================================-->
     <!-- <section> begin ============================-->
-    <section class="bg-dark pt-6">
+    {{-- <section class="bg-dark pt-6">
         <div class="container">
             <div class="col-md-6">
                 <h1 class="text-white fs-lg-5 fs-md-3 fs-2">An enterprise template to ramp up your company website</h1>
@@ -123,15 +123,15 @@
                 <div class="swiper-button-next"><span class="fas fa-arrow-right fs-lg-3 fs-2"></span></div>
                 <div class="swiper-button-prev"><span class="fas fa-arrow-left fs-lg-3 fs-2"></span></div>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
+        </div>
+    </section> --}}
     <!-- ============================================-->
 
 
 
     <!-- ============================================-->
     <!-- <section> begin ============================-->
-    <section>
+    {{-- <section>
         <div class="container"><img class="img-fluid" src="assets/img/offer/3.png" alt="" />
             <div class="row mt-5 align-items-center">
                 <div class="col-md-6">
@@ -156,15 +156,15 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
+        </div>
+    </section> --}}
     <!-- ============================================-->
 
 
 
     <!-- ============================================-->
     <!-- <section> begin ============================-->
-    <section class="pb-0">
+    {{-- <section class="pb-0">
         <div class="container">
             <p class="text-center text-gray fs-1">Our Blog</p>
             <h2 class="mx-auto text-center fs-lg-6 fs-md-5 w-lg-75">Value proposition accelerator product management venture</h2>
@@ -213,8 +213,8 @@
                 </div>
             </div>
             <div class="text-center mb-3"><button class="btn btn-outline-dark">Load More</button></div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
+        </div>
+    </section> --}}
     <!-- ============================================-->
 
 </x-frontend.template>
