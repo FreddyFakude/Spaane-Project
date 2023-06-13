@@ -66,7 +66,8 @@
                                 <th style="width: 15%;">Total Earnings</th>
                                 <th style="width: 15%;">Total Deductions</th>
 {{--                                <th style="width: 15%;">Total Tax</th>--}}
-                                <th style="width: 15%;">Net Pay</th>
+                                <th style="width: 10%;">Net Pay</th>
+                                <th style="width: 10%;">Reference</th>
                                 <th class="d-none d-sm-table-cell" style="width: 25%;"></th>
                             </tr>
                         </thead>
@@ -83,6 +84,9 @@
                                             <td class="font-w600">-R{{ $employee->remuneration?->deductions->sum('amount') }}</td>
 {{--                                            <td class="font-w600">-R1000</td>--}}
                                             <td class="font-w600">R{{ $employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount') - $employee->remuneration?->deductions->sum('amount') }}</td>
+                                            <td class="d-none d-sm-table-cell">
+                                                <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()?->reference_number }} </em>
+                                            </td>
                                             <td class="d-none d-sm-table-cell">
                                                 @if(!$employee->payslips->where('date', $date)->first())
                                                     @csrf
@@ -114,9 +118,6 @@
                                                     <input type="text" class="form-control" name="other_earnings[{{ $earning->id }}]" value="{{ $earning->amount }}">
                                                 </td>
                                             @endforeach
-                                            <td class="d-none d-sm-table-cell">
-                                                <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()?->reference_number }} </em>
-                                            </td>
                                         </tr>
                                         <tr>
                                             <td>
