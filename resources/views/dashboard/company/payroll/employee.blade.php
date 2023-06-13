@@ -67,7 +67,7 @@
                                 <th style="width: 15%;">Total Deductions</th>
 {{--                                <th style="width: 15%;">Total Tax</th>--}}
                                 <th style="width: 15%;">Net Pay</th>
-                                <th class="d-none d-sm-table-cell" style="width: 20%;"></th>
+                                <th class="d-none d-sm-table-cell" style="width: 25%;"></th>
                             </tr>
                         </thead>
                         @empty(!$employees)
@@ -78,9 +78,9 @@
                                             <td class="text-center">
                                                 <i class="fa fa-angle-right"></i>
                                             </td>
-                                            <td class="font-w600">{{ $employee->name }} {{ $employee->last_name }}</td>
+                                            <td class="font-w600"><a href="{{ route('dashboard.company.chat.new', [$employee]) }}">{{ $employee->first_name }} {{ $employee->last_name }}</a></td>
                                             <td class="font-w600">R{{ $employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount') }}</td>
-                                            <td class="font-w600">R{{ $employee->remuneration?->deductions->sum('amount') }}</td>
+                                            <td class="font-w600">-R{{ $employee->remuneration?->deductions->sum('amount') }}</td>
 {{--                                            <td class="font-w600">-R1000</td>--}}
                                             <td class="font-w600">R{{ $employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount') - $employee->remuneration?->deductions->sum('amount') }}</td>
                                             <td class="d-none d-sm-table-cell">
@@ -88,6 +88,11 @@
                                                     @csrf
                                                     <input type="hidden" name="date" value="{{ $date }}">
                                                     <button type="submit" x-on:click="employeeId = {{ $employee->id }}" class="btn btn-rounded btn-outline-success mr-2" >Generate Payslip</button>
+                                                @endif
+                                                @if($employee->payslips->where('date', $date)->first()?->reference_number)
+                                                    <td class="d-none d-sm-table-cell">
+                                                        <a href="{{ route('dashboard.business.payroll.download', [$employee->hash, $employee->payslips->where('date', $date)->first()->hash]) }}" class="btn btn-rounded btn-outline-warning" target="_blank">View</a>
+                                                    </td>
                                                 @endif
                                             </td>
                                         </tr>
@@ -100,13 +105,13 @@
                                             @foreach($employee->remunerations as $remuneration)
                                                 <td class="d-none d-sm-table-cell">
                                                     <label for="side-overlay-profile-email">{{ $remuneration->name }}</label>
-                                                    <input type="text" name="earnings[{{ $remuneration->id }}]" value="{{ $remuneration->amount }}">
+                                                    <input type="text" class="form-control" name="earnings[{{ $remuneration->id }}]" value="{{ $remuneration->amount }}">
                                                 </td>
                                             @endforeach
                                             @foreach($employee->otherEarnings as $earning)
                                                 <td class="d-none d-sm-table-cell">
                                                     <label for="side-overlay-profile-email">{{ $earning->name }}</label>
-                                                    <input type="text" name="other_earnings[{{ $earning->id }}]" value="{{ $earning->amount }}">
+                                                    <input type="text" class="form-control" name="other_earnings[{{ $earning->id }}]" value="{{ $earning->amount }}">
                                                 </td>
                                             @endforeach
                                             <td class="d-none d-sm-table-cell">
@@ -120,7 +125,7 @@
                                             @foreach($employee->deductions as $deduction)
                                                 <td class="d-none d-sm-table-cell">
                                                     <label for="side-overlay-profile-email">{{ $deduction->name }}</label>
-                                                    <input type="text" name="deductions[{{ $deduction->id }}]" value="{{ $deduction->amount }}">
+                                                    <input type="text" class="form-control" name="deductions[{{ $deduction->id }}]" value="{{ $deduction->amount }}">
                                                 </td>
                                             @endforeach
                                         </tr>
@@ -131,7 +136,7 @@
                                             @foreach(\auth()->user()->company->remunerationContributions as $contribution)
                                                 <td class="d-none d-sm-table-cell">
                                                     <label for="side-overlay-profile-email">{{ $contribution->name }}</label>
-                                                    <input type="text" name="contributions[{{ $contribution->id }}]" value="{{ ($employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount')) * 1/100 }}">
+                                                    <input type="text" class="form-control" name="contributions[{{ $contribution->id }}]" value="{{ ($employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount')) * 1/100 }}">
                                                 </td>
                                             @endforeach
                                         </tr>

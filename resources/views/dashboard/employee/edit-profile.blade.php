@@ -156,7 +156,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input">City</label>
+                                <label class="pl-0" for="example-text-input">City/Town</label>
                                 <input type="text" class="form-control" id="example-text-input" value="{{ $talent->address?->city }}" name="city" required>
                             </div>
                         </div>
@@ -170,7 +170,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input">State</label>
+                                <label class="pl-0" for="example-text-input">Province/State</label>
                                 <input type="text" class="form-control" id="example-text-input" name="state" value="{{ $talent->address?->state }}">
                             </div>
                         </div>
@@ -253,12 +253,12 @@
                                 <input type="text" class="form-control" id="example-text-input" name="position" value="{{ $talent->professional_experience?->role }}">
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        {{-- <div class="col-md-2">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Organisation</label>
                                 <input type="date" class="form-control"  name="organisation_name" value="{{ $talent->professional_experience?->organisation_name }}" required>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="row px-10 mt-30">
                         <div class="col-md-3">

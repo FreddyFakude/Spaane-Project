@@ -24,13 +24,13 @@
                         <a class="nav-link" href="#wizard-simple2-step2" data-toggle="tab">2. Personal details</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-simple2-step3" data-toggle="tab">3. Earning</a>
+                        <a class="nav-link" href="#wizard-simple2-step4" data-toggle="tab">3. Appointment & education</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-simple2-step4" data-toggle="tab">4. Education and employment history</a>
+                        <a class="nav-link" href="#wizard-simple2-step3" data-toggle="tab">4. Salary</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-simple2-step5" data-toggle="tab">4. Other</a>
+                        <a class="nav-link" href="#wizard-simple2-step5" data-toggle="tab">5. Banking details</a>
                     </li>
                 </ul>
                 <!-- END Step Tabs -->
@@ -249,7 +249,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">City</label>
+                                            <label class="pl-0" for="example-text-input">City/Town</label>
                                             <input type="text" class="form-control" id="example-text-input" value="{{ $employee->address?->city }}" name="city">
                                         </div>
                                     </div>
@@ -263,32 +263,11 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">State</label>
+                                            <label class="pl-0" for="example-text-input">Province/State</label>
                                             <input type="text" class="form-control" id="example-text-input" name="state" value="{{ $employee->address?->state }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0">Department</label>
-                                            <select class="form-control"   name="department_id" required>
-                                                <option value="0">Choose Department</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                @foreach($departments as $department)
-                                                    <option value="{{ $department->id }}" @selected($employee->department->id == $department->id)>{{ $department->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Contract Type</label>
-                                            <select class="form-control"  name="type" required>
-                                                <option value="">Choose contract type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                @foreach(\App\Models\Employee::ContractType as $contract)
-                                                    <option value="{{ $contract }}" @selected($employee->type == $contract)>{{ $contract }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="d-flex justify-content-start mt-20">
                                     <div>
@@ -476,7 +455,7 @@
                                 </div>
                                 <div class="d-flex justify-content-start mt-20">
                                     <div>
-                                        <h4>Employment</h4>
+                                        <h4>Employment Appointment</h4>
                                     </div>
                                 </div>
                                 <div class="row px-10 mt-30">
@@ -503,12 +482,34 @@
                                             <input type="text" class="form-control" id="example-text-input" name="position" value="{{ $employee->professional_experience?->role }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0">Department</label>
+                                            <select class="form-control"   name="department_id" required>
+                                                <option value="0">Choose Department</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                @foreach($departments as $department)
+                                                    <option value="{{ $department->id }}" @selected($employee->department->id == $department->id)>{{ $department->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Contract Type</label>
+                                            <select class="form-control"  name="type" required>
+                                                <option value="">Choose contract type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                @foreach(\App\Models\Employee::ContractType as $contract)
+                                                    <option value="{{ $contract }}" @selected($employee->type == $contract)>{{ $contract }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="col-md-2">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Organisation</label>
                                             <input type="text"  class="form-control"  name="organisation_name" value="{{ Auth::user()->company->name }}">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="my-30">
                                     <hr>

@@ -205,9 +205,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-rounded btn-hero btn-alt-danger" data-dismiss="modal">Cancel</button>
                         @csrf
-                    <button type="submit" class="btn btn-success">Add</button>
+                    <button type="submit" class="btn btn-rounded btn-hero btn-alt-success">Submit</button>
                 </div>
                 </form>
             </div>
