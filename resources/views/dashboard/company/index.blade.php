@@ -65,7 +65,7 @@
                                         <p class="mb-10">
                                             {{ $employee->name }} ({{ $employee->role }}) requested {{ $request->total_days }} work days from {{ $request->start_date }}  to {{ $request->end_date }}
                                             @if($request->status == \App\Models\EmployeeLeaveRequest::STATUS['review'])
-                                                <a class="btn btn-alt-success ml-10" href="{{ route('dashboard.company.employee.approve.leave', [$employee->hash, $request->hash]) }}">Accept</a>
+                                                <a class="btn btn-alt-success btn-rounded ml-10" href="{{ route('dashboard.company.employee.approve.leave', [$employee->hash, $request->hash]) }}">Accept</a>
 {{--                                                <button class="btn btn-alt-danger ml-10" href="{{ route() }}">Decline</button>--}}
                                             @endif
                                         </p>
@@ -108,7 +108,7 @@
                                         <tr>
                                             <td>
                                                 <p class="font-w600 mb-10">
-                                                    <a href="{{ route('dashboard.company.employee.view', [$employee]) }}">{{ $employee->name }}</a>
+                                                    <a href="{{ route('dashboard.company.chat.new', [$employee]) }}">{{ $employee->name }}</a>
                                                 </p>
                                             </td>
                                             <td class="d-none d-sm-table-cell">
@@ -201,18 +201,18 @@
                             <!-- Add Leave Policy-->
                             <form id="js-task-form" action="{{ route('dashboard.company.employee.add.leave-policy', [$employee->hash]) }}" method="post">
                                 <div class="input-group input-group-lg">
-                                    <select class="form-control-lg mr" v-model="leave_policy" @change="update" name="leave_policy[company_leave_policy_id]" required>
+                                    <select class="form-control mr-10" v-model="leave_policy" @change="update" name="leave_policy[company_leave_policy_id]" required>
                                         <option value="">Choose Policy Leave</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                         @foreach($companyLeavePolicy as $leave)
                                             <option value="{{ $leave->id }}">{{ $leave->leaveType->name }}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                         @endforeach
                                     </select>
                                     {{--                                        <input class="form-control mr-5" type="text" id="js-task-input" name="js-task-input" placeholder="Add leave policy">--}}
-                                    <input class="form-control mr-5" v-model="leave_policy_days" type="number" id="leave_policy_days" name="leave_policy[days]" placeholder="Add permitted no of days">
+                                    <input class="form-control mr-5" v-model="leave_policy_days" type="number" id="leave_policy_days" name="leave_policy[days]" placeholder="Add allowed no of days">
                                     {{--                                        <input class="form-control mr-5" v-model="leave_policy_type_id" type="hidden" id="leave_policy_type_id" name="leave_policy[leave_type_id]">--}}
                                     @csrf
                                     <p class="mr-15">Days per year</p>
-                                    <button class="btn btn-md btn-alt-success" type="submit">
+                                    <button class="btn btn-hero btn-outline-success btn-rounded" type="submit">
                                         Add
                                     </button>
                                 </div>

@@ -231,7 +231,7 @@
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                             @csrf
                             <input type="hidden" class="form-control" id="example-text-input"  x-model="employeeId" name="employee_id">
-                            <button type="submit" class="btn btn-success">Add</button>
+                            <button type="submit" class="btn btn-success btn-rounded btn-hero">Add</button>
                         </div>
                     </form>
                 </div>

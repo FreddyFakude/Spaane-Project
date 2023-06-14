@@ -295,7 +295,7 @@
                                     <div class="col-md-8">
                                         @csrf
                                         <div class="form-group">
-                                            <button class="btn btn-primary">Update</button>
+                                            <button class="btn btn-success btn-rounded btn-hero">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -331,7 +331,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group form-inline">
-                                                <button class="btn btn-primary" type="button" @click="addEmployeeEarningAmount('{{ str_replace(' ', '-', strtolower($remuneration->name)) }}', {{ $remuneration->id }})">Update</button>
+                                                <button class="btn btn-outline-success btn-rounded btn-hero" type="button" @click="addEmployeeEarningAmount('{{ str_replace(' ', '-', strtolower($remuneration->name)) }}', {{ $remuneration->id }})">Update</button>
                                             </div>
                                         </div>
                                     </div>
@@ -348,7 +348,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group form-inline">
-                                            <button class="btn btn-primary" type="button" @click="updateEmployeeOtherEarning(earning.name.replaceAll(' ', '-'), earning.id)">Update</button>
+                                            <button class="btn btn-outline-success btn-rounded btn-hero" type="button" @click="updateEmployeeOtherEarning(earning.name.replaceAll(' ', '-'), earning.id)">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -368,7 +368,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <button class="btn btn-primary" type="button" @click="addEmployeeOtherEarning">Add</button>
+                                            <button class="btn btn-success btn-rounded btn-hero" type="button" @click="addEmployeeOtherEarning">Add</button>
                                         </div>
                                     </div>
                                 </div>
@@ -391,7 +391,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <button class="btn btn-primary" type="button">Update</button>
+                                                <button class="btn btn-outline-success btn-rounded btn-hero" type="button">Update</button>
                                             </div>
                                         </div>
                                     </div>
@@ -407,7 +407,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group form-inline">
-                                            <button class="btn btn-primary" type="button" @click="updateEmployeeDeduction(deduction.name.replaceAll(' ', '-'), deduction.id)">Update</button>
+                                            <button class="btn btn-outline-success btn-rounded btn-hero" type="button" @click="updateEmployeeDeduction(deduction.name.replaceAll(' ', '-'), deduction.id)">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -427,7 +427,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <button class="btn btn-primary" type="button" @click="addEmployeeDeduction">Add</button>
+                                            <button class="btn btn-success btn-rounded btn-hero" type="button" @click="addEmployeeDeduction">Add</button>
                                         </div>
                                     </div>
                                 </div>
@@ -564,7 +564,7 @@
                                     <div class="col-md-8">
                                         @csrf
                                         <div class="form-group">
-                                            <button class="btn btn-primary">Update</button>
+                                            <button class="btn btn-success btn-rounded btn-hero">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -610,7 +610,7 @@
                                     <div class="col-md-8">
                                         @csrf
                                         <div class="form-group">
-                                            <button class="btn btn-primary">Update</button>
+                                            <button class="btn btn-success btn-rounded btn-hero">Update</button>
                                         </div>
                                     </div>
                                 </div>

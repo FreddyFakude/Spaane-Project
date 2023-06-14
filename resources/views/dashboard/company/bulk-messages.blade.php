@@ -61,24 +61,19 @@
                         <tr>
                             <th style="width: 30px;"></th>
                             <th>Title</th>
-                            <th>Message</th>
                             <th style="width: 15%;">Sent to</th>
                             <th class="d-none d-sm-table-cell" style="width: 20%;">Date</th>
                         </tr>
                     </thead>
                     @empty(!$messages)
                         @foreach($messages as $message)
-                            <tbody class="js-table-sections-header show table-active">
-
+                            <tbody class="js-table-sections-header">
                                 <tr>
                                     <td class="text-center">
                                         <i class="fa fa-angle-right"></i>
                                     </td>
                                     <td class="font-w600">
                                         {{ $message->title }}
-                                    </td>
-                                    <td class="font-w600">
-                                        {{ $message->message }}
                                     </td>
                                     <td>
                                         <span class="badge badge-warning">To all</span>
@@ -87,6 +82,13 @@
                                         <em class="text-muted">
                                             {{ $message->created_at->format('d M Y H:i:s')}}
                                         </em>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4" class="font-w600">
+                                        {{ $message->message }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -99,6 +101,13 @@
     <!-- END Page Content -->
     @push('extra-js')
         <script src="{{ asset('assets/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+        <script>
+            jQuery(function () {
+                // Init page helpers (Table Tools helper)
+                Codebase.helpers('table-tools');
+            });
+        </script>
+        <script src="//unpkg.com/alpinejs" defer></script>
     @endpush
 
 </x-dashboard.template>
