@@ -44,7 +44,7 @@
                         {{-- <li>
                             <a href="{{ route('dashboard.company.leave') }}"><i class="si si-grid fa-2x"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                         </li> --}}
-                        <li>
+                        <li class="mt-30">
                             <a href="{{ route('dashboard.company.index') }}"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide text-lg">Employees</span></a>
                         </li>
                         {{-- <li>
