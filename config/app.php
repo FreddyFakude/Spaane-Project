@@ -181,7 +181,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        env('APP_ENV') == 'production' ?: Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+//        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -197,6 +197,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
     ],
+
 
     /*
     |--------------------------------------------------------------------------
