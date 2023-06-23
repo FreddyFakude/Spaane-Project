@@ -54,7 +54,7 @@
                             <a href="{{ route('dashboard.company.chats.bulk-messages') }}"><i class="si si-bubble fa-2x"></i><span class="sidebar-mini-hide">Announcements</span></a>
                         </li>
                         <li>
-                            <a  href="{{ route('dashboard.company.leave.index') }}"><i class="si si-calendar fa-2x"></i><span class="sidebar-mini-hide">Leave</span></a>
+                            <a  href="{{ route('dashboard.company.leave.index') }}"><i class="si si-calendar fa-2x"></i><span class="sidebar-mini-hide">Leave Management</span></a>
                         </li>
                        <li>
                             <a href="{{ route('dashboard.business.payroll.index') }}"><i class="si si-bar-chart fa-2x"></i><span class="sidebar-mini-hide">Payslips</span></a>
@@ -81,6 +81,9 @@
                                             <a href="{{ route('dashboard.company.earning_types.index') }}">Employee Earning</a>
                                         </li>
                                     </ul>
+                                </li>
+                                <li>
+                                    <a href="{{ route('dashboard.company.view-company-leave') }}">Company Leave Policy</a>
                                 </li>
                             </ul>
                         </li>

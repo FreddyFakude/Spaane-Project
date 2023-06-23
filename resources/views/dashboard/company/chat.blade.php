@@ -30,7 +30,10 @@
                         <a class="nav-link" href="#wizard-simple2-step4" data-toggle="tab">4. Education and employment history</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-simple2-step5" data-toggle="tab">4. Other</a>
+                        <a class="nav-link" href="#wizard-simple2-step5" data-toggle="tab">5. Leave policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#wizard-simple2-step6" data-toggle="tab">4. Other</a>
                     </li>
                 </ul>
                 <!-- END Step Tabs -->
@@ -572,6 +575,54 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="wizard-simple2-step5" role="tabpanel">
+                        <div class="block-content">
+                            <div class="js-tasks col-md-8">
+                                <!-- Add Leave Policy-->
+                                <form id="js-task-form" action="{{ route('dashboard.company.employee.add.leave-policy', [$employee->hash]) }}" method="post">
+                                    <div class="input-group input-group-lg">
+                                        <select class="form-control-lg mr" v-model="leave_policy" @change="update" name="leave_policy[company_leave_policy_id]" required>
+                                            <option value="">Choose Policy Leave</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                            @foreach($companyLeavePolicy as $leave)
+                                                <option value="{{ $leave->id }}">{{ $leave->leaveType->name }}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                            @endforeach
+                                        </select>
+                                        {{--                                        <input class="form-control mr-5" type="text" id="js-task-input" name="js-task-input" placeholder="Add leave policy">--}}
+                                        <input class="form-control mr-5" v-model="leave_policy_days" type="number" id="leave_policy_days" name="leave_policy[days]" placeholder="Add permitted no of days">
+                                        {{--                                        <input class="form-control mr-5" v-model="leave_policy_type_id" type="hidden" id="leave_policy_type_id" name="leave_policy[leave_type_id]">--}}
+                                        @csrf
+                                        <p class="mr-15">Days per year</p>
+                                        <button class="btn btn-md btn-alt-success" type="submit">
+                                            Add
+                                        </button>
+                                    </div>
+                                </form>
+                                <!-- Leave  Policy List -->
+                                <div class="js-task-list mt-20">
+                                    <!-- Policy -->
+                                    <div class="js-task block block-rounded mb-5 animated fadeIn" data-task-id="9" data-task-completed="false" data-task-starred="false">
+                                        <table class="table table-borderless table-vcenter mb-0">
+                                            @foreach($employee->leavePolicies as $initialDays)
+                                                <tr class="block block-rounded block-bordered">
+                                                    <div>
+                                                        <td class="js-task-content font-w600">
+                                                            {{ $initialDays->leaveType->name }} <br><small>{{ $initialDays->days }} days per year</small>
+                                                        </td>
+                                                        <td class="text-right" style="width: 100px;">
+                                                            <a class="js-task-remove btn btn-sm btn-alt-danger" href="{{ route('dashboard.company.employee.remove.leave-policy', [$employee->hash, $initialDays->id]) }}">
+                                                                Remove
+                                                            </a>
+                                                        </td>
+                                                    </div>
+                                                </tr>
+                                            @endforeach
+                                        </table>
+                                    </div>
+                                    <!-- END Leave Policy -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="wizard-simple2-step6" role="tabpanel">
                         <div class="block-content">
                             <form action="{{ route('dashboard.business.employee.update.other-info', [$employee->hash]) }}" method="POST">
                                 <div class="d-flex justify-content-start mt-20">

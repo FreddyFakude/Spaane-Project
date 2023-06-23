@@ -16,7 +16,7 @@ class CompanyRemunerationDeductionController extends Controller
      */
     public function index()
     {
-        return view("dashboard.company.deductions.index", [
+        return view("dashboard.company.settings.deductions.index", [
             "deductions" => auth()->user()->company->deductions
         ]);
     }

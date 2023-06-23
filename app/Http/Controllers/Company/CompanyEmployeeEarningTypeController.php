@@ -16,7 +16,7 @@ class CompanyEmployeeEarningTypeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.company.earning_type.index',
+        return view('dashboard.company.settings.earning_type.index',
             [
                 'employeeEarningTypes' => auth()->user()->company->employeeEarningTypes
             ]);

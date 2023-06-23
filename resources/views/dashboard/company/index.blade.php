@@ -103,40 +103,39 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @empty(!$employees)
                                     @foreach($employees as $employee)
-                                        <tr>
-                                            <td>
-                                                <p class="font-w600 mb-10">
-                                                    <a href="{{ route('dashboard.company.employee.view', [$employee]) }}">{{ $employee->name }}</a>
-                                                </p>
-                                            </td>
-                                            <td class="d-none d-sm-table-cell">
-                                                <em class="text-muted">{{ $employee->role }}</em>
-                                            </td>
-                                            <td class="d-none d-sm-table-cell">
-                                                <em class="text-muted">{{ $employee->department->name }} </em>
-                                            </td>
-                                            <td class="d-none d-sm-table-cell">
-                                                <em class="text-muted">{{ $employee->type  }}</em>
-                                            </td>
-                                            <td class="d-none d-sm-table-cell">
-                                                <em class="">
-                                                    @foreach($employee->leavePolicies as $policy)
-                                                        <span class="badge badge-warning">{{ $policy->leaveType->name }} {{ (new App\Services\LeaveCalculation())->calculateRemainingDaysOnLeaveType($employee, $policy->initialDay)  }}</span>
-                                                    @endforeach
-                                                </em>
-                                                {{--                                                    <em class="">--}}
-                                                {{--                                                        <span class="badge badge-warning">Annnual - 10 days</span>--}}
-                                                {{--                                                        <span class="badge badge-primary">Maternity - 4 months</span>--}}
-                                                {{--                                                        <span class="badge badge-info">Sick - 8 days</span>--}}
-                                                {{--                                                        <span class="badge badge-danger">Study - 8 days</span>--}}
-                                                {{--                                                        <span class="badge badge-success">Family responsibility - 4 days</span>--}}
-                                                {{--                                                        <span class="badge badge-secondary">Religious - 4 days</span>--}}
-                                                {{--                                                    </em>--}}
-                                            </td>
-                                            <td class="d-none d-sm-table-cell" style="width: 60%;">
-                                                <form action="{{ route('dashboard.company.employee.leave.manual-request', [$employee->hash]) }}" method="POST">
+                                    <tr>
+                                        <td>
+                                            <p class="font-w600 mb-10">
+                                                <a href="{{ route('dashboard.company.employee.view', [$employee]) }}">{{ $employee->name }}</a>
+                                            </p>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">
+                                            <em class="text-muted">{{ $employee->role }}</em>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">
+                                            <em class="text-muted">{{ $employee->department->name }} </em>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">
+                                            <em class="text-muted">{{ $employee->type  }}</em>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell">
+                                            <em class="">
+                                                @foreach($employee->leavePolicies as $policy)
+                                                    <span class="badge badge-warning">{{ $policy->leaveType->name }} {{ (new App\Services\LeaveCalculation())->calculateRemainingDaysOnLeaveType($employee, $policy->initialDay)  }}</span>
+                                                @endforeach
+                                            </em>
+                                            {{--                                                    <em class="">--}}
+                                            {{--                                                        <span class="badge badge-warning">Annnual - 10 days</span>--}}
+                                            {{--                                                        <span class="badge badge-primary">Maternity - 4 months</span>--}}
+                                            {{--                                                        <span class="badge badge-info">Sick - 8 days</span>--}}
+                                            {{--                                                        <span class="badge badge-danger">Study - 8 days</span>--}}
+                                            {{--                                                        <span class="badge badge-success">Family responsibility - 4 days</span>--}}
+                                            {{--                                                        <span class="badge badge-secondary">Religious - 4 days</span>--}}
+                                            {{--                                                    </em>--}}
+                                        </td>
+                                        <td class="d-none d-sm-table-cell" style="width: 60%;">
+                                            <form action="{{ route('dashboard.company.employee.leave.manual-request', [$employee->hash]) }}" method="POST">
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
                                                         <select class="js-select2 form-control" id="example-select2" name="employee_leave_policy_id" style="width: 100%;" data-placeholder="Choose leave policy" required>
@@ -150,28 +149,27 @@
                                                 {{-- <form class="task_setup" method="POST" action="{{ route('dashboard.company.employee.update.leave', [$employee->id]) }}" enctype="multipart/form-data"> --}}
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                            <div class="input-daterange input-group" data-date-format="mm/dd/yyyy" data-week-start="1" data-autoclose="true" data-today-highlight="true">
-                                                                <input type="date" class="form-control" id="example-daterange1" name="start_date" placeholder="From" data-week-start="1" data-autoclose="true" data-today-highlight="true">
-                                                                <div class="input-group-prepend input-group-append">
-                                                                    <span class="input-group-text font-w600">to</span>
-                                                                </div>
-                                                                <input type="date" class="form-control mr-10" id="example-daterange2" name="end_date" placeholder="To" data-week-start="1" data-autoclose="true" data-today-highlight="true">
-                                                                @csrf
-                                                                <button type="submit" class="btn btn-alt-success ml-0" ><i class="fa fa-check"></i> Submit</button>
+                                                        <div class="input-daterange input-group" data-date-format="mm/dd/yyyy" data-week-start="1" data-autoclose="true" data-today-highlight="true">
+                                                            <input type="date" class="form-control" id="example-daterange1" name="start_date" placeholder="From" data-week-start="1" data-autoclose="true" data-today-highlight="true">
+                                                            <div class="input-group-prepend input-group-append">
+                                                                <span class="input-group-text font-w600">to</span>
                                                             </div>
+                                                            <input type="date" class="form-control mr-10" id="example-daterange2" name="end_date" placeholder="To" data-week-start="1" data-autoclose="true" data-today-highlight="true">
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-alt-success ml-0" ><i class="fa fa-check"></i> Submit</button>
+                                                        </div>
                                                     </div>
 
                                                 </div>
-                                                </form>
-                                                {{-- <input type="date" class="form-control" name="leave_date" value=""> --}}
-                                                {{-- </form> --}}
-                                            </td>
-                                            <td class="d-none d-sm-table-cell" style="width: 5%;">
-                                                <a href="{{ route('dashboard.company.chat.new', [$employee->id]) }}"><i class="si si-bubble fa-2x"></i></a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endempty
+                                            </form>
+                                            {{-- <input type="date" class="form-control" name="leave_date" value=""> --}}
+                                            {{-- </form> --}}
+                                        </td>
+                                        <td class="d-none d-sm-table-cell" style="width: 5%;">
+                                            <a href="{{ route('dashboard.company.chat.new', [$employee->id]) }}"><i class="si si-bubble fa-2x"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                             <table class="js-table-checkable table table-hover js-table-checkable-enabled tab-pane" id="btabs-external">

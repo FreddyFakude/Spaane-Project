@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Company;
+namespace App\Http\Controllers\Company\Settings;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
 use Illuminate\Http\Request;
 
 class AdminProfileController extends Controller
 {
     public function index()
     {
-        return view('dashboard.company.admin-profile',[
+        return view('dashboard.company.settings.admin-profile',[
             'company' => auth()->guard('company')->user()->company,
             'admin' => auth()->guard('company')->user()
         ]);

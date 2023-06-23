@@ -39,7 +39,7 @@ class EmployeeController extends Controller
         return view(
             'dashboard.company.employee-list',
             [
-                'employees' => Auth::user()->employees
+                'employees' => Auth::user()->company->employees
             ]);
     }
 

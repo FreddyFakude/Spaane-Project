@@ -7,6 +7,7 @@ use App\Jobs\WhatsAppMessageBatchNotificationJob;
 use App\Models\BulkMessage;
 use App\Models\Chat;
 use App\Models\CompanyDepartment;
+use App\Models\CompanyLeavePolicy;
 use App\Models\Employee;
 use App\Models\Skill;
 use App\Repository\ChatRepository;
@@ -43,6 +44,7 @@ class CompanyChatController extends Controller
             'companyDeductions' => \auth()->user()->company->deductions,
             "skills" => Skill::all(),
             "selectedSkills" => $employee->skills?->pluck('id')->toArray(),
+            'companyLeavePolicy' => CompanyLeavePolicy::where('company_id', '=', \Auth::user()->company_id)->get(),
             "departments" => Cache::get('departments', function () {
                 return CompanyDepartment::all();
             })

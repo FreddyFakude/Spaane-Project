@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Company;
+namespace App\Http\Controllers\Company\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
@@ -12,7 +12,7 @@ class CompanyProfileController extends Controller
 
     public function index()
     {
-        return view('dashboard.company.company-profile',[
+        return view('dashboard.company.settings.company-profile',[
             'company' => auth()->guard('company')->user()->company
         ]);
     }

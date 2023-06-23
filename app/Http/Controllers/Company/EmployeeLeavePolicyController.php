@@ -14,31 +14,30 @@ class EmployeeLeavePolicyController extends Controller
 {
     public function addLeavePolicy(Request $request, Employee $employee)
     {
-       $validated =  $request->validate([
+        $validated =  $request->validate([
             'leave_policy.days' => 'required',
             'leave_policy.company_leave_policy_id' => 'exists:company_leave_policies,id',
         ]);
 
-       $companyLeavePolicy = CompanyLeavePolicy::findOrfail($validated['leave_policy']['company_leave_policy_id']);
+        $companyLeavePolicy = CompanyLeavePolicy::findOrfail($validated['leave_policy']['company_leave_policy_id']);
 
-       $policy = EmployeeLeavePolicy::updateOrCreate([
+        $policy = EmployeeLeavePolicy::updateOrCreate([
             'employee_id' => $employee->id,
             'company_leave_policy_id' => $validated['leave_policy']['company_leave_policy_id'],
         ], [
             'days' => $validated['leave_policy']['days'],
             'company_id' => $employee->company_id,
-            'leave_type_id' => $companyLeavePolicy->leave_type_id,
-            'leave_validity_days' => $companyLeavePolicy->leave_validity_days,
+            'leave_type_id' => $companyLeavePolicy->leave_type_id
         ]);
 
-       $initialDays = EmployeeLeaveInitialCurrentDay::create([
+        $initialDays = EmployeeLeaveInitialCurrentDay::create([
             'employee_id' => $employee->id,
             'leave_type_id' => $policy->leave_type_id,
             'leave_type_name' => $policy->leaveType->name,
             'leave_policy_id' => $policy->id,
             'days' => $validated['leave_policy']['days'],
             'expiry_date' => Carbon::now()->addDays($policy->leave_validity_days)->format('Y-m-d'),
-           "company_id" => $employee->company_id,
+            "company_id" => $employee->company_id,
         ]);
 
         return back()->with([
@@ -48,7 +47,6 @@ class EmployeeLeavePolicyController extends Controller
 
 
     }
-
     public function removeLeavePolicy(Employee $employee, EmployeeLeavePolicy $leavePolicy)
     {
 
