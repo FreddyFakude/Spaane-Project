@@ -118,18 +118,18 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Company $company
- * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage query()
- * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereCompanyId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereFilePath($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereFileType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereMessage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BulkMessage whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|QueuedMessage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|QueuedMessage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|QueuedMessage query()
+ * @method static \Illuminate\Database\Eloquent\Builder|QueuedMessage whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|QueuedMessage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|QueuedMessage whereFilePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|QueuedMessage whereFileType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|QueuedMessage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|QueuedMessage whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|QueuedMessage whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|QueuedMessage whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|QueuedMessage whereUpdatedAt($value)
  */
 	class BulkMessage extends \Eloquent {}
 }
@@ -184,7 +184,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\CompanyAccountAdministrator|null $administrator
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BulkMessage[] $bulkMessages
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\QueuedMessage[] $bulkMessages
  * @property-read int|null $bulk_messages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Employee[] $employees
  * @property-read int|null $employees_count
@@ -230,7 +230,7 @@ namespace App\Models{
  * @property string|null $position_start_date
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BulkMessage[] $bulkMessages
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\QueuedMessage[] $bulkMessages
  * @property-read int|null $bulk_messages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Chat[] $chats
  * @property-read int|null $chats_count
@@ -415,7 +415,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Address|null $address
  * @property-read \App\Models\BankAccount|null $bankAccount
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeBulkMessage[] $bulkMessages
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EmployeeQueuedMessage[] $bulkMessages
  * @property-read int|null $bulk_messages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Chat[] $chats
  * @property-read int|null $chats_count
@@ -489,17 +489,17 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Employee $employee
- * @property-read \App\Models\BulkMessage $message
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage pending()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage query()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage whereBulkMessageId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage whereEmployeeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeBulkMessage whereUpdatedAt($value)
+ * @property-read \App\Models\QueuedMessage $message
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeQueuedMessage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeQueuedMessage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeQueuedMessage pending()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeQueuedMessage query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeQueuedMessage whereBulkMessageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeQueuedMessage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeQueuedMessage whereEmployeeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeQueuedMessage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeQueuedMessage whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeQueuedMessage whereUpdatedAt($value)
  */
 	class EmployeeBulkMessage extends \Eloquent {}
 }

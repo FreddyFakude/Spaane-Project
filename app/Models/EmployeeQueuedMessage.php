@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EmployeeBulkMessage extends Model
+class EmployeeQueuedMessage extends Model
 {
     use HasFactory;
 
@@ -30,6 +30,6 @@ class EmployeeBulkMessage extends Model
 
     public function message()
     {
-     return   $this->belongsTo(BulkMessage::class, 'bulk_message_id');
+     return   $this->belongsTo(QueuedMessage::class, 'queued_message_id');
     }
 }

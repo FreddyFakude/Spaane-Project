@@ -77,7 +77,7 @@ class Employee  extends Authenticatable
 
     public function bulkMessages()
     {
-        return $this->hasMany(EmployeeBulkMessage::class, 'employee_id');
+        return $this->hasMany(EmployeeQueuedMessage::class, 'employee_id');
     }
 
     public function bankAccount()

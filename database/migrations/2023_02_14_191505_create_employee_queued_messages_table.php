@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bulk_messages', function (Blueprint $table) {
+        Schema::create('employee_queued_messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("company_id")->references('id')->on('companies')->cascadeOnUpdate();
-            $table->text("title");
-            $table->text("message");
-            $table->string("file_path")->nullable();
-            $table->string("file_type")->nullable();
-            $table->string("status")->default('ACTIVE');
+            $table->foreignId('employee_id')->references('id')->on('employees')->cascadeOnUpdate();
+            $table->foreignId('queued_message_id')->references('id')->on('queued_messages')->cascadeOnUpdate();
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bulk_messages');
+        Schema::dropIfExists('employee_queued_messages');
     }
 };

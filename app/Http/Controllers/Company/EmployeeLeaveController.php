@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Helper\Spaane;
 use App\Http\Controllers\Controller;
+use App\Jobs\WhatsAppMessageBatchNotificationJob;
+use App\Jobs\WhatsAppNotificationJob;
 use App\Models\CompanyLeavePolicy;
 use App\Models\Employee;
 use App\Models\EmployeeLeaveRequest;
@@ -60,7 +63,7 @@ class EmployeeLeaveController extends Controller
 //    }
 
     public function index(){
-        $employees = Auth::user()->employees;
+        $employees = Auth::user()->company->employees;
         $employees->load(['leavePolicies', 'leaveRequests']);
         return view('dashboard.company.index', [
             "employees"=>$employees,
@@ -76,9 +79,8 @@ class EmployeeLeaveController extends Controller
         if ($leaveRequest->total_days < (new LeaveCalculation())->calculateRemainingDaysOnLeaveType($employee, $leaveRequest->initialDay)){
             $leaveRequest->status = EmployeeLeaveRequest::STATUS['approved'];
             $leaveRequest->save();
-            $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.update.message');
-            $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, $employee->first_name, Auth::user()->company->name));
-
+            $message = "Your leave request has been approved";
+            $queuedMessage = (new Spaane())->sendQueuedMessage($employee, Auth::user()->company, $message);
             session()->flash('leave-approved');
             return back();
         }
