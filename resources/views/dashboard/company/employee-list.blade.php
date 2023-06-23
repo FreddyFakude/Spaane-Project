@@ -21,9 +21,16 @@
 {{--                </div>--}}
 {{--            </div>--}}
             <div class="col-md-12 col-xl-12">
-                <div class="d-flex justify-content-end">
-                    <button type="button" class="btn-lg btn-primary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
-                   <button class="btn-lg btn-danger mr-2">Remove  Employee</button>
+                <div class="d-flex justify-content-between">
+                    <div class="content-header p-0 ml-0 mr-0" style="margin-top: -13px">
+                        <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="sidebar_toggle">
+                            <i class="fa fa-navicon"></i>
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn-lg btn-primary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
+                        <button class="btn-lg btn-danger mr-2">Remove  Employee</button>
+                    </div>
                 </div>
             </div>
         </div>
