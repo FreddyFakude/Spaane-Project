@@ -12,7 +12,7 @@ class CompanyRemunerationContributionController extends Controller
     public function index()
     {
 
-        return view('dashboard.company.remuneration_contribution.index', [
+        return view('dashboard.company.settings.remuneration_contribution.index', [
             'companyRemunerationContributions' => auth()->user()->company->remunerationContributions,
             'remunerations' => RemunerationList::all(),
             'companyRemunerations' => auth()->user()->company->remunerations,

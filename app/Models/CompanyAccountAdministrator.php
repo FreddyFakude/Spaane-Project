@@ -28,6 +28,6 @@ class CompanyAccountAdministrator extends Authenticatable
 
     public function bulkMessages()
     {
-        return $this->hasManyThrough(BulkMessage::class, Company::class, 'id');
+        return $this->hasManyThrough(QueuedMessage::class, Company::class, 'id');
     }
 }

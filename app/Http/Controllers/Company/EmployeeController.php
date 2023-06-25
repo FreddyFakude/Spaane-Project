@@ -11,6 +11,7 @@ use App\Models\EmployeeLeaveInitialCurrentDay;
 use App\Repository\EmployeeProfileRepository;
 use App\Repository\EmployeeRepository;
 use App\Repository\WhatsAppTemplateMessageRepository;
+use App\Services\EmployeeRemunerationAndDeductionService;
 use App\Services\WhatsApp\WhatsAppChatManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,7 @@ class EmployeeController extends Controller
         return view(
             'dashboard.company.employee-list',
             [
-                'employees' => Auth::user()->employees
+                'employees' => Auth::user()->company->employees
             ]);
     }
 
@@ -61,6 +62,7 @@ class EmployeeController extends Controller
         $validated["mobile_number"] = "27" . substr($validated["mobile_number"], 1); //remove zero and add prefix
         $company = Auth::guard('company')->user()->company;
         $employee = (new EmployeeRepository())->quickCreate($company, $validated, Employee::STATUS['invite_sent']);
+        $remunerations = (new EmployeeRemunerationAndDeductionService())->processNewEmployee($company, $employee);
         $email = Mail::to($validated['email'])->queue(new EmployeeInvite($validated['first_name'], Auth::guard('company')->user()));
         $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.new-profile.added');
         $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, Auth::user()->company->name));

@@ -8,7 +8,8 @@ use App\Http\Requests\WhatsAppMessageRequest;
 use App\Repository\ChatRepository;
 use App\Services\WhatsApp\WhatsApp;
 use App\Services\WhatsApp\WhatsAppChatManager;
-use GuzzleHttp\Psr7\Request;
+
+use Illuminate\Http\Request;
 use Validator;
 
 class WhatsAppController extends Controller

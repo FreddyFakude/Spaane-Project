@@ -6,7 +6,7 @@
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
     <!-- Page Content -->
-    <div class="content mt-30" id="chat">
+    <div class="content mt-10" id="chat">
         <div class="block">
 
         </div>
@@ -24,13 +24,16 @@
                         <a class="nav-link" href="#wizard-simple2-step2" data-toggle="tab">2. Personal details</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-simple2-step4" data-toggle="tab">3. Appointment & education</a>
+                        <a class="nav-link" href="#wizard-simple2-step3" data-toggle="tab">3. Earning</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-simple2-step3" data-toggle="tab">4. Salary</a>
+                        <a class="nav-link" href="#wizard-simple2-step4" data-toggle="tab">4. Education and employment history</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-simple2-step5" data-toggle="tab">5. Banking details</a>
+                        <a class="nav-link" href="#wizard-simple2-step5" data-toggle="tab">5. Leave policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#wizard-simple2-step6" data-toggle="tab">4. Other</a>
                     </li>
                 </ul>
                 <!-- END Step Tabs -->
@@ -249,7 +252,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">City/Town</label>
+                                            <label class="pl-0" for="example-text-input">City</label>
                                             <input type="text" class="form-control" id="example-text-input" value="{{ $employee->address?->city }}" name="city">
                                         </div>
                                     </div>
@@ -263,11 +266,32 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Province/State</label>
+                                            <label class="pl-0" for="example-text-input">State</label>
                                             <input type="text" class="form-control" id="example-text-input" name="state" value="{{ $employee->address?->state }}">
                                         </div>
                                     </div>
-                                    
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0">Department</label>
+                                            <select class="form-control"   name="department_id" required>
+                                                <option value="0">Choose Department</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                @foreach($departments as $department)
+                                                    <option value="{{ $department->id }}" @selected($employee->department->id == $department->id)>{{ $department->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="pl-0" for="example-text-input">Contract Type</label>
+                                            <select class="form-control"  name="type" required>
+                                                <option value="">Choose contract type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                @foreach(\App\Models\Employee::ContractType as $contract)
+                                                    <option value="{{ $contract }}" @selected($employee->type == $contract)>{{ $contract }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-start mt-20">
                                     <div>
@@ -295,7 +319,7 @@
                                     <div class="col-md-8">
                                         @csrf
                                         <div class="form-group">
-                                            <button class="btn btn-success btn-rounded btn-hero">Update</button>
+                                            <button class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -331,7 +355,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group form-inline">
-                                                <button class="btn btn-outline-success btn-rounded btn-hero" type="button" @click="addEmployeeEarningAmount('{{ str_replace(' ', '-', strtolower($remuneration->name)) }}', {{ $remuneration->id }})">Update</button>
+                                                <button class="btn btn-primary" type="button" @click="addEmployeeEarningAmount('{{ str_replace(' ', '-', strtolower($remuneration->name)) }}', {{ $remuneration->id }})">Update</button>
                                             </div>
                                         </div>
                                     </div>
@@ -348,7 +372,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group form-inline">
-                                            <button class="btn btn-outline-success btn-rounded btn-hero" type="button" @click="updateEmployeeOtherEarning(earning.name.replaceAll(' ', '-'), earning.id)">Update</button>
+                                            <button class="btn btn-primary" type="button" @click="updateEmployeeOtherEarning(earning.name.replaceAll(' ', '-'), earning.id)">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -368,7 +392,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <button class="btn btn-success btn-rounded btn-hero" type="button" @click="addEmployeeOtherEarning">Add</button>
+                                            <button class="btn btn-primary" type="button" @click="addEmployeeOtherEarning">Add</button>
                                         </div>
                                     </div>
                                 </div>
@@ -391,7 +415,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <button class="btn btn-outline-success btn-rounded btn-hero" type="button">Update</button>
+                                                <button class="btn btn-primary" type="button">Update</button>
                                             </div>
                                         </div>
                                     </div>
@@ -407,7 +431,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group form-inline">
-                                            <button class="btn btn-outline-success btn-rounded btn-hero" type="button" @click="updateEmployeeDeduction(deduction.name.replaceAll(' ', '-'), deduction.id)">Update</button>
+                                            <button class="btn btn-primary" type="button" @click="updateEmployeeDeduction(deduction.name.replaceAll(' ', '-'), deduction.id)">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -427,7 +451,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <button class="btn btn-success btn-rounded btn-hero" type="button" @click="addEmployeeDeduction">Add</button>
+                                            <button class="btn btn-primary" type="button" @click="addEmployeeDeduction">Add</button>
                                         </div>
                                     </div>
                                 </div>
@@ -455,7 +479,7 @@
                                 </div>
                                 <div class="d-flex justify-content-start mt-20">
                                     <div>
-                                        <h4>Employment Appointment</h4>
+                                        <h4>Employment</h4>
                                     </div>
                                 </div>
                                 <div class="row px-10 mt-30">
@@ -482,34 +506,12 @@
                                             <input type="text" class="form-control" id="example-text-input" name="position" value="{{ $employee->professional_experience?->role }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0">Department</label>
-                                            <select class="form-control"   name="department_id" required>
-                                                <option value="0">Choose Department</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                @foreach($departments as $department)
-                                                    <option value="{{ $department->id }}" @selected($employee->department->id == $department->id)>{{ $department->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="pl-0" for="example-text-input">Contract Type</label>
-                                            <select class="form-control"  name="type" required>
-                                                <option value="">Choose contract type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                @foreach(\App\Models\Employee::ContractType as $contract)
-                                                    <option value="{{ $contract }}" @selected($employee->type == $contract)>{{ $contract }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    {{-- <div class="col-md-2">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Organisation</label>
                                             <input type="text"  class="form-control"  name="organisation_name" value="{{ Auth::user()->company->name }}">
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                                 <div class="my-30">
                                     <hr>
@@ -564,7 +566,7 @@
                                     <div class="col-md-8">
                                         @csrf
                                         <div class="form-group">
-                                            <button class="btn btn-success btn-rounded btn-hero">Update</button>
+                                            <button class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -573,6 +575,54 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="wizard-simple2-step5" role="tabpanel">
+                        <div class="block-content">
+                            <div class="js-tasks col-md-8">
+                                <!-- Add Leave Policy-->
+                                <form id="js-task-form" action="{{ route('dashboard.company.employee.add.leave-policy', [$employee->hash]) }}" method="post">
+                                    <div class="input-group input-group-lg">
+                                        <select class="form-control-lg mr" v-model="leave_policy" @change="update" name="leave_policy[company_leave_policy_id]" required>
+                                            <option value="">Choose Policy Leave</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                            @foreach($companyLeavePolicy as $leave)
+                                                <option value="{{ $leave->id }}">{{ $leave->leaveType->name }}</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                            @endforeach
+                                        </select>
+                                        {{--                                        <input class="form-control mr-5" type="text" id="js-task-input" name="js-task-input" placeholder="Add leave policy">--}}
+                                        <input class="form-control mr-5" v-model="leave_policy_days" type="number" id="leave_policy_days" name="leave_policy[days]" placeholder="Add permitted no of days">
+                                        {{--                                        <input class="form-control mr-5" v-model="leave_policy_type_id" type="hidden" id="leave_policy_type_id" name="leave_policy[leave_type_id]">--}}
+                                        @csrf
+                                        <p class="mr-15">Days per year</p>
+                                        <button class="btn btn-md btn-alt-success" type="submit">
+                                            Add
+                                        </button>
+                                    </div>
+                                </form>
+                                <!-- Leave  Policy List -->
+                                <div class="js-task-list mt-20">
+                                    <!-- Policy -->
+                                    <div class="js-task block block-rounded mb-5 animated fadeIn" data-task-id="9" data-task-completed="false" data-task-starred="false">
+                                        <table class="table table-borderless table-vcenter mb-0">
+                                            @foreach($employee->leavePolicies as $initialDays)
+                                                <tr class="block block-rounded block-bordered">
+                                                    <div>
+                                                        <td class="js-task-content font-w600">
+                                                            {{ $initialDays->leaveType->name }} <br><small>{{ $initialDays->days }} days per year</small>
+                                                        </td>
+                                                        <td class="text-right" style="width: 100px;">
+                                                            <a class="js-task-remove btn btn-sm btn-alt-danger" href="{{ route('dashboard.company.employee.remove.leave-policy', [$employee->hash, $initialDays->id]) }}">
+                                                                Remove
+                                                            </a>
+                                                        </td>
+                                                    </div>
+                                                </tr>
+                                            @endforeach
+                                        </table>
+                                    </div>
+                                    <!-- END Leave Policy -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="wizard-simple2-step6" role="tabpanel">
                         <div class="block-content">
                             <form action="{{ route('dashboard.business.employee.update.other-info', [$employee->hash]) }}" method="POST">
                                 <div class="d-flex justify-content-start mt-20">
@@ -610,7 +660,7 @@
                                     <div class="col-md-8">
                                         @csrf
                                         <div class="form-group">
-                                            <button class="btn btn-success btn-rounded btn-hero">Update</button>
+                                            <button class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
                                 </div>

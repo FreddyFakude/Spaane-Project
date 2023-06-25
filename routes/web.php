@@ -29,11 +29,17 @@ Route::get('/company/login', [\App\Http\Controllers\Auth\Company\LoginController
 Route::post('/company/login', [\App\Http\Controllers\Auth\Company\LoginController::class, 'login'])->name('company.login');
 Route::post('/company/logout', [\App\Http\Controllers\Auth\Company\LoginController::class, 'logout'])->name('company.logout');
 
-Route::group(['middleware'=>['auth:company']], function (){
-    Route::get('/company/profile', [\App\Http\Controllers\Company\CompanyProfileController::class, 'index'])->name('dashboard.company.profile');
-    Route::post('/company/profile/update', [\App\Http\Controllers\Company\CompanyProfileController::class, 'update'])->name('dashboard.company.update.profile');
-    Route::get('/company/admin/profile', [\App\Http\Controllers\Company\AdminProfileController::class, 'index'])->name('dashboard.company.admin.profile');
-    Route::post('/company/admin/profile/update', [\App\Http\Controllers\Company\AdminProfileController::class, 'update'])->name('company.update.admin.profile');
+Route::group(['middleware'=>['auth:company'], 'prefix'=>'settings'], function (){
+    Route::get('/company/profile', [\App\Http\Controllers\Company\Settings\CompanyProfileController::class, 'index'])->name('dashboard.company.profile');
+    Route::post('/company/profile/update', [\App\Http\Controllers\Company\Settings\CompanyProfileController::class, 'update'])->name('dashboard.company.update.profile');
+    Route::get('/company/admin/profile', [\App\Http\Controllers\Company\Settings\AdminProfileController::class, 'index'])->name('dashboard.company.admin.profile');
+    Route::post('/company/admin/profile/update', [\App\Http\Controllers\Company\Settings\AdminProfileController::class, 'update'])->name('company.update.admin.profile');
+    Route::get('/company/leave-policy', [\App\Http\Controllers\Company\Settings\CompanyLeavePolicyController::class, 'viewCompanyLeavePolicy'])->name('dashboard.company.view-company-leave');
+    Route::post('/company/add-leave-policy', [\App\Http\Controllers\Company\Settings\CompanyLeavePolicyController::class, 'addCompanyLeavePolicy'])->name('dashboard.company.add-leave-policy');
+
+    Route::resource('/dashboard/contributions', \App\Http\Controllers\Company\CompanyRemunerationContributionController::class,  ['as' => 'dashboard.company']);
+    Route::resource('/dashboard/deductions', \App\Http\Controllers\Company\CompanyRemunerationDeductionController::class,  ['as' => 'dashboard.company']);
+    Route::resource('/dashboard/employee/earning_types', \App\Http\Controllers\Company\CompanyEmployeeEarningTypeController::class,  ['as' => 'dashboard.company']);
 });
 
 
@@ -43,9 +49,6 @@ Route::group(['middleware'=>['auth:company', 'companyHasProfile'], 'prefix'=>'co
     Route::get('/dashboard/index', [\App\Http\Controllers\Company\EmployeeController::class, 'list'])->name('dashboard.company.index');
     Route::get('/dashboard/employees/view/{employee}', [\App\Http\Controllers\Company\EmployeeController::class, 'viewTalent'])->name('dashboard.company.employee.view');
 
-    Route::resource('/dashboard/contributions', \App\Http\Controllers\Company\CompanyRemunerationContributionController::class,  ['as' => 'dashboard.company']);
-    Route::resource('/dashboard/deductions', \App\Http\Controllers\Company\CompanyRemunerationDeductionController::class,  ['as' => 'dashboard.company']);
-    Route::resource('/dashboard/employee/earning_types', \App\Http\Controllers\Company\CompanyEmployeeEarningTypeController::class,  ['as' => 'dashboard.company']);
     Route::get('/dashboard/deductions/{deduction:hash}/{state}', [\App\Http\Controllers\Company\CompanyRemunerationDeductionController::class, 'updateStatus'])->name('dashboard.company.deductions.update.status');
     Route::get('/dashboard/employee/earning_types/{remuneration:hash}/{state}', [\App\Http\Controllers\Company\CompanyEmployeeEarningTypeController::class, 'updateStatus'])->name('dashboard.company.earning_types.update.status');
     Route::get('/dashboard/contributions/{companyRemunerationContribution:hash}/{state}', [\App\Http\Controllers\Company\CompanyRemunerationContributionController::class, 'updateStatus'])->name('dashboard.company.contributions.update.status');

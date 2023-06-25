@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId("leave_type_id")->references('id')->on('leave_types')->cascadeOnUpdate();
             $table->foreignId('company_leave_policy_id')->references('id')->on('company_leave_policies')->cascadeOnUpdate();
             $table->integer('days');
-            $table->integer('leave_validity_days');
             $table->string('text')->nullable();
             $table->timestamps();
         });

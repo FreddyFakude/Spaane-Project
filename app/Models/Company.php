@@ -32,7 +32,7 @@ class Company extends Model
 
     public function bulkMessages()
     {
-        return $this->hasMany(BulkMessage::class, 'company_id');
+        return $this->hasMany(QueuedMessage::class, 'company_id');
     }
 
     public function payslips()
