@@ -43,10 +43,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="about.html">How it works</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="blogs.html">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="blogs.html">Contact us</a></li>
-                    <li class="nav-item mt-2 mt-lg-0"><a class="nav-link btn btn-light text-black w-md-25 w-50 w-lg-100" aria-current="page" href="#">Log In</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ route('how-it-works') }}">How it works</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ route('pricing') }}">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ route('contact-us') }}">Contact us</a></li>
+                    <li class="nav-item mt-2 mt-lg-0"><a class="nav-link btn btn-light text-black w-md-25 w-50 w-lg-100" aria-current="page" href="{{ route('company.login.form') }}">Log In</a></li>
                 </ul>
             </div>
         </div>
