@@ -1,28 +1,25 @@
 <x-frontend.template>
 
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
-    {{-- <section>
-        <div class="container">
-            <p class="text-center fs-1">Our Services</p>
-            <h2 class="mx-auto text-center fs-lg-6 fs-md-5 w-lg-75">Handshake infographic mass market crowdfunding iteration.</h2>
-            <div class="row gx-xl-7 mt-5">
-                <div class="col-md-4 mb-6 mb-md-0 text-center text-md-start"><img class="w-50 w-md-100" src="assets/img/services/1.png" alt="" />
-                    <h4 class="mt-3 my-1">Cool feature title</h4>
-                    <p class="fs-1 mb-0">Learning curve network effects return on investment.</p><a class="text-dark fs-1 pb-2 fw-bold border-black border-bottom text-decoration-none" href="#">Explore page<i class="fa-solid fa-arrow-right ms-2"></i></a>
-                </div>
-                <div class="col-md-4 mb-6 mb-md-0 text-center text-md-start"><img class="w-50 w-md-100" src="assets/img/services/2.png" alt="" />
-                    <h4 class="mt-3 my-1">Even cooler feature</h4>
-                    <p class="fs-1 mb-0">Learning curve network effects return on investment.</p><a class="text-dark fs-1 pb-2 fw-bold border-black border-bottom text-decoration-none" href="#">Explore page<i class="fa-solid fa-arrow-right ms-2"></i></a>
-                </div>
-                <div class="col-md-4 mb-6 mb-md-0 text-center text-md-start"><img class="w-50 w-md-100" src="assets/img/services/3.png" alt="" />
-                    <h4 class="mt-3 my-1">Cool feature title</h4>
-                    <p class="fs-1 mb-0">Learning curve network effects return on investment.</p><a class="text-dark fs-1 pb-2 fw-bold border-black border-bottom text-decoration-none" href="#">Explore page<i class="fa-solid fa-arrow-right ms-2"></i></a>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- ============================================-->
+    <div class="bg-dark"><img class="img-fluid position-absolute end-0" src="assets/img/hero/hero-bg.png" alt="" />
+
+        <!-- ============================================-->
+        <!-- <section> begin ============================-->
+        <section>
+            <div class="container">
+                <div class="row align-items-center items-push py-lg-8 py-6">
+                    <div class="col-lg-6 text-center text-lg-start">
+                        <h1 class="text-white fs-5 fs-xl-6">Send payslips. Manage leave all via Whatsapp.</h1>
+                        <p class="text-white py-lg-3 py-2">Instantly send payslips, allocate leave, and share critical information to your employees using WhatsApp.</p>
+                        <div class="d-sm-flex align-items-center gap-3"><button class="btn btn-success text-black mb-3 w-75">Start your 30 day Free Trial</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-end mt-3 mt-lg-0"><img class="img-fluid" src="{{ asset('assets/images/dashboard_shot.png') }}"  alt="" width="100%" height="auto"/></div>
+                    </div>
+                </div><!-- end of .container-->
+        </section><!-- <section> close ============================-->
+        <!-- ============================================-->
+
+    </div>
 
 
 

@@ -51,39 +51,9 @@
             </div>
         </div>
     </nav>
-    <div class="bg-dark"><img class="img-fluid position-absolute end-0" src="assets/img/hero/hero-bg.png" alt="" />
 
-        <!-- ============================================-->
-        <!-- <section> begin ============================-->
-        <section>
-            <div class="container">
-                <div class="row align-items-center items-push py-lg-8 py-6">
-                    <div class="col-lg-6 text-center text-lg-start">
-                        <h1 class="text-white fs-5 fs-xl-6">Send payslips. Manage leave all via Whatsapp.</h1>
-                        <p class="text-white py-lg-3 py-2">Instantly send payslips, allocate leave, and share critical information to your employees using WhatsApp.</p>
-                        <div class="d-sm-flex align-items-center gap-3"><button class="btn btn-success text-black mb-3 w-75">Start your 30 day Free Trial</button>
-                    </div>
-                    <div class="col-lg-6 text-center text-lg-end mt-3 mt-lg-0"><img class="img-fluid" src="{{ asset('assets/images/dashboard_shot.png') }}"  alt="" width="100%" height="auto"/></div>
-                </div>
-                {{-- <div class="swiper">
-                    <div class="swiper-container swiper-shadow swiper-theme" data-swiper='{"slidesPerView":2,"breakpoints":{"640":{"slidesPerView":2,"spaceBetween":20},"768":{"slidesPerView":4,"spaceBetween":40},"992":{"slidesPerView":5,"spaceBetween":40},"1024":{"slidesPerView":4,"spaceBetween":50},"1025":{"slidesPerView":6,"spaceBetween":50}},"spaceBetween":10,"grabCursor":true,"pagination":{"el":".swiper-pagination","clickable":true},"loop":true,"freeMode":true,"autoplay":{"delay":2500,"disableOnInteraction":false}}'>
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide text-center"><img src="assets/img/logos/boldo.png" alt="" /></div>
-                            <div class="swiper-slide text-center"><img src="assets/img/logos/presto.png" alt="" /></div>
-                            <div class="swiper-slide text-center"><img src="assets/img/logos/boldo.png" alt="" /></div>
-                            <div class="swiper-slide text-center"><img src="assets/img/logos/presto.png" alt="" /></div>
-                            <div class="swiper-slide text-center"><img src="assets/img/logos/boldo.png" alt="" /></div>
-                            <div class="swiper-slide text-center"><img src="assets/img/logos/presto.png" alt="" /></div>
-                        </div>
-                    </div>
-                </div> --}}
-            </div><!-- end of .container-->
-        </section><!-- <section> close ============================-->
-        <!-- ============================================-->
 
-    </div>
-
-    {{-- {{ $slot }} --}}
+     {{ $slot }}
 
 </main><!-- ===============================================-->
 <!--    End of Main Content-->
