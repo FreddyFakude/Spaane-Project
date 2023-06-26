@@ -1,22 +1,36 @@
 <x-frontend.template>
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
     <section class="bg-dark text-center py-9">
         <div class="container">
-            <p class="text-light fs-1">About</p>
-            <div class="col-12 col-md-7 mx-auto">
-                <h1 class="text-white fs-lg-7 fs-md-4 fs-3 my-4">We love to make great things, things that matter.</h1>
-            </div>
-            <p class="w-md-50 text-light mx-auto">Funding handshake buyer business-to-business metrics iPad partnership. First mover advantage innovator success deployment non-disclosure.</p>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+            <h1 class="text-white fs-lg-7 fs-md-4 fs-3 my-4">Pricing</h1>
+            <p class="w-md-50 text-light mx-auto">The easier, The better!</p>
+            <div class="row gx-xl-7 mt-5 justify-content-md-center">
+              <div class="col-lg-5 bg-white p-5 rounded-3 h-auto">
+                {{-- <div class="block-header">
+                    <h3 class="block-title">Entry</h3>
+                    <h5 class="text-muted">1 - 29 employees</h5>
+                </div> --}}
+                <div class="block-content bg-gray-lighter mb-5">
+                    <div class="h1 font-w700">R45</div>
+                    <div class="h5 text-muted"><small>/month per employee</small></div>
+                </div>
+                <div class="block-content mb-5">
+                    <p><strong>Payslip</strong> Generation</p>
+                    <p><strong>Leave</strong> Management</p>
+                    <p><strong>Employee</strong> Self-service</p>
+                    <p><strong>2</strong> messages per employee every month</p>
+                    <p><strong>R1,50</strong> per extra message per employee</p>
+                </div>
+                <div class="block-content block-content-full bg-gray-lighter">
+                    <span class="btn btn-success text-black mb-3 w-75">Start 30 day Free trial</span>
+                </div>
+              </div> 
+          </div>
+    </section>
 
 
 
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
-    <section class="pb-0">
+ 
+    {{-- <section class="pb-0">
         <div class="container">
             <div class="gallery-wraper">
                 <div class="img-wraper"><img class="img-fluid" src="assets/img/gallery/1.png" alt="" /></div>
@@ -30,15 +44,12 @@
                 <h1 class="fs-lg-6 fs-md-4 fs-3 my-4">Handshake infographic mass market crowdfunding iteration.</h1>
                 <p class="fs-1">Conversion angel investor entrepreneur first mover advantage. Handshake infographic mass market crowdfunding iteration. Traction stock user experience deployment beta innovator incubator focus. Sales user experience branding growth hacking holy grail monetization conversion prototype stock network effects. Learning curve network effects return on investment bootstrapping business-to-consumer.</p>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+        </div>
+    </section> --}}
 
 
-
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
-    <section class="bg-dark">
+    
+    {{-- <section class="bg-dark">
         <div class="container">
             <p class="text-center text-light">Our numbers</p>
             <h1 class="text-center text-white w-lg-75 mx-auto fs-xl-6 fs-lg-4 fs-3">Handshake infographic mass market crowdfunding iteration.</h1>
@@ -56,15 +67,13 @@
                     <p class="text-light fs-2">Cool feature title</p>
                 </div>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+        </div>
+    </section> --}}
 
 
 
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
-    <section>
+  
+    {{-- <section>
         <div class="container">
             <div class="px-xl-8 px-md-5 px-3">
                 <p class="text-gray fs-1">Our team</p>
@@ -85,15 +94,11 @@
                     <p class="fs-1">General Manager</p>
                 </div>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+        </div>
+    </section> --}}
 
 
-
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
-    <section class="bg-dark">
+    {{-- <section class="bg-dark">
         <div class="container">
             <div class="px-xl-8 px-md-5 px-3">
                 <p class="text-light fs-1">Our values</p>
@@ -121,9 +126,9 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+        </div>
+    </section> --}}
+    
 
 
 </x-frontend.template>
