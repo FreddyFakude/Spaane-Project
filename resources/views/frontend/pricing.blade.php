@@ -1,7 +1,7 @@
 <x-frontend.template>
     <section class="bg-dark text-center py-9">
         <div class="container">
-            <h1 class="text-white fs-lg-7 fs-md-4 fs-3 my-4">Pricing</h1>
+            <h2 class="text-white fs-lg-7 fs-md-4 fs-3 my-4">Pricing</h2>
             <p class="w-md-50 text-light mx-auto">The easier, The better!</p>
             <div class="row gx-xl-7 mt-5 justify-content-md-center">
               <div class="col-lg-5 bg-white p-5 rounded-3 h-auto">
@@ -10,7 +10,7 @@
                     <h5 class="text-muted">1 - 29 employees</h5>
                 </div> --}}
                 <div class="block-content bg-gray-lighter mb-5">
-                    <div class="h1 font-w700">R45</div>
+                    <h1>R45</h1>
                     <div class="h5 text-muted"><small>/month per employee</small></div>
                 </div>
                 <div class="block-content mb-5">
@@ -21,7 +21,7 @@
                     <p><strong>R1,50</strong> per extra message per employee</p>
                 </div>
                 <div class="block-content block-content-full bg-gray-lighter">
-                    <span class="btn btn-success text-black mb-3 w-75">Start 30 day Free trial</span>
+                    <span class="btn btn-success text-black mb-3 w-75">Start your 30 day Free trial</span>
                 </div>
               </div> 
           </div>
