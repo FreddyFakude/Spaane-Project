@@ -12,10 +12,14 @@ class EmployeeRepository
     public function quickCreate(Company $company,  array $data, $status = Employee::STATUS['guest'])
     {
         $email  = !isset($data['email']) ? "email-{$data['mobile_number']}@unregistered.com" : $data['email'];
+        $firstName = !isset($data['first_name']) ? "Unregistered" : $data['first_name'];
+        $name = isset($data['name']) ? $data['name'] : $firstName;
+        $lastName  = !isset($data['last_name']) ? "Unregistered" : $data['last_name'];
+
        return Employee::create([
-            "name" =>  isset($data['name']) ? $data['name'] : $data['first_name'],
-            "first_name" => !isset($data['first_name']) ? "Unregistered" : $data['first_name'],
-            "last_name" => !isset($data['last_name']) ? "Unregistered" : $data['last_name'],
+            "name" => $name,
+            "first_name" => $firstName,
+            "last_name" => $lastName,
             "email" => $email,
             "mobile_number" => $data['mobile_number'],
             "marital_status" => '',
