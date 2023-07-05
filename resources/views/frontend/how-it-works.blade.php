@@ -3,11 +3,19 @@
     <!-- <section> begin ============================-->
     <section class="bg-dark text-center py-9">
         <div class="container">
-            <p class="text-light fs-1">About</p>
-            <div class="col-12 col-md-7 mx-auto">
-                <h1 class="text-white fs-lg-7 fs-md-4 fs-3 my-4">We love to make great things, things that matter.</h1>
+            <div class="row justify-content-md-center">
+                <div class="col-lg-8">
+                    <h1 class="fs-xl-5 fs-lg-4 fs-3 text-white">It's very simple!</h1>
+                    <ul class="my-xl-5 my-3 text-white">
+                    <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Start your Free Trial.</span></li>
+                    <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Add all your employees on your dashbaord.</span></li>
+                    <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Employee get's WhatsApp addition notification.</span></li>
+                    <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Setup pay scale for all employees.</span></li>
+                    <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Generate payslips instantly for pay cycle.</span></li>
+                    <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Employee access payslips up to last 3 months on WhatsApp.</span></li>
+                    </ul><button class="btn btn-success text-black mb-3 w-75">Start now</button>
+                </div>
             </div>
-            <p class="w-md-50 text-light mx-auto">Funding handshake buyer business-to-business metrics iPad partnership. First mover advantage innovator success deployment non-disclosure.</p>
         </div><!-- end of .container-->
     </section><!-- <section> close ============================-->
     <!-- ============================================-->
