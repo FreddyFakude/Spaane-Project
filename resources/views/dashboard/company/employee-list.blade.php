@@ -7,7 +7,7 @@
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
     <div class="content">
-        <div class="row py-20">
+        <div class="row py-20 mt-50">
 {{--            <div class="col-md-4 col-xl-4">--}}
 {{--                <div class="block">--}}
 {{--                    <ul class="nav nav-tabs shadow justify-content-around bg-light nav-tabs-block js-tabs p-10 mb-10" data-toggle="tabs" role="tablist" style="border-radius: 8px">--}}
