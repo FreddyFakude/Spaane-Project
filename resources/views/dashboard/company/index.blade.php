@@ -6,7 +6,7 @@
     <x-slot name="header">
         <x-dashboard.company.header></x-dashboard.company.header>
     </x-slot>
-    <div class="content">
+    <div class="content mt-50">
         <div class="row">
             <div class="col-md-9 offset-md-2">
                 @if(session()->has('talent-updated'))
