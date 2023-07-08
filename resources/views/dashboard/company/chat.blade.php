@@ -105,6 +105,7 @@
                             </div>
                             <div class="col-md-6">
                                 <x-dashboard.employee-details :employee="$employee"></x-dashboard.employee-details>
+{{--                                <button>Send Invite</button>--}}
                             </div>
                         </div>
                     </div>

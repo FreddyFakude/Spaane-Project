@@ -77,13 +77,13 @@ class PayslipPDFGenerator
 
        $file =  $this->sendFileToAPI($html, $filenameWithoutFileExtension);
 
-        sleep(2);
+//        sleep(2);
 
         Storage::disk('local')->put($filePathWithFileExtension,  $file);
         $this->saveFileToDB($employee, $filenameWithoutFileExtension, $filePathWithFileExtension, $payslip);
 
-        $response =   new BinaryFileResponse("storage/payslips/" . $filenameWithoutFileExtension .'.pdf');
-        $response->headers->set('Content-Type', 'application/pdf');
+//        $response =   new BinaryFileResponse("storage/payslips/" . $filenameWithoutFileExtension .'.pdf');
+//        $response->headers->set('Content-Type', 'application/pdf');
         return $filePathWithFileExtension;
     }
 
