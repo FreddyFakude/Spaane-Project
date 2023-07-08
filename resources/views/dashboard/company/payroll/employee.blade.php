@@ -64,7 +64,7 @@
                         <form action="{{ route('dashboard.business.payroll.generate.all') }}" method="post">
                             <input type="hidden" name="date" value="{{ $date }}">
                             @csrf
-                            <button type="submit" class="btn btn-rounded btn-hero btn-lg btn-success mr-2">Generate payslips for all</button>
+                            <button type="submit" class="btn btn-rounded btn-hero btn-lg btn-success mr-2" disabled>Generate payslips for all</button>
                         </form>
                     </div>
                 </div>
