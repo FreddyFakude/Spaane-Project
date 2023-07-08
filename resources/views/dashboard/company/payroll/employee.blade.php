@@ -39,6 +39,17 @@
                         </div>
                     </div>
                 @endif
+                @if(session()->has('error'))
+                    <div>
+                        <div class="alert alert-danger alert-dismissable w-100" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h3 class="alert-heading font-size-h4 font-w400">Opps</h3>
+                            <p class="mb-0">{{ session()->get('error') }}</p>
+                        </div>
+                    </div>
+                @endif
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -91,7 +102,7 @@
                                                 @if(!$employee->payslips->where('date', $date)->first())
                                                     @csrf
                                                     <input type="hidden" name="date" value="{{ $date }}">
-                                                    <button type="submit" x-on:click="employeeId = {{ $employee->id }}" class="btn btn-rounded btn-outline-success mr-2" >Generate Payslip</button>
+                                                    <button type="submit" x-on:click="employeeId = {{ $employee->id }}" class="btn btn-rounded btn-outline-success mr-2">Generate Payslip</button>
                                                 @endif
                                                 @if($employee->payslips->where('date', $date)->first()?->reference_number)
                                                     <td class="d-none d-sm-table-cell">
@@ -129,6 +140,12 @@
                                                     <input type="text" class="form-control" name="deductions[{{ $deduction->id }}]" value="{{ $deduction->amount }}">
                                                 </td>
                                             @endforeach
+                                            @foreach($employee->otherDeductions as $deduction)
+                                                <td class="d-none d-sm-table-cell">
+                                                    <label for="side-overlay-profile-email">{{ $deduction->name }}</label>
+                                                    <input type="text" class="form-control" name="deductions[{{ $deduction->id }}]" value="{{ $deduction->amount }}">
+                                                </td>
+                                            @endforeach
                                         </tr>
                                         <tr>
                                             <td>
@@ -137,7 +154,7 @@
                                             @foreach(\auth()->user()->company->remunerationContributions as $contribution)
                                                 <td class="d-none d-sm-table-cell">
                                                     <label for="side-overlay-profile-email">{{ $contribution->name }}</label>
-                                                    <input type="text" class="form-control" name="contributions[{{ $contribution->id }}]" value="{{ ($employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount')) * 1/100 }}">
+                                                    <input type="text" class="form-control" name="contributions[{{ $contribution->id }}]" value="{{ ($employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount')) * $contribution->amount/100 }}">
                                                 </td>
                                             @endforeach
                                         </tr>

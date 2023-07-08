@@ -6,6 +6,7 @@ namespace App\Services\PDF;
 
 use App\Models\CompanyPayslip;
 use App\Models\Employee;
+use App\Services\EmployeeRemunerationAndDeductionService;
 use App\Services\TaxCalculations\PAYECalculator;
 use App\Services\TaxCalculations\UIFCalculator;
 use Dompdf\Dompdf;
@@ -60,15 +61,18 @@ class PayslipPDFGenerator
 
     private function createPDFSaveToDBAndDisk($filePathWithFileExtension, $filenameWithoutFileExtension, $employee, $payslip)
     {
-        $this->dompdf->setPaper('A4', 'landscape');
         $html = view('pdfs.payslip-template', [
             'employee' => $employee,
             'earnings' => $employee->remunerations,
             'deductions' => $employee->deductions,
+            'otherDeductions' => $employee->otherDeductions, //TODO: change to 'otherDeductions
             'otherEarnings' => $employee->otherEarnings,
             'payslip' => $payslip,
             'paye' => (new PAYECalculator($employee))->calculatePaye(),
             'uif' => (new UIFCalculator($employee))->calculateUIF(),
+            'totalDeductions' => (new EmployeeRemunerationAndDeductionService)->totalDeductions($employee),
+            'totalEarnings' => (new EmployeeRemunerationAndDeductionService)->totalEarnings($employee),
+            'companyContributions' => $employee->company->remunerationContributions,
         ])->render();
 
        $file =  $this->sendFileToAPI($html, $filenameWithoutFileExtension);

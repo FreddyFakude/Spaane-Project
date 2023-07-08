@@ -34,6 +34,8 @@ return new class extends Migration
             $table->string('marital_status')->nullable();
             $table->integer('number_of_children')->default(0);
             $table->string('role')->default('Unknown');
+            $table->date('date_joined')->nullable();
+            $table->string('pay_period')->default('Monthly');
             $table->string('mobile_number')->unique();
             $table->string('driving_license_number')->nullable();
             $table->string('tax_number')->nullable();

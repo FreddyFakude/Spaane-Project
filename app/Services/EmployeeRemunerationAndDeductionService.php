@@ -47,4 +47,19 @@ class EmployeeRemunerationAndDeductionService
 
         return true;
     }
+
+    public function totalEarnings(Employee $employee)
+    {
+        return $employee->remunerations->sum('amount') + $employee->otherEarnings->sum('amount');
+    }
+
+    public function totalOtherEarnings(Employee $employee)
+    {
+       return $employee->otherEarnings->sum('amount');
+    }
+
+    public function totalDeductions(Employee $employee)
+    {
+        return $employee->deductions->sum('amount') + $employee->otherDeductions->sum('amount');
+    }
 }

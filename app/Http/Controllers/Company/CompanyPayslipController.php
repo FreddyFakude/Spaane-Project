@@ -78,6 +78,9 @@ class CompanyPayslipController extends Controller
 
     public function downloadPayslip(Employee $employee, CompanyPayslip $payslip)
     {
+        if (!$employee->bankAccount){
+            return back()->with('error', 'Employee does not have a bank account');
+        }
         return (new PayslipPDFGenerator())->downloadPDF($employee, $payslip, true);
     }
 }
