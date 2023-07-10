@@ -88,15 +88,16 @@ class EmployeeController extends Controller
             "employment_start_date"=>"nullable|date",
             "position"=>"required",
             "organisation_name"=> "nullable",
-            "skills.*"=>"nullable|integer",
-            "qualification_end_date"=>"nullable|date",
-            "qualification"=>"nullable",
+            "skills.*"=>"required|integer",
+            "qualification_end_date"=>"required|date",
+            "qualification"=>"required",
             "type"=> ["required",  Rule::in(\App\Models\Employee::ContractType)],
         ]);
 
         $education = $this->employeeRepository->updateOrInsertEmployeeEducation($employee, $validated);
         $experience = $this->employeeRepository->updateOrInsertEmployeeExperience($employee, $validated);
         $skills = $this->employeeRepository->updateOrInsertEmployeeSkills($employee, $validated);
+
         return back()->with("success", "Profile updated");
     }
 
