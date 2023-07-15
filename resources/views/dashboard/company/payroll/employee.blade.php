@@ -91,10 +91,10 @@
                                                 <i class="fa fa-angle-right"></i>
                                             </td>
                                             <td class="font-w600"><a href="{{ route('dashboard.company.chat.new', [$employee]) }}">{{ $employee->first_name }} {{ $employee->last_name }}</a></td>
-                                            <td class="font-w600">R{{ $employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount') }}</td>
-                                            <td class="font-w600">-R{{ $employee->remuneration?->deductions->sum('amount') }}</td>
+                                            <td class="font-w600">R{{ (new App\Services\EmployeeRemunerationAndDeductionService)->totalEarnings($employee)  }}</td>
+                                            <td class="font-w600">-R{{ (new App\Services\EmployeeRemunerationAndDeductionService)->totalDeductions($employee) }}</td>
 {{--                                            <td class="font-w600">-R1000</td>--}}
-                                            <td class="font-w600">R{{ $employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount') - $employee->remuneration?->deductions->sum('amount') }}</td>
+                                            <td class="font-w600">R{{ (new App\Services\EmployeeRemunerationAndDeductionService)->netPay($employee) }}</td>
                                             <td class="d-none d-sm-table-cell">
                                                 <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()?->reference_number }} </em>
                                             </td>
@@ -136,8 +136,8 @@
                                             </td>
                                             @foreach($employee->deductions as $deduction)
                                                 <td class="d-none d-sm-table-cell">
-                                                    <label for="side-overlay-profile-email">{{ $deduction->name }}</label>
-                                                    <input type="text" class="form-control" name="deductions[{{ $deduction->id }}]" value="{{ $deduction->amount }}">
+                                                    <label for="side-overlay-profile-email">{{ $deduction->name }} {{ $deduction->type == 'PERCENTAGE' ? "(" .  $deduction->amount . "% )" : '' }}</label>
+                                                    <input type="text" class="form-control" name="deductions[{{ $deduction->id }}]" value="{{  $deduction->type == 'FIXED' ?  $deduction->amount : (new App\Services\EmployeeRemunerationAndDeductionService())->totalEarnings($employee) * ($deduction->amount/100) }}">
                                                 </td>
                                             @endforeach
                                             @foreach($employee->otherDeductions as $deduction)

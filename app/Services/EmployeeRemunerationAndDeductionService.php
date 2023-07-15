@@ -60,6 +60,16 @@ class EmployeeRemunerationAndDeductionService
 
     public function totalDeductions(Employee $employee)
     {
-        return $employee->deductions->sum('amount') + $employee->otherDeductions->sum('amount');
+        $fixedDeductions = $employee->deductions->where('type', 'FIXED')->sum('amount');
+        $percentageDeductions = $employee->deductions->where('type', 'PERCENTAGE')->sum('amount');
+        $employeeOtherDeductions = $employee->otherDeductions->where('type', 'FIXED')->sum('amount');
+        $employeeOtherPercentageDeductions = $employee->otherDeductions->where('type', 'PERCENTAGE')->sum('amount');
+        $totalPercentage = $percentageDeductions + $employeeOtherPercentageDeductions;
+        return ($fixedDeductions + $employeeOtherDeductions) + (($totalPercentage/100) * $this->totalEarnings($employee));
+    }
+
+    public function netPay(Employee $employee)
+    {
+        return $this->totalEarnings($employee) - $this->totalDeductions($employee);
     }
 }
