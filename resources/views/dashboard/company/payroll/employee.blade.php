@@ -154,7 +154,7 @@
                                             @foreach(\auth()->user()->company->remunerationContributions as $contribution)
                                                 <td class="d-none d-sm-table-cell">
                                                     <label for="side-overlay-profile-email">{{ $contribution->name }}</label>
-                                                    <input type="text" class="form-control" name="contributions[{{ $contribution->id }}]" value="{{ ($employee->remunerations?->sum('amount') + $employee->otherEarnings?->sum('amount')) * $contribution->amount/100 }}">
+                                                    <input type="text" class="form-control" name="contributions[{{ $contribution->id }}]" value="{{ (new App\Services\CompanyContributionCalculator())->calculatorContribution($employee, $contribution)  }}">
                                                 </td>
                                             @endforeach
                                         </tr>

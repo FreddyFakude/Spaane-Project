@@ -65,7 +65,7 @@ class EmployeeController extends Controller
         $remunerations = (new EmployeeRemunerationAndDeductionService())->processNewEmployee($company, $employee);
         $email = Mail::to($validated['email'])->queue(new EmployeeInvite($validated['first_name'], Auth::guard('company')->user()));
         $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.new-profile.added');
-        $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, Auth::user()->company->name));
+        $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, Auth::user()->company->name, route('employee.login.form')));
 
 
         session()->flash('talent-added');
