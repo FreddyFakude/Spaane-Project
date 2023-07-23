@@ -1,22 +1,19 @@
 <x-frontend.template>
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
+   
     <section class="bg-dark text-center py-9">
         <div class="container">
-            <p class="text-light fs-1">About</p>
+            <p class="text-light fs-1">Feel Free to contact us at</p>
             <div class="col-12 col-md-7 mx-auto">
-                <h1 class="text-white fs-lg-7 fs-md-4 fs-3 my-4">We love to make great things, things that matter.</h1>
+                <h1 class="text-white fs-lg-7 fs-md-4 fs-3 my-4">remmone@spaane.com</h1>
             </div>
-            <p class="w-md-50 text-light mx-auto">Funding handshake buyer business-to-business metrics iPad partnership. First mover advantage innovator success deployment non-disclosure.</p>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+            <p class="w-md-50 text-light mx-auto">+27 83 870 2353</p>
+        </div>
+    </section>
 
 
 
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
-    <section class="pb-0">
+   
+    {{-- <section class="pb-0">
         <div class="container">
             <div class="gallery-wraper">
                 <div class="img-wraper"><img class="img-fluid" src="assets/img/gallery/1.png" alt="" /></div>
@@ -30,15 +27,13 @@
                 <h1 class="fs-lg-6 fs-md-4 fs-3 my-4">Handshake infographic mass market crowdfunding iteration.</h1>
                 <p class="fs-1">Conversion angel investor entrepreneur first mover advantage. Handshake infographic mass market crowdfunding iteration. Traction stock user experience deployment beta innovator incubator focus. Sales user experience branding growth hacking holy grail monetization conversion prototype stock network effects. Learning curve network effects return on investment bootstrapping business-to-consumer.</p>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+        </div>
+    </section> --}}
 
 
 
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
-    <section class="bg-dark">
+
+    {{-- <section class="bg-dark">
         <div class="container">
             <p class="text-center text-light">Our numbers</p>
             <h1 class="text-center text-white w-lg-75 mx-auto fs-xl-6 fs-lg-4 fs-3">Handshake infographic mass market crowdfunding iteration.</h1>
@@ -56,15 +51,13 @@
                     <p class="text-light fs-2">Cool feature title</p>
                 </div>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+        </div>
+    </section> --}}
 
 
 
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
-    <section>
+   
+    {{-- <section>
         <div class="container">
             <div class="px-xl-8 px-md-5 px-3">
                 <p class="text-gray fs-1">Our team</p>
@@ -85,15 +78,12 @@
                     <p class="fs-1">General Manager</p>
                 </div>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+        </div>
+    </section> --}}
 
 
-
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
-    <section class="bg-dark">
+    
+    {{-- <section class="bg-dark">
         <div class="container">
             <div class="px-xl-8 px-md-5 px-3">
                 <p class="text-light fs-1">Our values</p>
@@ -121,9 +111,7 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
-    <!-- ============================================-->
-
+        </div>
+    </section> --}}
 
 </x-frontend.template>

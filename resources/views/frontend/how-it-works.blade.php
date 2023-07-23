@@ -12,6 +12,7 @@
                     <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Employee get's WhatsApp addition notification.</span></li>
                     <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Setup pay scale for all employees.</span></li>
                     <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Generate payslips instantly for pay cycle.</span></li>
+                    <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Employee sends Hi to 087 250 0129 on WhatsApp.</span></li>
                     <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Employee access payslips up to last 3 months on WhatsApp.</span></li>
                     </ul><button class="btn btn-success text-black mb-3 w-75">Start now</button>
                 </div>
@@ -22,7 +23,7 @@
 
 
 
-    <!-- ============================================-->
+    {{-- <!-- ============================================-->
     <!-- <section> begin ============================-->
     <section class="pb-0">
         <div class="container">
@@ -39,12 +40,10 @@
                 <p class="fs-1">Conversion angel investor entrepreneur first mover advantage. Handshake infographic mass market crowdfunding iteration. Traction stock user experience deployment beta innovator incubator focus. Sales user experience branding growth hacking holy grail monetization conversion prototype stock network effects. Learning curve network effects return on investment bootstrapping business-to-consumer.</p>
             </div>
         </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+    </section> --}}
 
 
-
-    <!-- ============================================-->
+    {{-- <!-- ============================================-->
     <!-- <section> begin ============================-->
     <section class="bg-dark">
         <div class="container">
@@ -66,11 +65,11 @@
             </div>
         </div><!-- end of .container-->
     </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+    <!-- ============================================--> --}}
 
 
 
-    <!-- ============================================-->
+    {{-- <!-- ============================================-->
     <!-- <section> begin ============================-->
     <section>
         <div class="container">
@@ -95,11 +94,11 @@
             </div>
         </div><!-- end of .container-->
     </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+    <!-- ============================================--> --}}
 
 
 
-    <!-- ============================================-->
+    {{-- <!-- ============================================-->
     <!-- <section> begin ============================-->
     <section class="bg-dark">
         <div class="container">
@@ -131,7 +130,7 @@
             </div>
         </div><!-- end of .container-->
     </section><!-- <section> close ============================-->
-    <!-- ============================================-->
+    <!-- ============================================--> --}}
 
 
 </x-frontend.template>
