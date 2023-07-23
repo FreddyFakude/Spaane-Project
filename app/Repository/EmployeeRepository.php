@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Models\Chat;
 use App\Models\Company;
 use App\Models\CompanyAccountAdministrator;
 use App\Models\Employee;
@@ -16,7 +17,7 @@ class EmployeeRepository
         $name = isset($data['name']) ? $data['name'] : $firstName;
         $lastName  = !isset($data['last_name']) ? "Unregistered" : $data['last_name'];
 
-       return Employee::create([
+       $employee =  Employee::create([
             "name" => $name,
             "first_name" => $firstName,
             "last_name" => $lastName,
@@ -30,6 +31,8 @@ class EmployeeRepository
             "role" => !isset($data['position']) ? "employee" : $data['position'],
             "status" => $status,
        ]);
+       $chat = (new ChatRepository())->findOrCreateChatWithEmployee($employee);
+        return $employee;
     }
     public function updateOrcreate(Employee $employee, array $data)
     {

@@ -3,12 +3,13 @@
 namespace App\Services\TaxCalculations;
 
 use App\Models\Employee;
+use App\Services\EmployeeRemunerationAndDeductionService;
 
 class UIFCalculator {
     private $salary;
 
     public function __construct(Employee $employee) {
-        $this->salary = $employee->remuneration?->basic_salary ?? 0;
+        $this->salary =  (new EmployeeRemunerationAndDeductionService())->totalEarnings($employee);;
     }
 
     public function calculateUIF() {

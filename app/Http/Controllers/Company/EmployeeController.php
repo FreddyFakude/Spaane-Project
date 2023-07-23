@@ -65,7 +65,7 @@ class EmployeeController extends Controller
         $remunerations = (new EmployeeRemunerationAndDeductionService())->processNewEmployee($company, $employee);
         $email = Mail::to($validated['email'])->queue(new EmployeeInvite($validated['first_name'], Auth::guard('company')->user()));
         $message = $this->appTemplateMessageRepository->getMessageBySlug('employee.new-profile.added');
-        $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, Auth::user()->company->name));
+        $this->chatManager->sendWhatsAppMessageToEmployee($employee, sprintf($message->content, Auth::user()->company->name, route('employee.login.form')));
 
 
         session()->flash('talent-added');
@@ -88,15 +88,16 @@ class EmployeeController extends Controller
             "employment_start_date"=>"nullable|date",
             "position"=>"required",
             "organisation_name"=> "nullable",
-            "skills.*"=>"nullable|integer",
-            "qualification_end_date"=>"nullable|date",
-            "qualification"=>"nullable",
+            "skills.*"=>"required|integer",
+            "qualification_end_date"=>"required|date",
+            "qualification"=>"required",
             "type"=> ["required",  Rule::in(\App\Models\Employee::ContractType)],
         ]);
 
         $education = $this->employeeRepository->updateOrInsertEmployeeEducation($employee, $validated);
         $experience = $this->employeeRepository->updateOrInsertEmployeeExperience($employee, $validated);
         $skills = $this->employeeRepository->updateOrInsertEmployeeSkills($employee, $validated);
+
         return back()->with("success", "Profile updated");
     }
 

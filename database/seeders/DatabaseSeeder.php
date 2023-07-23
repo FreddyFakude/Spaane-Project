@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             RemunerationListSeeder::class,
             CompanyRemunerationListSeeder::class,
             EmployeeRemunerationSeeder::class,
+            ChatSeeder::class,
         ]);
     }
 }
