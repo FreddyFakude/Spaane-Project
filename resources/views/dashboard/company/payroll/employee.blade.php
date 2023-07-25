@@ -64,7 +64,7 @@
                         <form action="{{ route('dashboard.business.payroll.generate.all') }}" method="post">
                             <input type="hidden" name="date" value="{{ $date }}">
                             @csrf
-                            <button type="submit" class="btn btn-rounded btn-hero btn-lg btn-success mr-2" disabled>Generate payslips for all</button>
+                            <button type="submit" class="btn btn-rounded btn-hero btn-lg btn-success mr-2">Generate payslips for all</button>
                         </form>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                                                 @endif
                                                 @if($employee->payslips->where('date', $date)->first()?->reference_number)
                                                     <td class="d-none d-sm-table-cell">
-                                                        <a href="{{ route('dashboard.business.payroll.download', [$employee->hash, $employee->payslips->where('date', $date)->first()->hash]) }}" class="btn btn-rounded btn-outline-warning" target="_blank">View</a>
+                                                        <a href="{{ route('dashboard.business.payroll.download', [$employee->hash, $employee->payslips->where('date', $date)->first()->hash]) }}" class="btn btn-rounded btn-outline-warning" target="_blank">View Payslip</a>
                                                     </td>
                                                 @endif
                                             </td>
@@ -176,10 +176,10 @@
 {{--                                                <td class="d-none d-sm-table-cell">--}}
 {{--                                                    <em class="text-muted">  {{ $employee->payslips->where('date', $date)->first()->reference_number }} </em>--}}
 {{--                                                </td>--}}
-                                                <td class="d-none d-sm-table-cell">
+                                                {{-- <td class="d-none d-sm-table-cell">
                                                     <label for="side-overlay-profile-email">Download Payslip</label>
                                                     <a href="{{ route('dashboard.business.payroll.download', [$employee->hash, $employee->payslips->where('date', $date)->first()->hash]) }}" class="btn btn-primary" target="_blank">View</a>
-                                                </td>
+                                                </td> --}}
                                             @endif
                                         </tr>
                                     </tbody>

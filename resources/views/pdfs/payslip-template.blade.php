@@ -128,14 +128,14 @@
                     <div style="display: flex; justify-content: space-between;margin-bottom: 5px">
                         <div>{{ $earning->name }}</div>
                         <div></div>
-                        <div>{{ $earning->amount }}</div>
+                        <div>R{{ $earning->amount }}</div>
                     </div>
                 @endforeach
                 @foreach($otherEarnings as $earning)
                     <div style="display: flex; justify-content: space-between;margin-bottom: 5px">
                         <div>{{ $earning->name }}</div>
                         <div></div>
-                        <div>{{ $earning->amount }}</div>
+                        <div>R{{ $earning->amount }}</div>
                     </div>
                 @endforeach
             </td>
@@ -144,14 +144,14 @@
                     <div style="display: flex; justify-content: space-between;margin-bottom: 5px">
                         <div>{{ $deduction->name }}</div>
                         <div></div>
-                        <div>{{ ($deduction->type == 'FIXED') ?  $deduction->amount : ($deduction->amount /100) * $totalEarnings }}</div>
+                        <div>R{{ ($deduction->type == 'FIXED') ?  $deduction->amount : ($deduction->amount /100) * $totalEarnings }}</div>
                     </div>
                 @endforeach
                 @foreach($otherDeductions as $deduction)
                     <div style="display: flex; justify-content: space-between;margin-bottom: 5px">
                         <div>{{ $deduction->name }}</div>
                         <div></div>
-                        <div>{{ $deduction->amount }}</div>
+                        <div>R{{ $deduction->amount }}</div>
                     </div>
                 @endforeach
             </td>
@@ -162,13 +162,13 @@
             <td colspan="1">
                 <div style="display: flex; justify-content: space-between;margin-bottom: 5px;">
                     <div><b>Total Earnings</b></div>
-                    <div>{{ $totalEarnings }}</div>
+                    <div>R{{ $totalEarnings }}</div>
                 </div>
             </td>
             <td colspan="1">
                 <div style="display: flex; justify-content: space-between;margin-bottom: 5px;">
                     <div><b>Total Deductions</b></div>
-                    <div>{{ $totalDeductions }}</div>
+                    <div>R{{ $totalDeductions }}</div>
                 </div>
             </td>
         </tr>
@@ -182,14 +182,14 @@
                     <div style="display: flex; justify-content: space-between;margin-bottom: 5px">
                         <div>{{ $companyContribution->name }}</div>
                         <div></div>
-                        <div>({{ $companyContribution->percentage }} %) {{ ($companyContribution->percentage /100) * $totalEarnings}}</div>
+                        <div>R({{ $companyContribution->percentage }} %) {{ ($companyContribution->percentage /100) * $totalEarnings}}</div>
                     </div>
                  @endforeach
             </td>
             <td colspan="1">
                 <div style="display: flex; justify-content: space-between;margin-bottom: 5px;">
                     <div><b>Net Salary</b></div>
-                    <div>{{ $totalEarnings - $totalDeductions }}</div>
+                    <div>R{{ $totalEarnings - $totalDeductions }}</div>
                 </div>
             </td>
         </tr>

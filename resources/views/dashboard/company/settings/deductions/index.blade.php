@@ -107,7 +107,7 @@
                                         <form action="{{ route('dashboard.company.deductions.destroy', [$deduction->hash]) }}" method="post">
                                             @method('DELETE')
                                             @csrf
-                                            <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" title="" data-original-title="Edit">
+                                            <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" title="" data-original-title="delete">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </form>

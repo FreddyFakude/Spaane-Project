@@ -28,8 +28,8 @@
                         </button>
                     </div>
                     <div>
-                        <button type="button" class="btn-lg btn-primary mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
-                        <button class="btn-lg btn-danger mr-2">Remove  Employee</button>
+                        <button type="button" class="btn btn-rounded btn-hero btn-lg btn-success mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
+                        <button class="btn btn-rounded btn-hero btn-lg btn-danger mr-2">Remove  Employee</button>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 <table class="table table-striped table-vcenter active js-table-checkable js-table-checkable-enabled tab-pane" id="btabs-internal">
                     <thead>
                     <tr>
-                        <th class="text-center" style="width: 70px;">
+                        <th class="text-center" style="width: 5%;">
                             <label class="css-control css-control-primary css-checkbox py-0">
                                 <input type="checkbox" class="css-control-input" id="check-all" name="check-all">
                                 <span class="css-control-indicator"></span>
@@ -70,9 +70,9 @@
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Department</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Direct Manger</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Contract type</th>
-                        <th class="d-none d-sm-table-cell" style="width: 10%;">Total Leave</th>
+                        {{-- <th class="d-none d-sm-table-cell" style="width: 10%;">Total Leave</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Absent Days</th>
-                        <th class="d-none d-sm-table-cell" style="width: 10%;">WhatsApp</th>
+                        <th class="d-none d-sm-table-cell" style="width: 10%;">WhatsApp</th> --}}
                     </tr>
                     </thead>
                     <tbody>
@@ -102,15 +102,15 @@
                                     <td class="d-none d-sm-table-cell">
                                         <em class="text-muted"> {{ $employee->type }} </em>
                                     </td>
-                                    <td class="d-none d-sm-table-cell">
-    {{--                                    <em class="text-muted"> {{ $employee->current_leave_days}} days </em>--}}
+                                    {{-- <td class="d-none d-sm-table-cell">
+                                       <em class="text-muted"> {{ $employee->current_leave_days}} days </em>
                                     </td>
                                     <td class="d-none d-sm-table-cell">
                                         <em class="text-muted"> 5 days</em>
                                     </td>
                                     <td class="d-none d-sm-table-cell">
                                         <em class="text-muted"> Active</em>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         @else
@@ -212,9 +212,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-rounded btn-danger min-width-125 mb-10" data-dismiss="modal">Cancel</button>
                         @csrf
-                    <button type="submit" class="btn btn-success">Add</button>
+                    <button type="submit" class="btn btn-rounded btn-success min-width-125 mb-10">Add</button>
                 </div>
                 </form>
             </div>

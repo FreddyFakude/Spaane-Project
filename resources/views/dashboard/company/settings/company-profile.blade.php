@@ -93,7 +93,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="pl-0" for="example-text-input">Company Phone number*</label>
+                                <label class="pl-0" for="example-text-input">Representative/Admin Phone number*</label>
                                 <input type="tel" class="form-control"  name="company_phone_number" value="{{ $company?->phone_number }}" placeholder="0788129192">
                             </div>
                         </div>

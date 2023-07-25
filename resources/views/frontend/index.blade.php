@@ -6,14 +6,16 @@
         <!-- <section> begin ============================-->
         <section>
             <div class="container">
-                <div class="row align-items-center items-push py-lg-8 py-6">
-                    <div class="col-lg-5 text-center text-lg-start">
-                        <h1 class="text-white fs-5 fs-xl-6">Send payslips. Manage leave all via Whatsapp.</h1>
-                        <p class="text-white py-lg-3 py-2">Instantly send payslips, allocate leave, and share critical information to your employees using WhatsApp.</p>
-                        <div class="d-sm-flex align-items-center gap-3"><button class="btn btn-success text-black mb-3 w-75">Start your 30 day Free Trial</button>
+                <div class="row justify-content-center align-items-center pt-lg-8 pt-6">
+                    <div class="col-lg-6 text-center text-lg-start">
+                        <h1 class="text-white text-center fs-5 fs-xl-6">Send payslips. Manage leave all via Whatsapp.</h1>
+                        <p class="text-white text-center py-lg-3 py-2">Instantly send payslips, allocate leave, and share critical information to your employees using WhatsApp.</p>
+                        <div class="text-center"><button class="btn btn-success text-black mb-3 w-75">Start your 30 day Free Trial</button>
                         </div>
                     </div>
-                    <div class="col-lg-7 text-center text-lg-end mt-3 mt-lg-0"><img class="img-fluid shadow-lg p-3 mb-5 bg-dark -strong" src="{{ asset('assets/images/dashboard_shot.png') }}"  alt="" width="100%" height="auto"/></div>
+                </div>
+                <div class="row align-items-center items-push">
+                    <div class="col-lg-12 text-center text-lg-end mt-3 mt-lg-0"><img class="img-fluid shadow-lg p-3 mb-5 bg-dark -strong" src="{{ asset('assets/images/dashboard_shot.png') }}"  alt="" width="100%" height="auto"/></div>
                     </div>
                 </div><!-- end of .container-->
         </section><!-- <section> close ============================-->

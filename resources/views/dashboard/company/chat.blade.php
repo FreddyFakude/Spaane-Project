@@ -24,16 +24,16 @@
                         <a class="nav-link" href="#wizard-simple2-step2" data-toggle="tab">2. Personal details</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-simple2-step3" data-toggle="tab">3. Earning</a>
+                        <a class="nav-link" href="#wizard-simple2-step3" data-toggle="tab">3. Earnings</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-simple2-step4" data-toggle="tab">4. Education and employment history</a>
+                        <a class="nav-link" href="#wizard-simple2-step4" data-toggle="tab">4. Education and employment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#wizard-simple2-step5" data-toggle="tab">5. Leave policy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#wizard-simple2-step6" data-toggle="tab">4. Other</a>
+                        <a class="nav-link" href="#wizard-simple2-step6" data-toggle="tab">4. Banking details</a>
                     </li>
                 </ul>
                 <!-- END Step Tabs -->
@@ -320,7 +320,7 @@
                                     <div class="col-md-8">
                                         @csrf
                                         <div class="form-group">
-                                            <button class="btn btn-primary">Update</button>
+                                            <button class="btn btn-rounded btn-hero btn-success">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -356,7 +356,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group form-inline">
-                                                <button class="btn btn-primary" type="button" @click="addEmployeeEarningAmount('{{ str_replace(' ', '-', strtolower($remuneration->name)) }}', {{ $remuneration->id }})">Update</button>
+                                                <button class="btn btn-rounded btn-success min-width-125 mb-10" type="button" @click="addEmployeeEarningAmount('{{ str_replace(' ', '-', strtolower($remuneration->name)) }}', {{ $remuneration->id }})">Update</button>
                                             </div>
                                         </div>
                                     </div>
@@ -373,7 +373,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group form-inline">
-                                            <button class="btn btn-primary" type="button" @click="updateEmployeeOtherEarning(earning.name.replaceAll(' ', '-'), earning.id)">Update</button>
+                                            <button class="btn btn-rounded btn-success min-width-125 mb-10" type="button" @click="updateEmployeeOtherEarning(earning.name.replaceAll(' ', '-'), earning.id)">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -393,7 +393,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <button class="btn btn-primary" type="button" @click="addEmployeeOtherEarning">Add</button>
+                                            <button class="btn btn-rounded btn-outline-success min-width-125 mb-10" type="button" @click="addEmployeeOtherEarning">Add</button>
                                         </div>
                                     </div>
                                 </div>
@@ -416,7 +416,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <button class="btn btn-primary" type="button">Update</button>
+                                                <button class="btn btn-rounded btn-success min-width-125 mb-10" type="button">Update</button>
                                             </div>
                                         </div>
                                     </div>
@@ -432,7 +432,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group form-inline">
-                                            <button class="btn btn-primary" type="button" @click="updateEmployeeDeduction(deduction.name.replaceAll(' ', '-'), deduction.id)">Update</button>
+                                            <button class="btn btn-rounded btn-success min-width-125 mb-10" type="button" @click="updateEmployeeDeduction(deduction.name.replaceAll(' ', '-'), deduction.id)">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -452,7 +452,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <button class="btn btn-primary" type="button" @click="addEmployeeDeduction">Add</button>
+                                            <button class="btn btn-rounded btn-outline-success min-width-125 mb-10" type="button" @click="addEmployeeDeduction">Add</button>
                                         </div>
                                     </div>
                                 </div>
@@ -507,12 +507,12 @@
                                             <input type="text" class="form-control" id="example-text-input" name="position" value="{{ $employee->professional_experience?->role }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    {{-- <div class="col-md-2">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Organisation</label>
                                             <input type="text"  class="form-control"  name="organisation_name" value="{{ Auth::user()->company->name }}">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="my-30">
                                     <hr>
@@ -567,7 +567,7 @@
                                     <div class="col-md-8">
                                         @csrf
                                         <div class="form-group">
-                                            <button class="btn btn-primary">Update</button>
+                                            <button class="btn btn-rounded btn-hero btn-success">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -661,7 +661,7 @@
                                     <div class="col-md-8">
                                         @csrf
                                         <div class="form-group">
-                                            <button class="btn btn-primary">Update</button>
+                                            <button class="btn btn-rounded btn-hero btn-success">Update</button>
                                         </div>
                                     </div>
                                 </div>
