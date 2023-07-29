@@ -35,7 +35,7 @@
             </div>
             <div class="block">
                 <div class="block-header block-header-default">
-                    <h3 class="block-title">Company Contribution</h3>
+                    <h3 class="block-title">Leave Policy</h3>
                 </div>
                 <div class="block-content">
                     <div class="row">

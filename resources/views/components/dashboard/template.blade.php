@@ -140,6 +140,15 @@
         border-radius: 4px;
     }
 
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1033;
+        width: 60%;
+    }
+
 </style>
 <!-- Codebase Core JS -->
 <script src="{{ asset('assets/custom/js/core/jquery.min.js')}}"></script>

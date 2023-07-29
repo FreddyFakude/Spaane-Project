@@ -29,6 +29,11 @@
                 @endif
             </div>
             <div class="col-10">
+                <div class="content-header p-0 ml-0 mr-0" style="margin-top: -13px">
+                    <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="sidebar_toggle">
+                        <i class="fa fa-navicon"></i>
+                    </button>
+                </div>
                 <form action="{{ route('dashboard.company.chats.bulk-messages.send')  }}" method="post">
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-content">
