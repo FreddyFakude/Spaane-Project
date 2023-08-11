@@ -52,7 +52,8 @@ class CompanyRemunerationDeductionController extends Controller
            "type" => $validated["type"],
            "amount" => $validated["amount"],
            "company_id" => auth()->user()->company_id,
-           "hash" => sha1(time())
+           "hash" => sha1(time()),
+           "is_active" => true
        ]);
 
          foreach (auth()->user()->company->employees as $employee) {

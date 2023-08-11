@@ -32,6 +32,7 @@ class CompanyRemunerationContributionController extends Controller
             'name' => $validated['contribution_name'],
             'percentage' => $validated['contribution_percentage'],
             'hash' => sha1(time()),
+            'is_active' => true,
         ]);
 
         return back()->with('success', 'Remuneration Contribution Updated');

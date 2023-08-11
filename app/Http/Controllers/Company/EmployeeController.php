@@ -85,19 +85,23 @@ class EmployeeController extends Controller
     public function updateEducationAndEmployment(Request $request, Employee $employee)
     {
         $validated = $request->validate([
-            "employment_start_date"=>"nullable|date",
-            "position"=>"required",
+            "employment_start_date"=>"nullable|required_unless:position,null|date",
+            "position"=>"required_unless:employment_start_date,null",
             "organisation_name"=> "nullable",
             "skills.*"=>"required|integer",
             "qualification_end_date"=>"required|date",
             "qualification"=>"required",
-            "type"=> ["required",  Rule::in(\App\Models\Employee::ContractType)],
+            "type"=> ["nullable","required_unless:position,null", Rule::in(\App\Models\Employee::ContractType)],
         ]);
 
         $education = $this->employeeRepository->updateOrInsertEmployeeEducation($employee, $validated);
-        $experience = $this->employeeRepository->updateOrInsertEmployeeExperience($employee, $validated);
-        $skills = $this->employeeRepository->updateOrInsertEmployeeSkills($employee, $validated);
+        if ($validated['position'] && $validated['employment_start_date']) {
+            $experience = $this->employeeRepository->updateOrInsertEmployeeExperience($employee, $validated);
+        }
 
+        if ((isset($validated['skills'])) && count($validated['skills'])>0) {
+            $skills = $this->employeeRepository->updateOrInsertEmployeeSkills($employee, $validated);
+        }
         return back()->with("success", "Profile updated");
     }
 

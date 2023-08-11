@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('head_office_name');
-            $table->string('phone_number');
+            $table->string('phone_number')->unique();
             $table->string('status')->default(\App\Models\Company::STATUS[1]);
             $table->date('date_creation')->nullable();
             $table->string('registration_number')->nullable();

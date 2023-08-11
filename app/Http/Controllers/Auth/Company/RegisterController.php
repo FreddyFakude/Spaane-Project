@@ -37,8 +37,8 @@ class RegisterController extends Controller
                 'company_size' => Company::size[1],
                 'date_creation' => today()->format('Y-m-d'),
                 'fiscal_year_start' => today()->format('Y-m-d'),
-                'short_description' => 'Lorem ipsum',
-                'phone_number' => '2778129193',
+                'short_description' => '',
+                'phone_number' => '0000000',
             ]
         );
 

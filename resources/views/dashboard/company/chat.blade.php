@@ -487,13 +487,13 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Start Date</label>
-                                            <input type="date" class="form-control"  name="employment_start_date" value="{{ $employee->professional_experience?->start_date }}" required>
+                                            <input type="date" class="form-control"  name="employment_start_date" value="{{ $employee->professional_experience?->start_date }}">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Contract Type</label>
-                                            <select class="form-control"  name="type" required>
+                                            <select class="form-control"  name="type">
                                                 <option value="">Choose contract type</option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                 @foreach(\App\Models\Employee::ContractType as $contract)
                                                     <option value="{{ $contract }}" @selected($employee->type == $contract)>{{ $contract }}</option>

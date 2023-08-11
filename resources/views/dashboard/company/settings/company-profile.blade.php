@@ -43,13 +43,13 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Company Name</label>
-                                <input type="text" class="form-control"  name="company_name" value="{{ $company?->name }}">
+                                <input type="text" class="form-control"  name="company_name" value="{{ $company?->name == 'Temporary' ? '' :  $company?->name}}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Company Address</label>
-                                <input type="text" class="form-control"  name="head_office_name" value="{{ $company?->head_office_name }}">
+                                <input type="text" class="form-control"  name="head_office_name" value="{{ $company?->head_office_name == 'Temporary' ? '' : $company?->head_office_name }}">
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -74,7 +74,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Company registration number (if available)</label>
-                                <input type="text" class="form-control"  name="registration_number" value="{{ $company->registration_number }}">
+                                <input type="text" class="form-control"  name="registration_number" value="{{ $company->registration_number  }}">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -94,7 +94,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="pl-0" for="example-text-input">Representative/Admin Phone number*</label>
-                                <input type="tel" class="form-control"  name="company_phone_number" value="{{ $company?->phone_number }}" placeholder="0788129192">
+                                <input type="tel" class="form-control"  name="company_phone_number" value="{{ $company?->phone_number == '0000000' ? '' : $company?->phone_number }}">
                             </div>
                         </div>
                     </div>
