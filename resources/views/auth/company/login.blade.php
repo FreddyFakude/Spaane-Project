@@ -23,13 +23,30 @@
                                             <h4 class="mt-1 mb-5 pb-1">Login To Account</h4>
                                         </div>
 
-                                        <div class="input-group mb-4">
-                                            <input type="email" name="email" class="form-control"
-                                                   placeholder="Email address" />
+                                        <div class="text-center">
+                                           @if($errors->any())
+                                               @foreach($errors->all() as $error)
+                                                   <span class="text-danger">{{ $error }}</span>
+                                               @endforeach
+                                             @endif
                                         </div>
 
-                                        <div class="input-group mb-4">
-                                            <input type="password" placeholder="Password" name="password" class="form-control" />
+                                        <div>
+                                            <div class="input-group mb-4">
+                                                <input type="email" name="email" class="form-control"
+                                                       placeholder="Email address" />
+                                            </div>
+                                           @error('email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div>
+                                            <div class="input-group mb-4">
+                                                <input type="password" placeholder="Password" name="password" class="form-control" />
+                                            </div>
+                                            @error('password')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
 
                                         <div class="text-center pt-1 mb-2">

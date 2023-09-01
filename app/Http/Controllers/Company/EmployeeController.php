@@ -56,10 +56,14 @@ class EmployeeController extends Controller
             "last_name"=>"required",
             "email"=>"required|email",
             "position" => "required",
-            "mobile_number" => "required|numeric|starts_with:0|digits:10|unique:employees,mobile_number"
+            "mobile_number" => "required|numeric|starts_with:0|digits:10"
         ]);
 
         $validated["mobile_number"] = "27" . substr($validated["mobile_number"], 1); //remove zero and add prefix
+
+        if (Employee::where('mobile_number', '=', $validated['mobile_number'])->exists()) {
+            return back()->withErrors(['email' => 'Employee with this number already exists']);
+        }
         $company = Auth::guard('company')->user()->company;
         $employee = (new EmployeeRepository())->quickCreate($company, $validated, Employee::STATUS['invite_sent']);
         $remunerations = (new EmployeeRemunerationAndDeductionService())->processNewEmployee($company, $employee);
