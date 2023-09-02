@@ -88,9 +88,8 @@ class CompanyChatController extends Controller
 
     public function bulkMessages()
     {
-
         return view('dashboard.company.bulk-messages', [
-            'messages'=> Auth::user()->bulkMessages
+            'messages'=> Auth::guard('company')->user()->company->bulkMessages
         ]);
     }
 

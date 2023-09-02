@@ -13,16 +13,7 @@ class EmployeeProfileRepository
 {
 
 
-//    public function __construct(Employee $employee, array $data)
-//    {
-//        $this->updateOrInsertEmployee($employee, $data);
-//        $this->updateOrInsertEmployeeAddress($employee, $data);
-//        $this->updateOrInsertEmployeeEducation($employee, $data);
-//        $this->updateOrInsertEmployeeSkills($employee, $data);
-//        $this->updateOrInsertEmployeeExperience($employee, $data);
-//        $this->updateOrInsertEmployeeBankAccount($employee, $data);
-//        $this->updateOrInsertEmployeeSalary($employee, $data);
-//    }
+
 
     public function updateOrInsertEmployee(Employee $employee, array $data)
     {
@@ -43,7 +34,7 @@ class EmployeeProfileRepository
             "addressable_type" => Employee::class
         ];
 
-      return  $employee->address ? $employee->address->update($addressPayload) : Address::create($addressPayload);
+      return          $employee->address ? $employee->address->update($addressPayload) : (new AddressRepository())->insert($data, $employee->id, Employee::class);
     }
 
     public function updateOrInsertEmployeeEducation(Employee $employee, array $data)

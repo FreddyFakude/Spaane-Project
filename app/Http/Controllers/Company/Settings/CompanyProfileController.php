@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Company\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Repository\AddressRepository;
 use Illuminate\Http\Request;
 
 class CompanyProfileController extends Controller
@@ -27,7 +28,13 @@ class CompanyProfileController extends Controller
             'fiscal_year_start' => 'required|date',
             'registration_number' => 'nullable|string',
             'short_description' => 'required|string|max:255',
-            'company_phone_number' => 'required|numeric|starts_with:0|digits:10'
+            'company_phone_number' => 'required|numeric|starts_with:0|digits:10',
+            "street_number"=>"required",
+            "street_name"=>"required",
+            "suburb"=>"nullable",
+            "city"=>"required|nullable",
+            "state"=>"required",
+            "zip_code"=>"nullable",
         ]);
 
         $company = auth()->guard('company')->user()->company->update(
@@ -43,7 +50,24 @@ class CompanyProfileController extends Controller
                 'status' => Company::STATUS[2]
             ]
         );
-
+        $company = auth()->guard('company')->user()->company;
+        if ($company->address){
+            $company->address->update(
+                ["street_number" => $validated['street_number'],
+                "street_name" => $validated['street_name'],
+                "suburb" => $validated['suburb'],
+                "city" => $validated['city'],
+                "state" => $validated['state'],
+                "zip_code" => $validated['zip_code'],
+                "country" => "South Africa",
+                "addressable_id" => $company->id,
+                "addressable_type" => Company::class
+                ]);
+        }
+        else{
+          $address = (new AddressRepository())->insert($validated, $company->id, Company::class);
+        }
+  ;
         return redirect()->back()->with('success', 'Profile updated successfully');
     }
 }

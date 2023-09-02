@@ -30,6 +30,11 @@ class Company extends Model
         return $this->hasMany(Employee::class, 'company_id');
     }
 
+    public function address()
+    {
+        return $this->morphOne(Address::class, 'addressable');
+    }
+
     public function bulkMessages()
     {
         return $this->hasMany(QueuedMessage::class, 'company_id');

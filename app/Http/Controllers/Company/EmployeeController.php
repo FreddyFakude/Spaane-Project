@@ -23,6 +23,7 @@ class EmployeeController extends Controller
 {
 
 
+    private $employeeRepository;
     /**
      * EmployeeController constructor.
      */

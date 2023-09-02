@@ -98,6 +98,55 @@
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <h6>Company head office address</h6>
+                    </div>
+                    <div class="row px-10 mt-10">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Street Number</label>
+                                <input type="text" class="form-control" id="example-text-input" name="street_number" value="{{ $company->address?->street_number }}">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Street name</label>
+                                <input type="text" class="form-control" id="example-text-input" name="street_name" value="{{ $company->address?->street_name }}">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Suburb</label>
+                                <input type="text" class="form-control" id="example-text-input" name="suburb" value="{{ $company->address?->suburb }}">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">City</label>
+                                <input type="text" class="form-control" id="example-text-input" value="{{ $company->address?->city }}" name="city">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row px-10 mt-30">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Zip Code</label>
+                                <input type="text" class="form-control" id="example-text-input" name="zip_code" value="{{ $company->address?->zip_code }}">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">State</label>
+                                <input type="text" class="form-control" id="example-text-input" name="state" value="{{ $company->address?->state }}">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="pl-0" for="example-text-input">Company logo</label>
+                                <input type="file" class="form-control"  name="logo" value="">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row px-10 mt-30">
                         <div class="col-md-3">
                             <div class="form-group">
