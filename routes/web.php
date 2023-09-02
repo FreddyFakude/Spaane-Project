@@ -74,6 +74,7 @@ Route::group(['middleware'=>['auth:company', 'companyHasProfile'], 'prefix'=>'co
     Route::get('/dashboard/employees/{employee:hash}/leave/{leave_request:hash}/approve', [\App\Http\Controllers\Company\EmployeeLeaveController::class, 'approveLeave'])->name('dashboard.company.employee.approve.leave');
 
     Route::post('/dashboard/employees/invite', [\App\Http\Controllers\Company\EmployeeController::class, 'inviteEmployee'])->name('dashboard.business.employee.invite');
+    Route::get('/dashboard/employees/{employee:hash}/delete', [\App\Http\Controllers\Company\EmployeeController::class, 'deleteEmployee'])->name('dashboard.business.employee.delete');
     Route::post('/dashboard/employee/update/{employee:hash}', [\App\Http\Controllers\Company\EmployeeController::class, 'updateEmployeePersonalDetails'])->name('dashboard.business.employee.update.personal-details');
     Route::post('/dashboard/employee/{employee:hash}/update/educ-employment', [\App\Http\Controllers\Company\EmployeeController::class, 'updateEducationAndEmployment'])->name('dashboard.business.employee.update.educ-employment');
     Route::post('/dashboard/employee/{employee:hash}/update/others', [\App\Http\Controllers\Company\EmployeeController::class, 'updateOtherEmployeeInformation'])->name('dashboard.business.employee.update.other-info');

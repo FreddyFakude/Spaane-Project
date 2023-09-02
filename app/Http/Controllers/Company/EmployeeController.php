@@ -122,4 +122,10 @@ class EmployeeController extends Controller
         $banking = $this->employeeRepository->updateOrInsertEmployeeBankAccount($employee, $validated);
         return back()->with('success', 'Profile updated');
     }
+
+    public function deleteEmployee(Employee $employee)
+    {
+        $employee->delete();
+        return back()->with('success', 'Employee deleted');
+    }
 }

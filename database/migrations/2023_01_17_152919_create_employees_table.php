@@ -50,6 +50,7 @@ return new class extends Migration
             $table->boolean('is_profile_complete')->default(false);
             $table->boolean('is_available')->default(TRUE);
             $table->string('type')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

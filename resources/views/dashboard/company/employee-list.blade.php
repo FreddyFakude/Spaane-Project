@@ -29,7 +29,7 @@
                     </div>
                     <div>
                         <button type="button" class="btn btn-rounded btn-hero btn-lg btn-success mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
-                        <button class="btn btn-rounded btn-hero btn-lg btn-danger mr-2">Remove  Employee</button>
+{{--                        <button class="btn btn-rounded btn-hero btn-lg btn-danger mr-2">Remove  Employee</button>--}}
                     </div>
                 </div>
             </div>
@@ -72,7 +72,8 @@
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Contract type</th>
                         {{-- <th class="d-none d-sm-table-cell" style="width: 10%;">Total Leave</th>
                         <th class="d-none d-sm-table-cell" style="width: 10%;">Absent Days</th>
-                        <th class="d-none d-sm-table-cell" style="width: 10%;">WhatsApp</th> --}}
+{{--                         --}}
+                        <th class="d-none d-sm-table-cell" style="width: 10%;">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -108,9 +109,12 @@
                                     <td class="d-none d-sm-table-cell">
                                         <em class="text-muted"> 5 days</em>
                                     </td>
+                                     --}}
                                     <td class="d-none d-sm-table-cell">
-                                        <em class="text-muted"> Active</em>
-                                    </td> --}}
+                                        <a href="{{ route('dashboard.business.employee.delete', [$employee->hash]) }}">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                         @else
