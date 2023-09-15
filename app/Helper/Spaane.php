@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 class Spaane
 {
+
+    const EMPOLOYEE_DEFAULT_PASSWORD = 'password';
     public function sendQueuedMessage(Employee $employee, Company $company,  $message, $title = 'Message from Spaane')
     {
         $message = QueuedMessage::create([

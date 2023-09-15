@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Helper\Spaane;
 use App\Models\Chat;
 use App\Models\Company;
 use App\Models\CompanyAccountAdministrator;
@@ -24,7 +25,7 @@ class EmployeeRepository
             "email" => $email,
             "mobile_number" => $data['mobile_number'],
             "marital_status" => '',
-            "password" => Hash::make('password'),
+            "password" => Hash::make(Spaane::EMPOLOYEE_DEFAULT_PASSWORD),
             "company_department_id" => 34,
             "company_id" => $company->id,
             "hash" => sha1($email . time() . rand(1, 100000)),
