@@ -96,7 +96,9 @@ Route::group(['middleware'=>['auth:employee'], 'prefix'=>'employee'], function (
     Route::get('/dashboard/index', [\App\Http\Controllers\Employee\DashboardController::class, 'index'])->name('dashboard.employee.index');
     Route::get('/dashboard/profile/edit', [\App\Http\Controllers\Employee\ProfileController::class, 'editProfile'])->name('dashboard.employee.profile.edit');
     Route::get('/dashboard/profile/view', [\App\Http\Controllers\Employee\ProfileController::class, 'index'])->name('dashboard.employee.profile.view');
-    Route::post('/dashboard/profile/save', [\App\Http\Controllers\Employee\ProfileController::class, 'saveProfile'])->name('dashboard.talent.profile.save');
+    Route::post('/dashboard/profile/{employee:hash}/personal_details', [\App\Http\Controllers\Employee\ProfileController::class, 'updatePersonalDetails'])->name('dashboard.employee.profile.update_personal_details');
+    Route::post('/dashboard/profile/{employee:hash}/banking-details', [\App\Http\Controllers\Employee\ProfileController::class, 'updateBankingDetails'])->name('dashboard.employee.profile.update_banking_details');
+    Route::post('/dashboard/profile/{employee:hash}/education-employment-history', [\App\Http\Controllers\Employee\ProfileController::class, 'updateEducationAndEmployment'])->name('dashboard.employee.profile.update_education_employment');
 });
 
 //routes by Remmone
