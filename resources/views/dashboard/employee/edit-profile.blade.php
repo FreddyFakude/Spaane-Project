@@ -7,6 +7,15 @@
         <x-dashboard.employee.header></x-dashboard.employee.header>
     </x-slot>
     <div class="content bg-light">
+        <div class="col-md-12 col-xl-12">
+            <div class="d-flex justify-content-between">
+                <div class="content-header p-0 ml-0 mr-0" style="margin-top: -12px;z-index:1500">
+                    <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="sidebar_toggle">
+                        <i class="fa fa-navicon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="block">
             <div class="block-header block-header-default">
                 @if(session()->has('talent-added'))

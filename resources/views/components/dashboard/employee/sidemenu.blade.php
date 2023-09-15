@@ -52,12 +52,14 @@
                                 </li>
                             </ul>
                         </li>
-{{--                        <li>--}}
-{{--                            <a href="{{ route('dashboard.talent.availability') }}"><i class="si si-calendar fa-2x"></i><span class="sidebar-mini-hide">Availability</span></a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="{{ route('dashboard.talent.chats') }}" class="nav-submenu"><i class="si si-users fa-2x"></i><span class="sidebar-mini-hide">Chat</span></a>--}}
-{{--                        </li>--}}
+                        <li>
+                            <form action="{{ route('employee.logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="nav-submenu" style="all:unset; padding-left: 17px;font-size: 18px">
+                                    <span class="si si-logout mr-5"></span> Sign Out
+                                </button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
                 <!-- END Side Navigation -->

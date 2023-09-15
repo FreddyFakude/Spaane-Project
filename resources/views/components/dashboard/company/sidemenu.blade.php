@@ -87,6 +87,15 @@
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                        <li>
+                            <form action="{{ route('company.logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="nav-submenu" style="all:unset; padding-left: 17px;font-size: 18px">
+                                    <span class="si si-logout mr-5"></span> Sign Out
+                                </button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
                 <!-- END Side Navigation -->
