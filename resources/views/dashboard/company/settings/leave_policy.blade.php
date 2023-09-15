@@ -81,8 +81,9 @@
                                     <td class="font-w600">{{ $leaveType->leave_duration_days }}</td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <form action="#" method="post">
+                                            <form action="{{ route('dashboard.company.delete-leave-policy') }}" method="post">
                                                 @method('DELETE')
+                                                <input type="hidden" name="leave_policy_id" value="{{ $leaveType->id }}">
                                                 @csrf
                                                 <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" title="" data-original-title="Edit">
                                                     <i class="fa fa-trash"></i>

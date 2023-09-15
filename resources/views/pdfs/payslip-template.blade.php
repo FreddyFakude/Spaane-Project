@@ -44,7 +44,13 @@
 <div class="page" style="padding: 40px;margin-top: 70px">
     <table>
         <tr class="top-row">
-            <td colspan="4">Teambix</td>
+            <td colspan="4">{{ $employee->company->name }}
+                <div>
+                    <address>
+                        {{ $employee->company->address->street_number }}  {{ $employee->company->address->street_name   }} {{ $employee->company->address->suburb }} {{ $employee->company->address->city }} {{ $employee->company->address->postal_code }}
+                    </address>
+                </div>
+            </td>
         </tr>
         <tr class="top-row">
             <td colspan="4">

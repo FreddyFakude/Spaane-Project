@@ -46,4 +46,18 @@ class CompanyLeavePolicyController extends Controller
 
 
     }
+
+    public function deleteCompanyLeavePolicy()
+    {
+        $validated =  request()->validate([
+            'leave_policy_id' => 'required|integer|exists:company_leave_policies,id',
+        ]);
+
+        $policy = CompanyLeavePolicy::where('id', '=', $validated['leave_policy_id'])->delete();
+
+        return back()->with([
+            'message' => 'Company leave policy successfully deleted',
+            'alert-type' =>'success',
+        ]);
+    }
 }

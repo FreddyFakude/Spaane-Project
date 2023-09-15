@@ -38,6 +38,7 @@ Route::group(['middleware'=>['auth:company'], 'prefix'=>'settings'], function ()
     Route::post('/company/admin/profile/update', [\App\Http\Controllers\Company\Settings\AdminProfileController::class, 'update'])->name('company.update.admin.profile');
     Route::get('/company/leave-policy', [\App\Http\Controllers\Company\Settings\CompanyLeavePolicyController::class, 'viewCompanyLeavePolicy'])->name('dashboard.company.view-company-leave');
     Route::post('/company/add-leave-policy', [\App\Http\Controllers\Company\Settings\CompanyLeavePolicyController::class, 'addCompanyLeavePolicy'])->name('dashboard.company.add-leave-policy');
+    Route::delete('/company/delete-leave-policy', [\App\Http\Controllers\Company\Settings\CompanyLeavePolicyController::class, 'deleteCompanyLeavePolicy'])->name('dashboard.company.delete-leave-policy');
 
     Route::resource('/dashboard/contributions', \App\Http\Controllers\Company\CompanyRemunerationContributionController::class,  ['as' => 'dashboard.company']);
     Route::resource('/dashboard/deductions', \App\Http\Controllers\Company\CompanyRemunerationDeductionController::class,  ['as' => 'dashboard.company']);
