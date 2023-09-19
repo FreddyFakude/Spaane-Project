@@ -211,10 +211,11 @@ class EmployeeWhatsAppChatFlow
        $bulkMessages =  $this->employee->bulkMessages()->pending()->get();
         foreach($bulkMessages as $message){
             $this->whatsApp->sendWhatsappMessage($this->chat, $this->employee, $message->message->message, "App\Models\Company", $this->employee->id, true, true);
-            return    $message->update([
+            $message->update([
                     "status" => "SENT"
                 ]);
         }
+        return true;
     }
 
 
