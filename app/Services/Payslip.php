@@ -22,9 +22,9 @@ class Payslip
         $data['earnings'] = isset($data['earnings']) ?  $this->processEarnings($data['earnings']): '';
         $data['other_earnings'] = isset($data['other_earnings']) ?  $this->processOtherEarnings($data['other_earnings']): '';
         $data['contributions'] = $this->processContributions();
-        $data['reference_number'] = 'PAYS-'.$this->company->payslips()->count() + 1;
-        $data['file_name'] = 'PAYS-'. $this->company->payslips()->count() + 1;
-        $data['hash'] = sha1($this->company->payslips()->count() + 1);
+        $data['reference_number'] = 'PAYS-'.$this->company->payslips()->count()  .  "-" .  time();
+        $data['file_name'] = 'PAYS-'. $this->company->payslips()->count() .  "-" .  time();
+        $data['hash'] = sha1($this->company->payslips()->count() .  "-" .  time());
         $data['company_id'] = $this->company->id;
         $data['month_year'] = Carbon::createFromFormat('Y-m-d', $data['date'])->format('Y-m');
 
