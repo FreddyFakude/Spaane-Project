@@ -126,6 +126,12 @@ class EmployeeController extends Controller
 
     public function deleteEmployee(Employee $employee)
     {
+        $employee->mobile_number = $employee->mobile_number . "_deleted_" . time();
+        $employee->email = $employee->email . "_deleted_" . time();
+        $employee->driving_license_number = $employee->driving_license_number . "_deleted_" . time();
+        $employee->id_or_passport = $employee->id_or_passport . "_deleted_" . time();
+        $employee->tax_number = $employee->tax_number . "_deleted_" . time();
+        $employee->save();
         $employee->delete();
         return back()->with('success', 'Employee deleted');
     }
