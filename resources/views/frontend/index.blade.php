@@ -10,7 +10,7 @@
                     <div class="col-lg-6 text-center text-lg-start">
                         <h1 class="text-white text-center fs-5 fs-xl-6">Send payslips. Manage leave all via Whatsapp.</h1>
                         <p class="text-white text-center py-lg-3 py-2">Instantly send payslips, allocate leave, and share critical information to your employees using WhatsApp.</p>
-                        <div class="text-center"><button class="btn btn-success text-black mb-3 w-75">Start your 30 day Free Trial</button>
+                        <div class="text-center"><a class="btn btn-success text-black mb-3 w-75" href="{{ route('company.register.form') }}">Start your 30 day Free Trial</a>
                         </div>
                     </div>
                 </div>
