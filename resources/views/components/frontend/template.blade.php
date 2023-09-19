@@ -39,13 +39,13 @@
 <!-- ===============================================-->
 <main class="main" id="top">
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark" data-navbar-on-scroll="data-navbar-on-scroll">
-        <div class="container"><a class="navbar-brand" href="index.html"><img src="{{ asset('assets/images/spaane_white.png') }}" alt="" width="180"></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars text-white fs-3"></i></button>
+        <div class="container"><a class="navbar-brand" href="{{ route('index') }}"><img src="{{ asset('assets/images/spaane_white.png') }}" alt="" width="180"></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars text-white fs-3"></i></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ route('how-it-works') }}">How it works</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ route('pricing') }}">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ route('contact-us') }}">Contact us</a></li>
+                    <li class="nav-item"><a class="nav-link {{ url()->current() == route('index') ? 'active' : '' }}" aria-current="page" href="{{ route('index') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link {{ url()->current() == route('how-it-works') ? 'active' : '' }}" aria-current="page" href="{{ route('how-it-works') }}">How it works</a></li>
+                    <li class="nav-item"><a class="nav-link {{ url()->current() == route('pricing') ? 'active' : '' }}" aria-current="page" href="{{ route('pricing') }}">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link {{ url()->current() == route('contact-us') ? 'active' : '' }}" aria-current="page" href="{{ route('contact-us') }}">Contact us</a></li>
                     <li class="nav-item mt-2 mt-lg-0"><a class="nav-link btn btn-light text-black w-md-25 w-50 w-lg-100" aria-current="page" href="{{ route('company.login.form') }}">Log In</a></li>
                 </ul>
             </div>

@@ -104,8 +104,3 @@ Route::group(['middleware'=>['auth:employee'], 'prefix'=>'employee'], function (
 
 //routes by Remmone
 Route::view('/company/leave/', 'dashboard.company.leave')->name('dashboard.company.leave');
-
-Route::get('test/pdf', function(){
-    $pdf = PayslipPDFGenerator::sendFileToAPI('<p>test</p>');
-    return $pdf;
-});

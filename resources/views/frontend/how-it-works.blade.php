@@ -14,7 +14,7 @@
                     <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Generate payslips instantly for pay cycle.</span></li>
                     <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Employee sends Hi to 087 250 0129 on WhatsApp.</span></li>
                     <li class="text-white fs-2 my-4 d-flex align-items-center gap-3 text-black"><i class="fa-solid fa-circle-check fs-4 text-success"></i><span>Employee access payslips up to last 3 months on WhatsApp.</span></li>
-                    </ul><button class="btn btn-success text-black mb-3 w-75">Start now</button>
+                    </ul><a class="btn btn-success text-black mb-3 w-75" href="{{ route('company.register.form') }}">Start now</a>
                 </div>
             </div>
         </div><!-- end of .container-->
