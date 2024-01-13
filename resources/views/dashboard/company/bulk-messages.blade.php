@@ -35,6 +35,7 @@
                     </button>
                 </div>
                 <form action="{{ route('dashboard.company.chats.bulk-messages.send')  }}" method="post">
+
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-content">
                             <div class="d-flex justify-content-center my-20">

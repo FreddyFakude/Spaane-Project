@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Exports\EmployeeBankCSVExport;
 use App\Helper\Spaane;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployeeProfileRequest;
@@ -134,5 +135,11 @@ class EmployeeController extends Controller
         $employee->save();
         $employee->delete();
         return back()->with('success', 'Employee deleted');
+    }
+
+    public function exportEmployees()
+    {
+        return (new EmployeeBankCSVExport())->download('employees.csv');
+//        return back()->with('success', 'Employees exported');
     }
 }
