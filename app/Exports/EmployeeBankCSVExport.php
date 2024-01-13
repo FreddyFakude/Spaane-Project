@@ -28,7 +28,7 @@ class EmployeeBankCSVExport implements FromCollection, WithHeadings, WithMapping
             $employee->id_or_passport,
             $company,
             $employee->first_name . ' ' .  $employee->last_name,
-            $employee->last_name . ' ' . substr($employee->first_name, 0),
+            $employee->last_name . ' ' . substr($employee->first_name, 0, 1),
             $employee->bankAccount?->account_number,
             $employee->bankAccount?->account_type,
             $employee->bankAccount?->bank_name,
