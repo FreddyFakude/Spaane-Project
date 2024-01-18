@@ -45,7 +45,7 @@ class EmployeeRepository
             "dob"=>$data['dob'],
             "is_profile_complete" => 1,
             "nationality" =>$data['nationality'],
-            "email"=> $data['personal_email'],
+            "email"=> $data['work_email'],
             "personal_email"=> $data['personal_email'],
             "id_or_passport"=> $data['id_or_passport'],
             "gender" => $data['gender'],

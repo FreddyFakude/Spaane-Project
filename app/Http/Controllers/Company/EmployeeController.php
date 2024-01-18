@@ -136,10 +136,4 @@ class EmployeeController extends Controller
         $employee->delete();
         return back()->with('success', 'Employee deleted');
     }
-
-    public function exportEmployees()
-    {
-        return (new EmployeeBankCSVExport())->download('employees.csv');
-//        return back()->with('success', 'Employees exported');
-    }
 }

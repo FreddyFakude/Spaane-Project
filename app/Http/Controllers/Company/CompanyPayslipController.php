@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Exports\EmployeeBankCSVExport;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyPayslip;
 use App\Models\Employee;
@@ -82,5 +83,11 @@ class CompanyPayslipController extends Controller
             return back()->with('error', 'Employee does not have a bank account');
         }
         return (new PayslipPDFGenerator())->downloadPDF($employee, $payslip, true);
+    }
+
+    public function exportEmployees()
+    {
+        $employees = auth()->user()->company->employees->load('payslips', 'remunerations', 'otherEarnings', 'otherDeductions', 'bankAccount');
+        return (new EmployeeBankCSVExport($employees))->download('employees.csv');
     }
 }

@@ -184,7 +184,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="pl-0" for="example-text-input">Work Email</label>
-                                            <input type="email" class="form-control" id="example-text-input" name="work_email" value="{{ $employee->email }}">
+                                            <input type="email" class="form-control" id="example-text-input" name="work_email" value="{{ $employee->email }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">

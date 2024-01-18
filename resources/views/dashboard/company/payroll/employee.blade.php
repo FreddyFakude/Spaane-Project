@@ -65,6 +65,7 @@
                             <input type="hidden" name="date" value="{{ $date }}">
                             @csrf
                             <button type="submit" class="btn btn-rounded btn-hero btn-lg btn-success mr-2">Generate payslips for all</button>
+                            <a href="{{ route('dashboard.company.employee.export-banking') }}" class="btn btn-rounded btn-hero btn-lg btn-info mr-2">Export Details</a>
                         </form>
                     </div>
                 </div>

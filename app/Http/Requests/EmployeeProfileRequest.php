@@ -37,6 +37,7 @@ class EmployeeProfileRequest extends FormRequest
             "home_phone_number"=> "nullable|numeric|starts_with:0|digits:10",
             "number_of_children"=>"nullable|numeric",
             "personal_email"=>"nullable|email",
+            "work_email"=>"required|email",
             "direct_manager"=> "nullable|string",
             "type"=> ["required",  Rule::in(\App\Models\Employee::ContractType)],
             "street_number"=>"nullable",

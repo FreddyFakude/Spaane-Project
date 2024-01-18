@@ -34,7 +34,7 @@ class EmployeeProfileRepository
             "addressable_type" => Employee::class
         ];
 
-      return          $employee->address ? $employee->address->update($addressPayload) : (new AddressRepository())->insert($data, $employee->id, Employee::class);
+      return $employee->address ? $employee->address->update($addressPayload) : (new AddressRepository())->insert($data, $employee->id, Employee::class);
     }
 
     public function updateOrInsertEmployeeEducation(Employee $employee, array $data)

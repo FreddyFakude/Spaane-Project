@@ -28,9 +28,7 @@
                         </button>
                     </div>
                     <div>
-                        <a href="{{ route('dashboard.company.employee.export-banking') }}" class="btn btn-rounded btn-hero btn-lg btn-info mr-2">Export Details</a>
                         <button type="button" class="btn btn-rounded btn-hero btn-lg btn-success mr-2" data-toggle="modal" data-target="#modal-slideright">Add Employee</button>
-{{--                        <button class="btn btn-rounded btn-hero btn-lg btn-danger mr-2">Remove  Employee</button>--}}
                     </div>
                 </div>
             </div>

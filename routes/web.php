@@ -51,7 +51,7 @@ Route::group(['middleware'=>['auth:company', 'companyHasProfile'], 'prefix'=>'co
 //    Route::get('/dashboard/calendar', [\App\Http\Controllers\Company\DashboardController::class, 'calendar'])->name('dashboard.company.index.calendar');
     Route::get('/dashboard/index', [\App\Http\Controllers\Company\EmployeeController::class, 'list'])->name('dashboard.company.index');
     Route::get('/dashboard/employees/view/{employee}', [\App\Http\Controllers\Company\EmployeeController::class, 'viewTalent'])->name('dashboard.company.employee.view');
-    Route::get('/dashboard/employees/export-banking', [\App\Http\Controllers\Company\EmployeeController::class, 'exportEmployees'])->name('dashboard.company.employee.export-banking');
+    Route::get('/dashboard/employees/export-banking', [\App\Http\Controllers\Company\CompanyPayslipController::class, 'exportEmployees'])->name('dashboard.company.employee.export-banking');
 
     Route::get('/dashboard/deductions/{deduction:hash}/{state}', [\App\Http\Controllers\Company\CompanyRemunerationDeductionController::class, 'updateStatus'])->name('dashboard.company.deductions.update.status');
     Route::get('/dashboard/employee/earning_types/{remuneration:hash}/{state}', [\App\Http\Controllers\Company\CompanyEmployeeEarningTypeController::class, 'updateStatus'])->name('dashboard.company.earning_types.update.status');
