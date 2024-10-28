@@ -25,10 +25,19 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
        $validated =  $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
+            'first_name' => 'required|string|regex:/^[a-zA-Z]+$/u|max:255',
+            'last_name' => 'required|string|regex:/^[a-zA-Z]+$/u|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => [
+                'required',
+                'string',
+                'confirmed',
+                'min:8',  
+                'regex:/[!@#$%^&*(),.?":{}|<>]/'
+            ],[
+                'first_name.regex' => 'First name must only contain alphabetic characters.',
+                'last_name.regex' => 'Last name must only contain alphabetic characters.',
+            ],
         ]);
 
         $company = Company::create([

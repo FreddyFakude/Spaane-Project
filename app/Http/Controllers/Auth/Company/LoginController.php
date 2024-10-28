@@ -19,16 +19,15 @@ class LoginController extends Controller
 
     public function login(Request $request){
 
-        $validated =  $request->validate([
-            "email"=>"required",
-            "password"=>"required"
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
         ]);
 
-        if (Auth::guard("company")->attempt($validated)){
-            return redirect()->route("dashboard.company.index");
+        if (Auth::guard('company')->attempt($validated)) {
+            // Redirect to the company dashboard if login is successful
+            return redirect()->route('dashboard.company.index');
         }
-        session()->flash('failed');
-        return redirect()->back();
     }
 
     public function logout(){
