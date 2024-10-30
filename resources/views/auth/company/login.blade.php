@@ -2,19 +2,14 @@
     <section class="mt-5">
         <div class="container py-5 h-100">
             <div class="row justify-content-center align-items-center py-3 px-3">
-                <img height="20%" width="20%" src="{{asset('assets/images/spaane_white.png')}}">
+                <img height="20%" width="20%" src="{{ asset('assets/images/spaane_white.png') }}">
             </div>
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-12">
                     <div class="card rounded-3 text-black">
                         <div class="row g-0">
                             <div class="col-lg-6 d-flex align-items-center">
-                                {{-- <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                                    <h4 class="mb-4">Choose your account</h4>
-                                    <p class="small mb-0">Please click sign up to create a new account</p>
-                                    <a class="btn btn-primary" href="{{ route('business.signup.form') }}">SIGNUP</a>
-                                </div> --}}
-                                <img height="100%" width="100%" src="{{asset('assets/images/browser-window-displaying-workspace-.svg')}}">
+                                <img height="100%" width="100%" src="{{ asset('assets/images/browser-window-displaying-workspace-.svg') }}">
                             </div>
                             <div class="col-lg-6">
                                 <div class="card-body p-md-5 mx-md-4">
@@ -24,40 +19,39 @@
                                         </div>
 
                                         <div class="text-center">
-                                           @if($errors->any())
-                                               @foreach($errors->all() as $error)
-                                                   <span class="text-danger">{{ $error }}</span>
-                                               @endforeach
-                                             @endif
-                                        </div>
+                                            @if($errors->has('login_error'))
+                                                <span class="text-danger">{{ $errors->first('login_error') }}</span>
+                                            @endif
+                                        </div>                                        
 
-                                        <div>
-                                            <div class="input-group mb-4">
-                                                <input type="email" name="email" class="form-control"
-                                                       placeholder="Email address" />
-                                            </div>
-                                           @error('email')
+                                        {{-- Email Field --}}
+                                        <div class="input-group mb-4">
+                                            <input type="email" name="email" class="form-control" placeholder="Email address" value="{{ old('email') }}" />
+                                            @error('email')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                        <div>
-                                            <div class="input-group mb-4">
-                                                <input type="password" placeholder="Password" name="password" class="form-control" />
-                                            </div>
+
+                                        {{-- Password Field --}}
+                                        <div class="input-group mb-4">
+                                            <input type="password" placeholder="Password" name="password" class="form-control" />
                                             @error('password')
-                                            <span class="text-danger">{{ $message }}</span>
+                                                <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
 
+                                        {{-- Submit Button --}}
                                         <div class="text-center pt-1 mb-2">
                                             @csrf
-                                            <button class="btn btn-success btn-rounded mb-3" type="submit">Log
-                                                in</button>
-                                        </div>
-                                        <div class="text-center pt-1 mb-2 pb-1">
-                                            <a class="text-muted" href="#ytr\\\\\''8761z';pwewr=rh;l34rhxccvb?bv">Forgot password?</a>
+                                            <button class="btn btn-success btn-rounded mb-3" type="submit">Log in</button>
                                         </div>
 
+                                        {{-- Forgot Password Link --}}
+                                        <div class="text-center pt-1 mb-2 pb-1">
+                                            <a class="text-muted" href="#">Forgot password?</a>
+                                        </div>
+
+                                        {{-- Register Link --}}
                                         <div class="text-center pb-4">
                                             <p class="mb-0 me-2">Don't have an account?</p>
                                             <a href="{{ route('company.register.form') }}" class="btn btn-rounded btn-outline-primary">Create new</a>

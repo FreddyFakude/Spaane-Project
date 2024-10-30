@@ -24,21 +24,19 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-       $validated =  $request->validate([
-            'first_name' => 'required|string|regex:/^[a-zA-Z]+$/u|max:255',
-            'last_name' => 'required|string|regex:/^[a-zA-Z]+$/u|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email',
-            'password' => [
-                'required',
-                'string',
-                'confirmed',
-                'min:8',  
-                'regex:/[!@#$%^&*(),.?":{}|<>]/'
-            ],[
-                'first_name.regex' => 'First name must only contain alphabetic characters.',
-                'last_name.regex' => 'Last name must only contain alphabetic characters.',
-            ],
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:company_account_administrators,email',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'first_name.required' => 'First name is required',
+            'last_name.required' => 'Last name is required',
+            'email.required' => 'Email is required',
+            'password.required' => 'Password is required',
+            'email.unique' => 'The user already exists.', 
         ]);
+        
 
         $company = Company::create([
                 'name' => "Temporary",
@@ -47,7 +45,7 @@ class RegisterController extends Controller
                 'date_creation' => today()->format('Y-m-d'),
                 'fiscal_year_start' => today()->format('Y-m-d'),
                 'short_description' => '',
-                'phone_number' => '0000000',
+                'phone_number' => '0815255498',
             ]
         );
 

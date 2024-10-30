@@ -47,13 +47,10 @@
                                         {{-- Password Field --}}
                                         <div class="input-group mb-4">
                                             <input type="password" name="password" id="password" class="form-control" placeholder="Password" onkeyup="checkPasswordStrength()" />
-                                        </div>
-
-                                        <p>
                                             @if ($errors->has('password'))
                                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                                             @endif
-                                        </p>
+                                        </div>
 
                                         {{-- Password Strength Indicator --}}
                                         <div id="password-strength" class="mb-4"></div>
@@ -84,7 +81,6 @@
         </div>
     </section>
 
-    {{-- Add this script to handle password strength --}}
     <script>
         function checkPasswordStrength() {
             var strength = document.getElementById('password-strength');
