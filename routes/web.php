@@ -2,6 +2,8 @@
 
 use App\Services\PDF\PayslipPDFGenerator;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Company\CompanyEmployeeEarningTypeController;
+use App\Http\Controllers\ShowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/dashboard/company/chat', [\App\Http\Controllers\Company\CompanyEmployeeEarningTypeController::class, 'showChat'])->name('dashboard.company.chat');
+
 Route::view('/', 'frontend.index')->name('index');
 Route::view('/how-it-works', 'frontend.how-it-works')->name('how-it-works');
 Route::view('/pricing', 'frontend.pricing')->name('pricing');
 Route::view('/contact-us', 'frontend.contact-us')->name('contact-us');
 
-//Route::view('/employee/register/', 'auth.company.login')->name('employee.register');
+Route::view('/employee/register/', 'auth.company.login')->name('employee.register');
 Route::get('/employee/login', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'loginForm'])->name('employee.login.form');
 Route::post('/employee/login', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'login'])->name('employee.login');
 Route::post('/talent/logout', [\App\Http\Controllers\Auth\Employee\LoginController::class, 'logout'])->name('employee.logout');

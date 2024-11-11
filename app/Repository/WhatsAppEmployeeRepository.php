@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Hash;
 class WhatsAppEmployeeRepository
 {
 
-
     /**
      *
      * Get employee object by their phone number

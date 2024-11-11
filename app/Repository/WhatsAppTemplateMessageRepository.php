@@ -13,20 +13,16 @@ use Illuminate\Support\Facades\Hash;
 
 class WhatsAppTemplateMessageRepository
 {
-
-
     /**
-     *
      * Get template message by slug
      *
      * @param string $slug
-     * @return WhatsAppTemplateMessage
+     * @return WhatsAppTemplateMessage|null
      */
-    public function getMessageBySlug(string $slug): WhatsAppTemplateMessage
+    public function getMessageBySlug(string $slug): ?WhatsAppTemplateMessage
     {
-        return  WhatsAppTemplateMessage::firstWhere([
+        return WhatsAppTemplateMessage::firstWhere([
             'slug' => $slug
         ]);
     }
-
 }

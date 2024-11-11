@@ -2,7 +2,9 @@
     <section class="mt-5">
         <div class="container py-5 h-100">
             <div class="row justify-content-center align-items-center py-3 px-3">
-                <img height="20%" width="20%" src="{{asset('assets/images/spaane_white.png')}}">
+                <a href="{{ url('/') }}" style="display: inline-block; height: 20%; width: 20%;">
+                    <img src="{{ asset('assets/images/spaane_white.png') }}" style="width: 100%; height: 100%; object-fit: contain;">
+                </a>
             </div>
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-12">
@@ -37,19 +39,19 @@
                                         </div>
 
                                         {{-- Email Field --}}
+                                        @if ($errors->has('email'))
+                                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                                        @endif
                                         <div class="input-group mb-4">
                                             <input type="email" name="email" class="form-control" placeholder="Email address" value="{{ old('email') }}" />
-                                            @if ($errors->has('email'))
-                                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                                            @endif
                                         </div>
 
                                         {{-- Password Field --}}
+                                        @if ($errors->has('password'))
+                                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                                        @endif
                                         <div class="input-group mb-4">
                                             <input type="password" name="password" id="password" class="form-control" placeholder="Password" onkeyup="checkPasswordStrength()" />
-                                            @if ($errors->has('password'))
-                                                <span class="text-danger">{{ $errors->first('password') }}</span>
-                                            @endif
                                         </div>
 
                                         {{-- Password Strength Indicator --}}

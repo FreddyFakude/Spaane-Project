@@ -26,7 +26,7 @@ class EmployeeRepository
             "mobile_number" => $data['mobile_number'],
             "marital_status" => '',
             "password" => Hash::make(Spaane::EMPOLOYEE_DEFAULT_PASSWORD),
-            "company_department_id" => 34,
+            "company_department_id" => 1,
             "company_id" => $company->id,
             "hash" => sha1($email . time() . rand(1, 100000)),
             "role" => !isset($data['position']) ? "employee" : $data['position'],

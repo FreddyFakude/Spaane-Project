@@ -9,110 +9,55 @@ use Illuminate\Http\Request;
 
 class CompanyEmployeeEarningTypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
+    public function showChat()
     {
-        return view('dashboard.company.settings.earning_type.index',
-            [
-                'employeeEarningTypes' => auth()->user()->company->employeeEarningTypes
-            ]);
+        // Fetch all company remunerations
+        $companyRemunerations = CompanyRemuneration::all();
+        
+        // Pass the data to the view
+        return view('dashboard.company.chat', compact('companyRemunerations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+    // Add new earning type
     public function store(Request $request)
     {
-       $validated =  $request->validate(
-            [
-                'name' => 'required'
-            ]
-        );
+        $validated = $request->validate([
+            'name' => 'required',
+            'unit_type' => 'required'
+        ]);
+
+        // Create new earning type
         $earningType = auth()->user()->company->employeeEarningTypes()->create([
             'name' => $request->name,
+            'unit_type' => $request->unit_type,
             'hash' => sha1(time())
         ]);
 
-       foreach (auth()->user()->company->employees as $employee) {
-           EmployeeRemuneration::updateOrCreate([
-               'name' => $earningType->name,
-               'employee_id' => $employee->id,
-               'company_remuneration_id' => $earningType->id
-           ], [
-               'amount' => 0
-           ]);
-       }
+        // Add employee remuneration records
+        foreach (auth()->user()->company->employees as $employee) {
+            EmployeeRemuneration::updateOrCreate([
+                'name' => $earningType->name,
+                'employee_id' => $employee->id,
+                'company_remuneration_id' => $earningType->id
+            ], [
+                'amount' => 0
+            ]);
+        }
 
         return redirect()->route('dashboard.company.earning_types.index')->with('success', 'Earning type created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  CompanyRemuneration $remuneration
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function destroy(CompanyRemuneration $earningType)
     {
         $earningType->delete();
-        return back()->with('success', 'Earning  deleted');
+        return back()->with('success', 'Earning deleted');
     }
 
-    public function updateStatus(CompanyRemuneration $remuneration, $status='active')
+    public function updateStatus(CompanyRemuneration $remuneration, $status = 'active')
     {
         $remuneration->update([
-            'is_active' => $status == 'active' ? true : false
+            'is_active' => $status === 'active'
         ]);
 
         return back()->with('success', 'Remuneration Contribution Updated');

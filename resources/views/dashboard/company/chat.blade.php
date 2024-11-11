@@ -361,6 +361,20 @@
                                         </div>
                                     </div>
                                 @endforeach
+
+                                @if($companyRemunerations->isEmpty())
+                                <p>No remunerations found.</p>
+                            @else
+                                @foreach ($companyRemunerations as $remuneration)
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h6>{{ $remuneration->name }}</h6>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+
+
                                 <div class="row ml-3"><h6>Other Earnings:</h6></div>
                                 <div class="row px-10" v-for="earning in earnings">
                                     <div class="col-md-2">
